@@ -1,0 +1,9 @@
+### Camp24 Project 요청 설계 ###
+
+# main 페이지 보기 요청
+요청내용	:	/camp24/, /camp24/main.cmp
+파라미터	:	무
+컨트롤러	:	com.githrd.www.controller.MainController
+처리함수	:	getMain()
+뷰			:	/WEB-INF/views/main.jsp
+---------------------------------------------------------------------
