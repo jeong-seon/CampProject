@@ -1,4 +1,4 @@
-package com.githrd.camp24.controller.FreeBoard;
+package com.githrd.camp24.controller.freeBoard;
 
 import org.springframework.stereotype.Controller;
 
