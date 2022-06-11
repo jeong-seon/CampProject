@@ -1,19 +1,14 @@
-package com.githrd.camp24.controller;
+package com.githrd.camp24.controller.search;
 
 import java.io.BufferedInputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
-import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,21 +18,21 @@ import org.w3c.dom.NodeList;
 import com.githrd.camp24.vo.ApiVO;
 
 /**
- * 메인페이지
+ * 캠핑장정보 검색을 위한 클래스
  * @author	정선우
  *
- *			메인페이지가 refresh 될 때 마다 랜덤하게 캠핑장 한곳의 정보를 불러오기 추가
  */
+
 @Controller
-public class MainController {
-	
-	@RequestMapping({"/", "/main.cmp"})
-	public ModelAndView getMain(ModelAndView mv) {
+@RequestMapping("/board")
+public class SearchBoardList {
+
+	@RequestMapping("/searchBoardList.cmp")
+	public ModelAndView searchBoard(ModelAndView mv, String input) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		Random random = new Random();
 		String ServiceKey = "6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8%2FqN3dGhpsRYTTGJ63LFtj%2F0kBFwzjL%2Fy5pFa6xA%3D%3D";
-        String numOfRows = "1";
-        String pageNo = String.valueOf(random.nextInt(3039));
+        String numOfRows = "3039";
+        String pageNo = "1";
         String MobileOS = "ETC";
         String MobileApp = "appName";
         
@@ -83,13 +78,41 @@ public class MainController {
         			String txt = item_child.getNodeName();
         			switch(txt) {
         			case "facltNm":
-    					apiVO.setFacltNm(item_child.getTextContent());
+        				if(item_child.getTextContent().indexOf(input) == -1) {
+        					apiVO.setFacltNm("검색결과없음");
+        				} else {
+        					apiVO.setFacltNm(item_child.getTextContent());
+        				}
+        				break;
+        			case "addr1":
+        				apiVO.setAddr1(item_child.getTextContent());
+        				break;
+        			case "lctCl":
+        				apiVO.setLctCl(item_child.getTextContent());
+        				break;
+        			case "eqpmnLendCl":
+        				apiVO.setEqpmnLendCl(item_child.getTextContent());
         				break;
         			case "firstImageUrl":
         				apiVO.setFirstImageUrl(item_child.getTextContent());
         				break;
+        			case "tel":
+        				apiVO.setTel(item_child.getTextContent());
+        				break;
+        			case "mapX":
+        				apiVO.setMapX(item_child.getTextContent());
+        				break;
+        			case "mapY":
+        				apiVO.setMapY(item_child.getTextContent());
+        				break;
+        			case "animalCmgCl":
+        				apiVO.setAnimalCmgCl(item_child.getTextContent());
+        				break;
         			case "homepage":
         				apiVO.setHomepage(item_child.getTextContent());
+        				break;
+        			case "induty":
+        				apiVO.setInduty(item_child.getTextContent());
         				break;
         			}
         		}
@@ -101,21 +124,8 @@ public class MainController {
         	}
         	
         } catch (Exception e) {}
-		
-		
-		
-		mv.setViewName("main");
+        
+		mv.setViewName("board/searchBoardList");
 		return mv;
-	}
-	
-	@RequestMapping("/mainMsgCheck.cmp")
-	@ResponseBody
-	public Map<String, String> msgCheck(HttpSession session) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		
-		session.setAttribute("MSG_CHECK", "NO");
-		
-		map.put("result", "OK");
-		return map;
 	}
 }

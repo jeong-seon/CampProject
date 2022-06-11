@@ -23,11 +23,40 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey">
 	<div class="w3-row">
 
-		<div class="w3-col">
+		<div class="w3-col l8 s12">
 			<div class="w3-card-4 w3-margin w3-white w3-center">
-				<img style="width: 100%; "src="/camp24/resources/img/pic/camp.png">
+				<div class="w3-container">
+					<h3 class="w3-text-purple">Camp24 홈페이지에 오신걸 환영합니다.</h3>
+					<img src="/camp24/resources/img/pic/camp.png" style="width: 100%; margin-bottom: 20px;">
+					
+				</div>
    			</div>
    		</div>
+   		
+   		<div class="w3-col l4">
+			<div class="w3-card-4 w3-margin w3-white w3-center">
+				<div class="w3-container">
+					<h3>랜덤 캠핑장 리스트</h3>
+					
+		<c:forEach var="data" items="${LIST}">
+					<h5><strong>캠핑장명 : ${data.facltNm}</strong></h5>
+					<a href="${data.homepage}"><img id="img01" src="${data.firstImageUrl}" style="width: 100%;"></a>
+					<h5 style="font-size: 10pt;"># 이미지 클릭 시 해당 홈페이지로 이동합니다 #</h5>
+		</c:forEach>
+					<p style="margin-bottom: 20px;"></p>
+					<!--
+					<p style="margin-bottom: 20px;"></p>
+					<a href="" id="prev"><img src="/camp24/resources/img/pic/prev.png" width="50px" height="auto"></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="" id="next"><img src="/camp24/resources/img/pic/next.png" width="50px" height="auto"></a>
+					<p style="margin-bottom: 20px;"></p>
+					-->
+					<a href="" class="w3-dark-grey w3-button">변경</a>
+					<p style="margin-bottom: 20px;"></p>
+				</div>
+   			</div>
+   		</div>
+   		
    		<div class="w3-col">
 			<div class="w3-card-4 w3-margin w3-white w3-center">
 				<h4 style="font-size: 36pt; display: inline-block;">Best 캠핑장</h4><img id="rank" style="width: 70px; height: auto;" src="/camp24/resources/img/pic/rank.png">
