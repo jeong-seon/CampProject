@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<div class="w3-col l8 s12">
 			<div class="w3-card-4 w3-margin w3-white w3-center">
 				<div class="w3-container">
-					<h3 class="w3-text-purple">Camp24 홈페이지에 오신걸 환영합니다.</h3>
+					<h3 class="w3-text-blue">Camp24 홈페이지에 오신걸 환영합니다.</h3>
 					<img src="/camp24/resources/img/pic/camp.png" style="width: 100%; margin-bottom: 20px;">
 					
 				</div>
@@ -36,7 +36,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    		<div class="w3-col l4">
 			<div class="w3-card-4 w3-margin w3-white w3-center">
 				<div class="w3-container">
-					<h3>랜덤 캠핑장 리스트</h3>
+					<h3>랜덤 추천 캠핑장 리스트</h3>
 					
 		<c:forEach var="data" items="${LIST}">
 					<h5><strong>캠핑장명 : ${data.facltNm}</strong></h5>

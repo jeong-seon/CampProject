@@ -10,6 +10,22 @@
 <link rel="stylesheet" type="text/css" href="/camp24/resources/css/w3.css">
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+html {
+	position: relative;
+	min-height: 100%;
+	padding-bottom: 120px;
+}
+body{
+	min-height: 100%;
+}
+footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 15px 0;
+	text-align: center;
+}
 </style>
 </head>
 <body>
