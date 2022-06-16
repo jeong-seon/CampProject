@@ -25,4 +25,8 @@ $(document).ready(function(){
 		});
 	});
 	
+	var image = $('#img01').attr('src');
+	if(!image){
+		$('#img01').attr('src', '/camp24/resources/img/pic/noimage.png');
+	}
 });

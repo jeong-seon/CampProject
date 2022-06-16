@@ -40,7 +40,20 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					
 		<c:forEach var="data" items="${LIST}">
 					<h5><strong>캠핑장명 : ${data.facltNm}</strong></h5>
-					<a href="${data.homepage}"><img id="img01" src="${data.firstImageUrl}" style="width: 100%;"></a>
+					<div id="image" style="width: 100%; height: 258px; overflow: hidden;">
+			<c:if test="${not empty data.firstImageUrl && not empty data.homepage}">
+					<a href="${data.homepage}"><img id="image" style="width: 70%" src="${data.firstImageUrl}"></a>
+			</c:if>
+			<c:if test="${not empty data.firstImageUrl && empty data.homepage}">
+					<img id="image" style="width: 70%" src="${data.firstImageUrl}">
+			</c:if>
+			<c:if test="${empty data.firstImageUrl && empty data.homepage}">
+					<img id="image" style="width: 70%" src="/camp24/resources/img/pic/noimage.png">
+			</c:if>
+			<c:if test="${empty data.firstImageUrl && not empty data.homepage}">
+					<a href="${data.homepage}"><img id="image" style="width: 70%" src="/camp24/resources/img/pic/noimage.png"></a>
+			</c:if>
+					</div>
 					<h5 style="font-size: 10pt;"># 이미지 클릭 시 해당 홈페이지로 이동합니다 #</h5>
 		</c:forEach>
 					<p style="margin-bottom: 20px;"></p>
@@ -64,6 +77,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    		</div>
 		<hr>
 	</div>
+	
+	<!-- 데이터 전송용 form 태그 -->
+	<form method="POST" action="" id="frm" name="frm">
+		<input type="hidden" id="nowPage" name="pageno">
+	</form>
+	
 <c:if test="${(not empty SID) and (MSG_CHECK eq 'OK')}">
 	<div id="msgWin" class="w3-modal">
 		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">

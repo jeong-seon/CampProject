@@ -6,7 +6,9 @@ $(document).ready(function(){
 		$(location).attr('href', '/camp24/board/searchBoardList.cmp');
 	});
 	$('#cmpbtn').click(function(){
-		$(location).attr('href', '/camp24/campapi/campApi.cmp');
+		$('#nowPage').val('1');
+		$('#frm').attr('action', '/camp24/campapi/campApi.cmp');
+		$('#frm').submit();
 	});
 	$('#mapbtn').click(function(){
 		$(location).attr('href', '/camp24/map/mapApi.cmp');

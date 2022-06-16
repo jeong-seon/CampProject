@@ -34,6 +34,18 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<div class="w3-margin w3-center">
 			<h5>주소 : ${data.addr1} ${param.input}</h5>
 			<h5>캠핑장명 : ${data.facltNm}</h5>
+	<c:if test="${not empty data.firstImageUrl && not empty data.homepage}">
+			<a href="${data.homepage}"><img id="image" src="${data.firstImageUrl}"></a>
+	</c:if>
+	<c:if test="${not empty data.firstImageUrl && empty data.homepage}">
+			<img id="image" src="${data.firstImageUrl}">
+	</c:if>
+	<c:if test="${empty data.firstImageUrl && empty data.homepage}">
+			<img id="image" src="/camp24/resources/img/pic/noimage.png">
+	</c:if>
+	<c:if test="${empty data.firstImageUrl && not empty data.homepage}">
+			<a href="${data.homepage}"><img id="image" src="/camp24/resources/img/pic/noimage.png"></a>
+	</c:if>
 			<h5>입지구분 : ${data.lctCl}</h5>
 			<h5>업종 : ${data.induty}</h5>
 			<h5>캠핑장비대여 가능장비 : ${data.eqpmnLendCl}</h5>
@@ -41,7 +53,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<h5>경도 : ${data.mapX}</h5>
 			<h5>위도 : ${data.mapY}</h5>
 			<h5>애완동물 출입여부 : ${data.animalCmgCl}</h5>
-			<a href="${data.homepage}"><img src="${data.firstImageUrl}"></a>
 		</div>
 	</div>
 </c:if>

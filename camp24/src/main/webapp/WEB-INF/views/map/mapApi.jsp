@@ -20,8 +20,22 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 </head>
 <body class="w3-light-grey">
-<div class="w3-padding-64" id="map" style="width:100%;height:600px;"></div>
+<div class="w3-col">
 
+	<div class="w3-col m4">
+		<div>
+			<form method="post" action="" id="frm" name="frm"
+					class="w3-content w3-center w3-margin-bottom">
+				<label class="w3-col w3-center w3-padding-32"><strong style="font-size: 18pt; font-family: Raleway;">캠핑장 검색</strong>&nbsp;</label>
+				<div class="w3-col w3-center w3-padding-16">
+					<input type="text" style="margin-left: 30px;" class="w3-col w3-center m9 w3-input" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
+					<div class="w3-rest w3-button w3-dark-gray" id="sbtn">검색</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="w3-col" id="map" style="width:65%;height:600px;"></div>
+</div>
 <script>
 var mapOptions = {
     center: new naver.maps.LatLng(37.3595704, 127.105399),
