@@ -24,9 +24,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <h2 class="w3-green w3-padding-16 w3-center">QnA 게시판</h2>
   <div class="w3-row w3-padding-64 pdAll20">
   <div class="w3-button w3-lime w3-right" id="wbtn">질문 쓰기</div>
-<c:if test="${empty SID}">
-  <div class="w3-button w3-green w3-hover-lime" id="lbtn">로그인</div>
-</c:if>
   
 <c:forEach var="data" items="${LIST}">
 		<div class="w3-col" style="padding-left: ${data.step * 70}px">

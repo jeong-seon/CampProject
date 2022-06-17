@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fSQL">
+
+	<select id="total" resultType="int">
+	SELECT
+	    COUNT(*) cnt
+	FROM
+		freeboard
+	WHERE
+		isshow = 'Y'
+	</select>
+	
+	<select id="freeList" resultType="bVO" parameterType="page">
+	SELECT
+	   rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, click, step
+	FROM
+	   (
+	   SELECT
+	       ROWNUM rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, click, step
+	   FROM
+	       (
+	           SELECT
+	               fbno, NVL(fupno, 0) fupno, mno, id, fbody, ftitle, savename avatar, fdate, fedate, click, (level - 1) step
+	           FROM
+	               freeboard f, member m, avatar a
+	           WHERE
+	               f.isshow = 'Y'
+	               AND fmno = mno
+	               AND avt = ano
+	           START WITH
+	               fupno IS NULL
+	           CONNECT BY
+	               PRIOR fbno = fupno
+	           ORDER SIBLINGS BY
+	               fdate DESC
+	           )
+	       )
+	WHERE
+	   rno BETWEEN #{startCont} AND #{endCont} 
+	</select>
+	
+</mapper>

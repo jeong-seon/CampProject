@@ -27,3 +27,19 @@
 ---------------------------------------------------------------------
 
 =====================================================================
+############## 백서진
+=====================================================================
+# 자유게시판 리스트 폼 보기 요청
+요청내용	:	/camp24/freeBoard/freeBoardList.cmp
+파라미터	:	nowPage
+컨트롤러	:	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	:	freeBoardList
+뷰			:	/WEB-INF/views/freeBoard/freeBoardList.jsp
+---------------------------------------------------------------------
+# QnA게시판 리스트 폼 보기 요청
+요청내용	:	/camp24/qnaBoard/qnaBoardList.cmp
+파라미터	:	nowPage
+컨트롤러	:	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	:	qnaBoardList
+뷰			:	/WEB-INF/views/qnaBoard/qnaBoardList.jsp
+---------------------------------------------------------------------

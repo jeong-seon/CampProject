@@ -19,7 +19,8 @@
 		<typeAlias alias="page" type="com.githrd.camp24.util.PageUtil"/>
 	</typeAliases>
 	
-<!-- 	<mappers>
-		<mapper resource="com/githrd/www/sql/MemberSQL.xml"/>
-	</mappers> -->
+	<mappers>
+		<mapper resource="com/githrd/camp24/sql/FreeSQL.xml"/>
+		<mapper resource="com/githrd/camp24/sql/QnaSQL.xml"/>
+	</mappers>
 </configuration>

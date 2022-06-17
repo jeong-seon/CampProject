@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qSQL">
+
+	<select id="total" resultType="int">
+	SELECT
+	    COUNT(*) cnt
+	FROM
+		qna
+	WHERE
+		isshow = 'Y'
+	</select>
+	
+	<select id="qnaList" resultType="bVO" parameterType="page">
+	SELECT
+    rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate, qedate, click, step
+	FROM
+	    (
+	    SELECT
+	        ROWNUM rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate, qedate, click, step
+	    FROM
+	        (
+	            SELECT
+	                qno, NVL(qupno, 0) qupno, mno, id, qtitle, qbody, savename avatar, qdate, qedate, click, (level - 1) step
+	            FROM
+	                qna q, member m, avatar a
+	            WHERE
+	                q.isshow = 'Y'
+	                AND qmno = mno
+	                AND avt = ano
+	            START WITH
+	                qupno IS NULL
+	            CONNECT BY
+	                PRIOR qno = qupno
+	            ORDER SIBLINGS BY
+	                qdate DESC
+	            )
+	        )
+	WHERE   
+	    rno BETWEEN #{startCont} AND #{endCont}
+	</select>
+</mapper>
