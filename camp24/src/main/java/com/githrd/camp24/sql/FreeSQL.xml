@@ -2,6 +2,22 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+/**
+ * 이 클래스는 자유게시판 관련 요청을 처리할 클래스
+ * @author	백서진
+ * @since	2022.06.17
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ 
+ * 				2022.06.17	-	담당자 : 백서진
+ * 									클래스 제작, 
+ * 									리스트보기 요청 처리
+ *
+ */
+-->
+
 <mapper namespace="fSQL">
 
 	<select id="total" resultType="int">

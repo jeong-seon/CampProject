@@ -13,6 +13,21 @@ import com.githrd.camp24.dao.QnaDao;
 import com.githrd.camp24.util.PageUtil;
 import com.githrd.camp24.vo.BoardVO;
 
+/**
+ * 이 클래스는 QnA게시판 관련 요청을 처리할 클래스
+ * @author	백서진
+ * @since	2022.06.17
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 
+ * 				2022.06.17	-	담당자 : 백서진
+ * 									클래스 제작, 
+ * 									리스트보기 요청 처리
+ *
+ */
+
+
 @Controller
 @RequestMapping("/qnaBoard")
 public class QnaBoard {
