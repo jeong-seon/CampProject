@@ -20,7 +20,7 @@ public class QnaBoard {
 	QnaDao qDao;
 
 	@RequestMapping("/qnaBoardList.cmp")
-	public ModelAndView freeBoardList(ModelAndView mv, PageUtil page, HttpSession session) {
+	public ModelAndView qnaBoardList(ModelAndView mv, PageUtil page, HttpSession session) {
 		int cnt = qDao.getTotal();
 		
 		page.setPage(cnt);
