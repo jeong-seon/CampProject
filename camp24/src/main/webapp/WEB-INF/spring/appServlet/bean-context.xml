@@ -13,4 +13,5 @@
 	
 	<bean id="fDao" class="com.githrd.camp24.dao.FreeDao" />
 	<bean id="qDao" class="com.githrd.camp24.dao.QnaDao" />
+	<bean id="mDao" class="com.githrd.camp24.dao.MemberDao" />
 </beans>

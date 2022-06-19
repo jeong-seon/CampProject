@@ -21,6 +21,7 @@
 	
 	<mappers>
 		<mapper resource="com/githrd/camp24/sql/FreeSQL.xml"/>
+		<mapper resource="com/githrd/camp24/sql/MemberSQL.xml" />
 		<mapper resource="com/githrd/camp24/sql/QnaSQL.xml"/>
 	</mappers>
 </configuration>

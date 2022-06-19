@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+/**
+ * 이 클래스는 자유게시판 관련 요청을 처리할 클래스
+ * @author	김희승
+ * @since	2022.06.19
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ 
+ * 				2022.06.17	-	담당자 : 김희승
+ * 									 로그인/로그아웃처리
+ * 									
+ *
+ */
+-->			
+			
+			
+<mapper namespace="mSQL">
+	<sql id="selCnt">
+		SELECT
+			COUNT(*)
+		FROM
+			member
+		WHERE
+			id = 
+	</sql>
+	
+	<select id="login" resultType="int" parameterType="mVO">
+		<include refid="selCnt" />#{id}
+			AND isshow = 'Y'
+			AND pw = #{pw}
+	</select>
+	
+	<select id="idCnt" resultType="int" parameterType="string">
+		<include refid="selCnt" />#{id}
+	</select>
+</mapper>
