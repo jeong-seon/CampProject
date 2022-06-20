@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Camp24 FAQ 게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="/camp24/resources/css/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" type="text/css" href="/camp24/resources/css/faq.css">
 <link rel="stylesheet" type="text/css" href="/camp24/resources/css/w3.css">
@@ -24,7 +24,7 @@ jQuery(function($){
     article.addClass('hide');
     article.find('.a').hide();
     article.eq(0).removeClass('hide');
-    article.eq(0).find('.a').show();
+    article.eq(0).find('.a').hide();
     $('.faq>.faqBody>.article>.q>a').click(function(){
         var myArticle = $(this).parents('.article:first');
         if(myArticle.hasClass('hide')){
@@ -61,21 +61,25 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="faqHeader ">
     </div>
     <ul class="faqBody">
-        <li class="article" id="a1">
+        <li class="article w3-padding  id="a1">
             <p class="q"><a href="#a1">질문 : 블랙핑크 멤버는 몇명인가요?</a></p>
-            <p class="a">답변 : 블랙핑크는 제니,로사,로제,지수 4명으로 구성되어있습니다.</p>
+            <p class="a w3-padding w3-margin-left" >답변 : 블랙핑크는 제니,로사,로제,지수 4명으로 구성되어있습니다.</p>
         </li>
-        <li class="article" id="a2">
+        <li class="article w3-padding  id="a2">
             <p class="q"><a href="#a2">질문 : camp24의 팀원은 몇명인가요? </a></p>
-            <p class="a">답변 : 지석,은선,선우,서진,희승</p>
+            <p class="a w3-padding w3-margin-left" >답변 : 지석,은선,선우,서진,희승</p>
         </li>
-        <li class="article" id="a3">
+        <li class="article w3-padding  id="a3">
             <p class="q"><a href="#a3">질문 : 이번 프로젝트에 대한 후기는?</a></p>
-            <p class="a">답변 : 역시나 시간이 부족했던것 같습니다.</p>
+            <p class="a w3-padding w3-margin-left" >답변 : 역시나 시간이 부족했던것 같습니다.</p>
         </li>
-        <li class="article" id="a4">
+        <li class="article w3-padding id="a4">
             <p class="q"><a href="#a4">질문 : 캠핑장비 대여나 구매는 안되나요?</a></p>
-            <p class="a">답변 : 결제시스템 구현중입니다..</p>
+            <p class="a w3-padding w3-margin-left" >답변 : 결제시스템 구현중입니다..</p>
+        </li>
+        <li class="article w3-padding id="a5">
+            <p class="q"><a href="#a5">질문 : 캠핑장비 대여나 구매는 안되나요?</a></p>
+            <p class="a w3-padding w3-margin-left" >답변 : 결제시스템 구현중입니다..</p>
         </li>
     </ul>
 </div>
