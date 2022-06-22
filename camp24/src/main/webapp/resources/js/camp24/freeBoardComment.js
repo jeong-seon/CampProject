@@ -33,7 +33,7 @@ $('#cmtbtn').click(function(){
 		return;
 	}
 	
-	$('#frm').attr('action', '/camp24/freeBoard/frcmWriteProc.cmp')
-	$('#frm'). submit();
+	$('#frm').attr('action', '/camp24/freeBoard/fwriteProc.cmp')
+	$('#frm').submit();
 	});
 });

@@ -7,9 +7,8 @@ import java.text.*;
 
 public class BoardVO {
 	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno;
-	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, stime, sedate, setime, avatar, score, cname, gname, jname, isavename;
+	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename;
 	private Date wdate, qdate, qedate, fdate, fedate, rdate, redate ;
-	private Time wtime, qtime, qetime, ftime, fetime, rtime, retime ;
 	ArrayList<FileVO> list;
 	
 	public int getCno() {
@@ -94,41 +93,21 @@ public class BoardVO {
 		return sdate;
 	}
 	public void setSdate() {
-		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
-		sdate = form.format(wdate);
+		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdate = form.format(fdate);
 	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
-	}
-	public String getStime() {
-		return stime;
-	}
-	public void setStime() {
-		SimpleDateFormat form = new SimpleDateFormat("HH:mm:ss");
-		stime = form.format(wtime);
-	}
-	public void setStime(String stime) {
-		this.stime = stime;
 	}
 	public String getSedate() {
 		return sedate;
 	}
 	public void setSedate() {
-		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		sedate = form.format(fedate);
 	}
 	public void setSedate(String sedate) {
 		this.sedate = sedate;
-	}
-	public String getSetime() {
-		return setime;
-	}
-	public void setSetime() {
-		SimpleDateFormat form = new SimpleDateFormat("HH:mm:ss");
-		setime = form.format(fetime);
-	}
-	public void setSetime(String setime) {
-		this.setime = setime;
 	}
 	public String getAvatar() {
 		return avatar;
@@ -142,13 +121,6 @@ public class BoardVO {
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
 		setSdate();
-	}
-	public Time getWtime() {
-		return wtime;
-	}
-	public void setWtime(Time wtime) {
-		this.wtime = wtime;
-		setStime();
 	}
 	public ArrayList<FileVO> getList() {
 		return list;
@@ -293,12 +265,14 @@ public class BoardVO {
 	}
 	public void setFdate(Date fdate) {
 		this.fdate = fdate;
+		setSdate();
 	}
 	public Date getFedate() {
 		return fedate;
 	}
 	public void setFedate(Date fedate) {
 		this.fedate = fedate;
+		setSedate();
 	}
 	public Date getRdate() {
 		return rdate;
@@ -312,43 +286,6 @@ public class BoardVO {
 	public void setRedate(Date redate) {
 		this.redate = redate;
 	}
-	public Time getQtime() {
-		return qtime;
-	}
-	public void setQtime(Time qtime) {
-		this.qtime = qtime;
-	}
-	public Time getQetime() {
-		return qetime;
-	}
-	public void setQetime(Time qetime) {
-		this.qetime = qetime;
-	}
-	public Time getFtime() {
-		return ftime;
-	}
-	public void setFtime(Time ftime) {
-		this.ftime = ftime;
-	}
-	public Time getFetime() {
-		return fetime;
-	}
-	public void setFetime(Time fetime) {
-		this.fetime = fetime;
-	}
-	public Time getRtime() {
-		return rtime;
-	}
-	public void setRtime(Time rtime) {
-		this.rtime = rtime;
-	}
-	public Time getRetime() {
-		return retime;
-	}
-	public void setRetime(Time retime) {
-		this.retime = retime;
-	}
-	
 	public int getImageno() {
 		return imageno;
 	}
@@ -362,21 +299,5 @@ public class BoardVO {
 	public void setIsavename(String isavename) {
 		this.isavename = isavename;
 	}
-	@Override
-	public String toString() {
-		return "BoardVO [mno=" + mno + ", qmno=" + qmno + ", rmno=" + rmno + ", bno=" + bno + ", fbno=" + fbno
-				+ ", qno=" + qno + ", upno=" + upno + ", qupno=" + qupno + ", fupno=" + fupno + ", rno=" + rno
-				+ ", rcno=" + rcno + ", cno=" + cno + ", ano=" + ano + ", pno=" + pno + ", pcno=" + pcno + ", click="
-				+ click + ", cnt=" + cnt + ", step=" + step + ", lat=" + lat + ", plong=" + plong + ", id=" + id
-				+ ", title=" + title + ", ftitle=" + ftitle + ", qtitle=" + qtitle + ", rtitle=" + rtitle + ", body="
-				+ body + ", qbody=" + qbody + ", fbody=" + fbody + ", rbody=" + rbody + ", sdate=" + sdate + ", stime="
-				+ stime + ", sedate=" + sedate + ", setime=" + setime + ", avatar=" + avatar + ", score=" + score
-				+ ", cname=" + cname + ", gname=" + gname + ", jname=" + jname + ", wdate=" + wdate + ", qdate=" + qdate
-				+ ", qedate=" + qedate + ", fdate=" + fdate + ", fedate=" + fedate + ", rdate=" + rdate + ", redate="
-				+ redate + ", wtime=" + wtime + ", qtime=" + qtime + ", qetime=" + qetime + ", ftime=" + ftime
-				+ ", fetime=" + fetime + ", rtime=" + rtime + ", retime=" + retime + ", list=" + list + "]";
-	}
 	
-	
-
 }

@@ -32,7 +32,7 @@ $('#reset').click(function(){
 			return;
 		}
 		
-		$('#frm').attr('action', '/camp24/qnaBoard/qnacmWriteProc.cmp');
+		$('#frm').attr('action', '/camp24/qnaBoard/qwriteProc.cmp');
 		$('#frm'). submit();
 	});
 });

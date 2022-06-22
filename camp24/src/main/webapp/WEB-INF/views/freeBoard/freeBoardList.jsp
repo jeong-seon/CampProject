@@ -16,24 +16,27 @@
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 <script type="text/javascript">
-
+	$(document).ready(function(){
+		$('.dbtn').click(function(){
+			$('#modal2').css('display', 'block');
+		});
+	});
 </script>
 </head>
 <body class="w3-light-grey">
 <div class="w3-container">
 
-
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
 <div class="w3-main">
 <h2 class="w3-green w3-padding-16 w3-center">자유게시판</h2>
   <div class="w3-row w3-padding-64 pdAll20">
-  <div class="w3-button w3-lime w3-right" id="wbtn">글 쓰기</div>
+  <div class="w3-button w3-lime w3-right" id="wbtn">글 작성</div>
   
 <c:forEach var="data" items="${LIST}">
 		<div class="w3-col" style="padding-left: ${data.step * 70}px">
 			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
-				<div class="w3-col box120 pdAll10 w3-border-right" style="width: 135px;">
+				<div class="w3-col mgt20 box120 pdAll10 w3-border-right" style="width: 135px;">
 					<img src="/camp24/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
+							<span class="w3-col w3-center mgb10 ft10">${data.id}</span>
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
@@ -47,10 +50,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			</c:if>
 						</div>
 						<div>
-							<span class="w3-third w3-left mgb10 ft10"><small><strong>아이디 : ${data.id}</strong></small></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>작성일 : ${data.sdate}</small></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>제목 : ${data.ftitle}</small></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>수정일 : ${data.sedate}</small></span>
+							<div class="w3-col w3-left mgb10 ft10"><strong>제목 : ${data.ftitle}</strong></div>
+			<c:if test="${not empty data.sedate}">
+							<div class="w3-third w3-right mgb0 ft10"><small>수정일 : ${data.sedate}</small></div>
+			</c:if>
+							<div class="w3-third w3-right mgb0 ft10"><small>작성일 : ${data.sdate}</small></div>
 						</div>
 					</div>
 					<div class="w3-col w3-margin-top">
@@ -92,15 +96,14 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- END MAIN -->
 </div>
 
-
 	<!-- 메세지 출력 모달창  -->
 <c:if test="${not empty MSG}">
 	  <div id="modal" class="w3-modal" style="display:block;">
-	 	 <div class="w3-modal-content mxw650 w3-animate-top w3-card-4">
+	 	 <div class="w3-modal-content mxw650 w3-animate-opacity w3-card-4">
 			<header class="w3-container w3-green">
 	      		<span onclick="document.getElementById('modal').style.display='none'"
 	     		 class="w3-button w3-display-topright">&times;</span>
-	      <h2>Message</h2>
+	      <h2>알림</h2>
 	    </header>
 	    <div class="w3-container w3-center">
 	      <h4>${MSG}</h4>
@@ -109,11 +112,29 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</div>
 </c:if>
 
+   <div id="modal2" class="w3-modal">
+      <div class="w3-modal-content w3-animate-opacity w3-card-4 mxw500">
+         <header class="w3-container w3-green"> 
+            <span onclick="document.getElementById('modal2').style.display='none'" 
+                  class="w3-button w3-display-topright">&times;</span>
+            <h2 class="w3-center">알림</h2>
+         </header>
+         <div class="w3-container">
+            <h5 class="w3-center w3-padding w3-margin" id="modalmsg">정말로 글을 삭제하시겠습니까?</h5>
+         </div>
+          <div class="w3-container w3-green">
+            <div class="w3-col m2 w3-right w3-button" id="nbtn">아니오</div>
+            <div class="w3-col m2 w3-right w3-button" id="ybtn">예</div>
+         </div>
+      </div>
+   </div>
 
 	<!-- 데이터 전송용 form 태그 -->
 	<form method="POST" action="/camp24/freeBoard/freeBoardList.cmp" id="frm" name="frm">
 		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
-		<input type="hidden" id="fbno" name="fbno">
+		<input type="hidden" id="id" name="id" value="${SID}">
+		<input type="hidden" id="fbno" name="bno">
+		<input type="hidden" id="view" name="vw" value="/camp24/freeBoard/freeBoardList.cmp">
 	</form>
 </div>
 </body>

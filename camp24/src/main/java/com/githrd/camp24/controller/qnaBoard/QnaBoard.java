@@ -1,4 +1,4 @@
-package com.githrd.camp24.controller.freeBoard;
+package com.githrd.camp24.controller.qnaBoard;
 
 import java.util.List;
 
@@ -9,15 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
-import com.githrd.camp24.dao.FreeDao;
+import com.githrd.camp24.dao.QnaDao;
 import com.githrd.camp24.util.PageUtil;
 import com.githrd.camp24.vo.BoardVO;
 
 /**
  * 
- * 이 클래스는 자유게시판 관련 요청을 처리할 클래스
+ * 이 클래스는 QnA게시판 관련 요청을 처리할 클래스
  * @author	백서진
  * @since	2022.06.17
  * @version	v.1.0
@@ -30,22 +29,24 @@ import com.githrd.camp24.vo.BoardVO;
  *
  */
 
+
 @Controller
-@RequestMapping("/freeBoard")
-public class FreeBoard {
+@RequestMapping("/qnaBoard")
+public class QnaBoard {
 	@Autowired
-	FreeDao fDao;
+	QnaDao qDao;
 	
-	// 자유게시판 리스트보기 요청
-	@RequestMapping("/freeBoardList.cmp")
-	public ModelAndView freeBoardList(ModelAndView mv, PageUtil page, String msg) {
-		int cnt = fDao.getTotal();
+	// QnA 게시판 리스트보기 요청
+	@RequestMapping("/qnaBoardList.cmp")
+	public ModelAndView qnaBoardList(ModelAndView mv, PageUtil page, String msg) {
+		// 총 게시글 수 가져오기
+		int cnt = qDao.getTotal();
 		
 		// PageUtil 세팅하기
 		page.setPage(cnt);
 		
 		// 리스트 조회하기
-		List<BoardVO> list = fDao.getList(page);
+		List<BoardVO> list = qDao.getList(page);
 		
 		if(msg != null) {
 			mv.addObject("MSG", msg);
@@ -56,50 +57,49 @@ public class FreeBoard {
 		mv.addObject("PAGE", page);
 		
 		// 뷰 정하기
-		mv.setViewName("freeBoard/freeBoardList");
+		mv.setViewName("qnaBoard/qnaBoardList");
 		
 		// 반환하기
 		return mv;
 	}
 	
-	// 자유게시판 글 작성 폼 보기 요청
-	@RequestMapping(path="/freeBoardWrite.cmp", method=RequestMethod.POST, params={"id", "nowPage"})
-	public ModelAndView freeBoardWrite(ModelAndView mv, String id, String nowPage, HttpSession session, RedirectView rv) {
-		BoardVO bVO = fDao.getWriterInfo(id);
-		
+	// QnA 게시판 글 작성 폼 보기 요청
+	@RequestMapping(path="/qnaBoardWrite.cmp", method=RequestMethod.POST, params={"id", "nowPage"})
+	public ModelAndView qnaBoardWrite(ModelAndView mv, String id, String nowPage) {
+		BoardVO bVO = qDao.getWriterInfo(id);
 		// 데이터 심기
 		mv.addObject("DATA", bVO);
 		
 		// 뷰 정하기
-		mv.setViewName("freeBoard/freeBoardWrite");
+		mv.setViewName("qnaBoard/qnaBoardWrite");
 		
 		// 반환하기
 		return mv;
 	}
 	
 	// 댓글 작성 폼 보기 처리함수
-	@RequestMapping("/freeComment.cmp")
+	@RequestMapping("/qnaComment.cmp")
 	public ModelAndView commentWrite(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
-		bVO = fDao.getCommentData(bVO);
+		bVO = qDao.getCommentData(bVO);
 		
 		// 데이터 심기
 		mv.addObject("DATA", bVO);
 		
 		// 뷰 정하기
-		mv.setViewName("freeBoard/freeBoardComment");
+		mv.setViewName("qnaBoard/qnaBoardComment");
 		
 		// 반환하기
 		return mv;
 	}
-	
-	// 자유게시판 글 등록 처리 요청
-	@RequestMapping("/fwriteProc.cmp")
-	public ModelAndView fwriteProc(ModelAndView mv, String nowPage, BoardVO bVO) {
-		int cnt = fDao.addBoard(bVO);
-		String view = "/camp24/freeBoard/freeBoardList.cmp";
+
+	// QnA 게시판 글 등록 처리 요청
+	@RequestMapping("/qwriteProc.cmp")
+	public ModelAndView qwriteProc(ModelAndView mv, String nowPage, BoardVO bVO) {
+		int cnt = qDao.addBoard(bVO);
+		String view = "/camp24/qnaBoard/qnaBoardList.cmp";
 		if(cnt == 0) {
 			// 게시글 등록에 실패한 경우 ==> 글쓰기로 돌려보내기
-			view = "/camp24/freeBoard/freeBoardWrite.cmp";
+			view = "/camp24/qnaBoard/qnaBoardWrite.cmp";
 		} else {
 			// 게시글 등록에 성공한 경우
 			nowPage = "1";
@@ -111,35 +111,41 @@ public class FreeBoard {
 		mv.addObject("NOWPAGE", nowPage);
 		
 		// 뷰 정하기
-		mv.setViewName("freeBoard/redirect");
+		mv.setViewName("qnaBoard/redirect");
 		
 		// 반환하기
 		return mv;
 	}
 	
 	// 게시글 수정 폼 보기 요청 처리함수
-	@RequestMapping("/freeBoardEdit.cmp")
-	public ModelAndView freeBoardEdit(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
-		bVO = fDao.getEditData(bVO);
+	@RequestMapping("/qnaBoardEdit.cmp")
+	public ModelAndView qnaBoardEdit(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
+		bVO = qDao.getEditData(bVO);
 		
+		// 데이터 심기
 		mv.addObject("DATA", bVO);
-		mv.setViewName("freeBoard/freeBoardEdit");
+		
+		// 뷰 정하기
+		mv.setViewName("qnaBoard/qnaBoardEdit");
+		
+		// 반환하기
 		return mv;
 	}
-		
+	
 	// 게시글 수정 처리 요청 처리함수
-	@RequestMapping("/freeBoardEditProc.cmp")
+	@RequestMapping("/qnaBoardEditProc.cmp")
 	public ModelAndView editProc(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
-		int result = fDao.editProc(bVO);
+		int result = qDao.editProc(bVO);
 		
 		if(result == 1) {
 			// 수정 성공
-			mv.addObject("VIEW", "/camp24/freeBoard/freeBoardList.cmp");
+			mv.addObject("VIEW", "/camp24/qnaBoard/qnaBoardList.cmp");
 			mv.addObject("MSG", "게시글이 수정되었습니다");
 		} else {
 			// 수정 실패
-			mv.addObject("VIEW", "/camp24/freeBoard/freeBoardEdit.cmp");
+			mv.addObject("VIEW", "/camp24/qnaBoard/qnaBoardEdit.cmp");
 		}
+		
 		// 데이터 심기
 		mv.addObject("NOWPAGE", nowPage);
 		
@@ -149,18 +155,18 @@ public class FreeBoard {
 		// 반환하기
 		return mv;
 	}
-		
+	
 	// 게시글 삭제 요청 처리함수
-	@RequestMapping("/freeBoardDel.cmp")
-	public ModelAndView delFBoard(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
-		fDao.delFBoard(bVO);
+	@RequestMapping("/qnaBoardDel.cmp")
+	public ModelAndView delQBoard(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
+		qDao.delQBoard(bVO);
 		
 		// 데이터 심기
 		mv.addObject("VIEW", vw);
 		mv.addObject("NOWPAGE", nowPage);
 		
 		// 뷰 정하기
-		mv.setViewName("freeBoard/redirect");
+		mv.setViewName("qnaBoard/redirect");
 		
 		// 반환하기
 		return mv;

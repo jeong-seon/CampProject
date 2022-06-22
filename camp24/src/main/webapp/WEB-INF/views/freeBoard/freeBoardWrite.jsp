@@ -24,14 +24,13 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<!-- 페이지 헤더 -->
 	<header class="w3-col w3-card-4 mgb20">
 		<h1 class="w3-grey w3-center w3-padding mg0">Camp24 자유게시판 글쓰기</h1>
-		
 	</header>
 	
-	<form method="POST" action="/camp24/freeBoard/freeBoardWriteProc.cmp" name="frm" id="frm"
+	<form method="POST" action="/camp24/freeBoard/fwriteProc.cmp" id="frm" name="frm"
 			class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding mgb20">
 		<input type="hidden" name="mno" value="${DATA.mno}">
 		<div class="w3-col box120 pdAll10 w3-border-black" style="width: 135px;">
-			<img src="/camp24/resources/img/avatar/${DATA.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
+			<img src="/camp24/img/avatar/${DATA.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
 			<span class="w3-col w3-center mgb10 ft10"><b>${SID}</b></span>
 		</div>
 		<div class="w3-rest w3-padding w3-border-left">
@@ -45,6 +44,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					</div>
 				</div>
 				<input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">
+				<input type="hidden" id="mno" name="mno" value="${DATA.mno}">
+				<input type="hidden" name="id" value="${DATA.id}">
 			</form>
 			<div class="w3-col w3-card-4">
 				<div class="w3-third w3-button w3-gray" id="lbtn">리스트</div>

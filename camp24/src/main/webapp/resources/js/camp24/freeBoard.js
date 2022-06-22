@@ -38,9 +38,16 @@ $(document).ready(function(){
 	
 	/* 게시글 삭제 버튼 클릭 이벤트 처리 */
 	$('.dbtn').click(function(){
-		var sno = $(this).parent().attr('id');
-		$('#frm').attr('action', '/camp24/freeBoard/freeBoardDel.cmp');
-		$('#fbno').val(sno);
-		$('#frm').submit();
+			var sno = $(this).parent().attr('id');
+		$('#ybtn').click(function(){
+			$('#fbno').val(sno);
+			$('#frm').attr('action', '/camp24/freeBoard/freeBoardDel.cmp');
+			$('#frm').submit();
+		
+		});
+		$('#nbtn').click(function(){
+			$('#modal2').css('display', 'none');
+		});
 	});
+
 });

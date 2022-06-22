@@ -27,9 +27,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<form method="POST" action="/camp24/freeBoard/freeBoardEditProc.cmp" name="frm" id="frm"
 			class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding mgb20">
 		<input type="hidden" name="mno" value="${DATA.mno}">
-		<input type="hidden" name="fbno" value="${DATA.fbno}">
-		<input type="hidden" id="stitle" value="${DATA.title}">
-		<input type="hidden" id="sbody" value="${DATA.body}">
+		<input type="hidden" name="bno" value="${DATA.bno}">
+		<input type="hidden" name="vw" value="${param.vw}">
 		
 		<div class="w3-col box120 pdAll10">
 			<img src="/camp24/resources/img/avatar/${DATA.avatar}" class="inblock avtBox100 w3-border w3-border-gray">
@@ -38,11 +37,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<div class="w3-rest w3-padding w3-border-left">
 				<div class="w3-col w3-border-gray">
 					<label for="title"><small><strong>제목</strong></small></label>
-					<input name="title" id="title" class="w3-col w3-padding ft12" value="${DATA.title}">
+					<input name="title" id="title" class="w3-col w3-padding ft12" value="${DATA.ftitle}">
 				</div>
 				<div class="w3-col w3-margin-top">
 					<label for="body"><small><strong>내용</strong></small></label>
-					<textarea name="body" id="body" class="w3-col w3-padding ft12 w3-border-gray" style="resize: none; height: 100%;">${DATA.body}</textarea>
+					<textarea name="body" id="body" class="w3-col w3-padding ft12 w3-border-gray" style="resize: none; height: 100%;">${DATA.fbody}</textarea>
 					</div>
 				</div>
 				<input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">

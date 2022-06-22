@@ -33,13 +33,97 @@
 요청내용	:	/camp24/freeBoard/freeBoardList.cmp
 파라미터	:	nowPage
 컨트롤러	:	com.githrd.www.controller.freeBoard.FreeBoard
-처리함수	:	freeBoardList
+처리함수	:	freeBoardList()
 뷰			:	/WEB-INF/views/freeBoard/freeBoardList.jsp
 ---------------------------------------------------------------------
-# QnA게시판 리스트 폼 보기 요청
+# 자유게시판 글 작성 폼 보기 요청
+요청내용	: 	/camp24/freeBoard/freeBoardWrite.cmp
+파라미터	: 	nowPage, id
+컨트롤러	: 	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	: 	freeBoardWrite()
+뷰			: 	/WEB-INF/views/freeBoard/freeBoardWrite.jsp
+---------------------------------------------------------------------
+# 자유게시판 댓글 작성 폼 보기 요청
+요청내용	: 	/camp24/freeBoard/freeComment.cmp
+파라미터	: 	nowPage, id, bno, vw
+컨트롤러	: 	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	: 	commentWrite()
+뷰			: 	/WEB-INF/views/freeBoard/freeBoardComment.jsp
+-------------------------------------------------------------
+# 자유게시판 글 등록 처리 요청
+요청내용	: 	/camp24/freeBoard/fwriteProc.cmp
+파라미터	: 	nowPage, mno, body
+컨트롤러	: 	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	: 	fwriteProc()
+뷰			: 	/WEB-INF/views/freeBoard/redirect.jsp
+-------------------------------------------------------------
+# 자유게시판 글 수정 폼 보기 요청
+요청내용	: 	/camp24/freeBoard/freeBoardEdit.cmp
+파라미터	: 	nowPage, vw, bno
+컨트롤러	: 	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	: 	freeBoardEdit()
+뷰			: 	/WEB-INF/views/freeBoard/freeBoardEdit.jsp
+-------------------------------------------------------------
+# 자유게시판 글 수정 처리 요청
+요청내용	: 	/camp24/freeBoard/freeBoardEditProc.cmp
+파라미터	: 	nowPage, bno, vw, body
+컨트롤러	: 	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	: 	editProc()
+뷰			: 	/WEB-INF/views/freeBoard/redirect.jsp
+-------------------------------------------------------------
+# 자유게시판 글 삭제 처리 요청
+요청내용	: 	/camp24/freeBoard/freeBoardDel.cmp
+파라미터	: 	nowPage, bno, vw
+컨트롤러	: 	com.githrd.www.controller.freeBoard.FreeBoard
+처리함수	: 	delFBoard()
+뷰			: 	/WEB-INF/views/freeBoard/redirect.jsp
+-------------------------------------------------------------
+# QnA 게시판 리스트 폼 보기 요청
 요청내용	:	/camp24/qnaBoard/qnaBoardList.cmp
 파라미터	:	nowPage
 컨트롤러	:	com.githrd.www.controller.qnaBoard.QnaBoard
-처리함수	:	qnaBoardList
+처리함수	:	qnaBoardList()
 뷰			:	/WEB-INF/views/qnaBoard/qnaBoardList.jsp
 ---------------------------------------------------------------------
+# QnA 게시판 글 작성 폼 보기 요청
+요청내용	: 	/camp24/qnaBoard/qnaBoardWrite.cmp
+파라미터	: 	nowPage, id
+컨트롤러	: 	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	: 	qnaBoardWrite()
+뷰			: 	/WEB-INF/views/qnaBoard/qnaBoardWrite.jsp
+---------------------------------------------------------------------
+# QnA 게시판 댓글 작성 폼 보기 요청
+요청내용	: 	/camp24/qnaBoard/qnaComment.cmp
+파라미터	: 	nowPage, id, bno, vw
+컨트롤러	: 	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	: 	commentWrite()
+뷰			: 	/WEB-INF/views/qnaBoard/qnaBoardComment.jsp
+-------------------------------------------------------------
+# QnA 게시판 글 등록 처리 요청
+요청내용	: 	/camp24/qnaBoard/qwriteProc.cmp
+파라미터	: 	nowPage, mno, body
+컨트롤러	: 	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	: 	qwriteProc()
+뷰			: 	/WEB-INF/views/freeBoard/redirect.jsp
+-------------------------------------------------------------
+# QnA 게시판 글 수정 폼 보기 요청
+요청내용	: 	/camp24/qnaBoard/qnaBoardEdit.cmp
+파라미터	: 	nowPage, vw, bno
+컨트롤러	: 	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	: 	qnaBoardEdit()
+뷰			: 	/WEB-INF/views/qnaBoard/qnaBoardEdit.jsp
+-------------------------------------------------------------
+# QnA 게시판 글 수정 처리 요청
+요청내용	: 	/camp24/qnaBoard/qnaBoardEditProc.cmp
+파라미터	: 	nowPage, bno, vw, body
+컨트롤러	: 	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	: 	editProc()
+뷰			: 	/WEB-INF/views/qnaBoard/redirect.jsp
+-------------------------------------------------------------
+# QnA 게시판 글 삭제 처리 요청
+요청내용	: 	/camp24/qnaBoard/qnaBoardDel.cmp
+파라미터	: 	nowPage, bno, vw
+컨트롤러	: 	com.githrd.www.controller.qnaBoard.QnaBoard
+처리함수	: 	delQBoard()
+뷰			: 	/WEB-INF/views/qnaBoard/redirect.jsp
+-------------------------------------------------------------

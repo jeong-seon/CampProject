@@ -5,6 +5,7 @@
 			
 <!--
 /**
+
  * 이 클래스는 QnA게시판 관련 요청을 처리할 클래스
  * @author	백서진
  * @since	2022.06.17
@@ -20,7 +21,8 @@
 -->
 
 <mapper namespace="qSQL">
-
+	
+	<!-- 총 게시글 수 조회 질의명령 -->
 	<select id="total" resultType="int">
 	SELECT
 	    COUNT(*) cnt
@@ -30,9 +32,10 @@
 		isshow = 'Y'
 	</select>
 	
+	<!-- 게시글 리스트 조회 질의명령 -->
 	<select id="qnaList" resultType="bVO" parameterType="page">
 	SELECT
-    rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate, qedate, click, step
+    rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate fdate, qedate fedate, click, step
 	FROM
 	    (
 	    SELECT
@@ -58,4 +61,95 @@
 	WHERE   
 	    rno BETWEEN #{startCont} AND #{endCont}
 	</select>
+	
+	<!-- 글쓰기 폼 보기 조회 질의명령 -->
+	<select id="getWriteInfo" resultType="bVO" parameterType="string">
+		SELECT
+			mno, id, savename avatar
+		FROM
+			member, avatar
+		WHERE
+			avt = ano
+			AND id = #{id}
+	</select>
+	
+	<!-- 댓글 작성 데이터 조회 질의명령 -->
+	<select id="commentData" resultType="bVO" parameterType="bVO">
+		SELECT
+		    mno, savename avatar, qno upno, qbody
+		FROM
+		   member, avatar, qna
+		WHERE
+		    avt = ano
+		    AND id = #{id}
+		    AND qno = #{bno}
+	</select>
+	
+	<!-- 게시글 등록 질의명령 -->
+	<insert id="addBoard" parameterType="bVO">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(qno) + 1, 100001)
+			FROM
+				qna
+		</selectKey>
+		INSERT INTO
+			qna(
+				qno, qmno, qtitle, qbody
+				<if test="upno neq 0">
+					, qupno
+				</if>
+			)
+		VALUES(
+			#{bno}, #{mno}, #{title}, #{body}
+				<if test="upno neq 0">
+					, #{upno}
+				</if>
+		)
+	</insert>
+	
+	<!-- 게시글 수정 데이터 조회 질의명령 -->
+	<select id="editData" resultType="bVO" parameterType="bVO">
+		SELECT
+		    id, mno, savename avatar, qno bno, qtitle, qbody, qdate
+		FROM
+		   member, avatar, qna
+		WHERE
+		    avt = ano
+		    AND mno = qmno
+		    AND qno = #{bno}
+	</select>
+	
+	<!-- 글 수정 질의명령 -->
+	<update id="editQBoard" parameterType="bVO">
+		UPDATE
+			qna
+		SET
+			qtitle = #{title},
+			qbody = #{body},
+			qedate = sysdate
+		WHERE
+			qno = #{bno}
+	</update>
+	
+	<!-- 글 삭제 질의명령 -->
+	<update id="delQBoard" parameterType="bVO">
+		UPDATE
+		   	qna
+		SET
+		    isshow = 'N'
+		WHERE
+		    qno IN (
+		                SELECT
+		                    qno
+		                FROM
+		                    qna
+		                WHERE
+		                    isshow = 'Y'
+		                START WITH
+		                    qno = #{bno}
+		                CONNECT BY
+		                    PRIOR qno = qupno
+		            )
+	</update>
 </mapper>

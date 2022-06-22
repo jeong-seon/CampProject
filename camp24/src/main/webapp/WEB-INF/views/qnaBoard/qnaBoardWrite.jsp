@@ -25,7 +25,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<h1 class="w3-gray w3-center w3-padding mg0">Camp24 QnA 게시판 글쓰기</h1>
 	</header>
 	
-	<form method="POST" action="/camp24/qnaBoard/qnaBoardWriteProc.cmp" name="frm" id="frm"
+	<form method="POST" action="/camp24/qnaBoard/qwriteProc.cmp" name="frm" id="frm"
 			class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding mgb20">
 		<input type="hidden" name="mno" value="${DATA.mno}">
 		<div class="w3-col box120 pdAll10 w3-border-gray" style="width: 135px;">
@@ -43,6 +43,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					</div>
 				</div>
 				<input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">
+				<input type="hidden" id="mno" name="mno" value="${DATA.mno}">
+				<input type="hidden" name="id" value="${DATA.id}">
 			</form>
 			<div class="w3-col w3-card-4">
 				<div class="w3-third w3-button w3-gray" id="lbtn">리스트</div>

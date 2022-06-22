@@ -38,9 +38,15 @@ $(document).ready(function(){
 	
 	/* 삭제 버튼 클릭 이벤트 처리 */
 	$('.dbtn').click(function(){
-		var sno = $(this).parent().attr('id');
-		$('#qno').val(sno);
-		$('#frm').attr('action', '/camp24/qnaBoard/qnaBoardDel.cmp');
-		$('#frm').submit();
+			var sno = $(this).parent().attr('id');
+		$('#ybtn').click(function(){
+			$('#qno').val(sno);
+			$('#frm').attr('action', '/camp24/qnaBoard/qnaBoardDel.cmp');
+			$('#frm').submit();
+		
+		});
+		$('#nbtn').click(function(){
+			$('#modal2').css('display', 'none');
+		});
 	});
 });
