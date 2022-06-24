@@ -6,9 +6,9 @@ $(document).ready(function(){
 		$(location).attr('href', '/camp24/board/searchBoardList.cmp');
 	});
 	$('#cmpbtn').click(function(){
-		$('#nowPage').val('1');
-		$('#frm').attr('action', '/camp24/campapi/campApi.cmp');
-		$('#frm').submit();
+		$('#apinowPage').val('1');
+		$('#apifrm').attr('action', '/camp24/campapi/campApi.cmp');
+		$('#apifrm').submit();
 	});
 	$('#mapbtn').click(function(){
 		$(location).attr('href', '/camp24/map/mapApi.cmp');
@@ -43,6 +43,6 @@ $(document).ready(function(){
 		$(location).attr('href', '/camp24/board/faqList.cmp');
 	});
 	$('#revbtn').click(function(){
-		$(location).attr('href', '/camp24/board/reBoardList.cmp');
+		$(location).attr('href', '/camp24/reviewBoard/reviewBoardList.cmp');
 	});
 });

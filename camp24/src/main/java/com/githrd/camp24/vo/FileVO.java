@@ -1,15 +1,13 @@
 package com.githrd.camp24.vo;
 
-import java.sql.Time;
 import java.util.Date;
 import java.text.*;
 
 public class FileVO {
 	private int bno, fno, mno, rno, cnt, ino, imageno;
 	private long len, ilen;
-	private String id, oriname, ioriname, isavename, savename, dir, idir, sdate, stime, icode;
+	private String id, oriname, ioriname, isavename, savename, dir, idir, sdate, icode;
 	private Date wdate;
-	private Time wtime;
 	public int getBno() {
 		return bno;
 	}
@@ -80,29 +78,12 @@ public class FileVO {
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
-	public String getStime() {
-		return stime;
-	}
-	public void setStime() {
-		SimpleDateFormat form = new SimpleDateFormat("HH24:mm:ss");
-		stime = form.format(wtime);
-	}
-	public void setStime(String stime) {
-		this.stime = stime;
-	}
 	public Date getWdate() {
 		return wdate;
 	}
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
 		setSdate();
-	}
-	public Time getWtime() {
-		return wtime;
-	}
-	public void setWtime(Time wtime) {
-		this.wtime = wtime;
-		setStime();
 	}
 	public int getIno() {
 		return ino;
@@ -145,21 +126,6 @@ public class FileVO {
 	}
 	public void setIcode(String icode) {
 		this.icode = icode;
-	}
-	@Override
-	public String toString() {
-		return "FileVO [bno=" + bno + ", fno=" + fno + ", mno=" + mno + ", rno=" + rno + ", cnt=" + cnt + ", ino=" + ino
-				+ ", imageno=" + imageno + ", len=" + len + ", ilen=" + ilen + ", id=" + id + ", oriname=" + oriname
-				+ ", ioriname=" + ioriname + ", isavename=" + isavename + ", savename=" + savename + ", dir=" + dir
-				+ ", idir=" + idir + ", sdate=" + sdate + ", stime=" + stime + ", icode=" + icode + ", wdate=" + wdate
-				+ ", wtime=" + wtime + ", getFno()=" + getFno() + ", getMno()=" + getMno()
-				+ ", getRno()=" + getRno() + ", getCnt()=" + getCnt() + ", getIno()=" + getIno() + ", getImageno()=" + getImageno()
-				+ ", getLen()=" + getLen() + ", getIlen()=" + getIlen() + ", getOriname()=" + getOriname()
-				+ ", getIoriname()=" + getIoriname() + ", getSavename()=" + getSavename() + ", getIsavename()=" + getIsavename()
-				+ ", getDir()=" + getDir() + ", getIdir()=" + getIdir() + ", getSdate()="
-				+ getSdate() + ", getStime()=" + getStime() + ", getIcode()=" + getIcode() + ", getWdate()=" + getWdate() + ", getWtime()="
-				+ getWtime() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
 	}
 	
 

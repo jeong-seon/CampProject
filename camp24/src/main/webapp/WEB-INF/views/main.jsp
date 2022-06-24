@@ -25,10 +25,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 		<div class="w3-col l8 s12">
 			<div class="w3-card-4 w3-margin w3-white w3-center">
-				<div class="w3-container">
+				<div class="w3-container" style="height: 600px;">
 					<h3 class="w3-text-blue">Camp24 홈페이지에 오신걸 환영합니다.</h3>
 					<img src="/camp24/resources/img/pic/camp.png" style="width: 100%; margin-bottom: 20px;">
-					
+					<h4>날씨데이터를 여기넣을까요?</h4>
 				</div>
    			</div>
    		</div>
@@ -38,9 +38,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<div class="w3-container">
 					<h3>랜덤 추천 캠핑장 리스트</h3>
 					
+					<br>
 		<c:forEach var="data" items="${LIST}">
 					<h5><strong>캠핑장명 : ${data.facltNm}</strong></h5>
-					<div id="image" style="width: 100%; height: 258px; overflow: hidden;">
+					<br>
+					<br>
+					<div id="image" style="width: 100%; height: 320px; overflow: hidden;">
 			<c:if test="${not empty data.firstImageUrl && not empty data.homepage}">
 					<a href="${data.homepage}"><img id="image" style="width: 70%" src="${data.firstImageUrl}"></a>
 			</c:if>
@@ -70,10 +73,21 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
    			</div>
    		</div>
    		
-   		<div class="w3-col">
+   		<div class="w3-col l8">
 			<div class="w3-card-4 w3-margin w3-white w3-center">
-				<h4 style="font-size: 36pt; display: inline-block;">Best 캠핑장</h4><img id="rank" style="width: 70px; height: auto;" src="/camp24/resources/img/pic/rank.png">
+				<div class="w3-container" style="height: 500px;">
+					<div class="w3-border-bottom">
+						<h4 style="font-size: 36pt; display: inline-block;">Best 캠핑장</h4><img id="rank" style="width: 70px; height: auto;" src="/camp24/resources/img/pic/rank.png">
+					</div>
+				</div>
    			</div>
+   		</div>
+   		<div class="w3-col l4">
+			<div class="w3-card-4 w3-margin w3-white w3-center">
+				<div class="w3-container" style="height: 500px;">
+					<h4 class="w3-padding-16 w3-margin">날씨데이터를 여기넣을까요?</h4>
+				</div>
+			</div>
    		</div>
 		<hr>
 	</div>

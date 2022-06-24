@@ -45,7 +45,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     
     </div>
   </c:forEach> --%>
-  	<form method="POST" action="/camp24/board/reBoardWriteProc.cmp" id="Frm" name="Frm">
+  	<form method="POST" action="/camp24/reviewboard/reviewBoardWriteProc.cmp" id="Frm" name="Frm">
 			<input type="hidden" name="title" id="title" value="${data.title}">
 			<input type="hidden" name="body" id="body" value="${data.body}">
 			<input type="hidden" name="id" id="id" value="${data.id}">
@@ -58,6 +58,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
 				<div class="w3-col box120 pdAll10 w3-border-right" style="width: 135px;">
 					<img src="/camp24/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
+					<div class="w3-center">
+						<small><strong>${data.id}</strong></small>
+					</div>
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
@@ -68,11 +71,24 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			</c:if>
 						</div>
 						<div>
-							<span class="w3-third w3-left mgb10 ft10"><small><strong>아이디 : ${data.id}</strong></small></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>작성일 : ${data.wdate}</small></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>제목 : ${data.title}</small></span>
+							<span class="w3-third w3-left mgb10 ft10"><strong>제목 : ${data.title}</strong></span>
 							<span class="w3-third w3-left mgb10 ft10"><small>캠핑장 : ${data.cname}</small></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ${data.score}</small></span>
+							<span class="w3-third w3-left mgb10 ft10"><small>작성일 : ${data.sdate}</small></span>
+					<c:if test="${data.score eq 1}">
+							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★</small></span>
+					</c:if>
+					<c:if test="${data.score eq 2}">
+							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★</small></span>
+					</c:if>
+					<c:if test="${data.score eq 3}">
+							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★ ★</small></span>
+					</c:if>
+					<c:if test="${data.score eq 4}">
+							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★ ★ ★</small></span>
+					</c:if>
+					<c:if test="${data.score eq 5}">
+							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★ ★ ★ ★</small></span>
+					</c:if>
 							<span class="w3-third w3-left mgb10 ft10"><small>조회수 : ${data.click}</small></span>
 						</div>
 					</div>
@@ -82,7 +98,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <c:forEach var="image" items="${IMAGE}">
 			<c:if test="${data.rno eq image.rno}">
 					<div class="w3-col w3-margin-top">
-						<img style="width: 200px; height: auto;" src="/camp24/resources/upload/${image.isavename}">
+						<img style="width: 200px; height: auto;" src="${image.idir}/${image.isavename}">
 					</div>
 			</c:if>
 </c:forEach>
@@ -118,7 +134,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</div>
 	</div>
 	<!-- 페이지 처리 태그 끝 -->
-	<form method="POST" action="/camp24/board/reBoardList.cmp" id="pageFrm" name="pageFrm">
+	<form method="POST" action="/camp24/reviewBoard/reviewBoardList.cmp" id="pageFrm" name="pageFrm">
 			<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
 			
 	</form>

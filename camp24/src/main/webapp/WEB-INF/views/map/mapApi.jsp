@@ -34,7 +34,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			</form>
 		</div>
 	</div>
-	<div class="w3-col" id="map" style="width:65%;height:600px;"></div>
+	<div class="w3-col" id="map" style="width:100%;height:600px;"></div>
 </div>
 <script>
 var mapOptions = {

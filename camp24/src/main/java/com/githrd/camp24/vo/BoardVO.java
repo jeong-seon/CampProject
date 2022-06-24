@@ -96,6 +96,10 @@ public class BoardVO {
 		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		sdate = form.format(fdate);
 	}
+	public void setSdate(Date rdate) {
+		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdate = form.format(rdate);
+	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
@@ -279,12 +283,14 @@ public class BoardVO {
 	}
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
+		setSdate(rdate);
 	}
 	public Date getRedate() {
 		return redate;
 	}
 	public void setRedate(Date redate) {
 		this.redate = redate;
+		setSedate();
 	}
 	public int getImageno() {
 		return imageno;

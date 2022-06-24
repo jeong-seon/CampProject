@@ -11,9 +11,9 @@ $(document).ready(function(){
 	});
 	
 	
-	//리뷰쓰기 버튼
+	// 리뷰쓰기 버튼
 	$('#wbtn').click(function(){
-		$('#pageFrm').attr('action', '/camp24/board/reBoardWrite.cmp');
+		$('#pageFrm').attr('action', '/camp24/reviewBoard/reviewBoardWrite.cmp');
 		$('#pageFrm').submit();
 	});
 	
@@ -21,7 +21,7 @@ $(document).ready(function(){
 	$('.debtn').click(function(){
 		var sno = $(this).parent().attr('id');
 		alert('#### sno : ' + sno);
-		$('#Frm').attr('action', '/camp24/board/reBoardDelete.cmp');
+		$('#Frm').attr('action', '/camp24/reviewBoard/reviewBoardDelete.cmp');
 		$('#rno').val(sno);
 		alert('#### rno : ' + $('#rno').val());
 		$('#Frm').submit();
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	
 	//이전페이지 버튼
 	$('#listbtn').click(function(){
-		$('#frm').attr('action', '/camp24/board/reBoardList.cmp');
+		$('#frm').attr('action', '/camp24/reviewBoard/reviewBoardList.cmp');
 		$('#nowPage').prop('disabled', true);
 		$('#title').prop('disabled', true);
 		$('#body').prop('disabled', true);
