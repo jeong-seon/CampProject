@@ -35,9 +35,9 @@
 			<mapping path="/member/memberList.cmp"/>
 			<mapping path="/member/delMember.cmp"/>
 			<mapping path="/freeBoard/freeBoardWrite.cmp"/>
-			<mapping path="/freeBoard/freeBoardComment.cmp"/>
+			<mapping path="/freeBoard/freeComment.cmp"/>
 			<mapping path="/qnaBoard/qnaBoardWrite.cmp"/>
-			<mapping path="/qnaBoard/qnaBoardComment.cmp"/>
+			<mapping path="/qnaBoard/qnaComment.cmp"/>
 			<mapping path="/reviewBoard/reviewBoardWrite.cmp"/>
 			<mapping path="/reviewBoard/reviewBoardComment.cmp"/>
 			<beans:ref bean="loginRedirect"/>
