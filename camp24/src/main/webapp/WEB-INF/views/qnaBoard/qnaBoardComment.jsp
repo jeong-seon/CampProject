@@ -51,10 +51,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 						<input type="hidden" name="bno" value="${DATA.bno}">
 						<input type="hidden" id="view" name="vw" value="${param.vw}">
 						<input type="hidden" name="id" value="${SID}">
+			<c:if test="upno eq 0">
 				<div class="w3-col w3-border-grey">
 					<label for="title"><small><strong>제목</strong></small></label>
 					<input type="text" name="title" id="title" class="w3-col w3-input w3-border w3-border-gray w3-padding ft12">
 				</div>
+			</c:if>
 				<div class="w3-col w3-border-grey">
 					<label for="title"><small><strong>내용</strong></small></label>
 						<textarea class="w3-col w3-padding ft12" id="body" name="body" style="resize: none;"></textarea>

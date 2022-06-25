@@ -52,7 +52,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			</c:if>
 						</div>
 						<div>
-							<span class="w3-col w3-left mgb10 ft10"><strong>제목 : ${data.qtitle}</strong></span>
+					<c:if test="${data.qtitle eq '[ 답변 ]'}">
+							<span class="w3-col w3-left mgb10 ft10"><strong>${data.qtitle}</strong></span>
+					</c:if>
+					<c:if test="${data.qtitle ne '[ 답변 ]'}">
+						<span class="w3-col w3-left mgb10 ft10"><strong>제목 : ${data.qtitle}</strong></span>
+					</c:if>
 					<c:if test="${not empty data.sedate}">
 							<span class="w3-third w3-right mgb10 ft10"><small>수정일 : ${data.sedate}</small></span>
 					</c:if>	

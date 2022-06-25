@@ -95,15 +95,21 @@
 		</selectKey>
 		INSERT INTO
 			qna(
-				qno, qmno, qtitle, qbody
+				qno, qmno, qbody
 				<if test="upno neq 0">
 					, qupno
 				</if>
+				<if test="upno eq 0">
+					, qtitle
+				</if>
 			)
 		VALUES(
-			#{bno}, #{mno}, #{title}, #{body}
+			#{bno}, #{mno}, #{body}
 				<if test="upno neq 0">
 					, #{upno}
+				</if>
+				<if test="upno eq 0">
+					, #{title}
 				</if>
 		)
 	</insert>
