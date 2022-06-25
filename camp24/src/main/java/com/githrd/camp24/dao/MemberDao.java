@@ -2,6 +2,7 @@ package com.githrd.camp24.dao;
 
 import java.util.List;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,5 +21,20 @@ public class MemberDao {
 	// 아이디 카운트 조회
 	public int getIdCnt(String id) {
 		return sqlSession.selectOne("mSQL.idCnt", id);
-	}
+	}	
+	// 아이디로 회원정보 조회 전담 처리 함수
+	public MemberVO getIdInfo(String id) {
+			return sqlSession.selectOne("mSQL.getIdInfo", id);
+		}
+	// 회원 탈퇴처리 데이터베이스 작업 전담 처리함수
+		public int delMember(String id) {
+			return sqlSession.update("mSQL.delMember", id);
+		}
+	// 아바타 리스트 조회 전담 처리함수
+		public List<MemberVO> getAvtList(){
+			return sqlSession.selectList("mSQL.avtList");
+		}
+		public List<MemberVO> getAvtList(String id){
+			return sqlSession.selectList("mSQL.genAvtList", id);
+		}
 }

@@ -1,6 +1,6 @@
 package com.githrd.camp24.controller.login;
 /**
- * 이 클래스는 자유게시판 관련 요청을 처리할 클래스
+
  * @author	김희승
  * @since	2022.06.19
  * @version	v.1.0
@@ -17,6 +17,7 @@ package com.githrd.camp24.controller.login;
 
 
 import java.util.*;
+
 
 
 import javax.servlet.http.*;

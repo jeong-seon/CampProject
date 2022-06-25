@@ -20,6 +20,7 @@ package com.githrd.camp24.controller.myinfo;
 import java.util.*;
 
 
+
 import javax.servlet.http.*;
 
 import org.slf4j.*;
@@ -51,4 +52,34 @@ public class Myinfo {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/delMember.cmp")
+	public ModelAndView delMember(ModelAndView mv, String id, RedirectView rv, HttpSession session) {
+		String sid = (String) session.getAttribute("SID");
+		if(sid == null) {
+			rv.setUrl("/camp24/member/login.cmp");
+			mv.setView(rv);
+			return mv;
+		}
+		
+		if(!id.equals(sid)) {
+			rv.setUrl("/camp24/member/myInfo.cmp");
+			mv.setView(rv);
+			return mv;
+		}
+		
+		int cnt = mDao.delMember(id);
+		
+		if(cnt == 1) {
+			// 세션에 기억시켜둔 데이터를 삭제하고
+			session.removeAttribute("SID");
+			rv.setUrl("/camp24/");
+		} else {
+			rv.setUrl("/camp24/member/myInfo.cmp");
+		}
+		
+		mv.setView(rv);
+		return mv;
+	}	
+	
 }
