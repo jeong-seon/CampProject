@@ -69,15 +69,17 @@
 	<!-- 정보조회 중복 질의명령 부분 -->
 	<sql id="selInfo">
 		SELECT
-			id,name,gen,tel,mail
+			mno, name, id, mail, tel, m.gen, joindate jdate, ano, savename
 		FROM
-			member
+			member m, avatar a
+		WHERE
+			avt = ano
 	</sql>
 	
 	<!-- 회원 정보조회 질의명령 -->
 	<select id="getIdInfo" resultType="mVO" parameterType="string">
 		<include refid="selInfo" />
-
+			AND id = #{id}
 	</select>
 	
 	<select id="getMnoInfo" resultType="mVO" parameterType="int">

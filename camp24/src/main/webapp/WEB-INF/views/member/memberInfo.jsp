@@ -36,7 +36,7 @@
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 </head>
-<body class="w3-light-grey">
+<body class="w3-light-grey" >
 <div class="w3-container">
 	<%--
 		요청시 부가정보 전달용 태그
@@ -50,16 +50,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <c:if test="${DATA.gen ne 'F'}">
 		<h1 class="w3-blue w3-center w3-padding w3-card-4">
 	<c:if test="${DATA.id eq SID}">
-			My Information
-	</c:if>
-	<c:if test="${DATA.id ne SID}">
-			${DATA.name} 회원 정보
-	</c:if>
-		</h1>
-</c:if>
-<c:if test="${DATA.gen eq 'F'}">
-		<h1 class="w3-gray w3-center w3-padding w3-card-4">
-	<c:if test="${DATA.id eq SID}">
 			마이페이지
 	</c:if>
 	<c:if test="${DATA.id ne SID}">
@@ -67,10 +57,20 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</c:if>
 		</h1>
 </c:if>
-		<div class="w3-col w3-margin-top w3-padding w3-card-4">
+<c:if test="${DATA.gen eq 'F'}">
+		<h1 class="w3-pink w3-center w3-padding w3-card-4">
+	<c:if test="${DATA.id eq SID}">
+			마이페이지
+	</c:if>
+	<c:if test="${DATA.id ne SID}">
+			${DATA.name} 회원 정보
+	</c:if>		</h1>
+</c:if	>
+
+	<div class="w3-col w3-margin-top w3-padding w3-card-4">
 			<div class="w3-display-container w3-col w3-border-right" style="width: 200px; height: 270px;">
 				<div class="avtbox w3-display-middle">
-					<img class="avtimg" src="/camp24/resources/img/avatar/${data.dir}${data.savename}" id="infoavt">
+					<img class="avtimg" src="/camp24/img/avatar/${DATA.savename}" id="infoavt">
 				</div>
 			</div>
 			<div class="w3-rest w3-text-grey pdl20">

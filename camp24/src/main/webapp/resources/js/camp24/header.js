@@ -29,8 +29,10 @@ $(document).ready(function(){
 		$(location).attr('href', '/camp24/member/memberList.cmp');
 	});
 	
+	
 	$('#mypagebtn').click(function(){
-		$(location).attr('href', '/camp24/member/myInfo.cmp');
+		$('#frm').attr('action', '/camp24/member/myInfo.cmp');
+		$('#frm').submit();
 	});
 	
 	$('#freebtn').click(function(){

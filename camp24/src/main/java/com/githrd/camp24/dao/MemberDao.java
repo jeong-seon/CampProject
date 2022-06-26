@@ -21,20 +21,33 @@ public class MemberDao {
 	// 아이디 카운트 조회
 	public int getIdCnt(String id) {
 		return sqlSession.selectOne("mSQL.idCnt", id);
-	}	
+	}
+	
+	// 아바타 리스트 조회 전담 처리함수
+	public List<MemberVO> getAvtList(){
+		return sqlSession.selectList("mSQL.avtList");
+	}
+	public List<MemberVO> getAvtList(String id){
+		return sqlSession.selectList("mSQL.genAvtList", id);
+	}
+	
 	// 아이디로 회원정보 조회 전담 처리 함수
 	public MemberVO getIdInfo(String id) {
-			return sqlSession.selectOne("mSQL.getIdInfo", id);
-		}
+		return sqlSession.selectOne("mSQL.getIdInfo", id);
+	}
+	
+	// 회원번호로 회원정보 조회 전담 처리 함수
+	public MemberVO getMnoInfo(int mno) {
+		return sqlSession.selectOne("mSQL.getMnoInfo", mno);
+	}
+	
+	// 회원 리스트조회 전담 처리함수
+	public List<MemberVO> membList(){
+		return sqlSession.selectList("mSQL.memberList");
+	}
+	
 	// 회원 탈퇴처리 데이터베이스 작업 전담 처리함수
-		public int delMember(String id) {
-			return sqlSession.update("mSQL.delMember", id);
-		}
-	// 아바타 리스트 조회 전담 처리함수
-		public List<MemberVO> getAvtList(){
-			return sqlSession.selectList("mSQL.avtList");
-		}
-		public List<MemberVO> getAvtList(String id){
-			return sqlSession.selectList("mSQL.genAvtList", id);
-		}
+	public int delMember(String id) {
+		return sqlSession.update("mSQL.delMember", id);
+	}
 }
