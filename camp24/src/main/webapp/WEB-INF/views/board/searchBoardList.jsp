@@ -47,7 +47,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<div class="w3-margin w3-center">
 			<h5>주소 : ${data.addr1}</h5>
 			<h5 id="${st.count}">캠핑장명 : .${data.facltNm}.
-				<div class="w3-right w3-button w3-green review">리뷰 쓰기</div>
+				<div class="w3-right w3-button w3-green review">리뷰 작성</div>
 			</h5>
 	<c:if test="${not empty data.firstImageUrl && not empty data.homepage}">
 			<a href="${data.homepage}"><img id="image" src="${data.firstImageUrl}"></a>
