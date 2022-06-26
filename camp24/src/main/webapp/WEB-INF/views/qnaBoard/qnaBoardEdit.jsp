@@ -21,7 +21,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<div class="w3-content mxw650 w3-margin-top">
 	<!-- 페이지 헤더 -->
 	<header class="w3-col w3-card-4 mgb20">
-		<h1 class="w3-gray w3-center w3-padding mg0">CAMP24 QnA 글 수정</h1>
+		<h1 class="w3-gray w3-center w3-padding mg0">CAMP24 QnA 게시글 수정</h1>
 	</header>
 	
 	<form method="POST" action="/camp24/qnaBoard/qnaBoardEditProc.cmp" name="frm" id="frm"
