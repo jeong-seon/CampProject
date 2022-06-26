@@ -64,8 +64,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</c:if>
 	<c:if test="${DATA.id ne SID}">
 			${DATA.name} 회원 정보
-	</c:if>		</h1>
-</c:if	>
+	</c:if>
+		</h1>
+</c:if>
 
 	<div class="w3-col w3-margin-top w3-padding w3-card-4">
 			<div class="w3-display-container w3-col w3-border-right" style="width: 200px; height: 270px;">

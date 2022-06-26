@@ -109,7 +109,7 @@ public class Member {
 			mv.setView(rv);
 			return mv;
 		}
-		
+		 
 		if(!id.equals(sid)) {
 			rv.setUrl("/camp24/member/myInfo.cmp");
 			mv.setView(rv);

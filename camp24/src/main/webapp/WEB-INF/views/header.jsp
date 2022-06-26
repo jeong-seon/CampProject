@@ -57,6 +57,10 @@ footer {
 	<form method="POST" action="" id="apifrm" name="apifrm">
 		<input type="hidden" id="apinowPage" name="pageno">
 	</form>
+	<form method="POST" action="" id="frm" name="frm">
+		<input type="hidden" id="id" name="id" value="${SID}">
+	</form>
+	
 <div class="w3-content" style="max-width:1400px">
 		<div class="w3-col w3-center">
 			<div class="w3-col m2 w3-button w3-green w3-border-right" id="freebtn">자유게시판</div>

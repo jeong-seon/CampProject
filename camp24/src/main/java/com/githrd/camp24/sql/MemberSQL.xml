@@ -81,7 +81,7 @@
 		<include refid="selInfo" />
 			AND id = #{id}
 	</select>
-	
+	 
 	<select id="getMnoInfo" resultType="mVO" parameterType="int">
 		<include refid="selInfo" />
 			AND mno = #{mno}

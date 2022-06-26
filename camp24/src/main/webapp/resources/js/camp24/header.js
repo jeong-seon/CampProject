@@ -25,11 +25,7 @@ $(document).ready(function(){
 		$(location).attr('href', '/camp24/member/logout.cmp');
 	});
 	
-	$('#mlbtn').click(function(){
-		$(location).attr('href', '/camp24/member/memberList.cmp');
-	});
-	
-	
+	 
 	$('#mypagebtn').click(function(){
 		$('#frm').attr('action', '/camp24/member/myInfo.cmp');
 		$('#frm').submit();

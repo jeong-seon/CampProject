@@ -17,7 +17,7 @@ public class MemberDao {
 	public int getLogin(MemberVO mVO) {
 		return sqlSession.selectOne("mSQL.login", mVO);
 	}
-	
+	  
 	// 아이디 카운트 조회
 	public int getIdCnt(String id) {
 		return sqlSession.selectOne("mSQL.idCnt", id);
