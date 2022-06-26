@@ -20,7 +20,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 </style>
 </head>
-<body class="w3-light-grey">
+<body class="w3-light-grey"><!-- style="background-image: url(/camp24/resources/img/pic/camp.png)" -->
 	<div class="w3-row">
 
 		<div class="w3-col l8 s12">

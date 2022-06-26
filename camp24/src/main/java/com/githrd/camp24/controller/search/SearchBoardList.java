@@ -31,7 +31,7 @@ public class SearchBoardList {
 	public ModelAndView searchBoard(ModelAndView mv, String input) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		String ServiceKey = "6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8%2FqN3dGhpsRYTTGJ63LFtj%2F0kBFwzjL%2Fy5pFa6xA%3D%3D";
-        String numOfRows = "3039";
+        String numOfRows = "10";
         String pageNo = "1";
         String MobileOS = "ETC";
         String MobileApp = "appName";

@@ -42,10 +42,11 @@ footer {
 <c:if test="${not empty SID}">
 	<div style="width: 100%;">
 		<div class="w3-col w3-border-bottom pdb3">
-		<div class="w3-col m3 w3-button w3-blue w3-hover-light-green" id="home"><img src="/camp24/resources/img/pic/Camp24_logo.png"></div>
+		<div class="w3-col m3 w3-button w3-blue w3-hover-light-green" id="home"><strong>Camp 24</strong></div>
 			<span class="w3-cell m1 w3-button w3-gray w3-right mt0" id="loutbtn">LogOut</span>
 			<span class="w3-cell m1 w3-button w3-dark-gray w3-right mt0" id="mypagebtn">마이페이지</span>
 			<span class="w3-col m1 w3-button w3-lime w3-right" id="mapbtn">지 도</span>
+			<span class="w3-col m1 w3-button w3-green w3-right" id="faqbtn">FAQ</span>
 		</div>
 	</div>
 </c:if>
@@ -54,18 +55,16 @@ footer {
   <p>Welcome to the blog of <span class="w3-tag">Camp24</span></p>
 </header>
 <!-- 데이터 전송용 form 태그 -->
-	<form method="POST" action="" id="apifrm" name="apifrm">
+	<form method="POST" action="" id="hfrm" name="hfrm">
+		<input type="hidden" name="id" value="${SID}">
 		<input type="hidden" id="apinowPage" name="pageno">
-	</form>
-	<form method="POST" action="" id="frm" name="frm">
-		<input type="hidden" id="id" name="id" value="${SID}">
 	</form>
 	
 <div class="w3-content" style="max-width:1400px">
 		<div class="w3-col w3-center">
 			<div class="w3-col m2 w3-button w3-green w3-border-right" id="freebtn">자유게시판</div>
 			<div class="w3-col m2 w3-button w3-green w3-border-right" id="qnabtn">QnA 게시판</div>
-			<div class="w3-col m2 w3-button w3-green w3-border-right" id="faqbtn">FAQ 게시판</div>
+			<div class="w3-col m2 w3-button w3-green w3-border-right" id="sellbtn">중고거래 게시판</div>
 			<div class="w3-col m2 w3-button w3-green w3-border-right" id="schbtn">검색게시판</div>
 			<div class="w3-col m2 w3-button w3-green w3-border-right" id="cmpbtn">캠핑장 정보게시판</div>
 			<div class="w3-col m2 w3-button w3-green w3-border-right" id="revbtn">방문후기 게시판</div>

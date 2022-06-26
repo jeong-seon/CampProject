@@ -7,8 +7,8 @@ $(document).ready(function(){
 	});
 	$('#cmpbtn').click(function(){
 		$('#apinowPage').val('1');
-		$('#apifrm').attr('action', '/camp24/campapi/campApi.cmp');
-		$('#apifrm').submit();
+		$('#hfrm').attr('action', '/camp24/campapi/campApi.cmp');
+		$('#hfrm').submit();
 	});
 	$('#mapbtn').click(function(){
 		$(location).attr('href', '/camp24/map/mapApi.cmp');
@@ -24,11 +24,13 @@ $(document).ready(function(){
 	$('#loutbtn').click(function(){
 		$(location).attr('href', '/camp24/member/logout.cmp');
 	});
-	
+	$('#sellbtn').click(function(){
+		$(location).attr('href', '/camp24/trade/trade.cmp');
+	});
 	 
 	$('#mypagebtn').click(function(){
-		$('#frm').attr('action', '/camp24/member/myInfo.cmp');
-		$('#frm').submit();
+		$('#hfrm').attr('action', '/camp24/member/myInfo.cmp');
+		$('#hfrm').submit();
 	});
 	
 	$('#freebtn').click(function(){

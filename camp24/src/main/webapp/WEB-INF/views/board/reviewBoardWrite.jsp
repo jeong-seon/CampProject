@@ -30,20 +30,16 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<h1 class="w3-light-grey w3-padding w3-center w3-card-4">Review</h1>
 		<form enctype="multipart/form-data" method="POST" action="/camp24/board/reBoardWriteProc.cmp" 
 				id="frm" name="frm" class="w3-col w3-card-4 frmpadding">
-			<input type="hidden" name="nowPage" id="nowPage" value="${nowPage}">
+			<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
 		<div class="w3-padding">
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2">Title</label>
 				<input type="text" id="title" name="title" class="w3-col m10 w3-input w3-border">
 			</div>
 			<div class="w3-col w3-margin-top w3-margin-bottom">
-				<label for="title" class="w3-col s2">캠핑장 선택</label>
-				<select id="clist" name="clist">
-					<option value="none">캠핑장 선택</option>
-					<c:forEach var="data" items="${CAMP}">
-						<option value="${data.cno}">${data.cname}</option>
-					</c:forEach>
-				</select>
+				<label for="title" class="w3-col s2">캠핑장</label>
+				<input type="text" id="cname" name="cname" class="w3-col m10 w3-input w3-border" 
+						value="${param.cname}" readonly>
 			</div>
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-col s2">File</label>

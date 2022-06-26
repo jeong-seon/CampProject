@@ -23,28 +23,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <h2 class="w3-green w3-padding-16 w3-center">방문후기 게시판</h2>
   <div class="w3-row w3-padding-64">
   
-  <div class="w3-button w3-green w3-hover-lime w3-right" id="wbtn">리뷰 쓰기</div>
-<%--  <c:if test="${not empty SID}"> --%>
-<!-- 				<div class="w3-button w3-cyan w3-hover-lime w3-right" id="manbtn">리뷰관리</div> -->
-<%-- </c:if> --%>
-
-<%-- <c:forEach var="data" items="${LIST}">
-  <div class="w3-row">
-    <div class="w3-twothird w3-container">
-<c:if test="${SID eq data.id}">
-				<div class="w3-button w3-grey w3-hover-red w3-right" 
-				style="position:relative; top:30px;" id="debtn">리뷰삭제</div>
-</c:if>
-      <h1 class="w3-text-teal">${data.title}</h1>
-      <span>${data.body}</span>
-      <div class="w3-col box120 pdAll10 w3-border-right" style="width: 135px;">
-		<img src="/camp24/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
-	      <span class="w3-col w3-center" style="display: inline-block">${data.id}</span>
-		</div>
-    </div>
-    
-    </div>
-  </c:forEach> --%>
   	<form method="POST" action="/camp24/reviewboard/reviewBoardWriteProc.cmp" id="Frm" name="Frm">
 			<input type="hidden" name="title" id="title" value="${data.title}">
 			<input type="hidden" name="body" id="body" value="${data.body}">
@@ -65,10 +43,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
 						<div class="w3-cell w3-right" id="${data.rno}">
-			<c:if test="${SID eq data.id}">
+			<%-- <c:if test="${SID eq data.id}">
 				<div class="w3-button w3-grey w3-hover-red w3-right debtn" 
 				style="position:relative; top:30px;">리뷰삭제</div>
-			</c:if>
+			</c:if> --%>
 						</div>
 						<div>
 							<span class="w3-third w3-left mgb10 ft10"><strong>제목 : ${data.title}</strong></span>
