@@ -36,10 +36,18 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					<span class="mgb10 ft10" style="padding: 40px;"><b>${SID}</b></span>
 		</div>
 		<div class="w3-rest w3-padding w3-border-left">
+			<c:if test="${DATA.qtitle ne '[ 답변 ]'}">
 				<div class="w3-col w3-border-gray">
 					<label for="title"><small><strong>제목</strong></small></label>
 					<input name="title" id="title" class="w3-col w3-padding ft12 w3-border" value="${DATA.qtitle}">
 				</div>
+			</c:if>
+			<c:if test="${DATA.qtitle eq '[ 답변 ]'}">
+				<div class="w3-col w3-border-gray">
+					<label for="title"><small><strong>제목</strong></small></label>
+					<input name="title" id="title" class="w3-col w3-padding ft12 w3-border" value="${DATA.qtitle}" readonly>
+				</div>
+			</c:if>
 				<div class="w3-col w3-margin-top">
 					<label for="body"><small><strong>내용</strong></small></label>
 					<textarea name="body" id="body" class="w3-col w3-padding ft12 w3-border" style="resize: none; height: 100%;">${DATA.qbody}</textarea>
