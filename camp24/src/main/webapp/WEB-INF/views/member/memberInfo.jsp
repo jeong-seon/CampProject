@@ -14,7 +14,7 @@
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/memberInfo.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/header.js"></script>
-<style type="text/css">
+<style type="text/css"> 
 	.avtbox {
 	
 	}

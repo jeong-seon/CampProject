@@ -65,7 +65,7 @@
 		    )
 		    AND isshow = 'Y'
 	</select>
-	
+	 
 	<!-- 정보조회 중복 질의명령 부분 -->
 	<sql id="selInfo">
 		SELECT

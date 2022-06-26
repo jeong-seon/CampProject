@@ -16,7 +16,7 @@ $(document).ready(function(){
 	$('#joinbtn').click(function(){
 		$(location).attr('href', '/camp24/member/join.cmp');
 	});
-
+ 
 	$('#loginbtn').click(function(){
 		$(location).attr('href', '/camp24/member/login.cmp');
 	});

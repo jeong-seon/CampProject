@@ -50,4 +50,5 @@ public class MemberDao {
 	public int delMember(String id) {
 		return sqlSession.update("mSQL.delMember", id);
 	}
+	
 }
