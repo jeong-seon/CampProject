@@ -27,7 +27,7 @@ $(document).ready(function(){
 		}
 		// 사용가능 유무 판단
 		$.ajax({
-			url: '/camp24/member/idCheck.cmp',
+			url: '/camp24/member/idCheck.json',
 			type: 'post',
 			dataType: 'json',
 			data: {
@@ -138,16 +138,16 @@ $(document).ready(function(){
 		var idRegExp =/^[a-zA-Z0-9]{4,10}$/;
 				
 		if(idRegExp.test($('#id').val())){
-			$(".id.idRegExp").html("");
+			$('.id.idRegExp').html('');
 		} else {
-			alert("아이디는 4 ~ 10개의 영문 대소문자, 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요"); 
-			$("#id").val("");  
-			$("#id").focus(); 
+			alert('아이디는 4 ~ 10개의 영문 대소문자, 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+			$('#id').val('');  
+			$('#id').focus(); 
 			return;
 		}
 		
 		if($('#idCheck').val()!='Y'){
-			alert("아이디 중복체크를 해주세요.");
+			alert('아이디 중복체크를 해주세요.');
 			$('#idCheck').eq(0).focus();
 			return false;
 		}
@@ -155,32 +155,32 @@ $(document).ready(function(){
 		var pwdRegExp =/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 		/*var pwdRegExp =/^[0-9]{4}$/;*/
 		if(pwdRegExp.test($('#pw').val())){
-			$(".pw.pwdRegExp").html("");
+			$('.pw.pwdRegExp').html('');
 		} else {
-			alert("비밀 번호는 8개 이상의 영문 대소문자, 숫자, 특수문자로 생성해야 합니다. 형식에 맞게 입력해주세요"); 
-			$("#pw").val(""); 
-			$("#pwck").val(""); 
-			$("#pw").focus(); 
+			alert('비밀 번호는 8개 이상의 영문 대소문자, 숫자, 특수문자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+			$('#pw').val(''); 
+			$('#pwck').val(''); 
+			$('#pw').focus(); 
 			return;
 		}
 		
-		var mailRegExp =/^[a-zA-Z0-9]{4,10}@[a-zA-Z.]{5,50}$/;
+		var mailRegExp =/^[a-zA-Z0-9]{4,10}@[a-zA-Z]{5,50}.[a-zA-Z]{2,5}[.]{0,1}[a-zA-Z]{0,5}$/;
 		if(mailRegExp.test($('#mail').val())){
-			$(".mail.pwdRegExp").html("");
+			$('.mail.pwdRegExp').html('');
 		} else {
-			alert("메일 아이디는 4 ~ 10개의 영문 대소문자, 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요"); 
-			$("#mail").val(""); 
-			$("#mail").focus(); 
+			alert('메일 아이디는 4 ~ 10개의 영문 대소문자, 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+			$('#mail').val(''); 
+			$('#mail').focus(); 
 			return;
 		}
 		
 		var telRegExp =/^01[0-9]{1}-[0-9]{3,4}-[0-9]{4}$/;
 		if(telRegExp.test($('#tel').val())){
-			$(".tel.pwdRegExp").html("");
+			$('.tel.pwdRegExp').html('');
 		} else {
-			alert("휴대전화번호는 01*-***-**** 또는 01*-****-**** 형태의 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요"); 
-			$("#tel").val(""); 
-			$("#tel").focus(); 
+			alert('휴대전화번호는 01*-***-**** 또는 01*-****-**** 형태의 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+			$('#tel').val(''); 
+			$('#tel').focus(); 
 			return;
 		}
 		

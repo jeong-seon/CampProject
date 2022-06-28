@@ -16,7 +16,7 @@
 		<interceptor>
 			<mapping path="/member/*.cmp" />
 				<exclude-mapping path="/member/logout.cmp" />
-				<exclude-mapping path="/member/idCheck.cmp" />
+				<exclude-mapping path="/member/idCheck.json" />
 				<exclude-mapping path="/member/myInfo.cmp" />
 				<exclude-mapping path="/member/memberInfo.cmp" />
 				<exclude-mapping path="/member/memberList.cmp" />

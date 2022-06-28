@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+/**
+ * 이 클래스는 리뷰게시판 관련 요청을 처리할 클래스
+ * @author	정선우
+ * @since	2022.06.22
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ 
+ * 				2022.06.22	-	담당자 : 정선우
+ * 									클래스 제작
+ *
+ */
+-->
+
+<mapper namespace="rSQL">
+	<!-- 총 게시글 수 -->
+	<select id="getTotal" resultType="int">
+		SELECT
+		    COUNT(*)
+		FROM
+		    review
+		WHERE
+		    isshow = 'Y'
+	</select>
+	<!-- 게시글 리스트 조회 질의명령 -->
+	<select id="getList" resultType="bVO" parameterType="page">
+		SELECT
+			rowno, rno, id, cname, body, title, rdate, redate, click, score, avatar
+		FROM
+			(
+			 SELECT
+			     ROWNUM rowno, rno, id, cname, body, title, rdate, redate, click, score, avatar
+			 FROM
+			     (
+			         SELECT
+			             rno, id, cname, rbody body, rtitle title, rdate, redate, click, score, savename avatar
+			         FROM
+			             member m, review r, avatar a
+			         WHERE
+			             r.isshow = 'Y'
+			             AND mno = rmno
+			             AND avt = ano
+			         ORDER BY
+			             rdate DESC
+			     )
+			 )
+		WHERE
+			rowno BETWEEN #{startCont} AND #{endCont}
+	</select>
+	<!-- 이미지 리스트 조회 질의명령 -->
+	<select id="imgList" resultType="fVO">
+		SELECT
+		    rno, imageno, isavename, idir
+		FROM
+		    review r, image i
+		WHERE
+		    r.isshow = 'Y'
+		    AND imageno = rno
+	</select>
+</mapper>

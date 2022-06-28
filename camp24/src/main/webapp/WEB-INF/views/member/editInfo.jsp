@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <title>camp24 Edit Information</title>
-<link rel="stylesheet" type="text/css" href="/camp24/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/camp24/resources/css/user.css">
-<script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/camp24/resources/js/camp24/edit.js"></script>
-<script type="text/javascript" src="/camp24/resources/js/camp24/header.js"></script>
+<link rel="stylesheet" type="text/css" href="/camp24/css/w3.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
+<script type="text/javascript" src="/camp24/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/camp24/js/camp24/edit.js"></script>
+<script type="text/javascript" src="/camp24/js/camp24/header.js"></script>
 <style type="text/css">
 	.avtimg {
 		width: 100px;
@@ -99,10 +99,9 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<div class="w3-col s8 mgl10 mgb10 w3-center">
 					<div class="avtboxfr w3-center w3-margin-top" id="avt">
 <c:forEach var="data" items="${LIST}">
-	<c:if test="${data.gen eq DATA.gen}">
 					 	<div class="avtbox">
 					 		<label for="avt${data.ano}">
-					 			<img src="/camp24/resources/img/avatar/${data.savename}" class="w3-col avtimg">
+					 			<img src="/camp24/img/avatar/${data.savename}" class="w3-col avtimg">
 					 		</label>
 		<c:if test="${data.ano eq DATA.ano}">
 				 		<input type="radio" name="ano" id="avt${data.ano}" value="${data.ano}" checked>
@@ -111,7 +110,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				 		<input type="radio" name="ano" id="avt${data.ano}" value="${data.ano}">
 		</c:if>
 				 		</div>
-	</c:if>
 </c:forEach>
 					</div>
 				</div>
@@ -123,6 +121,19 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<div class="w3-col w3-gray w3-hover-aqua w3-button" id="ebtn">수정</div> 
 		</div>
 	</div>
+	
+	<div id="msgWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-red"> 
+		        <span class="w3-button w3-display-topright" 
+		        							id="msgClose">&times;</span>
+		        <h2>알림 메세지</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-margin-top w3-margin-bottom" id="msg">변경된 내용이 없습니다.</h3>
+	    	</div>
+	    </div>
+ 	</div>
 </div>
 </body>
 </html>

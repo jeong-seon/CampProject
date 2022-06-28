@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<!--
+/**
+
+ * 이 클래스는 자유게시판 관련 요청을 처리할 클래스
+ * @author	백서진
+ * @since	2022.06.17
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ 
+ * 				2022.06.17	-	담당자 : 백서진
+ * 									클래스 제작, 
+ * 									리스트보기 요청 처리
+ *
+ */
+-->
+
+<mapper namespace="fSQL">
+	
+	<!-- 총 게시글 수 조회 질의명령 -->
+	<select id="total" resultType="int">
+		SELECT
+		    COUNT(*) cnt
+		FROM
+			freeboard
+		WHERE
+			isshow = 'Y'
+	</select>
+	
+	<!-- 게시글 리스트 조회 질의명령 -->
+	<select id="freeList" resultType="bVO" parameterType="page">
+		SELECT
+		   rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, click, step
+		FROM
+		   (
+		   SELECT
+		       ROWNUM rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, click, step
+		   FROM
+		       (
+		           SELECT
+		               fbno, NVL(fupno, 0) fupno, mno, id, fbody, ftitle, savename avatar, fdate, fedate, click, (level - 1) step
+		           FROM
+		               freeboard f, member m, avatar a
+		           WHERE
+		               f.isshow = 'Y'
+		               AND fmno = mno
+		               AND avt = ano
+		           START WITH
+		               fupno IS NULL
+		           CONNECT BY
+		               PRIOR fbno = fupno
+		           ORDER SIBLINGS BY
+		               fdate DESC
+		           )
+		       )
+		WHERE
+		   rno BETWEEN #{startCont} AND #{endCont} 
+	</select>
+	
+	<!-- 글쓰기 폼 보기 조회 질의명령 -->
+	<select id="getWriteInfo" resultType="bVO" parameterType="string">
+		SELECT
+			mno, id, savename avatar
+		FROM
+			member, avatar
+		WHERE
+			avt = ano
+			AND id = #{id}
+	</select>
+	
+	<!-- 댓글 작성 데이터 조회 질의명령 -->
+	<select id="commentData" resultType="bVO" parameterType="bVO">
+		SELECT
+		    mno, savename avatar, fbno upno, fbody
+		FROM
+		   member, avatar, freeboard
+		WHERE
+		    avt = ano
+		    AND id = #{id}
+		    AND fbno = #{bno}
+	</select>
+	
+	<!-- 게시글 등록 질의명령 -->
+	<insert id="addBoard" parameterType="bVO">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(fbno) + 1, 100001)
+			FROM
+				freeboard
+		</selectKey>
+		INSERT INTO
+			freeboard(
+				fbno, fmno, ftitle, fbody
+				<if test="upno neq 0">
+					, fupno
+				</if>
+			)
+		VALUES(
+			#{bno}, #{mno}, #{title}, #{body}
+				<if test="upno neq 0">
+					, #{upno}
+				</if>
+		)
+	</insert>
+	
+	<!-- 게시글 수정 데이터 조회 질의명령 -->
+	<select id="editData" resultType="bVO" parameterType="bVO">
+		SELECT
+		    id, mno, savename avatar, fbno bno, ftitle, fbody, fdate
+		FROM
+		   member, avatar, freeboard
+		WHERE
+		    avt = ano
+		    AND mno = fmno
+		    AND fbno = #{bno}
+	</select>
+	
+	<!-- 글 수정 질의명령 -->
+	<update id="editFBoard" parameterType="bVO">
+		UPDATE
+			freeboard
+		SET
+			ftitle = #{title},
+			fbody = #{body},
+			fedate = sysdate
+		WHERE
+			fbno = #{bno}
+	</update>
+	
+	<!-- 글 삭제 질의명령 -->
+	<update id="delFBoard" parameterType="bVO">
+		UPDATE
+		   	freeboard
+		SET
+		    isshow = 'N'
+		WHERE
+		    fbno IN (
+		                SELECT
+		                    fbno
+		                FROM
+		                    freeboard
+		                WHERE
+		                    isshow = 'Y'
+		                START WITH
+		                    fbno = #{bno}
+		                CONNECT BY
+		                    PRIOR fbno = fupno
+		            )
+	</update>
+	
+</mapper>

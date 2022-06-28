@@ -7,4 +7,9 @@ $(document).ready(function(){
 			$('#frm').submit();
 		}
 	});
+	
+	$('#ebtn').click(function(){
+		$('#frm').attr('action', '/camp24/member/myInfoEdit.cmp');
+		$('#frm').submit();
+	});
 });

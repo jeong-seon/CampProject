@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Member Redirect View</title>
-<script type="text/javascript" src="/www/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/camp24/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#frm').submit();

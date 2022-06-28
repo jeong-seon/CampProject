@@ -1,42 +1,152 @@
 $(document).ready(function(){
+	// 비밀번호 입력이벤트
+	$('#repw').keyup(function(){
+		// 할일
+		// 입력된 데이터 가져오기
+		var pw = $('#pw').val();
+		var repw = $(this).val();
+		if(repw != null){
+			if(pw != repw){
+				$('#repwmsg').html('# 비밀번호가 일치하지 않습니다.');
+				$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
+				$('#repwmsg').css('display', 'block');
+				return;
+			} else {
+				$('#repwmsg').html('* # 비밀번호가 일치합니다. *');
+				$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
+				$('#repwmsg').css('display', 'block');
+			}
+		}
+	});
+	
+	$('repwmsg').css('display','none');
+	$('#pw').keyup(function(){
+		var id = $('#pw').val();
+		
+		if(id == ''){
+			$('#repwmsg').css('display', 'none');
+		}
+	});
+	
+	$('#repw').keyup(function(){
+		var id = $('#repw').val();
+		
+		if(id == ''){
+			$('#repwmsg').css('display', 'none');
+		}
+	});
+	
+	$('#msgClose').click(function(){
+		$('#msgWin').css('display', 'none');
+	});
+	
 	// 수정버튼 클릭이벤트
 	$('#ebtn').click(function(){
-		// 받은 데이터 가져오기
-		var tmail = $('#tmail').val();
-		var ttel = $('#ttel').val();
-		var tano = $('#tano').val();
+		// 할일
+		// 데이터 유효성 검사
 		
-		// 입력한 데이터 꺼내오고
-		var pw = $('#pw').val();
-		var mail = $('#mail').val();
-		var tel = $('#tel').val();
-		var ano = $('[name="ano"]:checked').val();
+		var nameBool = false;
+		var pwBool = false;
+		var mailBool = false;
+		var telBool = false;
+		var anoBool = false;
 		
-		if(!pw){
+		var el = $('#name');
+		
+		for(var i = 0 ; i < el.length ; i++ ){
+			var txt = $(el).eq(i).val();
+			if(!txt){
+				alert('# 이름의 입력사항을 확인해주세요!');
+				$(el).eq(i).focus();
+				return;
+			}
+		}
+		
+		var sname = $('#name').val();
+		if(sname == $('#tname').val() ){
+			$('#name').prop('disabled', true);
+		} else {
+			nameBool = true;
+		}
+		
+		
+		var spw = $('#pw').val();
+		var spw2 = $('#repw').val();
+		if(spw != spw2){
+			$('#repw').val('');
+			$('#repw').focus();
+			return;
+		}
+		
+		if(!spw){
+			// 비밀번호를 수정하지 않는 경우이므로 비밀번호는 전송하지 않는다.
 			$('#pw').prop('disabled', true);
+		} else if(spw && (spw == spw2)){
+			var pwdRegExp =/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+			/*var pwdRegExp =/^[0-9]{4}$/;*/
+			if(pwdRegExp.test($('#pw').val())){
+				$('.pw.pwdRegExp').html('');
+				pwBool = true;
+			} else {
+				alert('비밀 번호는 8개 이상의 영문 대소문자, 숫자, 특수문자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+				$("#pw").val(''); 
+				$("#repw").val(''); 
+				$('#repwmsg').css('display', 'none');
+				$("#pw").focus(); 
+				return;
+			}
 		}
 		
-		if(tmail == mail){
-			// 메일이 수정 안된경우
+		var mailRegExp =/^[a-zA-Z0-9]{4,10}@[a-zA-Z]{5,50}.[a-zA-Z]{2,5}[.]{0,1}[a-zA-Z]{0,5}$/;
+		if(mailRegExp.test($('#mail').val())){
+			$(".mail.pwdRegExp").html("");
+		} else {
+			alert('메일 아이디는 4 ~ 10개의 영문 대소문자, 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+			$('#mail').val(""); 
+			$('#mail').focus(); 
+			return;
+		}
+		
+		var smail = $('#mail').val();
+		if(smail == $('#tmail').val() ){
 			$('#mail').prop('disabled', true);
+		} else {
+			mailBool = true;
 		}
 		
-		if(ttel == tel){
+		var telRegExp =/^01[0-9]{1}-[0-9]{3,4}-[0-9]{4}$/;
+		if(telRegExp.test($('#tel').val())){
+			$('.tel.pwdRegExp').html('');
+		} else {
+			alert('휴대전화번호는 01*-***-**** 또는 01*-****-**** 형태의 숫자로 생성해야 합니다. 형식에 맞게 입력해주세요'); 
+			$('#tel').val(''); 
+			$('#tel').focus(); 
+			return;
+		}
+		
+		var stel = $('#tel').val();
+		if(stel == $('#ttel').val() ){
 			$('#tel').prop('disabled', true);
+		} else {
+			telBool = true;
 		}
 		
-		if(tano == ano){
+		var sno = $('[name="ano"]:checked').val();
+		if(sno == $('#tano').val()){
 			$('[name="ano"]').prop('disabled', true);
+		} else {
+			anoBool = true;
 		}
 		
-		if(!pw && (tmail == mail) && (ttel == tel) && (tano == ano)){
-			// 수정을 한개도 하지 않는 경우..
-			alert('아무것도 수정안함...');
+		if(!(nameBool || pwBool || mailBool || telBool || anoBool)){
+			// 수정 데이터가 없는 경우이므로 뷰로 돌려보낸다.
+			$('#msgWin').css('display', 'block');
+			$('input').prop('disabled', false);
 			return;
 		}
 		
 		// 보낼 주소 설정하고
-		$('#frm').attr('action', '/camp24/member/editProc.cmp');
+		$('#frm').attr('action', '/camp24/member/infoEditProc.cmp');
 		$('#frm').submit();
 	});
 });

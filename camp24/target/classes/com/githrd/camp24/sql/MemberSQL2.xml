@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+/**
+ * 이 클래스는 자유게시판 관련 요청을 처리할 클래스
+ * @author	김은선
+ * @since	2022.06.27
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ 
+ * 				2022.06.27	-	담당자 : 김은선
+ * 									 회원가입/내정보수정 처리
+ * 									
+ *
+ */
+-->			
+
+<mapper namespace="mSQL2">
+	
+	<sql id="selCnt">
+		SELECT
+			COUNT(*)
+		FROM
+			member
+		WHERE
+			id = 
+	</sql>
+	
+	<select id="idCnt" resultType="int" parameterType="string">
+		<include refid="selCnt" />#{id}
+	</select>
+	
+	<select id="avtList" resultType="mVO">
+		SELECT
+		    ano, savename, gen
+		FROM
+		    avatar
+		WHERE
+		    gen IN ('M', 'F')
+		    AND isshow = 'Y'
+	</select>
+	
+	<select id="genAvtList" resultType="mVO" parameterType="string">
+		SELECT
+		    ano, savename
+		FROM
+		    avatar
+		WHERE
+		    gen = (
+		    	SELECT
+		    		gen
+		    	FROM
+		    		member
+		    	WHERE
+		    		id = #{id}
+		    )
+		    AND isshow = 'Y'
+	</select>
+	
+	<insert id="addMember" parameterType="mVO">
+		<selectKey keyProperty="mno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(mno) + 1, 1001) FROM member
+		</selectKey>
+		INSERT INTO
+		    member(mno, name, id, pw, mail, tel, gen, avt)
+		VALUES(
+		    #{mno}, #{name}, #{id}, #{pw}, #{mail}, #{tel}, #{gen}, #{ano}
+		)
+	</insert>
+	
+	<!-- 정보조회 중복 질의명령 부분 -->
+	<sql id="selInfo">
+		SELECT
+			mno, name, id, mail, tel, m.gen, joindate jdate, ano, savename
+		FROM
+			member m, avatar a
+		WHERE
+			avt = ano
+	</sql>
+	
+	<!-- 회원 정보조회 질의명령 -->
+	<select id="getIdInfo" resultType="mVO" parameterType="string">
+		<include refid="selInfo" />
+			AND id = #{id}
+	</select>
+	
+	<update id="editInfo" parameterType="mVO">
+		UPDATE
+			member
+		<set>
+			<if test="name neq null">
+				name = #{name},
+			</if>
+			<if test="pw neq null">
+				pw = #{pw},
+			</if>
+			<if test="mail neq null">
+				mail = #{mail},
+			</if>
+			<if test="tel neq null">
+				tel = #{tel},
+			</if>
+			<if test="ano neq 0">
+				avt = #{ano},
+			</if>
+		</set>
+		WHERE
+			mno = #{mno}
+	</update>
+
+</mapper>
