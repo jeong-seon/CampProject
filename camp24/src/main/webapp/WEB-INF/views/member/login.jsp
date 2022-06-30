@@ -15,7 +15,6 @@
 	label {
 		font-size: 16pt;
 	}
-	
 	#msg {
 		font-size: 20pt;
 		font-weight: bold;
@@ -24,9 +23,10 @@
 </style>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
 </style>
 </head>
-<body class="w3-light-grey">
+<body>
 <div class="w3-container">
 	<div class="w3-content w3-center mx650">
 	

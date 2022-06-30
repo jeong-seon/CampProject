@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -93,6 +94,7 @@ public class FreeBoard {
 	}
 	
 	// 자유게시판 글 등록 처리 요청
+	@Transactional
 	@RequestMapping("/fwriteProc.cmp")
 	public ModelAndView fwriteProc(ModelAndView mv, String nowPage, BoardVO bVO) {
 		int cnt = fDao.addBoard(bVO);
@@ -100,10 +102,12 @@ public class FreeBoard {
 		if(cnt == 0) {
 			// 게시글 등록에 실패한 경우 ==> 글쓰기로 돌려보내기
 			view = "/camp24/freeBoard/freeBoardWrite.cmp";
+			bVO.setResult("NO");
 		} else {
 			// 게시글 등록에 성공한 경우
 			nowPage = "1";
 			mv.addObject("MSG", "게시글이 등록되었습니다");
+			bVO.setResult("OK");
 		}
 		
 		// 데이터 심기
@@ -128,6 +132,7 @@ public class FreeBoard {
 	}
 		
 	// 게시글 수정 처리 요청 처리함수
+	@Transactional
 	@RequestMapping("/freeBoardEditProc.cmp")
 	public ModelAndView editProc(ModelAndView mv, BoardVO bVO, String nowPage, String vw) {
 		int result = fDao.editProc(bVO);

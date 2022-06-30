@@ -28,13 +28,14 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
  <div class="w3-content mxw700">
 		<h1 class="w3-light-grey w3-padding w3-center w3-card-4">Review</h1>
-		<form enctype="multipart/form-data" method="POST" action="/camp24/board/reBoardWriteProc.cmp" 
+		<form method="POST" action="/camp24/reviewBoard/reviewBoardWriteProc.cmp" enctype="multipart/form-data"
 				id="frm" name="frm" class="w3-col w3-card-4 frmpadding">
 			<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
+			<input type="hidden" name="id" value="${SID}">
 		<div class="w3-padding">
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2">Title</label>
-				<input type="text" id="title" name="title" class="w3-col m10 w3-input w3-border">
+				<input type="text" id="title" name="rtitle" class="w3-col m10 w3-input w3-border">
 			</div>
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2">캠핑장</label>
@@ -44,7 +45,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-col s2">File</label>
 				<div class="w3-col m10" id="filebox">
-					<input type="file" class="w3-input w3-border w3-margin-bottom upfile">
+					<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">
 				</div>
 			</div>
 			<div class="w3-col w3-margin-bottom" id="previewbox" style="display: none;">
@@ -64,7 +65,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				<label for="body" class="w3-col s2">글본문</label>
 				<div class="w3-col m10">
 					<textarea class="w3-col w3-input w3-padding w3-border w3-margin-bottom" 
-							id="body" name="body" rows="10" style="resize: none;"></textarea>
+							id="body" name="rbody" rows="10" style="resize: none;"></textarea>
 				</div>
 			</div>
 		</div>

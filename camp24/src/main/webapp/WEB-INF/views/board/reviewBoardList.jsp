@@ -23,12 +23,10 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <h2 class="w3-green w3-padding-16 w3-center">방문후기 게시판</h2>
   <div class="w3-row w3-padding-64">
   
-  	<form method="POST" action="/camp24/reviewboard/reviewBoardWriteProc.cmp" id="Frm" name="Frm">
-			<input type="hidden" name="title" id="title" value="${data.title}">
-			<input type="hidden" name="body" id="body" value="${data.body}">
-			<input type="hidden" name="id" id="id" value="${data.id}">
-			<input type="hidden" name="rno" id="rno" value="${data.rno}">
-			
+  	<form method="POST" action="/camp24/reviewBoard/reviewBoardWriteProc.cmp" id="frm" name="frm">
+  			<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
+			<input type="hidden" name="rno" id="rno" >
+			<input type="hidden" name="vw" id="vw" >
 	</form>
 
 <c:forEach var="data" items="${LIST}">
@@ -42,15 +40,15 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 				</div>
 				<div class="w3-rest w3-padding">
 					<div class="w3-col w3-border-bottom">
-						<div class="w3-cell w3-right" id="${data.rno}">
+						<div class="w3-cell w3-right revList" id="${data.rno}">
 			<%-- <c:if test="${SID eq data.id}">
 				<div class="w3-button w3-grey w3-hover-red w3-right debtn" 
 				style="position:relative; top:30px;">리뷰삭제</div>
 			</c:if> --%>
 						</div>
 						<div>
-							<span class="w3-third w3-left mgb10 ft10"><strong>제목 : ${data.title}</strong></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>캠핑장 : ${data.cname}</small></span>
+							<span class="w3-half w3-left mgb10 ft10"><strong>제목 : ${data.title}</strong></span>
+							<span class="w3-half w3-left mgb10 ft10"><strong>캠핑장 : ${data.cname}</strong></span>
 							<span class="w3-third w3-left mgb10 ft10"><small>작성일 : ${data.sdate}</small></span>
 					<c:if test="${data.score eq 1}">
 							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★</small></span>
@@ -74,7 +72,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 						<span class="w3-col w3-padding ft12">${data.body}</span>
 					</div>
 <c:forEach var="image" items="${IMAGE}">
-			<c:if test="${data.rno eq image.rno}">
+			<c:if test="${data.rno eq image.imageno}">
 					<div class="w3-col w3-margin-top">
 						<img style="width: 200px; height: auto;" src="${image.idir}/${image.isavename}">
 					</div>
@@ -112,15 +110,6 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</div>
 	</div>
 	<!-- 페이지 처리 태그 끝 -->
-	<form method="POST" action="/camp24/reviewBoard/reviewBoardList.cmp" id="pageFrm" name="pageFrm">
-			<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
-			
-	</form>
-<!-- 		 데이터 전송용 form 태그  -->
-	<%-- <form method="POST" action="/whistle/reboard/reboardList.blp" id="frm" name="frm">
-		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
-		<input type="hidden" id="bno" name="bno">
-	</form> --%>
 <!-- END MAIN -->
 </div>
 

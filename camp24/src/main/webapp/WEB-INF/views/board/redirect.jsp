@@ -14,12 +14,15 @@
 </script>
 </head>
 <body>
-<c:if test="${not empty VIEW }">
+<c:if test="${not empty VIEW}">
 	<form method="post" action="${VIEW}" id="frm" name="frm">
-<c:if test="${not empty NOWPAGE }">
+<c:if test="${not empty NOWPAGE}">
 		<input type="hidden" name="nowPage" value="${NOWPAGE}">
 </c:if>
-<c:if test="${not empty MSG }">
+<c:if test="${not empty param.rno}">
+		<input type="hidden" name="rno" value="${param.rno}">
+</c:if>
+<c:if test="${not empty MSG}">
 		<input type="hidden" name="msg" value="${MSG}">
 </c:if>
 	</form>

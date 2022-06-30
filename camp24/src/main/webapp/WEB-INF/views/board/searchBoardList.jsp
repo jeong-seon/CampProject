@@ -33,7 +33,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 			class="w3-content w3-center w3-margin-bottom">
 		<label class="w3-col m3"><strong style="font-size: 18pt; font-family: Raleway;"><img id="star" style="width: 70px;"src="/camp24/resources/img/pic/star.png"> 캠핑장 검색 : </strong>&nbsp;</label>
 		<input type="text" class="w3-col m7 w3-input" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
-		<div class="w3-rest w3-button w3-dark-gray" id="sbtn">검색</div>
+		<div class="w3-rest w3-button w3-dark-gray w3-margin-bottom" id="sbtn">검색</div>
 	</form>
 <c:if test="${empty LIST}">
 	<div class="w3-center w3-content w3-padding-32">
@@ -43,7 +43,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </c:if>
 <c:forEach var="data" items="${LIST}" varStatus="st">
 <c:if test="${data.facltNm ne '검색결과없음'}">
-	<div class="w3-row w3-center w3-padding-64 w3-card-4">
+	<div class="w3-row w3-center w3-padding-32 w3-card-4">
 		<div class="w3-margin w3-center">
 			<h5>주소 : ${data.addr1}</h5>
 			<h5 id="${st.count}">캠핑장명 : .${data.facltNm}.

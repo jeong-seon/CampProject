@@ -7,7 +7,8 @@ $(document).ready(function(){
 		// 페이지 번호 셋팅하고
 		$('#nowPage').val(pno);
 		// 폼 태그 전송
-		$('#pageFrm').submit();
+		$('#frm').attr('action', '/camp24/reviewBoard/reviewBoardList.cmp');
+		$('#frm').submit();
 	});
 	
 	
@@ -40,6 +41,8 @@ $(document).ready(function(){
 	
 	//글 작성후 글등록 버튼(reboardWrite)
 	$('#wpbtn').click(function(){
+		$('.upfile').last().prop('disabled', true);
+		
 		var title = $('#title').val();
 		if(!title){
 			$('#title').focus();
@@ -50,12 +53,6 @@ $(document).ready(function(){
 			$('#body').focus();
 			return;
 		}
-		// 캠핑장 선택
-		var camping = $('#clist').val();
-		if(camping == 'none'){
-			$('#clist').focus();
-			return;
-		}
 		
 		// 별점 선택
 		var score = $('input[name="score"]:checked').val();
@@ -64,55 +61,41 @@ $(document).ready(function(){
 			return;
 		}
 		
-		var el = $('input[type="file"]');
-		
-		for(i = 0 ; i < $(el).length ; i++ ){
-			var tmp = $(el).eq(i).val();
-			if(!tmp){
-				$(el).eq(i).prop('disabled', true);
-			}
-		}
-		
-		$('.upfile').last().prop('disabled', true);
-		
 		$('#frm').submit();
 	});
 	
-	$('#filebox').on('change', '.upfile', function(e){
-		var txt = $(this).val();
-		var len = $('.upfile').length;
-		if(!txt && len > 1){
-			$('#img' + $(this).attr('id').substring(4)).remove();
+	$('#filebox').on('change', '.upfile', function(evt){
+		var str = $(this).val();
+		var index = $(this).index();
+		var tmp = $('.upfile');
+		var max = tmp.length;
+		if(!str){
 			$(this).remove();
-			if($('.pic').length == 0){
-				$('#previewbox').slideUp(100);
-			}
-		} else {
-			$('#filebox').append('<input type="file" class="w3-input w3-border w3-margin-bottom upfile">');
-			
-			$('#previewbox').stop().slideUp(300, function(){
-				
-				var box = document.createElement('div');
-				$(box).attr('class', 'inblock picbox');
-				var img = document.createElement('img');
-				$(img).attr('class', 'pic');
-				var path = URL.createObjectURL(e.target.files[0]);
-				$(img).attr('src', path);
-				$(box).append($(img));
-				$('#preview').append($(box));
-				
-				var cnt = $('.picbox').length;
-				for(i = 1; i <= cnt ; i++ ){
-					$('.picbox').eq(i-1).attr('id', 'img' + i);
-				}
-				$('#previewbox').stop().slideDown(300);
-			});
+			$('.picbox').eq(index).remove();
+			return;
 		}
-		len = $('.upfile').length;
-		for(i = 1; i < len ; i++ ){
-			$('.upfile').eq(i-1).attr('id', 'file' + i);
-			$('.upfile').eq(i-1).attr('name', 'file' + i);
+		
+		var path = URL.createObjectURL(evt.target.files[0]);
+		var el = $('.upfile');
+		if((index + 1) != el.length){
+			$('.infoAvtBox').eq(index).attr('src', path);
 		}
+		
+		if(index == max - 1){
+			$('#filebox').append('<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">');
+			$('#preview').append('<div class="inblock pdAll10 picbox w3-card"><div class="w3-col w3-border" style="width: 100%; height: 100%; overflow: hidden;">' +
+					'<img src="' + path + '" class="pic">' +
+			'</div></div>');
+		}
+		$('#previewbox').css('display', 'block');
+	});
+	
+	$('.revList').click(function(){
+		var sno = $(this).attr('id');
+		
+		$('#rno').val(sno);
+		$('#frm').attr('action', '/camp24/reviewBoard/reviewBoardDetail.cmp');
+		$('#frm').submit();
 	});
 	
 });

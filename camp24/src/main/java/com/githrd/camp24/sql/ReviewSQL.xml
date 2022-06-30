@@ -52,6 +52,18 @@
 		WHERE
 			rowno BETWEEN #{startCont} AND #{endCont}
 	</select>
+	<!-- 글번호로 리뷰 상세보기 질의명령 -->
+	<select id="reviewDetail" resultType="bVO" parameterType="int">
+		SELECT
+		    rno, id, a.savename, cname, rtitle, rbody, rdate, redate, click, score
+		FROM
+		    review r, member m, avatar a
+		WHERE
+		    rmno = mno
+		    AND ano = avt
+		    AND r.isshow = 'Y'
+		    AND rno = #{rno}
+	</select>
 	<!-- 이미지 리스트 조회 질의명령 -->
 	<select id="imgList" resultType="fVO">
 		SELECT
@@ -62,4 +74,69 @@
 		    r.isshow = 'Y'
 		    AND imageno = rno
 	</select>
+	<!-- 리뷰 등록 질의명령 -->
+	<insert id="insertReview" parameterType="bVO">
+		<selectKey keyProperty="rno" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(rno) + 1, 100001)
+			FROM
+				review
+		</selectKey>
+		INSERT INTO
+		    review(rno, rbody, rmno, rtitle, score, cname)
+		VALUES(
+		    #{rno}, #{rbody},
+		    (SELECT mno FROM member WHERE id = #{id}),
+		    #{rtitle},
+		    #{score},
+		    #{cname}
+		)
+	</insert>
+	<!-- 이미지 등록 질의명령 -->
+	<insert id="insertImage" parameterType="fVO">
+		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(ino) + 1, 100001)
+			FROM
+				image
+		</selectKey>
+		INSERT INTO
+		    image(ino, imageno, ioriname, isavename, idir, ilen, icode)
+		VALUES(
+		    #{ino}, #{rno}, #{ioriname}, #{isavename}, #{idir}, #{ilen}, 'R'
+		)
+	</insert>
+	<!-- 첨부파일 삭제 처리 질의명령 -->
+	<update id="delFile" parameterType="int">
+		UPDATE
+			image
+		SET
+			isshow = 'N'
+		WHERE
+			ino = #{ino}
+	</update>
+	<!-- 게시글 수정 질의명령 -->
+	<update id="editBoard" parameterType="bVO">
+		UPDATE
+			review
+		<set>
+			<if test="rtitle neq null">
+				rtitle = #{rtitle},
+			</if>
+			<if test="rbody neq null">
+				rbody = #{rbody},
+			</if>
+		</set>
+		WHERE
+			rno = #{rno}
+	</update>
+	<!-- 게시글 삭제 질의명령 -->
+	<update id="delBoard" parameterType="int">
+		UPDATE
+			review
+		SET
+			isshow = 'N'
+		WHERE
+			rno = #{rno}
+	</update>
 </mapper>

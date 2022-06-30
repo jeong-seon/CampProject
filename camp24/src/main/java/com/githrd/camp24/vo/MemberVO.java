@@ -6,9 +6,16 @@ import java.util.Date;
 
 public class MemberVO {
 	private int mno, ano, cnt, avt;
-	private String id, name, pw, mail, tel, sdate, savename, gen;
+	private String id, name, pw, mail, tel, sdate, savename, gen, result;
 	private Date jdate;
 	private Time jtime;
+	
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
 	public int getMno() {
 		return mno;
 	}

@@ -10,9 +10,74 @@
 		</layout>
 	</appender>
 	
+	<!-- File Appenders -->
+	<appender name="file" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/src/main/resources/log/file.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p - %d{yyyy/MM/dd HH:mm:ss} : %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Member Appenders -->
+	<appender name="memberAppender" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/src/main/resources/log/member.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p - %d{yyyy/MM/dd HH:mm:ss} : %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- freeBoard Appenders -->
+	<appender name="freeBoardAppender" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/src/main/resources/log/freeBoard.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p - %d{yyyy/MM/dd HH:mm:ss} : %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- qnaBoard Appenders -->
+	<appender name="qnaBoardAppender" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/src/main/resources/log/qnaBoard.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p - %d{yyyy/MM/dd HH:mm:ss} : %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- ReviewBoard Appenders -->
+	<appender name="reviewBoardAppender" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/src/main/resources/log/reviewBoard.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p - %d{yyyy/MM/dd HH:mm:ss} : %c - %m%n" />
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="com.githrd.camp24">
 		<level value="info" />
+	</logger>
+	
+	<logger name="memberLog">
+		<level value="info" />
+		<appender-ref ref="memberAppender" />
+	</logger>
+	
+	<logger name="freeBoardLog">
+		<level value="info" />
+		<appender-ref ref="freeBoardAppender" />
+	</logger>
+	
+	<logger name="qnaBoardLog">
+		<level value="info" />
+		<appender-ref ref="qnaBoardAppender" />
+	</logger>
+	
+	<logger name="reviewBoardLog">
+		<level value="info" />
+		<appender-ref ref="reviewBoardAppender" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

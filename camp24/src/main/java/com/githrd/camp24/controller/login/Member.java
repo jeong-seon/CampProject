@@ -55,10 +55,11 @@ public class Member {
 	}
 	
 	
-	@RequestMapping(path="/loginProc.cmp")
-	public ModelAndView loginProc(String id, String pw, MemberVO mVO, HttpSession session, ModelAndView mv) {
+	@RequestMapping("/loginProc.cmp")
+	public ModelAndView loginProc(ModelAndView mv, MemberVO mVO, String id, String pw, HttpSession session) {
 		
 		int cnt = mDao.getLogin(mVO);
+		mVO.setCnt(cnt);
 		String view = "";
 		if(cnt == 1) {
 			session.setAttribute("SID", mVO.getId());
@@ -71,9 +72,9 @@ public class Member {
 	}
 
 	@RequestMapping("/logout.cmp")
-	public ModelAndView logout(ModelAndView mv, HttpSession session, String vw, String nowPage) {
-		String sid = (String) session.getAttribute("SID");
+	public ModelAndView logout(ModelAndView mv, HttpSession session, MemberVO mVO, String vw, String nowPage) {
 		session.removeAttribute("SID");
+		mVO.setResult("OK");
 		
 		if(vw == null) {
 			vw = "/camp24/";

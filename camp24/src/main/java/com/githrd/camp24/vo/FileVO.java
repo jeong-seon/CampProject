@@ -127,6 +127,13 @@ public class FileVO {
 	public void setIcode(String icode) {
 		this.icode = icode;
 	}
+	@Override
+	public String toString() {
+		return "FileVO [bno=" + bno + ", fno=" + fno + ", mno=" + mno + ", rno=" + rno + ", cnt=" + cnt + ", ino=" + ino
+				+ ", imageno=" + imageno + ", len=" + len + ", ilen=" + ilen + ", id=" + id + ", oriname=" + oriname
+				+ ", ioriname=" + ioriname + ", isavename=" + isavename + ", savename=" + savename + ", dir=" + dir
+				+ ", idir=" + idir + ", sdate=" + sdate + ", icode=" + icode + ", wdate=" + wdate + "]";
+	}
 	
 
 

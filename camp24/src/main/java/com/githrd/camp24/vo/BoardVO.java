@@ -1,16 +1,38 @@
 package com.githrd.camp24.vo;
 
-import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
-import java.sql.*;
-import java.text.*;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno;
-	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename;
+	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino;
+	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result;
 	private Date wdate, qdate, qedate, fdate, fedate, rdate, redate ;
-	ArrayList<FileVO> list;
+	private List<FileVO> list;
+	private MultipartFile[] file;
 	
+	public int getIno() {
+		return ino;
+	}
+	public void setIno(int ino) {
+		this.ino = ino;
+	}
+	public List<FileVO> getList() {
+		return list;
+	}
+	public void setList(List<FileVO> list) {
+		this.list = list;
+	}
+	public MultipartFile[] getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile[] file) {
+		this.file = file;
+	}
 	public int getCno() {
 		return cno;
 	}
@@ -125,9 +147,6 @@ public class BoardVO {
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
 		setSdate();
-	}
-	public ArrayList<FileVO> getList() {
-		return list;
 	}
 	public void setList(ArrayList<FileVO> list) {
 		this.list = list;
@@ -304,6 +323,26 @@ public class BoardVO {
 	}
 	public void setIsavename(String isavename) {
 		this.isavename = isavename;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	@Override
+	public String toString() {
+		return "BoardVO [mno=" + mno + ", qmno=" + qmno + ", rmno=" + rmno + ", bno=" + bno + ", fbno=" + fbno
+				+ ", qno=" + qno + ", upno=" + upno + ", qupno=" + qupno + ", fupno=" + fupno + ", rno=" + rno
+				+ ", rcno=" + rcno + ", cno=" + cno + ", ano=" + ano + ", pno=" + pno + ", pcno=" + pcno + ", click="
+				+ click + ", cnt=" + cnt + ", step=" + step + ", lat=" + lat + ", plong=" + plong + ", imageno="
+				+ imageno + ", id=" + id + ", title=" + title + ", ftitle=" + ftitle + ", qtitle=" + qtitle
+				+ ", rtitle=" + rtitle + ", body=" + body + ", qbody=" + qbody + ", fbody=" + fbody + ", rbody=" + rbody
+				+ ", sdate=" + sdate + ", sedate=" + sedate + ", avatar=" + avatar + ", score=" + score + ", cname="
+				+ cname + ", gname=" + gname + ", jname=" + jname + ", isavename=" + isavename + ", result=" + result
+				+ ", wdate=" + wdate + ", qdate=" + qdate + ", qedate=" + qedate + ", fdate=" + fdate + ", fedate="
+				+ fedate + ", rdate=" + rdate + ", redate=" + redate + ", list=" + list + ", file="
+				+ Arrays.toString(file) + "]";
 	}
 	
 }
