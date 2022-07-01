@@ -1,13 +1,16 @@
 package com.githrd.camp24.util;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.githrd.camp24.vo.*;
-import com.oreilly.servlet.*;
-import com.oreilly.servlet.multipart.*;
+import com.githrd.camp24.vo.FileVO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 
 /**

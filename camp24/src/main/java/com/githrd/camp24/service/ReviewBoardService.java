@@ -88,13 +88,11 @@ public class ReviewBoardService {
 			// bno 를 꺼내서 FileVO 들에 채워주고
 			for(FileVO f : list) {
 				f.setRno(bVO.getRno());
-				System.out.println("### 1 : " + f);
 			}
 			
 			// 데이터 입력작업을 파일 갯수만큼 반복해준다.
 			for(FileVO f : list) {
 				rDao.addFile(f);
-				System.out.println("### 2 : " + f);
 			}
 		}
 	}

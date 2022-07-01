@@ -63,6 +63,7 @@ public class Member {
 		String view = "";
 		if(cnt == 1) {
 			session.setAttribute("SID", mVO.getId());
+			session.setAttribute("MSG_CHECK", "OK");
 			view = "redirect:../main.cmp";
 		} else {
 			view = "redirect:login.cmp";

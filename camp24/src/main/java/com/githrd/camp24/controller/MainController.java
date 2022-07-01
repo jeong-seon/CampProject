@@ -108,7 +108,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping("/mainMsgCheck.cmp")
+	@RequestMapping("/mainMsgCheck.json")
 	@ResponseBody
 	public Map<String, String> msgCheck(HttpSession session) {
 		HashMap<String, String> map = new HashMap<String, String>();
