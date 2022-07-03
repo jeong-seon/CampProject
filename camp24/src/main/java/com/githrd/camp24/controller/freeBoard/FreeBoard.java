@@ -105,7 +105,9 @@ public class FreeBoard {
 			bVO.setResult("NO");
 		} else {
 			// 게시글 등록에 성공한 경우
-			nowPage = "1";
+			if(bVO.getUpno() == 0) {
+				nowPage = "1";
+			}
 			mv.addObject("MSG", "게시글이 등록되었습니다");
 			bVO.setResult("OK");
 		}
