@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	/* 리스트 버튼 클릭 이벤트 */
 	$('#lbtn').click(function(){
-		$(location).attr('href', '/camp24/freeBoard/freeBoardList.cmp');	
+		$('#frm').attr('action', '/camp24/freeBoard/freeBoardList.cmp');	
+		$('#frm').submit();
 	});
 	
 	/* 리셋 버튼 클릭 이벤트 */

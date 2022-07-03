@@ -87,12 +87,12 @@ $(document).ready(function(){
 		var repw = $(this).val();
 		if(repw != null){
 			if(pw != repw){
-				$('#repwmsg').html('# 비밀번호가 일치하지 않습니다.');
+				$('#repwmsg').html('* Not Correct ! *');
 				$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
 				$('#repwmsg').css('display', 'block');
 				return;
 			} else {
-				$('#repwmsg').html('* # 비밀번호가 일치합니다. *');
+				$('#repwmsg').html('* Correct ! *');
 				$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
 				$('#repwmsg').css('display', 'block');
 			}

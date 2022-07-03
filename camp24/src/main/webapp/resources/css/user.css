@@ -140,6 +140,10 @@
 .clrgrey {
 	color: #aaaaaa;
 }
+.box100{
+	width: 100px;
+	height: 100px;
+}
 .box120 {
 	width: 120px;
 	height: 120px;

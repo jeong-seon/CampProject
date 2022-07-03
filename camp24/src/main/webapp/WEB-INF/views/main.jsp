@@ -10,12 +10,19 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang&family=Hahmlet:wght@300&family=Song+Myung&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 .w3-row-padding img {margin-bottom: 12px}
 .bgimg {
   background-position: center;
@@ -46,19 +53,19 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </nav>
 
 <!-- Hidden Sidebar (reveals when clicked on menu icon)-->
-<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" style="display:none;padding-top:150px;right:0;z-index:2" id="mySidebar">
+<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" style="display:none;padding-top:100px;right:0;z-index:2" id="mySidebar">
   <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright" style="padding:0 12px;">
     <i class="fa fa-remove"></i>
   </a>
   <div class="w3-bar-block w3-center">
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="home" onclick="closeNav()">홈</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="freebtn" onclick="closeNav()">자유게시판</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="qnabtn" onclick="closeNav()">Q&A 게시판</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="faqbtn" onclick="closeNav()">FAQ 게시판</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="sellbtn" onclick="closeNav()">중고거래 게시판</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="schbtn" onclick="closeNav()">검색 게시판</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="cmpbtn" onclick="closeNav()">캠핑장 정보 게시판</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="revbtn" onclick="closeNav()">방문후기 게시판</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="home" onclick="closeNav()">Home</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="freebtn" onclick="closeNav()">Community</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="qnabtn" onclick="closeNav()">QnA</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="faqbtn" onclick="closeNav()">FAQ</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="sellbtn" onclick="closeNav()">Used Trade</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="schbtn" onclick="closeNav()">Search</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="cmpbtn" onclick="closeNav()">Campsite Information</span>
+    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="revbtn" onclick="closeNav()">Review</span>
   </div>
 </nav>
 
@@ -66,9 +73,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <div class="w3-main w3-padding-large" style="margin-left:40%">
 <c:if test="${empty SID}">
 	<div class="w3-col">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="joinbtn">Join</span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loginbtn">Login</span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn">Map</span>
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="joinbtn"><small><strong>Join</strong></small></span>
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loginbtn"><small><strong>Login</strong></small></span>
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
 	</div>
 </c:if>
 <c:if test="${not empty SID}">
@@ -83,7 +90,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
   <!-- Header -->
   <header class="w3-container w3-center" style="padding:60px 16px" id="home">
-    <h1 class="w3-jumbo"><b><a href="/camp24/main.cmp">Camp 24</a></b></h1>
+    <h1 class="w3-jumbo"><a href="/camp24/main.cmp"><b>Camp 24</b></a></h1>
     <!-- <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
     <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333"> -->
   </header>
@@ -137,7 +144,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 					<a href="" id="next"><img src="/camp24/resources/img/pic/next.png" width="50px" height="auto"></a>
 					<p style="margin-bottom: 20px;"></p>
 					-->
-					<a href="" class="w3-dark-grey w3-button">변경</a>
+					<a href="" class="w3-green w3-button">변경</a>
 					<p style="margin-bottom: 20px;"></p>
 				</div>
    			</div>
@@ -150,7 +157,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <c:if test="${(not empty SID) and (MSG_CHECK eq 'OK')}">
 	<div id="msgWin" class="w3-modal">
 		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
-			<header class="w3-container w3-blue"> 
+			<header class="w3-container w3-green"> 
 				<span class="w3-button w3-display-topright" id="msgClose">&times;</span>
 				<h2 class="w3-center">알림 메세지</h2>
 			</header>
@@ -160,8 +167,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 		</div>
 	</div>
 </c:if>
-<!-- 
-  About Section
+
+  <!-- About Section -->
   <div class="w3-content w3-justify w3-text-grey w3-padding-32" id="about">
     <h2>About</h2>
     <hr class="w3-opacity">
@@ -301,7 +308,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <i class="fa fa-linkedin w3-hover-opacity"></i>
     <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
   End footer
-  </footer> -->
+  </footer>
   
 <!-- END PAGE CONTENT -->
 </div>
