@@ -11,24 +11,16 @@ $(document).ready(function(){
 	
 	/* 수정 버튼 클릭 이벤트 */
 	$('#ebtn').click(function(){
-		var stitle = $('#stitle').val();
-		var sbody = $('#sbody').val();
+		var stitle = $('#title').val();
+		var sbody = $('#body').val();
+		var otitle = $('#otitle').val();
+		var obody = $('#obody').val();
 		
-		var title = $('#title').val();
-		if(stitle == title){
-			$('#title').prop('disabled', true);
-		}
 		
-		var body = $('#body').val();
-		if(sbody == body){
-			$('#body').prop('disabled', true);
-		}
-		
-		if((stitle == title) && (sbody == body)){
+		if((stitle == otitle) && (sbody == obody)){
 			alert('수정된 내용이 없습니다.');
 			return;
 		}
-		
 		$('#frm').submit();
 		
 	});

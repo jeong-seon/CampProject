@@ -1,21 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Camp24 QnA 게시판</title>
+<title>Camp24 Q & A</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="/camp24/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/camp24/resources/css/user.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="icon" href="/camp24/resources/img/pic/favicon.png">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<!--To Work with icons-->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang&family=Hahmlet:wght@300&family=Song+Myung&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/qnaBoard.js"></script>
-<script type="text/javascript" src="/camp24/resources/js/camp24/header.js"></script>
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
+.w3-row-padding img {margin-bottom: 12px}
+.bgimg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/camp24/resources/img/pic/14.png');
+  min-height: 100%;
+}
+#chbox {
+	position: relative;
+	top: 30px;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -25,55 +53,73 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	});
 </script>
 </head>
-<body class="w3-light-grey">
-<div class="w3-container">
+<body>
+<%@ include file="../include.jsp" %>
+  <!-- Portfolio Section -->
 
-<div class="w3-main">
-<h2 class="w3-green w3-padding-16 w3-center">QnA 게시판</h2>
+    <!-- Grid for photos -->
+<div class="container">
+	<h2 class="text-center">Q & A</h2>
+  <div class="w3-button w3-green w3-right" id="wbtn">질문 작성</div>
   <div class="w3-row w3-padding-64 pdAll20">
-  <div class="w3-button w3-lime w3-right" id="wbtn">질문 작성</div>
-  
 <c:forEach var="data" items="${LIST}">
-		<div class="w3-col" style="padding-left: ${data.step * 70}px">
-			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
-				<div class="w3-col mgt20 box120 pdAll10 w3-border-right" style="width: 135px;">
-					<img src="/camp24/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
-							<span class="w3-col w3-center mgb10 ft10">${data.id}</span>
-				</div>
-				<div class="w3-rest w3-padding">
+<div class="w3-col w3-margin-top" style="padding-left: ${data.step * 70}px">
+	<div class="card">
+	    <div class="card-body">
+	        <div class="row">
+        	    <div class="col-md-2" id="chbox">
+        	    	<div class="overhidden w3-circle w3-margin-bottom">
+	        	        <img src="/camp24/resources/img/avatar/${data.avatar}" class="img img-rounded img-fluid"/>
+        	    	</div>
+        	        <%-- <span class="w3-col w3-center mgb10 ft10">${data.id}</span> --%>
+        	        <p class="text-secondary text-center">${data.id}</p>
+        	    </div>
+        	    
+        	    <div class="col-md-10 w3-padding">
 					<div class="w3-col w3-border-bottom">
 						<div class="w3-cell w3-right" id="${data.qno}">
 			<c:if test="${SID ne data.id}">
-							<div class="w3-button w3-small w70 w3-green w3-right cmtbtn">답글</div>
+							<div class="w3-button w3-small w70 w3-green w3-right cmtbtn">답변</div>
 			</c:if>
 			<c:if test="${SID eq data.id}">
-							<div class="w3-button w3-small w70 w3-orange w3-right ebtn">수정</div>
 							<div class="w3-button w3-small w70 w3-red w3-right dbtn">삭제</div>
+							<div class="w3-button w3-small w70 w3-lime w3-right ebtn">수정</div>
 			</c:if>
 						</div>
 						<div>
-					<c:if test="${data.qtitle eq '[ 답변 ]'}">
-							<span class="w3-col w3-left mgb10 ft10"><strong>${data.qtitle}</strong></span>
-					</c:if>
-					<c:if test="${data.qtitle ne '[ 답변 ]'}">
-						<span class="w3-col w3-left mgb10 ft10"><strong>제목 : ${data.qtitle}</strong></span>
-					</c:if>
-					<c:if test="${not empty data.sedate}">
-							<span class="w3-third w3-right mgb10 ft10"><small>수정일 : ${data.sedate}</small></span>
-					</c:if>	
-							<span class="w3-third w3-right mgb10 ft10"><small>작성일 : ${data.sdate}</small></span>
+			<c:if test="${data.qtitle eq '[ 답변 ]'}">
+							<div class="w3-col w3-left mgb10 ft14"><strong>${data.qtitle}</strong></div>
+			</c:if>
+			<c:if test="${data.qtitle ne '[ 답변 ]'}">
+							<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.qtitle}</strong></div>
+			</c:if>
+			
+							<div class="w3-right mgb0 ft12">작성일 : ${data.sdate}</div>
+			<c:if test="${not empty data.sedate}">
+						<div class="w3-col">
+							<div class="w3-right mgb0 ft12">수정일 : ${data.sedate}</div>
+						</div>
+			</c:if>
 						</div>
 					</div>
 					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12">${data.qbody}</span>
+						<span class="w3-col w3-padding ft13">${data.qbody}</span>
 					</div>
 				</div>
+			
 			</div>
-		</div>
+        	    
+        	    
+	        </div>
+	    </div>
+	</div>
 </c:forEach>
-  </div>
+</div>
+    
+  <!-- End Portfolio Section -->
   
-   <!-- 페이지 처리 -->
+  
+     <!-- 페이지 처리 -->
 	<div class="w3-center">
 		<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
 	<c:if test="${PAGE.startPage eq 1}">
@@ -99,11 +145,24 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</div>
 	</div>
 	<!-- 페이지 처리 태그 끝 -->
+  
+  
+<c:if test="${(not empty SID) and (MSG_CHECK eq 'OK')}">
+	<div id="msgWin" class="w3-modal">
+		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-green"> 
+				<span class="w3-button w3-display-topright" id="msgClose">&times;</span>
+				<h2 class="w3-center">알림 메세지</h2>
+			</header>
+			<div class="w3-container">
+				<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="msg">${SID} 님이 로그인 하셨습니다.</h3>
+			</div>
+		</div>
+	</div>
+</c:if>
 
-<!-- END MAIN -->
-</div>
 
-<!-- 메세지 출력 모달창  -->
+	<!-- 메세지 출력 모달창  -->
 <c:if test="${not empty MSG}">
 	  <div id="modal" class="w3-modal" style="display:block;">
 	 	 <div class="w3-modal-content mxw650 w3-animate-opacity w3-card-4">
@@ -136,6 +195,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
    </div>
 
+
 	<!-- 데이터 전송용 form 태그 -->
 	<form method="POST" action="/camp24/qnaBoard/qnaBoardList.cmp" id="frm" name="frm">
 		<input type="hidden" id="nowPage" name="nowPage" value="${PAGE.nowPage}">
@@ -143,7 +203,26 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		<input type="hidden" id="qno" name="bno">
 		<input type="hidden" id="view" name="vw" value="/camp24/qnaBoard/qnaBoardList.cmp">
 	</form>
+  <!-- About Section -->
+  
+<!-- END PAGE CONTENT -->
 </div>
+
+<script>
+// Open and close sidebar
+function openNav() {
+  document.getElementById("mySidebar").style.width = "60%";
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
 </body>
 </html>
-<%@ include file="../footer.jsp" %>
+
+
+
+<!-- END MAIN -->

@@ -31,9 +31,9 @@ public class CampApi {
 	@RequestMapping("/campApi.cmp")
 	public ModelAndView campApi(ModelAndView mv, PageUtil page, String pageno) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		int total = 3039;
+		int total = 3103;
 		String ServiceKey = "6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8%2FqN3dGhpsRYTTGJ63LFtj%2F0kBFwzjL%2Fy5pFa6xA%3D%3D";
-        String numOfRows = "3";
+        String numOfRows = "5";
         String pageNo = pageno;
         String MobileOS = "ETC";
         String MobileApp = "appName";

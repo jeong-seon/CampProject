@@ -1,21 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Camp24 캠핑장검색</title>
+<title>Camp24 캠핑장 검색</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="icon" href="/camp24/resources/img/pic/favicon.png">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<!-- google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang&family=Hahmlet:wght@300&family=Song+Myung&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/camp24/resources/js/camp24/header.js"></script>
+<script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/search.js"></script>
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.review {
-	position: relative;
-	top: 50px;
-	right: 120px;
+body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
+.w3-row-padding img {margin-bottom: 12px}
+.bgimg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/camp24/resources/img/pic/14.png');
+  min-height: 100%;
 }
 #star{
 	position: relative;
@@ -25,15 +43,22 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	position: relative;
 	top: 15px;
 }
+#reviewBtn{
+	position: relative;
+	top: 60px;
+	right: 80px;
+}
 </style>
 </head>
-<body class="w3-light-grey">
+<body>
+<%@ include file="../include.jsp" %>
+  <!-- Portfolio Section -->
 <div class="w3-row w3-padding-64">
 	<form method="post" action="/camp24/board/searchBoardList.cmp" id="frm" name="frm"
-			class="w3-content w3-center w3-margin-bottom">
-		<label class="w3-col m3"><strong style="font-size: 18pt; font-family: Raleway;"><img id="star" style="width: 70px;"src="/camp24/resources/img/pic/star.png"> 캠핑장 검색 : </strong>&nbsp;</label>
+			class="w3-col w3-center w3-margin-bottom w3-border-bottom">
+		<label class="w3-col m3"><strong style="font-size: 18pt;"><img id="star" style="width: 70px;"src="/camp24/resources/img/pic/star.png"> 캠핑장 검색 </strong>&nbsp;</label>
 		<input type="text" class="w3-col m7 w3-input" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
-		<div class="w3-rest w3-button w3-dark-gray w3-margin-bottom" id="sbtn">검색</div>
+		<div class="w3-rest w3-button w3-green w3-margin-bottom" id="sbtn">검색</div>
 	</form>
 <c:if test="${empty LIST}">
 	<div class="w3-center w3-content w3-padding-32">
@@ -43,14 +68,13 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </c:if>
 <c:forEach var="data" items="${LIST}" varStatus="st">
 <c:if test="${data.facltNm ne '검색결과없음'}">
-	<div class="w3-row w3-center w3-padding-32 w3-card-4">
+			<span id="reviewBtn" class="w3-right w3-button w3-green review">리뷰 작성</span>
+	<div class="w3-row w3-center w3-padding-32 w3-border-bottom">
 		<div class="w3-margin w3-center">
 			<h5>주소 : ${data.addr1}</h5>
-			<h5 id="${st.count}">캠핑장명 : .${data.facltNm}.
-				<div class="w3-right w3-button w3-green review">리뷰 작성</div>
-			</h5>
+			<h5 id="${st.count}">캠핑장명 : .${data.facltNm}.</h5>
 	<c:if test="${not empty data.firstImageUrl && not empty data.homepage}">
-			<a href="${data.homepage}"><img id="image" src="${data.firstImageUrl}"></a>
+			<a href="${data.homepage}"><img style="width: 50%; height: auto;" id="image" src="${data.firstImageUrl}"></a>
 	</c:if>
 	<c:if test="${not empty data.firstImageUrl && empty data.homepage}">
 			<img id="image" src="${data.firstImageUrl}">
@@ -75,10 +99,30 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </c:forEach>
 
 </div>
-	<form method="POST" action="/camp24/reviewBoard/reviewBoardWrite.cmp" id="rfrm" name="rfrm">
-		<input type="hidden" name="nowPage" id="nowPage" value="1">
-		<input type="hidden" name="cname" id="cname" value="">
-	</form>
+<form method="POST" action="/camp24/reviewBoard/reviewBoardWrite.cmp" id="rfrm" name="rfrm">
+	<input type="hidden" name="nowPage" id="nowPage" value="1">
+	<input type="hidden" name="cname" id="cname" value="">
+</form>
+
+    <!-- Grid for photos -->
+    
+   		
+   	
+  <!-- End Portfolio Section -->
+  
+<!-- END PAGE CONTENT -->
+
+<script>
+// Open and close sidebar
+function openNav() {
+  document.getElementById("mySidebar").style.width = "60%";
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
 </body>
 </html>
-<%@ include file="../footer.jsp" %>

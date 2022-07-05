@@ -43,8 +43,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#msgWin').css('display', 'block');
-		
 		$('.dbtn').click(function(){
 			$('#modal2').css('display', 'block');
 		});
@@ -52,63 +50,12 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 </script>
 </head>
 <body>
-	<form method="POST" action="" id="hfrm" name="hfrm">
-		<input type="hidden" name="id" value="${SID}">
-		<input type="hidden" id="apinowPage" name="pageno">
-	</form>
-<!-- Sidebar with image -->
-<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
-  <div class="bgimg"></div>
-</nav>
-
-<!-- Hidden Sidebar (reveals when clicked on menu icon)-->
-<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" style="display:none;padding-top:100px;right:0;z-index:2" id="mySidebar">
-  <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright" style="padding:0 12px;">
-    <i class="fa fa-remove"></i>
-  </a>
-  <div class="w3-bar-block w3-center">
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="home" onclick="closeNav()">Home</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="freebtn" onclick="closeNav()">Community</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="qnabtn" onclick="closeNav()">QnA</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="faqbtn" onclick="closeNav()">FAQ</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="sellbtn" onclick="closeNav()">Used Trade</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="schbtn" onclick="closeNav()">Search</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="cmpbtn" onclick="closeNav()">Campsite Information</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="revbtn" onclick="closeNav()">Review</span>
-  </div>
-</nav>
-
-<!-- Page Content -->
-<div class="w3-main w3-padding-large" style="margin-left:40%">
-<c:if test="${empty SID}">
-	<div class="w3-col">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="joinbtn"><small><strong>Join</strong></small></span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loginbtn"><small><strong>Login</strong></small></span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
-	</div>
-</c:if>
-<c:if test="${not empty SID}">
-	<div class="w3-col">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mypagebtn">MyPage</span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loutbtn">Logout</span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn">Map</span>
-	</div>
-</c:if>
-	  <!-- Menu icon to open sidebar -->
-	  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;" onclick="openNav()"><i class="fa fa-bars"></i></span>
-
-  <!-- Header -->
-  <header class="w3-container w3-center" style="padding:60px 16px" id="home">
-    <h1 class="w3-jumbo" id="mainlogo"><a href="/camp24/main.cmp"><b>Camp 24</b></a></h1>
-    <!-- <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
-    <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333"> -->
-  </header>
-
+<%@ include file="../include.jsp" %>
   <!-- Portfolio Section -->
 
     <!-- Grid for photos -->
 <div class="container">
-	<h2 class="text-center">Community</h2>
+	<h2 class="text-center">자유게시판</h2>
   <div class="w3-button w3-green w3-right" id="wbtn">글 작성</div>
   <div class="w3-row w3-padding-64 pdAll20">
 <c:forEach var="data" items="${LIST}">
@@ -131,65 +78,30 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 							<div class="w3-button w3-small w70 w3-green w3-right cmtbtn">댓글</div>
 			</c:if>
 			<c:if test="${SID eq data.id}">
-							<div class="w3-button w3-small w70 w3-lime w3-right ebtn">수정</div>
 							<div class="w3-button w3-small w70 w3-red w3-right dbtn">삭제</div>
+							<div class="w3-button w3-small w70 w3-lime w3-right ebtn">수정</div>
 			</c:if>
 						</div>
 						<div>
-							<div class="w3-col w3-left mgb10 ft10"><strong>제목 : ${data.ftitle}</strong></div>
+							<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.ftitle}</strong></div>
+							<div class="w3-right mgb0 ft12">작성일 : ${data.sdate}</div>
 			<c:if test="${not empty data.sedate}">
-							<div class="w3-third w3-right mgb0 ft10"><small>수정일 : ${data.sedate}</small></div>
+						<div class="w3-col">
+							<div class="w3-right mgb0 ft12">수정일 : ${data.sedate}</div>
+						</div>
 			</c:if>
-							<div class="w3-third w3-right mgb0 ft10"><small>작성일 : ${data.sdate}</small></div>
 						</div>
 					</div>
 					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12">${data.fbody}</span>
+						<span class="w3-col w3-padding ft13">${data.fbody}</span>
 					</div>
 				</div>
 			
 			</div>
 				
-        	    <!-- <div class="col-md-10">
-        	        <p>
-        	            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-
-        	       </p>
-        	       <div class="clearfix"></div>
-        	        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        	        <p>
-        	            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
-        	            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-        	       </p>
-        	    </div> -->
         	    
         	    
 	        </div>
-	        
-	        
-	        	<!-- <div class="card card-inner">
-            	    <div class="card-body">
-            	        <div class="row">
-                    	    <div class="col-md-2">
-                    	        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                    	        <p class="text-secondary text-center">15 Minutes Ago</p>
-                    	    </div>
-                    	    <div class="col-md-10">
-                    	        <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a></p>
-                    	        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    	        <p>
-                    	            <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
-                    	            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                    	       </p>
-                    	    </div>
-            	        </div>
-            	    </div>
-	            </div> -->
-	            
 	            
 	    </div>
 	</div>
@@ -227,19 +139,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 	<!-- 페이지 처리 태그 끝 -->
   
   
-<c:if test="${(not empty SID) and (MSG_CHECK eq 'OK')}">
-	<div id="msgWin" class="w3-modal">
-		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
-			<header class="w3-container w3-green"> 
-				<span class="w3-button w3-display-topright" id="msgClose">&times;</span>
-				<h2 class="w3-center">알림 메세지</h2>
-			</header>
-			<div class="w3-container">
-				<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="msg">${SID} 님이 로그인 하셨습니다.</h3>
-			</div>
-		</div>
-	</div>
-</c:if>
 
 
 	<!-- 메세지 출력 모달창  -->
@@ -310,49 +209,6 @@ function closeNav() {
 
 
 
-<%-- 
-
-<div class="w3-main">
-<h2 class="w3-green w3-padding-16 w3-center">자유게시판</h2>
-  <div class="w3-row w3-padding-64 pdAll20">
-  <div class="w3-button w3-lime w3-right" id="wbtn">글 작성</div>
-  
-<c:forEach var="data" items="${LIST}">
-		<div class="w3-col" style="padding-left: ${data.step * 70}px">
-			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
-				<div class="w3-col mgt20 box120 pdAll10 w3-border-right" style="width: 135px;">
-					<img src="/camp24/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
-							<span class="w3-col w3-center mgb10 ft10">${data.id}</span>
-				</div>
-				<div class="w3-rest w3-padding">
-					<div class="w3-col w3-border-bottom">
-						<div class="w3-cell w3-right" id="${data.fbno}">
-			<c:if test="${SID ne data.id}">
-							<div class="w3-button w3-small w70 w3-green w3-right cmtbtn">댓글</div>
-			</c:if>
-			<c:if test="${SID eq data.id}">
-							<div class="w3-button w3-small w70 w3-orange w3-right ebtn">수정</div>
-							<div class="w3-button w3-small w70 w3-red w3-right dbtn">삭제</div>
-			</c:if>
-						</div>
-						<div>
-							<div class="w3-col w3-left mgb10 ft10"><strong>제목 : ${data.ftitle}</strong></div>
-			<c:if test="${not empty data.sedate}">
-							<div class="w3-third w3-right mgb0 ft10"><small>수정일 : ${data.sedate}</small></div>
-			</c:if>
-							<div class="w3-third w3-right mgb0 ft10"><small>작성일 : ${data.sdate}</small></div>
-						</div>
-					</div>
-					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12">${data.fbody}</span>
-					</div>
-				</div>
-			</div>
-		</div>
-</c:forEach>
-  </div>
-</div>
-   --%>
 
 
 <!-- END MAIN -->

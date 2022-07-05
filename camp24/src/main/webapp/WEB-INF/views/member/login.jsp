@@ -35,68 +35,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
   background-image: url('/camp24/resources/img/pic/14.png');
   min-height: 100%;
 }
-#rank {
-	position: relative;
-	top: -10px;
-}
 #lbtn{
 	border-color: white;
 }
 </style>
 </head>
 <body>
-	<form method="POST" action="" id="hfrm" name="hfrm">
-		<input type="hidden" name="id" value="${SID}">
-		<input type="hidden" id="apinowPage" name="pageno">
-	</form>
-<!-- Sidebar with image -->
-<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
-  <div class="bgimg"></div>
-</nav>
-
-<!-- Hidden Sidebar (reveals when clicked on menu icon)-->
-<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" style="display:none;padding-top:100px;right:0;z-index:2" id="mySidebar">
-  <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright" style="padding:0 12px;">
-    <i class="fa fa-remove"></i>
-  </a>
-  <div class="w3-bar-block w3-center">
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="home" onclick="closeNav()">Home</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="freebtn" onclick="closeNav()">Community</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="qnabtn" onclick="closeNav()">QnA</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="faqbtn" onclick="closeNav()">FAQ</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="sellbtn" onclick="closeNav()">Used Trade</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="schbtn" onclick="closeNav()">Search</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="cmpbtn" onclick="closeNav()">Campsite Information</span>
-    <span class="w3-bar-item w3-button w3-text-grey w3-hover-black" id="revbtn" onclick="closeNav()">Review</span>
-  </div>
-</nav>
-
-<!-- Page Content -->
-<div class="w3-main w3-padding-large" style="margin-left:40%">
-<c:if test="${empty SID}">
-	<div class="w3-col">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="joinbtn"><small><strong>Join</strong></small></span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loginbtn"><small><strong>Login</strong></small></span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
-	</div>
-</c:if>
-<c:if test="${not empty SID}">
-	<div class="w3-col">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mypagebtn">MyPage</span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loutbtn">Logout</span>
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn">Map</span>
-	</div>
-</c:if>
-	  <!-- Menu icon to open sidebar -->
-	  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;" onclick="openNav()"><i class="fa fa-bars"></i></span>
-
-  <!-- Header -->
-  <header class="w3-container w3-center" style="padding:60px 16px" id="home">
-    <h1 class="w3-jumbo" id="mainlogo"><a href="/camp24/main.cmp"><b>Camp 24</b></a></h1>
-    <!-- <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
-    <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333"> -->
-  </header>
-
+<%@ include file="../include.jsp" %>
   <!-- Portfolio Section -->
 <div id="LoginForm">
 	<div class="w3-container">
@@ -132,7 +77,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 </div>
 
 
-</div>
     <!-- Grid for photos -->
     
    		
@@ -155,42 +99,3 @@ function closeNav() {
 
 </body>
 </html>
-
-
-
-
-
-<%-- 
-<div class="w3-container">
-	<div class="w3-content w3-center mx650">
-	
-		<h1 class="w3-dark-gray w3-padding w3-card-4">로그인</h1>
-		<form method="POST" action="" class="w3-col w3-padding w3-card-4 w3-margin-top" id="frm" name="frm">
-			<div class="w3-col w3-margin-top">
-				<label for="id" class="w3-col s2 w3-right-align w3-text-grey">아이디: &nbsp;</label>
-				<div class="w3-col m9 pdl10">
-					<input type="text" name="id" id="id" placeholder="내용을 입력해주세요"
-							class="w3-col w3-input w3-border w3-round-medium">
-				</div>
-			</div>
-			<div class="w3-col w3-margin-top w3-margin-bottom">
-				<label for="pw" class="w3-col s2 w3-right-align w3-text-grey">비밀번호 : &nbsp;</label>
-				<div class="w3-col m9 pdl10">
-					<input type="password" name="pw" id="pw" placeholder="내용을 입력해주세요"
-							class="w3-col w3-input w3-border w3-round-medium">
-				</div>
-			</div>
-		</form>
-		<div class="w3-col w3-margin-top w3-card-4 w3-center w3-margin-bottom">
-			<div class="w3-col w3-button w3-blue-gray" id="lbtn">로그인</div>
-		</div>
-
-		<div class="w3-col w3-margin-top w3-card-4" style="margin-bottom: 100px;">
-			<div class="w3-third w3-button w3-dark-gray " id="lckbtn">아이디찾기</div>
-			<div class="w3-third m2 w3-button w3-light-gray " id="pckbtn">비밀번호찾기</div>
-			<div class="w3-third m2 w3-button w3-gray " id="jbtn">회원가입</div>
-		</div>
-		<div class="w3-col w3-padding w3-card-4 w3-hide"><span id="msg">${SID} 님은 이미 로그인했습니다!!!</span></div>
-	</div>
-</div>
- --%>

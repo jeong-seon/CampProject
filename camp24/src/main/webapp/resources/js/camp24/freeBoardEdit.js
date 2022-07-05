@@ -12,20 +12,13 @@ $(document).ready(function(){
 	
 	/* 수정 버튼 클릭 이벤트 */
 	$('#ebtn').click(function(){
-		var ftitle = $('#ftitle').val();
-		var fbody = $('#fbody').val();
+		var ftitle = $('#title').val();
+		var fbody = $('#body').val();
+		var otitle = $('#otitle').val();
+		var obody = $('#obody').val();
 		
-		var title = $('#title').val();
-		if(ftitle == title){
-			$('#title').prop('disabled', true);
-		}
 		
-		var body = $('#body').val();
-		if(fbody == body){
-			$('#body').prop('disabled', true);
-		}
-		
-		if((ftitle == title) && (fbody == body)){
+		if((ftitle == otitle) && (fbody == obody)){
 			alert('수정된 내용이 없습니다.');
 			return;
 		}

@@ -12,4 +12,5 @@ $(document).ready(function(){
 		$('#frm').attr('action', '/camp24/member/myInfoEdit.cmp');
 		$('#frm').submit();
 	});
+
 });

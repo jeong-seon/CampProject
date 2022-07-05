@@ -132,10 +132,11 @@
 .ft12 {
 	font-size: 12pt;
 }
-
+.ft13 {
+	font-size: 13pt;
+}
 .ft14 {
 	font-size: 14pt;
-	font-weight: bold;
 }
 .clrgrey {
 	color: #aaaaaa;
