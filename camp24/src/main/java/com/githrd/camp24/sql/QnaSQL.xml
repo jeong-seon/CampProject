@@ -35,15 +35,15 @@
 	<!-- 게시글 리스트 조회 질의명령 -->
 	<select id="qnaList" resultType="bVO" parameterType="page">
 	SELECT
-    rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate fdate, qedate fedate, click, step
+    rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate fdate, qedate fedate, step
 	FROM
 	    (
 	    SELECT
-	        ROWNUM rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate, qedate, click, step
+	        ROWNUM rno, qno, qupno, mno, id, qtitle, qbody, avatar, qdate, qedate, step
 	    FROM
 	        (
 	            SELECT
-	                qno, NVL(qupno, 0) qupno, mno, id, qtitle, qbody, savename avatar, qdate, qedate, click, (level - 1) step
+	                qno, NVL(qupno, 0) qupno, mno, id, qtitle, qbody, savename avatar, qdate, qedate, (level - 1) step
 	            FROM
 	                qna q, member m, avatar a
 	            WHERE

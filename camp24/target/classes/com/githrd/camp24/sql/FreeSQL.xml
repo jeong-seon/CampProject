@@ -35,15 +35,15 @@
 	<!-- 게시글 리스트 조회 질의명령 -->
 	<select id="freeList" resultType="bVO" parameterType="page">
 		SELECT
-		   rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, click, step
+		   rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, step
 		FROM
 		   (
 		   SELECT
-		       ROWNUM rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, click, step
+		       ROWNUM rno, fbno, fupno, mno, id, fbody, ftitle, avatar, fdate, fedate, step
 		   FROM
 		       (
 		           SELECT
-		               fbno, NVL(fupno, 0) fupno, mno, id, fbody, ftitle, savename avatar, fdate, fedate, click, (level - 1) step
+		               fbno, NVL(fupno, 0) fupno, mno, id, fbody, ftitle, savename avatar, fdate, fedate, (level - 1) step
 		           FROM
 		               freeboard f, member m, avatar a
 		           WHERE
