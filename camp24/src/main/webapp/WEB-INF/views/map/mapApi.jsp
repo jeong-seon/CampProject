@@ -44,7 +44,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 <%@ include file="../include.jsp" %>
   <!-- Portfolio Section -->
 <div class="w3-col">
-	<h2 class="w3-center w3-margin-bottom">Map</h2>
 	<div class="w3-col m4">
 		<div>
 			<form method="post" action="" id="frm" name="frm"

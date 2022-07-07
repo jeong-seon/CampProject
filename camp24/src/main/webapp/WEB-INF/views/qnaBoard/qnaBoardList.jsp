@@ -6,6 +6,12 @@
 <title>Camp24 Q & A</title>
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
+
+<!-- top button -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,6 +36,15 @@
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/qnaBoard.js"></script>
+<style type="text/css">
+    .back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display:none;
+}
+</style>
 <style>
 body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 .w3-row-padding img {margin-bottom: 12px}
@@ -123,7 +138,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 	<div class="w3-center">
 		<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
 	<c:if test="${PAGE.startPage eq 1}">
-			<div class="w3-bar-item w3-light-grey">&laquo;</div>
+			<div class="w3-bar-item w3-white">&laquo;</div>
 	</c:if>
 	<c:if test="${PAGE.startPage ne 1}">
 			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
@@ -137,7 +152,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 		</c:if>
 	</c:forEach>
 		<c:if test="${PAGE.endPage eq PAGE.totalPage}">
-			<div class="w3-bar-item w3-light-grey">&raquo;</div>
+			<div class="w3-bar-item w3-white">&raquo;</div>
 		</c:if>
 		<c:if test="${PAGE.endPage ne PAGE.totalPage}">
 			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
@@ -204,7 +219,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 		<input type="hidden" id="view" name="vw" value="/camp24/qnaBoard/qnaBoardList.cmp">
 	</form>
   <!-- About Section -->
-  
+  <!-- Page top button -->
+  <a style="width: 50px; height: 40px;" id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top w3-green" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 <!-- END PAGE CONTENT -->
 </div>
 
@@ -218,6 +234,29 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
+</script>
+<!-- top button -->
+<script type="text/javascript">
+	$(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
+
+	});	
 </script>
 
 </body>

@@ -46,7 +46,13 @@
 #mainlogo{
 	text-color: black!important;
 	text-decoration: underline;
+	text-decoration-color: black!important;
 }
 a:hover{
 	color: black;
+	text-decoration-color: black!important;
+}
+a{
+	color: black;
+	text-decoration-color: black!important;
 }

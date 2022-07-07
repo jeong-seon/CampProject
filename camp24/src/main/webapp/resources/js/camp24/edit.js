@@ -36,8 +36,8 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#msgClose').click(function(){
-		$('#msgWin').css('display', 'none');
+	$('#editClose').click(function(){
+		$('#editWin').css('display', 'none');
 	});
 	
 	// 수정버튼 클릭이벤트
@@ -140,7 +140,7 @@ $(document).ready(function(){
 		
 		if(!(nameBool || pwBool || mailBool || telBool || anoBool)){
 			// 수정 데이터가 없는 경우이므로 뷰로 돌려보낸다.
-			$('#msgWin').css('display', 'block');
+			$('#editWin').css('display', 'block');
 			$('input').prop('disabled', false);
 			return;
 		}

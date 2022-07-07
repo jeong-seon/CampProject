@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- top button -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,15 +21,24 @@
 <!-- google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang&family=Hahmlet:wght@300&family=Song+Myung&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
+<style type="text/css">
+    .back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display:none;
+}
+</style>
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
+body, h1,h2,h3,h4,h5,h6 {font-family: 'Gowun Dodum', serif;}
 .w3-row-padding img {margin-bottom: 12px}
 .bgimg {
   background-position: center;
@@ -255,8 +271,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
   End footer
   </footer>
   
+  <!-- Page top button -->
+  <a style="width: 50px; height: 40px;" id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top w3-green" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 <!-- END PAGE CONTENT -->
-</div>
 
 <script>
 // Open and close sidebar
@@ -268,6 +285,29 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
+</script>
+<!-- top button -->
+<script type="text/javascript">
+	$(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
+
+	});	
 </script>
 
 </body>

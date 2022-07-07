@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Camp24 Login</title>
+<title>Camp24 Join</title>
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -68,6 +68,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 		top: 2px;
 		left: 7px;
 	}
+img{
+	border-radius: 70%;
+	overflow: hidden;
+}
 </style>
 </head>
 <body>
@@ -156,7 +160,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
 	<c:if test="${data.gen eq 'F'}">
 					 	<div class="avtbox">
 					 		<label for="favt${data.ano}">
-					 			<img src="/camp24/resources/img/avatar/${data.savename}" class="w3-col avtimg">
+					 			<img src="/camp24/resources/img/avatar/${data.savename}" class="w3-col avtimg img-circle">
 					 		</label>
 					 		<input type="radio" name="ano" id="favt${data.ano}" value="${data.ano}">
 					 	</div>

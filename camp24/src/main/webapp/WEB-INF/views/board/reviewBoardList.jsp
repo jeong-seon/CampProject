@@ -88,7 +88,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	<div class="w3-center">
 		<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
 	<c:if test="${PAGE.startPage eq 1}">
-			<div class="w3-bar-item w3-light-grey">&laquo;</div>
+			<div class="w3-bar-item w3-white">&laquo;</div>
 	</c:if>
 	<c:if test="${PAGE.startPage ne 1}">
 			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
@@ -102,7 +102,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 		</c:if>
 	</c:forEach>
 		<c:if test="${PAGE.endPage eq PAGE.totalPage}">
-			<div class="w3-bar-item w3-light-grey">&raquo;</div>
+			<div class="w3-bar-item w3-white">&raquo;</div>
 		</c:if>
 		<c:if test="${PAGE.endPage ne PAGE.totalPage}">
 			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${PAGE.endPage + 1}">&raquo;</div>

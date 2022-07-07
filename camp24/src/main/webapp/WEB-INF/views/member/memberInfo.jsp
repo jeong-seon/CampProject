@@ -74,6 +74,13 @@ a:hover{
 	color: black;
 }
 </style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#dbtn').click(function(){
+			$('#modal').css('display', 'block');
+		});
+	});
+</script>
 </head>
 <body>
 <%@ include file="../include.jsp" %>
@@ -147,7 +154,22 @@ a:hover{
 	 </form>
     
     <!-- Grid for photos -->
-    
+    <div id="modal" class="w3-modal">
+		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-red"> 
+				<span onclick="document.getElementById('modal').style.display='none'" 
+						class="w3-button w3-display-topright">&times;</span>
+				<h2 class="w3-center">회원 탈퇴</h2>
+			</header>
+			<div class="w3-container">
+				<h3 class="w3-center w3-padding w3-margin" id="modalmsg">정말로 회원 탈퇴를 하시겠습니까?</h3>
+			</div>
+	    	<footer class="w3-container w3-red">
+				<div class="w3-col m2 w3-right w3-button" id="nbtn">아니오</div>
+				<div class="w3-col m2 w3-right w3-button" id="ybtn">예</div>
+			</footer>
+		</div>
+	</div>
    		
    	
   <!-- End Portfolio Section -->
