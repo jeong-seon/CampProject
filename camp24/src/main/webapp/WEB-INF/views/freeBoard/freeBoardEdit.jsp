@@ -21,7 +21,7 @@
 <!-- google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang&family=Hahmlet:wght@300&family=Song+Myung&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
@@ -30,7 +30,7 @@
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/freeBoardEdit.js"></script>
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: 'Song Myung', serif;}
+body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 .w3-row-padding img {margin-bottom: 12px}
 .bgimg {
   background-position: center;
