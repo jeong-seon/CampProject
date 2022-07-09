@@ -18,15 +18,28 @@ $(document).ready(function(){
 		$('#pageFrm').submit();
 	});
 	
-	//삭제
-	$('.debtn').click(function(){
+	/* 게시글 수정 버튼 클릭 이벤트 처리 */
+	$('.ebtn').click(function(){
 		var sno = $(this).parent().attr('id');
-		alert('#### sno : ' + sno);
-		$('#Frm').attr('action', '/camp24/reviewBoard/reviewBoardDelete.cmp');
 		$('#rno').val(sno);
-		alert('#### rno : ' + $('#rno').val());
-		$('#Frm').submit();
 		
+		$('#frm').attr('action', '/camp24/reviewBoard/reviewBoardEdit.cmp');
+		$('#frm').submit();
+	});
+	
+	//삭제
+	$('.dbtn').click(function(){
+		var sno = $(this).parent().attr('id');
+		
+		$('#ybtn').click(function(){
+			$('#rno').val(sno);
+			$('#frm').attr('action', '/camp24/reviewBoard/reviewBoardDelete.cmp');
+			$('#frm').submit();
+		
+		});
+		$('#nbtn').click(function(){
+			$('#modal2').css('display', 'none');
+		});
 	});
 	
 	

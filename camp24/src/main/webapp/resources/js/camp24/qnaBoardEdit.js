@@ -18,10 +18,14 @@ $(document).ready(function(){
 		
 		
 		if((stitle == otitle) && (sbody == obody)){
-			alert('수정된 내용이 없습니다.');
+			$('#editWin').css('display', 'block');
 			return;
 		}
 		$('#frm').submit();
 		
+	});
+	
+	$('#editClose').click(function(){
+		$('#editWin').css('display', 'none');
 	});
 });

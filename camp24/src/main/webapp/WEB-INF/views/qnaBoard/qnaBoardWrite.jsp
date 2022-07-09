@@ -60,7 +60,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 
 <div class="w3-container w3-center">
     <div class="form-area">  
-        <form method="POST" action="/camp24/freeBoard/fwriteProc.cmp" id="frm" name="frm">
+        <form method="POST" action="/camp24/qnaBoard/qwriteProc.cmp" id="frm" name="frm">
         <br style="clear:both">
                     <h2 style="margin-bottom: 25px; text-align: center;">Q & A 질문 작성</h2>
 						<img src="/camp24/img/avatar/${DATA.avatar}" class="w3-center w3-circle">

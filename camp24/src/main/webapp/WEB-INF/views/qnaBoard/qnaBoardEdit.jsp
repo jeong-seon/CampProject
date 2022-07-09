@@ -46,13 +46,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	border: 1px solid GREY;
 }
 </style>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.dbtn').click(function(){
-			$('#modal2').css('display', 'block');
-		});
-	});
-</script>
 </head>
 <body>
 <%@ include file="../include.jsp" %>
@@ -107,7 +100,18 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
     
   <!-- End Portfolio Section -->
   
-  
+        <div id="editWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-red"> 
+		        <span class="w3-button w3-display-topright" 
+		        							id="editClose">&times;</span>
+		        <h2 class="w3-center">알림</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="editmsg">수정된 내용이 없습니다.</h3>
+	    	</div>
+	    </div>
+ 	</div>
 
 
   <!-- About Section -->

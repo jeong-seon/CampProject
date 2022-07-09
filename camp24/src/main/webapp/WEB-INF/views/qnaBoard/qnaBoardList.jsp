@@ -7,15 +7,16 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
 <!-- top button -->
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 <!--To Work with icons-->
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -33,16 +34,37 @@
 <link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/qna.css">
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/qnaBoard.js"></script>
+<script type="text/javascript">
+    window.alert = function(){};
+    var defaultCSS = document.getElementById('bootstrap-css');
+    function changeCSS(css){
+        if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
+        else $('head > link').filter(':first').replaceWith(defaultCSS); 
+    }
+    $( document ).ready(function() {
+      var iframe_height = parseInt($('html').height()); 
+      window.parent.postMessage( iframe_height, 'https://bootsnipp.com');
+    });
+</script>
 <style type="text/css">
-    .back-to-top {
+.back-to-top {
     cursor: pointer;
     position: fixed;
     bottom: 40px;
     right: 40px;
     display:none;
+}
+figure{
+	width: 100%;
+	position: relative;
+	right: 38px;
+}
+.img-responsive{
+	border-radius: 70%;
 }
 </style>
 <style>
@@ -73,26 +95,44 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   <!-- Portfolio Section -->
 
     <!-- Grid for photos -->
+
 <div class="container">
-	<h2 class="text-center">Q & A</h2>
-  <div class="w3-button w3-green w3-right" id="wbtn">질문 작성</div>
-  <div class="w3-row w3-padding-64 pdAll20">
-<c:forEach var="data" items="${LIST}">
-<div class="w3-col w3-margin-top" style="padding-left: ${data.step * 70}px">
-	<div class="card">
-	    <div class="card-body">
-	        <div class="row">
-        	    <div class="col-md-2" id="chbox">
-        	    	<div class="overhidden w3-circle w3-margin-bottom">
-	        	        <img src="/camp24/resources/img/avatar/${data.avatar}" class="img img-rounded img-fluid"/>
-        	    	</div>
-        	        <%-- <span class="w3-col w3-center mgb10 ft10">${data.id}</span> --%>
-        	        <p class="text-secondary text-center">${data.id}</p>
-        	    </div>
-        	    
-        	    <div class="col-md-10 w3-padding">
-					<div class="w3-col w3-border-bottom">
-						<div class="w3-cell w3-right" id="${data.qno}">
+  <div class="row">
+    <div class="col-md-8">
+	<div class="w3-button w3-green w3-right" id="wbtn">질문 작성</div>
+      <h2 class="page-header">Q & A</h2>
+        <section class="comment-list">
+          <!-- First Comment -->
+      <c:forEach var="data" items="${LIST}">
+      <c:if test="${data.qupno eq 0}">
+          <article class="row">
+            <div class="col-md-2 col-sm-2 hidden-xs">
+              <figure class="thumbnail">
+                <img class="img-responsive" src="/camp24/resources/img/avatar/${data.avatar}" />
+                <figcaption class="text-center">${data.id}</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-10 col-sm-10">
+              <div class="panel panel-default arrow left">
+                <div class="panel-body">
+                  <c:if test="${data.qtitle eq '[ 답변 ]'}">
+							<div class="w3-col w3-left mgb10 ft14"><strong>${data.qtitle}</strong></div>
+				</c:if>
+				<c:if test="${data.qtitle ne '[ 답변 ]'}">
+								<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.qtitle}</strong></div>
+				</c:if>
+                  <header class="text-left">
+                    <time style="text-align: right;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</time>
+                <c:if test="${not empty data.sedate}">
+                    <time style="text-align: right;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</time>
+                </c:if>
+                  </header>
+                  <div class="comment-post">
+                    <p style="color: black;">
+                    	${data.qbody}
+                    </p>
+                  </div>
+                  <div class="w3-cell w3-right" id="${data.qno}">
 			<c:if test="${SID ne data.id}">
 							<div class="w3-button w3-small w70 w3-green w3-right cmtbtn">답변</div>
 			</c:if>
@@ -100,41 +140,55 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 							<div class="w3-button w3-small w70 w3-red w3-right dbtn">삭제</div>
 							<div class="w3-button w3-small w70 w3-lime w3-right ebtn">수정</div>
 			</c:if>
-						</div>
-						<div>
-			<c:if test="${data.qtitle eq '[ 답변 ]'}">
-							<div class="w3-col w3-left mgb10 ft14"><strong>${data.qtitle}</strong></div>
+				  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          </c:if>
+          
+          <c:if test="${data.qupno ne 0}">
+          		<article class="row" style="position: relative; right: -50px;">
+	            <div class="col-md-9 col-sm-9 col-md-offset-1 col-md-pull-1 col-sm-offset-0">
+	              <div class="panel panel-default arrow right">
+	                <div class="panel-heading">답변</div>
+	                <br>
+	                <div class="panel-body">
+	                  <header class="text-right">
+                        <time style="text-align: left;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</time>
+	                <c:if test="${not empty data.sedate}">
+	                    <time style="text-align: left;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</time>
+	                </c:if>
+	                  </header>
+	                  <div class="comment-post">
+	                    <p style="text-align: right; color: black;">
+	                    	${data.qbody}
+	                    </p>
+	                  </div>
+	                  <div class="w3-cell w3-right" id="${data.qno}">
+			<c:if test="${SID ne data.id}">
+							<div class="w3-button w3-small w70 w3-green w3-right cmtbtn">답변</div>
 			</c:if>
-			<c:if test="${data.qtitle ne '[ 답변 ]'}">
-							<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.qtitle}</strong></div>
+			<c:if test="${SID eq data.id}">
+							<div class="w3-button w3-small w70 w3-red w3-right dbtn">삭제</div>
+							<div class="w3-button w3-small w70 w3-lime w3-right ebtn">수정</div>
 			</c:if>
-			
-							<div class="w3-right mgb0 ft12">작성일 : ${data.sdate}</div>
-			<c:if test="${not empty data.sedate}">
-						<div class="w3-col">
-							<div class="w3-right mgb0 ft12">수정일 : ${data.sedate}</div>
-						</div>
-			</c:if>
-						</div>
-					</div>
-					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft13">${data.qbody}</span>
-					</div>
-				</div>
-			
-			</div>
-        	    
-        	    
-	        </div>
-	    </div>
-	</div>
-</c:forEach>
-</div>
-    
-  <!-- End Portfolio Section -->
-  
-  
-     <!-- 페이지 처리 -->
+			  		  </div>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="col-md-2 col-sm-2 col-md-pull-1 hidden-xs">
+	              <figure class="thumbnail">
+	                <img class="img-responsive" src="/camp24/resources/img/avatar/${data.avatar}" />
+	                <figcaption class="text-center">${data.id}</figcaption>
+	              </figure>
+	            </div>
+	          </article>
+          </c:if>
+      </c:forEach>
+        </section>
+        
+        <!-- 페이지 처리 -->
 	<div class="w3-center">
 		<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
 	<c:if test="${PAGE.startPage eq 1}">
@@ -160,23 +214,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		</div>
 	</div>
 	<!-- 페이지 처리 태그 끝 -->
-  
-  
-<c:if test="${(not empty SID) and (MSG_CHECK eq 'OK')}">
-	<div id="msgWin" class="w3-modal">
-		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
-			<header class="w3-container w3-green"> 
-				<span class="w3-button w3-display-topright" id="msgClose">&times;</span>
-				<h2 class="w3-center">알림 메세지</h2>
-			</header>
-			<div class="w3-container">
-				<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="msg">${SID} 님이 로그인 하셨습니다.</h3>
-			</div>
-		</div>
-	</div>
-</c:if>
-
-
+	
 	<!-- 메세지 출력 모달창  -->
 <c:if test="${not empty MSG}">
 	  <div id="modal" class="w3-modal" style="display:block;">
@@ -222,7 +260,12 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   <!-- Page top button -->
   <a style="width: 50px; height: 40px;" id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top w3-green" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 <!-- END PAGE CONTENT -->
+	
+	
+    </div>
+  </div>
 </div>
+
 
 <script>
 // Open and close sidebar
@@ -261,7 +304,5 @@ function closeNav() {
 
 </body>
 </html>
-
-
 
 <!-- END MAIN -->

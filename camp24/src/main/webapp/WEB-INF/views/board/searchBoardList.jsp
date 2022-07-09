@@ -57,7 +57,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	<form method="post" action="/camp24/board/searchBoardList.cmp" id="frm" name="frm"
 			class="w3-col w3-center w3-margin-bottom w3-border-bottom">
 		<label class="w3-col m3"><strong style="font-size: 18pt;"><img id="star" style="width: 70px;"src="/camp24/resources/img/pic/star.png"> 캠핑장 검색 </strong>&nbsp;</label>
-		<input type="text" class="w3-col m7 w3-input" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
+		<input type="text" class="w3-col m7 w3-input w3-border" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
 		<div class="w3-rest w3-button w3-green w3-margin-bottom" id="sbtn">검색</div>
 	</form>
 <c:if test="${empty LIST}">

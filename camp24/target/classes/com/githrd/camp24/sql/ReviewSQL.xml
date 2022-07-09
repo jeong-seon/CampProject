@@ -30,15 +30,15 @@
 	<!-- 게시글 리스트 조회 질의명령 -->
 	<select id="getList" resultType="bVO" parameterType="page">
 		SELECT
-			rowno, rno, id, cname, body, title, rdate, redate, click, score, avatar
+			rowno, rno, id, cname, body, title, fdate, fedate, click, score, avatar
 		FROM
 			(
 			 SELECT
-			     ROWNUM rowno, rno, id, cname, body, title, rdate, redate, click, score, avatar
+			     ROWNUM rowno, rno, id, cname, body, title, fdate, fedate, click, score, avatar
 			 FROM
 			     (
 			         SELECT
-			             rno, id, cname, rbody body, rtitle title, rdate, redate, click, score, savename avatar
+			             rno, id, cname, rbody body, rtitle title, rdate fdate, redate fedate, click, score, savename avatar
 			         FROM
 			             member m, review r, avatar a
 			         WHERE
@@ -55,7 +55,7 @@
 	<!-- 글번호로 리뷰 상세보기 질의명령 -->
 	<select id="reviewDetail" resultType="bVO" parameterType="int">
 		SELECT
-		    rno, id, a.savename, cname, rtitle, rbody, rdate, redate, click, score
+		    rno, id, a.savename, cname, rtitle, rbody, rdate fdate, redate fedate, click, score
 		FROM
 		    review r, member m, avatar a
 		WHERE

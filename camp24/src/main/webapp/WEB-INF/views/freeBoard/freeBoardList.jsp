@@ -83,7 +83,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	        	        <img src="/camp24/resources/img/avatar/${data.avatar}" class="img img-rounded img-fluid"/>
         	    	</div>
         	        <%-- <span class="w3-col w3-center mgb10 ft10">${data.id}</span> --%>
-        	        <p class="text-secondary text-center">${data.id}</p>
+        	        <p class="text-secondary text-center"><strong>${data.id}</strong></p>
         	    </div>
         	    
         	    <div class="col-md-10 w3-padding">
@@ -99,10 +99,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 						</div>
 						<div>
 							<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.ftitle}</strong></div>
-							<div class="w3-right mgb0 ft12">작성일 : ${data.sdate}</div>
+							<div class="w3-right mgb0 ft12"><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</div>
 			<c:if test="${not empty data.sedate}">
 						<div class="w3-col">
-							<div class="w3-right mgb0 ft12">수정일 : ${data.sedate}</div>
+							<div class="w3-right mgb0 ft12"><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</div>
 						</div>
 			</c:if>
 						</div>
