@@ -1,18 +1,23 @@
 package com.githrd.camp24.controller.review;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.githrd.camp24.dao.ReviewDao;
 import com.githrd.camp24.service.ReviewBoardService;
 import com.githrd.camp24.util.PageUtil;
 import com.githrd.camp24.vo.BoardVO;
+import com.githrd.camp24.vo.FileVO;
 
 /**
  * 이 클래스는 리뷰게시판 관련 요청을 처리할 클래스
@@ -51,8 +56,54 @@ public class ReviewBoard {
 	}
 	
 	@RequestMapping("/reviewBoardWrite.cmp")
-	public ModelAndView reviewBoardWrite(ModelAndView mv) {
+	public ModelAndView reviewBoardWrite(ModelAndView mv, HttpSession session) {
+		List<BoardVO> image = rDao.imgList();
+		
+		String id = (String) session.getAttribute("SID");
+		BoardVO bVO = rDao.getWriterInfo(id);
+		mv.addObject("IMAGE", image);
+		mv.addObject("DATA", bVO);
 		mv.setViewName("board/reviewBoardWrite");
+		return mv;
+	}
+	
+	@RequestMapping(path="/reviewBoardEdit.cmp", method=RequestMethod.POST, params= {"nowPage", "rno"})
+	public ModelAndView reviewBoardEdit(ModelAndView mv, BoardVO bVO, FileVO fVO, HttpSession session) {
+		bVO = rDao.getDetail(bVO.getRno());
+		List<FileVO> image = rDao.imagenoList(bVO.getRno());
+		mv.addObject("IMAGE", image);
+		mv.addObject("DATA", bVO);
+		mv.setViewName("board/reviewBoardEdit");
+		return mv;
+	}
+	
+	// 첨부파일 삭제 요청 처리함수
+	@RequestMapping(path="/fileDel.json", method=RequestMethod.POST, params="ino")
+	@ResponseBody
+	public HashMap<String, String> fileDel(FileVO fVO){
+		HashMap<String, String> map = new HashMap<String, String>();
+		String result = "OK";
+		int cnt = rDao.delFile(fVO.getIno());
+		if(cnt != 1) {
+			result = "NO";
+		}
+		map.put("result", result);
+		return map;
+	}
+	
+	// 게시글 수정 요청 처리함수
+	@RequestMapping("/reviewBoardEditProc.cmp")
+	public ModelAndView boardEditProc(ModelAndView mv, BoardVO bVO, String nowPage) {
+		String view = "/camp24/reviewBoard/reviewBoardDetail.cmp";
+		try {
+			rSrvc.editBoard(bVO);
+		} catch(Exception e) {
+			e.printStackTrace();
+			view = "/camp24/reviewBoard/reviewBoardEdit.cmp";
+		}
+		mv.addObject("VIEW", view);
+		mv.addObject("NOWPAGE", nowPage);
+		mv.setViewName("board/redirect");
 		return mv;
 	}
 	
@@ -77,8 +128,69 @@ public class ReviewBoard {
 	
 	@RequestMapping("/reviewBoardDetail.cmp")
 	public ModelAndView reviewBoardDetail(ModelAndView mv, BoardVO bVO) {
-//		List<FileVO> list = rDao.imgList();
+		List<BoardVO> image = rDao.imgList();
+		
+		int cnt = rSrvc.click(bVO.getRno());
+		
+		if(cnt == 1) {
+			bVO = rDao.getDetail(bVO.getRno());
+		}
+		mv.addObject("DATA", bVO);
+		mv.addObject("IMAGE", image);
 		mv.setViewName("board/reviewBoardDetail");
 		return mv;
+	}
+	
+	// 게시글 삭제 요청 처리함수
+	@RequestMapping("/reviewBoardDelete.cmp")
+	public ModelAndView delBoard(ModelAndView mv, BoardVO bVO, String nowPage) {
+		int cnt = rDao.delBoard(bVO.getRno());
+		String view = "/camp24/reviewBoard/reviewBoardList.cmp";
+		if(cnt != 1) {
+			view = "/camp24/reviewBoard/reviewBoardList.cmp";				
+		}
+		mv.addObject("VIEW", view);
+		mv.addObject("NOWPAGE", nowPage);
+		mv.setViewName("board/redirect");
+		return mv;
+	}
+	
+//	// 좋아요 추천
+//	@RequestMapping("/likeCnt.json")
+//	@ResponseBody
+//	public Map<String, String> likeCnt(BoardVO bVO){
+//		HashMap<String, String> map = new HashMap<String, String>();
+//		String result = "NO";
+//		
+//		int cnt = rSrvc.likecount(bVO);
+//		int incnt = rSrvc.likeinsert(bVO);
+//		
+//		if(cnt == 0) {
+//			result = "OK";
+//		}
+//		if(incnt == 1) {
+//			rDao.likeUp(bVO);
+//		}
+//		map.put("result", result);
+//		return map;
+//	}
+	
+	@Transactional
+	@RequestMapping("/likeCnt.json")
+	@ResponseBody
+	public int updateLike(int rno, String id){
+	
+		int likeCheck = rSrvc.likeCheck(rno, id);
+		if(likeCheck == 0) {
+			//좋아요 처음누름
+			rSrvc.insertLike(rno, id); //like테이블 삽입
+			rSrvc.updateLike(rno);	//게시판테이블 +1
+			rSrvc.updateLikeCheck(rno, id);//like테이블 구분자 1
+		}else if(likeCheck == 1) {
+			rSrvc.updateLikeCheckCancel(rno, id); //like테이블 구분자0
+            rSrvc.updateLikeCancel(rno); //게시판테이블 - 1
+			rSrvc.deleteLike(rno, id); //like테이블 삭제
+		}
+		return likeCheck;
 	}
 }

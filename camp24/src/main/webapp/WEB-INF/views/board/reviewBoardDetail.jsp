@@ -1,163 +1,294 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Camp24 방문후기 상세보기</title>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" type="text/css" href="/camp24/resources/css/w3.css">
-<link rel="stylesheet" type="text/css" href="/camp24/resources/css/user.css">
+<link rel="icon" href="/camp24/resources/img/pic/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!-- top button -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/detail.css">
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/reboard.js"></script>
-<script type="text/javascript" src="/camp24/resources/js/camp24/header.js"></script>
+<style type="text/css">
+    .back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display:none;
+}
+</style>
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body, h1,h2,h3,h4,h5,h6,section {font-family: 'IBM Plex Sans KR', serif;}
+.w3-row-padding img {margin-bottom: 12px}
+.bgimg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/camp24/resources/img/pic/14.png');
+  min-height: 100%;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#dbtn').click(function(){
-			$('#modal').css('display', 'block');
+		$('.dbtn').click(function(){
+			$('#modal2').css('display', 'block');
 		});
 	});
 </script>
 </head>
-<body class="w3-light-grey">
-<div class="w3-container">
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main">
-<h2 class="w3-green w3-padding-16 w3-center">방문후기 상세보기</h2>
-  <div class="w3-row w3-padding-64">
+<body>
+<%@ include file="../include.jsp" %>
+  <!-- Portfolio Section -->
+<form method="POST" action="/camp24/reviewboard/reviewBoardList.cmp" id="frm" name="frm">
+	<input type="hidden" name="rno" id="rno" value="${DATA.rno}">
+	<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
+</form>
+<h2 class="w3-padding-16 w3-center">방문후기 상세보기</h2>
+    <!-- /container -->
+
+
+
+	
+	    <!-- ==============================================
+	    Hero
+	    =============================================== -->
+        <section class="hero">
+         <div class="">
+          <div class="row">	
+		  
+		   <div class="col-md-6 col-md-offset-3">
+			
+			<div class="cardbox shadow-lg bg-white">
+			 
+			 <div class="cardbox-heading">
+			 <div class="media m-0 w3-border-bottom">
+				   <div class="d-flex mr-3">
+					<img class="img-fluid rounded-circle" src="/camp24/resources/img/avatar/${DATA.avatar}" alt="User">
+				   </div>
+				   <div class="media-body">
+				    <p class="m-0"><strong>${DATA.id}</strong></p>
+				    <div class="w3-col">
+					<small><strong><i class="fa fa-clock-o"></i> 작성일 : ${DATA.sdate}</strong></small>
+				    </div>
+				<c:if test="${not empty DATA.sedate}">
+				    <div class="w3-col">
+					<small><strong><i class="fa fa-clock-o"></i> 수정일 : ${DATA.sedate}</strong></small>
+				    </div>
+				</c:if>
+				   </div>
+				  </div><!--/ media -->
+			 
+			  <div class="float-right w3-margin-right w3-padding-16 block">
+			 		<c:if test="${DATA.score eq 1}">
+							<!-- 별점 1점 -->
+							<div class="review-block-rate">
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+							</div>
+						</c:if>
+						<c:if test="${DATA.score eq 2}">
+							<!-- 별점 2점 -->
+							<div class="review-block-rate">
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+							</div>
+						</c:if>
+						<c:if test="${DATA.score eq 3}">
+							<!-- 별점 3점 -->
+							<div class="review-block-rate">
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+							</div>
+						</c:if>
+						<c:if test="${DATA.score eq 4}">
+							<!-- 별점 4점 -->
+							<div class="review-block-rate">
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+							</div>
+						</c:if>
+						<c:if test="${DATA.score eq 5}">
+							<!-- 별점 5점 -->
+							<div class="review-block-rate">
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+								  <span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>
+							</div>
+						</c:if>
+			 
+			  	<span class="w3-right w3-margin-top"><small><strong>조회수 : ${DATA.click}</strong></small></span>
+			  </div>
+			  <div class="w3-margin-left w3-margin-top">
+			  	<span><strong>제목 : ${DATA.rtitle}</strong></span>
+			  </div>
+			  <div class="w3-margin-left w3-margin-top">
+			  	<span><strong>캠핑장명 : ${DATA.cname}</strong></span>
+			  </div>
+			  
+			  
+			  
+			 </div><!--/ cardbox-heading -->
+			  
+			 <div class="cardbox-item">
+		<c:forEach var="image" items="${IMAGE}">
+			<c:if test="${DATA.rno eq image.imageno}">
+			  <div class="w3-margin-bottom">
+				  <img class="img-fluid" src="${image.idir}${image.isavename}" alt="Image">
+			  	<!-- <a href="" class="img-modal-btn left"><i class="glyphicon glyphicon-chevron-left"></i></a>
+           		<a href="" class="img-modal-btn right"><i class="glyphicon glyphicon-chevron-right"></i></a> -->
+			  </div>
+		 	</c:if>
+		</c:forEach>
+			 </div><!--/ cardbox-item -->
+			 <div class="cardbox-base">
+			 
+			 	
+			  
+			  
+			  
+			 	
+			  
+			  
+			 </div><!--/ cardbox-base -->
+			 
+			 
+			 
+			 <div class="cardbox-base">
+			 	<div class="w3-center w3-padding-32">
+				 	<span>${DATA.rbody}</span>
+			 	</div>
+			 </div><!--/ cardbox-like -->			  
+					
+			</div><!--/ cardbox -->
+
+           </div><!--/ col-lg-6 -->	
+			
+          </div><!--/ row -->
+         </div><!--/ container -->
+         
+        </section>
+
+
+
+
+
+	
+	
+    <!-- Grid for photos -->
   
-  	<form method="POST" action="/camp24/reviewboard/reviewBoardWriteProc.cmp" id="Frm" name="Frm">
-			<input type="hidden" name="title" id="title" value="${data.title}">
-			<input type="hidden" name="body" id="body" value="${data.body}">
-			<input type="hidden" name="id" id="id" value="${data.id}">
-			<input type="hidden" name="rno" id="rno" value="${data.rno}">
-			
-	</form>
+  <!-- Page top button -->
+  <a style="width: 50px; height: 40px;" id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top w3-green" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+<!-- END PAGE CONTENT -->
 
-<c:forEach var="data" items="${LIST}">
-		<div class="w3-col">
-			<div class="w3-col w3-round-large w3-card-4 w3-margin-bottom w3-padding">
-				<div class="w3-col box120 pdAll10 w3-border-right" style="width: 135px;">
-					<img src="/camp24/resources/img/avatar/${data.avatar}" class="inblock avtBox100 w3-border w3-border-grey">
-					<div class="w3-center">
-						<small><strong>${data.id}</strong></small>
-					</div>
-				</div>
-				<div class="w3-rest w3-padding">
-					<div class="w3-col w3-border-bottom">
-						<div class="w3-cell w3-right" id="${data.rno}">
-			<%-- <c:if test="${SID eq data.id}">
-				<div class="w3-button w3-grey w3-hover-red w3-right debtn" 
-				style="position:relative; top:30px;">리뷰삭제</div>
-			</c:if> --%>
-						</div>
-						<div>
-							<span class="w3-half w3-left mgb10 ft10"><strong>제목 : ${data.title}</strong></span>
-							<span class="w3-half w3-left mgb10 ft10"><strong>캠핑장 : ${data.cname}</strong></span>
-							<span class="w3-third w3-left mgb10 ft10"><small>작성일 : ${data.sdate}</small></span>
-					<c:if test="${data.score eq 1}">
-							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★</small></span>
-					</c:if>
-					<c:if test="${data.score eq 2}">
-							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★</small></span>
-					</c:if>
-					<c:if test="${data.score eq 3}">
-							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★ ★</small></span>
-					</c:if>
-					<c:if test="${data.score eq 4}">
-							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★ ★ ★</small></span>
-					</c:if>
-					<c:if test="${data.score eq 5}">
-							<span class="w3-third w3-left mgb10 ft10"><small>별점 : ★ ★ ★ ★ ★</small></span>
-					</c:if>
-							<span class="w3-third w3-left mgb10 ft10"><small>조회수 : ${data.click}</small></span>
-						</div>
-					</div>
-					<div class="w3-col w3-margin-top">
-						<span class="w3-col w3-padding ft12">${data.body}</span>
-					</div>
-<c:forEach var="image" items="${IMAGE}">
-			<c:if test="${data.rno eq image.imageno}">
-					<div class="w3-col w3-margin-top">
-						<img style="width: 200px; height: auto;" src="${image.idir}/${image.isavename}">
-					</div>
-			</c:if>
-</c:forEach>
-				</div>
-			</div>
-		</div>
-</c:forEach>
+<script>
+// Open and close sidebar
+function openNav() {
+  document.getElementById("mySidebar").style.width = "60%";
+  document.getElementById("mySidebar").style.display = "block";
+}
 
+function closeNav() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+<!-- top button -->
+<script type="text/javascript">
+	$(document).ready(function(){
+     $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+        
+        $('#back-to-top').tooltip('show');
 
- <!-- 페이지 처리 -->
-	<div class="w3-center">
-		<div class="w3-bar w3-border w3-margin-top w3-margin-bottom">
-	<c:if test="${PAGE.startPage eq 1}">
-			<div class="w3-bar-item w3-light-grey">&laquo;</div>
-	</c:if>
-	<c:if test="${PAGE.startPage ne 1}">
-			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${PAGE.startPage - 1}">&laquo;</div>
-	</c:if>
-	<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
-		<c:if test="${page eq PAGE.nowPage}">
-			<div class="w3-bar-item w3-lime">${page}</div>
-		</c:if>
-		<c:if test="${page ne PAGE.nowPage}">
-			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${page}">${page}</div>
-		</c:if>
-	</c:forEach>
-		<c:if test="${PAGE.endPage eq PAGE.totalPage}">
-			<div class="w3-bar-item w3-light-grey">&raquo;</div>
-		</c:if>
-		<c:if test="${PAGE.endPage ne PAGE.totalPage}">
-			<div class="w3-bar-item w3-button w3-hover-green pbtn" id="${PAGE.endPage + 1}">&raquo;</div>
-		</c:if>
-		</div>
-	</div>
-	<!-- 페이지 처리 태그 끝 -->
-	<form method="POST" action="/camp24/reviewBoard/reviewBoardList.cmp" id="pageFrm" name="pageFrm">
-			<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
-			
-	</form>
+        $(".img-modal-btn.right").on('click', function(e){
+            e.preventDefault();
+            cur = $(this).parent().find('img:visible()');
+            next = cur.next('img');
+            par = cur.parent();
+            if (!next.length) { next = $(cur.parent().find("img").get(0)) }
+            cur.addClass('hidden');
+            next.removeClass('hidden');
+            
+            return false;
+        })
+        
+        $(".img-modal-btn.left").on('click', function(e){
+            e.preventDefault();
+            cur = $(this).parent().find('img:visible()');
+            next = cur.prev('img');
+            par = cur.parent();
+            children = cur.parent().find("img");
+            if (!next.length) { next = $(children.get(children.length-1)) }
+            cur.addClass('hidden');
+            next.removeClass('hidden');
+            
+            return false;
+        })
+	});
 	
-		<div class="w3-col w3-margin-top w3-card-4">
-	<c:if test="${SID eq DATA.id}">
-			<div class="w3-quarter w3-button w3-blue" id="hbtn">home</div>
-			<div class="w3-quarter w3-button w3-green" id="listbtn">리스트</div>
-			<div class="w3-quarter w3-button w3-deep-orange" id="edit">글수정</div>
-			<div class="w3-quarter w3-button w3-red" id="dbtn">글삭제</div>
-	</c:if>
-	<c:if test="${SID ne DATA.id}">
-			<div class="w3-half w3-button w3-blue" id="hbtn">home</div>
-			<div class="w3-half w3-button w3-green" id="listbtn">리스트</div>
-	</c:if>
-		</div>
-	
-	<div id="modal" class="w3-modal">
-		<div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
-			<header class="w3-container w3-teal"> 
-				<span onclick="document.getElementById('modal').style.display='none'" 
-						class="w3-button w3-display-topright">&times;</span>
-				<h2 class="w3-center">게시글 삭제</h2>
-			</header>
-			<div class="w3-container">
-				<h5 class="w3-center w3-padding w3-margin" id="modalmsg">정말로 글삭제를 하시겠습니까?</h5>
-			</div>
-	    	<footer class="w3-container w3-teal">
-				<div class="w3-col m2 w3-right w3-button" id="nbtn">아니오</div>
-				<div class="w3-col m2 w3-right w3-button" id="ybtn">예</div>
-			</footer>
-		</div>
-	</div>
-<!-- END MAIN -->
-</div>
+</script>
 
-</div>
-</div>
 </body>
 </html>
-<%@ include file="../footer.jsp" %>
+
+
+

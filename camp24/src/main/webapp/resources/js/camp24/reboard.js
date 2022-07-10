@@ -11,6 +11,9 @@ $(document).ready(function(){
 		$('#frm').submit();
 	});
 	
+	$('#rbtn').click(function(){
+		document.frm.reset();
+	});
 	
 	// 리뷰쓰기 버튼
 	$('#wbtn').click(function(){
@@ -20,7 +23,7 @@ $(document).ready(function(){
 	
 	/* 게시글 수정 버튼 클릭 이벤트 처리 */
 	$('.ebtn').click(function(){
-		var sno = $(this).parent().attr('id');
+		var sno = $(this).attr('id');
 		$('#rno').val(sno);
 		
 		$('#frm').attr('action', '/camp24/reviewBoard/reviewBoardEdit.cmp');
@@ -29,7 +32,7 @@ $(document).ready(function(){
 	
 	//삭제
 	$('.dbtn').click(function(){
-		var sno = $(this).parent().attr('id');
+		var sno = $(this).attr('id');
 		
 		$('#ybtn').click(function(){
 			$('#rno').val(sno);
@@ -111,4 +114,80 @@ $(document).ready(function(){
 		$('#frm').submit();
 	});
 	
+	
+	
+	$('.evtPic').click(function(){
+		// 파일번호 꺼내오고
+		var sno = $(this).attr('id');
+		var el = $(this);
+		if(confirm("삭제하시겠습니까?")){
+			$.ajax({
+				url: '/camp24/reviewBoard/fileDel.json',
+				type: 'post',
+				dataType: 'json',
+				data: {
+					ino: sno
+				},
+				success: function(data){
+					if(data.result == 'OK'){
+						$(el).remove();
+					}
+				},
+				error: function(){
+					alert('### 통신에러 ###');
+				}
+			});
+		}
+	});
+	
+	$('#editProc').click(function(){
+		$('.upfile').last().prop('disabled', true);
+		
+		// 수정 여부 검사
+		var otitle = $('#otitle').val();
+		var obody = $('#obody').val();
+		var oscore = $('#oscore').val();
+		
+		var title = $('#title').val();
+		var body = $('#body').val();
+		var score = $('input:radio[name=score]:checked').val();
+		
+		if(otitle == title && obody == body && $('#filebox > input').length == 1 && oscore == score){
+			$('#editWin').css('display', 'block');
+			return;
+		}
+		
+		$('#frm').submit();
+	});
+	
+	$('#editClose').click(function(){
+		$('#editWin').css('display', 'none');
+	});
+	
+	$('.like').click(function(){
+		var srno = $(this).parent().attr('id');
+		var sno = parseInt(srno);
+		
+		var sid = $('#id').val();
+		
+		$.ajax({
+			url: '/camp24/reviewBoard/likeCnt.json',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				'id': sid,
+				'rno': sno
+			},
+			success: function(likeCheck){
+				if(likeCheck == 0){
+                	location.reload();
+                } else if (likeCheck == 1){
+                	location.reload();
+                }
+			},
+			error: function(){
+				alert('### 통신 에러 ###');
+			}
+		});
+	});
 });

@@ -122,9 +122,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 								<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.qtitle}</strong></div>
 				</c:if>
                   <header class="text-left">
-                    <time style="text-align: right;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</time>
+                    <time style="text-align: right;" class="comment-date w3-col" datetime="16-12-2014 01:05"><small><strong><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</strong></small></time>
                 <c:if test="${not empty data.sedate}">
-                    <time style="text-align: right;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</time>
+                    <time style="text-align: right;" class="comment-date w3-col" datetime="16-12-2014 01:05"><small><strong><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</strong></small></time>
                 </c:if>
                   </header>
                   <div class="comment-post">
@@ -155,9 +155,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	                <br>
 	                <div class="panel-body">
 	                  <header class="text-right">
-                        <time style="text-align: left;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</time>
+                        <time style="text-align: left;" class="comment-date w3-col" datetime="16-12-2014 01:05"><small><strong><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</strong></small></time>
 	                <c:if test="${not empty data.sedate}">
-	                    <time style="text-align: left;" class="comment-date w3-col" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</time>
+	                    <time style="text-align: left;" class="comment-date w3-col" datetime="16-12-2014 01:05"><small><strong><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</strong></small></time>
 	                </c:if>
 	                  </header>
 	                  <div class="comment-post">
@@ -233,7 +233,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 
    <div id="modal2" class="w3-modal">
       <div class="w3-modal-content w3-animate-opacity w3-card-4 mxw500">
-         <header class="w3-container w3-green"> 
+         <header class="w3-container w3-red"> 
             <span onclick="document.getElementById('modal2').style.display='none'" 
                   class="w3-button w3-display-topright">&times;</span>
             <h2 class="w3-center">알림</h2>
@@ -241,7 +241,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
          <div class="w3-container">
             <h5 class="w3-center w3-padding w3-margin" id="modalmsg">정말로 글을 삭제하시겠습니까?</h5>
          </div>
-          <div class="w3-container w3-green">
+          <div class="w3-container w3-red">
             <div class="w3-col m2 w3-right w3-button" id="nbtn">아니오</div>
             <div class="w3-col m2 w3-right w3-button" id="ybtn">예</div>
          </div>

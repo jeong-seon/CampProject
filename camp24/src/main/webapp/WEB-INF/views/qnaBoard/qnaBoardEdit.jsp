@@ -100,7 +100,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
     
   <!-- End Portfolio Section -->
   
-        <div id="editWin" class="w3-modal">
+    <div id="editWin" class="w3-modal">
 	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
 			<header class="w3-container w3-red"> 
 		        <span class="w3-button w3-display-topright" 

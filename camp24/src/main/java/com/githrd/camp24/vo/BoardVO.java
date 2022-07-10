@@ -9,12 +9,30 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino;
-	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result;
+	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_id;
+	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_rno;
 	private Date wdate, qdate, qedate, fdate, fedate, rdate, redate ;
 	private List<FileVO> list;
 	private MultipartFile[] file;
 	
+	public int getLike_id() {
+		return like_id;
+	}
+	public void setLike_id(int like_id) {
+		this.like_id = like_id;
+	}
+	public String getLike_rno() {
+		return like_rno;
+	}
+	public void setLike_rno(String like_rno) {
+		this.like_rno = like_rno;
+	}
+	public int getLikecount() {
+		return likecount;
+	}
+	public void setLikecount(int likecount) {
+		this.likecount = likecount;
+	}
 	public int getIno() {
 		return ino;
 	}

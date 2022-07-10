@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Camp24 방문후기 작성</title>
+<title>Camp24 방문후기 수정</title>
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 
@@ -51,6 +51,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		$('.dbtn').click(function(){
 			$('#modal2').css('display', 'block');
 		});
+		
+		var score = $('#oscore').val();
+		$('input:radio[name=score]:input[value=' + score + ']').attr("checked", true);
+		
 	});
 </script>
 </head>
@@ -60,22 +64,22 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 
 <div class="w3-container w3-center">
     <div class="form-area">  
-        <form method="POST" action="/camp24/reviewBoard/reviewBoardWriteProc.cmp" enctype="multipart/form-data" id="frm" name="frm">
+        <form method="POST" action="/camp24/reviewBoard/reviewBoardEditProc.cmp" enctype="multipart/form-data" id="frm" name="frm">
         <br style="clear:both">
-                    <h2 style="margin-bottom: 25px; text-align: center;">방문 후기 작성</h2>
+                    <h2 style="margin-bottom: 25px; text-align: center;">방문 후기 수정</h2>
 						<img src="/camp24/img/avatar/${DATA.avatar}" class="w3-center w3-circle">
 						<span class="w3-col w3-center mgb10 ft10"><b>${SID}</b></span>
     				<div class="form-group">
     					<div style="text-align: left;">
 	    					<label for="title" style="text-align: left;"><strong>제목</strong></label>
     					</div>
-						<input type="text" class="form-control" id="title" name="rtitle" placeholder="Title" required>
+						<input type="text" class="form-control" id="title" name="rtitle" value="${DATA.rtitle}">
 					</div>
     				<div class="form-group">
     					<div style="text-align: left;">
 	    					<label for="cname" style="text-align: left;"><strong>캠핑장명</strong></label>
     					</div>
-						<input type="text" class="form-control" id="cname" name="cname" value="${param.cname}" readonly>
+						<input type="text" class="form-control" id="cname" name="cname" value="${DATA.cname}" readonly>
 					</div>
     				<div class="form-group">
     					<div style="text-align: left;">
@@ -85,17 +89,29 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 							<input type="file" class="w3-input w3-border w3-margin-bottom upfile" id="file" name="file">
     					</div>
 					</div>
-    				<div class="form-group" id="previewbox" style="display: none;">
+    				<div class="form-group" id="previewbox">
     					<div style="text-align: left;">
 	    					<label for="file" style="text-align: left;"><strong>미리보기</strong></label>
     					</div>
     					<div class="w3-margin-bottom" id="preview">
+			                    <c:forEach var="image" items="${IMAGE}">
+									<c:if test="${not empty image.imageno}">
+		                    <div class="inblock picbox evtPic" id="${image.ino}">
+										<div class="w3-display-center">
+											<div class="w3-quarter">
+												<img style="display: inline-block; width: 100px; height: 100px;" src="${image.idir}${image.isavename}">
+											</div>
+										</div>
+		                    </div>
+									</c:if>
+								</c:forEach>
     					</div>
 					</div>
 					<div class="form-group">
     					<div style="text-align: left;">
 	    					<label for="cname" style="text-align: left;"><strong>별점</strong></label>
     					</div>
+    					
     					<input type="radio" id="descore" name="score" value="1"><label for="star1" style="margin-right: 33px">☆</label>
 						<input type="radio" name="score" value="2"><label for="star2" style="margin-right: 33px">☆☆</label>
 						<input type="radio" name="score" value="3"><label for="star3" style="margin-right: 33px">☆☆☆</label>
@@ -109,12 +125,16 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
                     	<div style="text-align: left;">
 	    					<label for="body" style="text-align: left;"><strong>본문</strong></label>
     					</div>
-                    	<textarea style="resize: none;" class="form-control" id="body" name="rbody" placeholder="Body" rows="7"></textarea>
+                    	<textarea style="resize: none;" class="form-control" id="body" name="rbody" rows="7">${DATA.rbody}</textarea>
                     </div>
+                    
+                    
             <input type="hidden" id="nowPage" name="nowPage" value="${param.nowPage}">
-            <input type="hidden" id="mno" name="mno" value="${DATA.mno}">
-			<input type="hidden" name="id" value="${DATA.id}">
-        <button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="wpbtn">등록</button>
+            <input type="hidden" id="otitle" value="${DATA.rtitle}">
+			<input type="hidden" id="obody" value="${DATA.rbody}">
+            <input type="hidden" id="oscore" value="${DATA.score}">
+            <input type="hidden" name="rno" value="${DATA.rno}">
+        <button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="editProc">수정</button>
         <button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="rbtn">리셋</button>
         <button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="listbtn">리스트</button>
         </form>
@@ -130,7 +150,18 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
     
   <!-- End Portfolio Section -->
   
-  
+  <div id="editWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-red"> 
+		        <span class="w3-button w3-display-topright" 
+		        							id="editClose">&times;</span>
+		        <h2 class="w3-center">알림</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="editmsg">수정된 내용이 없습니다.</h3>
+	    	</div>
+	    </div>
+ 	</div>
 
 
   <!-- About Section -->

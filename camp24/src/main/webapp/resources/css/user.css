@@ -24,6 +24,9 @@
 .inblock {
 	display: inline-block;
 }
+block {
+	display: block;
+}
 
 /* 마진 클래스 */
 .mg0 {

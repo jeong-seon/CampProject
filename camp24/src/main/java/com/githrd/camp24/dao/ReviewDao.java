@@ -1,6 +1,8 @@
 package com.githrd.camp24.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,10 @@ public class ReviewDao {
 	// 총 게시글 수 조회 전담 처리함수
 	public int getTotal() {
 		return sqlSession.selectOne("rSQL.getTotal");
+	}
+	// 작성자 데이터 조회 전담 처리함수
+	public BoardVO getWriterInfo(String id) {
+		return sqlSession.selectOne("qSQL.getWriteInfo", id);
 	}
 	// 게시글 리스트 조회 전담 처리함수
 	public List<BoardVO> getList(PageUtil page){
@@ -60,5 +66,74 @@ public class ReviewDao {
 	// 게시글 삭제 전담 처리함수
 	public int delBoard(int rno) {
 		return sqlSession.update("rSQL.delBoard", rno);
+	}
+	// 조회수 +1
+	public int clickUp(int rno) {
+		return sqlSession.update("rSQL.clickUp", rno);
+	}
+	public List<FileVO> imagenoList(int rno){
+		return sqlSession.selectList("rSQL.imgList2", rno);
+	}
+	// 좋아요 +1
+	public int getLikeCnt(BoardVO bVO) {
+		return sqlSession.selectOne("rSQL.likeCnt", bVO);
+	}
+	// like insert
+	public int insertLike(BoardVO bVO) {
+		return sqlSession.insert("rSQL.insertLike", bVO);
+	}
+	public int likeUp(BoardVO bVO) {
+		return sqlSession.update("rSQL.likeUp", bVO);
+	}
+	public int likeDown(BoardVO bVO) {
+		return sqlSession.update("rSQL.likeDown", bVO);
+	}
+	
+	
+	
+	public void updateLike(int rno) {
+		sqlSession.update("rSQL.updateLike", rno);
+	}
+	
+	public void updateLikeCancel(int rno) {
+		 sqlSession.update("rSQL.updateLikeCancel", rno);
+
+	}
+
+	
+	public void insertLike(int rno,String id) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("rno", rno);
+		sqlSession.insert("rSQL.insertLike", map);
+	}
+	
+	public void deleteLike(int rno,String id) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("rno", rno);
+		sqlSession.delete("rSQL.deleteLike", map);
+	}
+	
+	public int likeCheck(int rno,String id) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("rno", rno);
+		return sqlSession.selectOne("rSQL.likeCheck", map);
+	}
+	
+	public void updateLikeCheck(int rno,String id) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("rno", rno);
+		sqlSession.update("rSQL.updateLikeCheck", map);
+		
+	}
+			
+	public void updateLikeCheckCancel(int rno,String id) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("rno", rno);
+		sqlSession.update("rSQL.updateLikeCheckCancel", map);
 	}
 }

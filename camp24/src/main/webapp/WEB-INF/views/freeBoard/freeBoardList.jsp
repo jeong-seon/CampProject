@@ -99,10 +99,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 						</div>
 						<div>
 							<div class="w3-col w3-left mgb10 ft14"><strong>제목 : ${data.ftitle}</strong></div>
-							<div class="w3-right mgb0 ft12"><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</div>
+							<div class="w3-right mgb0 ft12"><strong><i class="fa fa-clock-o"></i> 작성일 : ${data.sdate}</strong></div>
 			<c:if test="${not empty data.sedate}">
 						<div class="w3-col">
-							<div class="w3-right mgb0 ft12"><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</div>
+							<div class="w3-right mgb0 ft12"><strong><i class="fa fa-clock-o"></i> 수정일 : ${data.sedate}</strong></div>
 						</div>
 			</c:if>
 						</div>
@@ -174,7 +174,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 
    <div id="modal2" class="w3-modal">
       <div class="w3-modal-content w3-animate-opacity w3-card-4 mxw500">
-         <header class="w3-container w3-green"> 
+         <header class="w3-container w3-red"> 
             <span onclick="document.getElementById('modal2').style.display='none'" 
                   class="w3-button w3-display-topright">&times;</span>
             <h2 class="w3-center">알림</h2>
@@ -182,7 +182,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
          <div class="w3-container">
             <h5 class="w3-center w3-padding w3-margin" id="modalmsg">정말로 글을 삭제하시겠습니까?</h5>
          </div>
-          <div class="w3-container w3-green">
+          <div class="w3-container w3-red">
             <div class="w3-col m2 w3-right w3-button" id="nbtn">아니오</div>
             <div class="w3-col m2 w3-right w3-button" id="ybtn">예</div>
          </div>
