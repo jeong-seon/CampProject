@@ -4,10 +4,17 @@ import java.util.Date;
 import java.text.*;
 
 public class FileVO {
-	private int bno, fno, mno, rno, cnt, ino, imageno;
+	private int bno, fno, mno, rno, tno, cnt, ino, imageno;
 	private long len, ilen;
 	private String id, oriname, ioriname, isavename, savename, dir, idir, sdate, icode;
 	private Date wdate;
+	
+	public int getTno() {
+		return tno;
+	}
+	public void setTno(int tno) {
+		this.tno = tno;
+	}
 	public int getBno() {
 		return bno;
 	}
@@ -132,7 +139,7 @@ public class FileVO {
 		return "FileVO [bno=" + bno + ", fno=" + fno + ", mno=" + mno + ", rno=" + rno + ", cnt=" + cnt + ", ino=" + ino
 				+ ", imageno=" + imageno + ", len=" + len + ", ilen=" + ilen + ", id=" + id + ", oriname=" + oriname
 				+ ", ioriname=" + ioriname + ", isavename=" + isavename + ", savename=" + savename + ", dir=" + dir
-				+ ", idir=" + idir + ", sdate=" + sdate + ", icode=" + icode + ", wdate=" + wdate + "]";
+				+ ", idir=" + idir + ", sdate=" + sdate + ", icode=" + icode + ", wdate=" + wdate +  ", tno=" + tno + "]";
 	}
 	
 

@@ -26,6 +26,7 @@
 		<mapper resource="com/githrd/camp24/sql/MemberSQL2.xml" />
 		<mapper resource="com/githrd/camp24/sql/QnaSQL.xml"/>
 		<mapper resource="com/githrd/camp24/sql/ReviewSQL.xml"/>
+		<mapper resource="com/githrd/camp24/sql/TradeSQL.xml"/>
 		<!-- <mapper resource="com/githrd/camp24/sql/UserSQL.xml"/> -->
 	</mappers>
 </configuration>

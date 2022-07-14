@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>중고 거래</title>
+<title>중고물품 수정</title>
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 
@@ -72,47 +72,84 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 <body>
 	<%@ include file="../include.jsp" %>
   <!-- Portfolio Section -->
-
-    <!-- Grid for photos -->
-<div class="container">
-	<h2 class="text-center">중고거래게시판</h2>
-	<div class="w3-col w3-margin-bottom">
-			<div class="w3-quarter">
-				<select id="xlcate" class="w3-select w3-border w3-center w3-margin-bottom">
-					<option disabled selected>분류 선택</option>
-		<c:forEach var="data" items="${LIST2}">
-					<option value="${data.cano}">${data.caname}</option>
-		</c:forEach>
-				</select>
+  
+	<div class="w3-content mxw700">
+		<h1 class="w3-blue w3-padding w3-center w3-card-4">물품 수정</h1>
+		<input type="hidden" id="otitle" value="${DATA.title}">
+		<input type="hidden" id="obody" value="${DATA.body}">
+		<form method="POST" action="/camp24/trade/tradeEditProc.cmp" encType="multipart/form-data"
+				id="frm" name="frm" class="w3-col w3-card-4 frmpadding">
+			<input type="hidden" name="nowPage" value="${param.nowPage}">
+			<input type="hidden" name="tno" value="${DATA.tno}">
+			
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="title" class="w3-col s2">Title</label>
+				<input type="text" id="title" name="title" class="w3-col m10 w3-input w3-border" value="${DATA.title}">
 			</div>
-</div>
-</div>
-
-	<form method="POST" action="/camp24/trade/tradeDetail.cmp" id="frm" name="frm">
-		<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
-		<input type="hidden" name="tno" id="tno">
-		<input type="hidden" name="vw" id="vw">
-	</form>
-<div class="" id="tPanel">			         
-<c:forEach var="data" items="${LIST}">
-			<div class="col-md-3 w3-margin-bottom w3-hover-blue w3-margin-right w3-card-2 brdList" id="${data.tno}">
-				<c:forEach var="image" items="${IMAGE}">
-				<c:if test="${data.tno eq image.imageno}">
-							<img style="display: inline-block; width: 150px; height: 100px;" src="${image.idir}${image.isavename}">
+			<div class="w3-col w3-margin-bottom">
+				<label class="w3-col s2">Add File</label>
+				<div class="w3-col m10" id="filebox">
+					<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">
+				</div>
+			</div>
+			<div class="w3-col w3-margin-bottom" id="previewbox" style="display: none;">
+				<label class="w3-col s2">Preview</label>
+				<div class="w3-col m10 w3-center" id="preview">
+				</div>
+			</div>
+			<div class="w3-col">
+				<label for="body" class="w3-col s2">글본문</label>
+				<div class="w3-col m10">
+					<textarea class="w3-col w3-input w3-padding w3-border w3-margin-bottom" 
+							id="body" name="body" rows="10" style="resize: none;">${DATA.body}</textarea>
+				</div>
+			</div>
+			
+<c:if test="${not empty LIST}">			
+			<div class="w3-col w3-margin-bottom" id="previewbox">
+				<label class="w3-col s2">이미지</label>
+				<div class="w3-col m10 w3-center" id="preview">
+		<c:forEach var="data" items="${LIST}">
+			<c:if test="${not empty data.isavename}">
+					<div class="inblock picbox evtPic" id="${data.ino}">
+				<c:if test="${data.idir eq '/camp24/upload/'}">
+						<img class="pic" src="${data.idir}${data.isavename}"> 
 				</c:if>
-				</c:forEach>
-                	<h4>${data.title}</h4>
-               		<label>$ ${data.price}원</label>
-               		<p>위치 :${data.position}</p>
-               		<p>조회수 : ${data.click}</p>
-               		
+				<c:if test="${data.idir ne '/camp24/upload/'}">
+						<img class="pic" src="${data.idir}/${data.isavename}"> 
+				</c:if>
+					</div>
+			</c:if>
+		</c:forEach>
+				</div>
+			</div>
+</c:if>
+		</form>
+		
+		<div class="w3-col w3-margin-top w3-card-4">
+	<c:if test="${SID eq DATA.id}">
+
+			<div class="w3-third w3-button w3-green" id="listbtn">리스트</div>
+			<div class="w3-third w3-button w3-deep-orange" id="editProc">수정등록</div>
+	</c:if>
+	<c:if test="${SID ne DATA.id}">
+			<div class="w3-half w3-button w3-green" id="listbtn">리스트</div>
+	</c:if>
 		</div>
-</c:forEach>
-	<c:if test="${not empty SID}">
-			<div class="w3-col w3-margin-top" style="margin-bottom: 100px;">
-			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left"id="wbtn">물품 등록</button>
-		</div>
-	</c:if>	
+	</div>
+
+
+<div id="editWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-red"> 
+		        <span class="w3-button w3-display-topright" 
+		        							id="editClose">&times;</span>
+		        <h2 class="w3-center">알림</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="editmsg">수정된 내용이 없습니다.</h3>
+	    	</div>
+	    </div>
 <!-- END PAGE CONTENT -->
 </div>
 

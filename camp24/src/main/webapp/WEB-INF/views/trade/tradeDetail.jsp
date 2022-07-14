@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>중고 거래</title>
+<title>중고물품 상세보기</title>
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 
@@ -72,48 +72,62 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 <body>
 	<%@ include file="../include.jsp" %>
   <!-- Portfolio Section -->
-
-    <!-- Grid for photos -->
-<div class="container">
-	<h2 class="text-center">중고거래게시판</h2>
-	<div class="w3-col w3-margin-bottom">
-			<div class="w3-quarter">
-				<select id="xlcate" class="w3-select w3-border w3-center w3-margin-bottom">
-					<option disabled selected>분류 선택</option>
-		<c:forEach var="data" items="${LIST2}">
-					<option value="${data.cano}">${data.caname}</option>
-		</c:forEach>
-				</select>
-			</div>
-</div>
-</div>
-
-	<form method="POST" action="/camp24/trade/tradeDetail.cmp" id="frm" name="frm">
-		<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
-		<input type="hidden" name="tno" id="tno">
-		<input type="hidden" name="vw" id="vw">
+  
+	<form method="POST" action="/camp24/trade/trade.cmp" id="frm" name="frm">
+		<input type="hidden" name="nowPage" value="${param.nowPage}">
+		<input type="hidden" name="tno" value="${DATA.tno}">
 	</form>
-<div class="" id="tPanel">			         
-<c:forEach var="data" items="${LIST}">
-			<div class="col-md-3 w3-margin-bottom w3-hover-blue w3-margin-right w3-card-2 brdList" id="${data.tno}">
-				<c:forEach var="image" items="${IMAGE}">
-				<c:if test="${data.tno eq image.imageno}">
-							<img style="display: inline-block; width: 150px; height: 100px;" src="${image.idir}${image.isavename}">
+	<div class="w3-content">
+	<c:if test="${not empty LIST}">			
+			<div class="w3-margin-bottom" id="previewbox">
+				<div class="m10 w3-center" id="preview">
+		<c:forEach var="data" items="${LIST}">
+			<c:if test="${not empty data.isavename}">
+					<div class="inblock picbox">
+				<c:if test="${data.idir eq '/camp24/upload/'}">
+						<img class="pic" style="WIDTH: 100px" onclick="window.open(this.src)"  alt="클릭하시면 조금더 커집니다.."  src="${data.idir}${data.isavename}"> 
+						
 				</c:if>
-				</c:forEach>
-                	<h4>${data.title}</h4>
-               		<label>$ ${data.price}원</label>
-               		<p>위치 :${data.position}</p>
-               		<p>조회수 : ${data.click}</p>
-               		
+				<c:if test="${data.idir ne '/camp24/upload/'}">
+						<img class="pic" style="WIDTH: 100px" onclick="window.open(this.src)"  alt="클릭하시면 조금더 커집니다.."  src="/camp24${data.idir}/${data.isavename}"> 
+				</c:if>
+					</div>
+			</c:if>
+		</c:forEach>
+				</div>
+			</div>
+</c:if>
+		<div class="w3-col frmpadding w3-center">
+			<div class="w3-col  w3-margin-bottom">
+				<label class="w3-left">물품 이름 : ${DATA.title}</label>
+			</div>
+				<div class="w3-col  w3-margin-bottom"  >
+				<label class="w3-left">판매자 아이디 : ${DATA.id} </label>
+			</div>
+			<div class="w3-col  w3-margin-bottom" >
+				<label class="w3-left">금액 : ${DATA.price} 원</label>
+			</div>
+			<div class="w3-col w3-margin-bottom">
+				<label class="w3-left">지역위치 : ${DATA.position}</label>
+			</div>	
+			<div class="w3-col w3-margin-bottom w3-margin-top">
+				<label class="w3-left">캠핑장비 상세 설명 :  ${DATA.body}</label>
+			</div>
 		</div>
-</c:forEach>
-	<c:if test="${not empty SID}">
-			<div class="w3-col w3-margin-top" style="margin-bottom: 100px;">
-			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left"id="wbtn">물품 등록</button>
+		
+		<div class="w3-col w3-margin-top w3-card-4">
+	<c:if test="${SID eq DATA.id}">
+			<div class="w3-quarter w3-button w3-blue" id="hbtn">home</div>
+			<div class="w3-quarter w3-button w3-green" id="listbtn">리스트</div>
+			<div class="w3-quarter w3-button w3-deep-orange" id="edit">글수정</div>
+			<div class="w3-quarter w3-button w3-red" id="dbtn">글삭제</div>
+	</c:if>
+	<c:if test="${SID ne DATA.id}">
+			<div class="w3-half w3-button w3-blue" id="hbtn">home</div>
+			<div class="w3-half w3-button w3-green" id="listbtn">리스트</div>
+	</c:if>
 		</div>
-	</c:if>	
-<!-- END PAGE CONTENT -->
+	<!-- END PAGE CONTENT -->
 </div>
 
 <script>

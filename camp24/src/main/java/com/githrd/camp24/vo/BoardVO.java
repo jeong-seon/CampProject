@@ -9,10 +9,46 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_id;
-	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_rno;
+	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_id,cano,tno,tmno;
+	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_rno , caname , price,position;
 	private Date wdate, qdate, qedate, fdate, fedate, rdate, redate ;
 	private List<FileVO> list;
+	public int getCano() {
+		return cano;
+	}
+	public void setCano(int cano) {
+		this.cano = cano;
+	}
+	public int getTno() {
+		return tno;
+	}
+	public void setTno(int tno) {
+		this.tno = tno;
+	}
+	public int getTmno() {
+		return tmno;
+	}
+	public void setTmno(int tmno) {
+		this.tmno = tmno;
+	}
+	public String getCaname() {
+		return caname;
+	}
+	public void setCaname(String caname) {
+		this.caname = caname;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
 	private MultipartFile[] file;
 	
 	public int getLike_id() {
@@ -354,14 +390,16 @@ public class BoardVO {
 				+ ", qno=" + qno + ", upno=" + upno + ", qupno=" + qupno + ", fupno=" + fupno + ", rno=" + rno
 				+ ", rcno=" + rcno + ", cno=" + cno + ", ano=" + ano + ", pno=" + pno + ", pcno=" + pcno + ", click="
 				+ click + ", cnt=" + cnt + ", step=" + step + ", lat=" + lat + ", plong=" + plong + ", imageno="
-				+ imageno + ", ino=" + ino + ", likecount=" + likecount + ", like_id=" + like_id + ", id=" + id
-				+ ", title=" + title + ", ftitle=" + ftitle + ", qtitle=" + qtitle + ", rtitle=" + rtitle + ", body="
-				+ body + ", qbody=" + qbody + ", fbody=" + fbody + ", rbody=" + rbody + ", sdate=" + sdate + ", sedate="
-				+ sedate + ", avatar=" + avatar + ", score=" + score + ", cname=" + cname + ", gname=" + gname
-				+ ", jname=" + jname + ", isavename=" + isavename + ", result=" + result + ", like_rno=" + like_rno
-				+ ", wdate=" + wdate + ", qdate=" + qdate + ", qedate=" + qedate + ", fdate=" + fdate + ", fedate="
-				+ fedate + ", rdate=" + rdate + ", redate=" + redate + ", list=" + list + ", file="
-				+ Arrays.toString(file) + "]";
+				+ imageno + ", ino=" + ino + ", likecount=" + likecount + ", like_id=" + like_id + ", cano=" + cano
+				+ ", tno=" + tno + ", tmno=" + tmno + ", id=" + id + ", title=" + title + ", ftitle=" + ftitle
+				+ ", qtitle=" + qtitle + ", rtitle=" + rtitle + ", body=" + body + ", qbody=" + qbody + ", fbody="
+				+ fbody + ", rbody=" + rbody + ", sdate=" + sdate + ", sedate=" + sedate + ", avatar=" + avatar
+				+ ", score=" + score + ", cname=" + cname + ", gname=" + gname + ", jname=" + jname + ", isavename="
+				+ isavename + ", result=" + result + ", like_rno=" + like_rno + ", caname=" + caname + ", price="
+				+ price + ", position=" + position + ", wdate=" + wdate + ", qdate=" + qdate + ", qedate=" + qedate
+				+ ", fdate=" + fdate + ", fedate=" + fedate + ", rdate=" + rdate + ", redate=" + redate + ", list="
+				+ list + ", file=" + Arrays.toString(file) + "]";
 	}
+
 	
 }

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tSQL">
+	<select id="getTotal" resultType="int">
+		SELECT
+		    COUNT(*)
+		FROM
+		    trade
+		WHERE
+		    isshow = 'Y'
+	</select>
+	
+	<!-- 대 카테고리 리스트 조회 질의명령 -->
+	<select id="startCate" resultType="bVO">
+		SELECT
+		    cano, caname
+		FROM
+		    category
+		WHERE
+		    upno IS NULL
+	</select>
+	
+	<!-- 카테고리 리스트 조회 질의명령 -->
+	<select id="cateList" resultType="bVO" parameterType="bVO">
+		SELECT
+		    cano, caname
+		FROM
+		    category
+		WHERE
+    	<if test="cano eq 0">
+		    upno IS NULL
+		</if>
+		<if test="cano neq 0">
+		    upno  = #{cano}
+		</if>
+	</select>
+	
+	
+	<select id="getList" resultType="bVO" parameterType="page">
+		SELECT
+		    tno, title, price, position, click, cnt , cano
+		FROM
+		    (
+		        SELECT
+		            ROWNUM rno, tno, title, price, position, click , cnt , cano
+		        FROM
+		            (
+		                SELECT
+		                    tno, title, price, position, click , cnt , cano
+		                FROM
+		                    trade, member,
+		                    (
+		                        SELECT
+		                            tno imageno, NVL(COUNT(ino), 0) cnt
+		                        FROM
+		                            trade, image
+		                        WHERE
+		                            tno = imageno(+)
+		                            AND image.isshow(+) = 'Y'
+		                        GROUP BY
+		                            tno
+		                    )
+		                WHERE
+		                    tno = imageno
+		                    AND tmno = mno
+		                    AND trade.isshow = 'Y'
+		                ORDER BY
+		                    tno DESC
+		            )
+		    )
+		WHERE
+		    rno BETWEEN #{startCont} AND #{endCont}
+	</select>
+	
+	<!-- 글번호로 게시글 내용 조회 질의명령 -->
+	<select id="tradeDetail" resultType="bVO" parameterType="int">
+		SELECT
+		    tno,id,title,price,position,body
+		FROM
+		    trade t, member m
+		WHERE
+		    tmno = mno
+		    AND t.isshow = 'Y'
+		    AND tno = #{tno}
+	</select>
+	
+	<!-- 글번호로 첨부파일 리스트 조회 질의명령 -->
+	<select id="fileList" resultType="fVO" parameterType="int">
+		SELECT
+		    ino, isavename, idir
+		FROM
+		    image
+		WHERE
+		    isshow = 'Y'
+		    AND imageno = #{tno}
+	</select>
+	
+	<!-- 이미지 리스트 조회 질의명령 -->
+	<select id="imgList" resultType="fVO">
+		SELECT
+		    tno, ino, imageno, isavename, idir
+		FROM
+		    trade t, image i
+		WHERE
+		    t.isshow = 'Y'
+		    AND i.isshow = 'Y'
+		    AND imageno = tno
+	</select>
+	
+	<select id="imgList2" resultType="fVO" parameterType="int">
+		SELECT
+		    tno, ino, ioriname, isavename, idir
+		FROM
+		    trade t, image i
+		WHERE
+		    t.isshow = 'Y'
+		    AND i.isshow = 'Y'
+		    AND tno = #{tno}
+		    AND imageno = tno
+	</select>
+	
+	<!-- 회원아이디로 회원번호 조회 질의명령 -->
+	<select id="selMno" resultType="int" parameterType="string">
+		SELECT 
+			mno 
+		FROM 
+			member 
+		WHERE 
+			id = #{id}
+	</select>
+	<!-- 제품 리스트 조회 질의명령 -->
+	<select id="tList" resultType="bVO" parameterType="bVO">
+		SELECT
+		    tno, title, isavename, idir, price , position , click
+		FROM
+		    trade t, image i
+		WHERE
+		    tno = imageno
+		    AND t.isshow = 'Y'
+		    AND idir = '/camp24/upload/'
+		    AND cano = #{cano}
+	</select>
+	
+	
+	<insert id="insertBoard" parameterType="bVO">
+		<selectKey keyProperty="tno" resultType="int" order="BEFORE">
+		SELECT
+				NVL(MAX(tno) + 1, 100001)
+			FROM
+				trade
+		</selectKey>
+			INSERT INTO
+		    trade(cano,tno, body, tmno, title, price, position)
+		VALUES(
+			#{cano},
+		    #{tno}, #{body},
+		    (SELECT mno FROM member WHERE id = #{id}),
+		    #{title},
+		    #{price},
+		    #{position}
+		)
+	</insert>
+	
+	<insert id="insertFile" parameterType="fVO">
+		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(ino) + 1, 100001)
+			FROM
+				image
+		</selectKey>
+		INSERT INTO
+		    image(ino, imageno, ioriname, isavename, idir, ilen, icode)
+		VALUES(
+		    #{ino}, #{tno}, #{ioriname}, #{isavename}, #{idir}, #{ilen}, 'T'
+		)
+	</insert>
+	
+	<!-- 첨부 파일 삭제 처리 질의명령 -->
+	<update id="delFile" parameterType="int">
+		UPDATE
+			image
+		SET
+			isshow = 'N'
+		WHERE
+			ino = #{ino}
+	</update>
+	<!-- 조회수 -->
+	<update id="clickUp" parameterType="int">
+		UPDATE
+		    trade
+		SET
+		    click = click + 1
+		WHERE
+		    tno = #{tno}
+	</update>
+	
+	<!-- 게시글 수정 질의명령 -->
+	<update id="editBoard" parameterType="bVO">
+		UPDATE
+			trade
+		<set>
+			<if test="title neq null">
+				title = #{title},
+			</if>
+			<if test="body neq null">
+				body = #{body},
+			</if>
+		</set>
+		WHERE
+			tno = #{tno}
+	</update>
+	
+	<!-- 게시글 삭제 질의명령 -->
+	<update id="delBoard" parameterType="int">
+		UPDATE
+			trade
+		SET
+			isshow = 'N'
+		WHERE
+			tno = #{tno}
+	</update>
+</mapper>
