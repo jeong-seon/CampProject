@@ -453,3 +453,20 @@ span#wbtn {
 .lineH50 {
 	line-height: 50%;
 }
+
+/* 메일 관련 css */
+#mail_check_input_box_false {
+	background-color:#ebebe4;
+}
+
+#mail_check_input_box_true {
+	background-color:white;
+}
+
+.correct {
+	color : green;
+}
+
+.incorrect {
+	color: red;
+}

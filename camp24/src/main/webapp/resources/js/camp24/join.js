@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$(document.frm.gen).change(function(){
 		var sgen = $(this).val();
 		$('#avtfr').stop().slideUp(500, function(){	
@@ -87,12 +88,12 @@ $(document).ready(function(){
 		var repw = $(this).val();
 		if(repw != null){
 			if(pw != repw){
-				$('#repwmsg').html('* Not Correct ! *');
+				$('#repwmsg').html('* 비밀번호가 일치하지 않습니다. *');
 				$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
 				$('#repwmsg').css('display', 'block');
 				return;
 			} else {
-				$('#repwmsg').html('* Correct ! *');
+				$('#repwmsg').html('* 비밀번호가 일치합니다. *');
 				$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
 				$('#repwmsg').css('display', 'block');
 			}
@@ -199,5 +200,51 @@ $(document).ready(function(){
 	// 홈 버튼
 	$('#hbtn').click(function(){
 		$(location).attr('href', '/camp24/main.cmp');
+	});
+	
+	var code = "";	// 메일전송 인증번호 저장 위한 코드
+	
+	// 메일 인증번호 전송
+	$('.mail_check_button').click(function(){
+		var email = $('.mail_input').val();	// 입력한 메일
+		var checkBox = $('.mail_check_input'); // 인증번호 입력란
+		var boxWrap = $('.mail_check_input_box'); // 인증번호 입력란 박스
+		
+		if(!email){
+			$('.mail_input').focus();
+			alert('메일을 입력해주세요.');
+			return;
+		}
+		
+			$.ajax({
+				type: "GET",
+				url: "mailCheck?email=" + email,
+				success:function(data){
+					
+					
+				// console.log("data : " + data);
+				 checkBox.attr('disabled', false);
+				 boxWrap.attr('id', 'mail_check_input_box_true');
+				code = data;
+				alert('인증번호가 전송되었습니다.');
+			
+			}
+			
+		});
+	});
+	
+	// 인증번호 비교
+	$('.mail_check_input').keyup(function(){
+		
+		var inputCode = $(this).val();		// 입력코드
+		var checkResult = $('#mail_check_input_box_warn');  // 비교 결과
+		
+		if(inputCode == code){								// 일치할 경우
+			checkResult.html('* 인증번호가 일치합니다. *');
+			checkResult.attr('class', 'correct');
+		} else {											// 일치하지 않을 경우
+			checkResult.html('* 인증번호를 다시 확인해주세요. *');
+			checkResult.attr('class', 'incorrect');
+		}
 	});
 });

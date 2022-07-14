@@ -95,7 +95,7 @@ img{
 			<div>
 				<label for="id" class="w3-col s3 w3-right-align ft14 mgb10" >아이디 : </label>
 				<div class="w3-col s8 mgl10">
-				<div class="w3-button w3-gray w3-right pd9-16 w3-margin-left" id="idck">중복 확인</div>
+				<div class="w3-button w3-lime w3-right pd9-16 w3-margin-left w3-text-grey" id="idck">중복 확인</div>
 					<div class="w3-rest pdr10">					
 						<input type="text" name="id" id="id" class="w3-input w3-border mgb10 w3-margin-bottom" onkeydown="inputIdChk()" placeholder="내용을 입력해주세요">
 						<input type="hidden" name="idCheck" id="idCheck" value="">
@@ -119,14 +119,18 @@ img{
 				<input type="text" name="tel" id="tel" class="w3-col s8 mgl10 w3-input w3-border mgb10 w3-margin-bottom" placeholder="내용을 입력해주세요">
 			</div>
 			<div>
-				<label for="mail" class="w3-col s3 w3-right-align ft14 mgb10">이메일 : </label>
+				<label for="mail" class="w3-col s3 w3-right-align ft14 mgb10">메일 : </label>
 				<div class="w3-col s8 mgl10">
-				<div class="w3-button w3-gray w3-right pd9-16 w3-margin-left" id="mailck">이메일 인증</div>
-					<div class="w3-rest pdr10">
-						<!-- <input type="text" name="id" id="id" class="w3-input w3-border mgb10 w3-margin-bottom" placeholder="내용을 입력해주세요"> -->
-						<input type="text" name="mail" id="mail" class="w3-input w3-border mgb10 w3-margin-bottom" placeholder="내용을 입력해주세요">
+						<div class="mail_check_button w3-button w3-lime w3-right pd9-16 w3-margin-left w3-text-grey">메일 인증</div>
+				<div class="mail_input_box w3-rest pdr10">
+					<input class="mail_input w3-input w3-border mgb10 w3-margin-bottom" name="memberMail" placeholder="내용을 입력해주세요"> <!-- 이메일 입력 칸 -->
+				</div>
+					<div class="mail_check_wrap">
+						<div class="mail_check_input_box" id="mail_check_input_box_false">
+							<input class="mail_check_input w3-input w3-border mgb10 w3-margin-bottom" disabled="disabled" placeholder="인증번호"> <!-- 인증번호 입력 칸 -->
+						</div>
+						<span id="mail_check_input_box_warn"></span>
 					</div>
-					<span class="w3-col mgb10 w3-center" id="mailmsg"></span>
 				</div>
 			</div>
 			<div>

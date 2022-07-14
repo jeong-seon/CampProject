@@ -16,6 +16,7 @@
 	<bean id="mDao" class="com.githrd.camp24.dao.MemberDao" />
 	<bean id="mDao2" class="com.githrd.camp24.dao.MemberDao2" />
 	<bean id="rDao" class="com.githrd.camp24.dao.ReviewDao" />
+	<bean id="uDao" class="com.githrd.camp24.dao.UserDao" />
 	
 	<bean id="rSrvc" class="com.githrd.camp24.service.ReviewBoardService" />
 </beans>

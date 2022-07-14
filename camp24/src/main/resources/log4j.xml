@@ -55,6 +55,15 @@
 		</layout>
 	</appender>
 	
+	<!-- 이메일 인증 로그 어팬더 -->
+	<appender name="mailLog" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/src/main/resources/log/mail.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p - %d{yyyy/MM/dd HH:mm:ss} : %m%n" />
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="com.githrd.camp24">
 		<level value="info" />
@@ -78,6 +87,11 @@
 	<logger name="reviewBoardLog">
 		<level value="info" />
 		<appender-ref ref="reviewBoardAppender" />
+	</logger>
+	
+	<logger name="mailLog">
+		<level value="info" />
+		<appender-ref ref="mailAppender" /> <!-- 3. -->
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
