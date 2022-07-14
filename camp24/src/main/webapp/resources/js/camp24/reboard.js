@@ -185,9 +185,7 @@ $(document).ready(function(){
                 	location.reload();
                 }
 			},
-			error: function(){
-				alert('### 통신 에러 ###');
-			}
+			error: function(){}
 		});
 	});
 });

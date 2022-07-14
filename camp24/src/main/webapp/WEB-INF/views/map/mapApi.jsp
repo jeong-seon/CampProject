@@ -24,6 +24,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
+<script type="text/javascript" src="/camp24/resources/js/camp24/map.js"></script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -38,6 +39,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   background-image: url('/camp24/resources/img/pic/14.png');
   min-height: 100%;
 }
+div{
+	z-index: 2;
+}
 </style>
 </head>
 <body>
@@ -46,14 +50,28 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 <div class="w3-col">
 	<div class="w3-col m4">
 		<div>
-			<form method="post" action="" id="frm" name="frm"
+			<form method="post" action="/camp24/map/mapApi.cmp" id="frm" name="frm"
 					class="w3-content w3-center w3-margin-bottom" style="margin-top: 100px;">
 				<label class="w3-col w3-center w3-padding"><strong style="font-size: 18pt;">캠핑장 검색</strong>&nbsp;</label>
 				<div class="w3-col w3-center w3-padding">
 					<input type="text" style="margin-left: 30px; margin-bottom: 30px;" class="w3-col w3-center m9 w3-input" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
 					<div class="w3-rest w3-button w3-green" id="sbtn">검색</div>
 				</div>
+				
+				<input type="hidden" id="X">
+				<input type="hidden" id="Y">
 			</form>
+			<div class="w3-center">
+				<c:forEach var="data" items="${LIST}">
+					<c:if test="${data.facltNm ne '검색결과없음'}">
+					
+						<h5>캠핑장명 : ${data.facltNm}</h5>
+						<h5>경도 : <span id="mapX">${data.mapX}</span></h5>
+						<h5>위도 : <span id="mapY">${data.mapY}</span></h5>
+						
+					</c:if>
+				</c:forEach>
+			</div>
 		</div>
 	</div>
 	<div class="w3-col m8" id="map" style="width:60%;height:400px;"></div>
@@ -78,12 +96,8 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
-var mapOptions = {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10
-};
 
-var map = new naver.maps.Map('map');
+
 </script>
 
 </body>

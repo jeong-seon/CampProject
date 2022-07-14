@@ -74,6 +74,17 @@ public class ReviewDao {
 	public List<FileVO> imagenoList(int rno){
 		return sqlSession.selectList("rSQL.imgList2", rno);
 	}
+	// 베스트 캠핑장 목록
+	public List<BoardVO> bestReviewList(BoardVO bVO){
+		return sqlSession.selectList("rSQL.bestReview", bVO);
+	}
+	
+	
+	
+	
+	
+	
+	
 	// 좋아요 +1
 	public int getLikeCnt(BoardVO bVO) {
 		return sqlSession.selectOne("rSQL.likeCnt", bVO);
@@ -91,6 +102,8 @@ public class ReviewDao {
 	
 	
 	
+	
+	
 	public void updateLike(int rno) {
 		sqlSession.update("rSQL.updateLike", rno);
 	}
@@ -99,7 +112,6 @@ public class ReviewDao {
 		 sqlSession.update("rSQL.updateLikeCancel", rno);
 
 	}
-
 	
 	public void insertLike(int rno,String id) {
 		Map<String,Object> map = new HashMap<String, Object>();

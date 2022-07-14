@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +22,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.githrd.camp24.dao.ReviewDao;
 import com.githrd.camp24.vo.ApiVO;
+import com.githrd.camp24.vo.BoardVO;
 
 /**
  * 메인페이지
@@ -30,9 +34,11 @@ import com.githrd.camp24.vo.ApiVO;
  */
 @Controller
 public class MainController {
+	@Autowired
+	ReviewDao rDao;
 	
 	@RequestMapping({"/", "/main.cmp"})
-	public ModelAndView getMain(ModelAndView mv) {
+	public ModelAndView getMain(ModelAndView mv, BoardVO bVO) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		Random random = new Random();
 		String ServiceKey = "6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8%2FqN3dGhpsRYTTGJ63LFtj%2F0kBFwzjL%2Fy5pFa6xA%3D%3D";
@@ -102,8 +108,11 @@ public class MainController {
         	
         } catch (Exception e) {}
 		
+		List<BoardVO> blist = rDao.bestReviewList(bVO);
+		List<BoardVO> image = rDao.imgList();
 		
-		
+		mv.addObject("BLIST", blist);
+		mv.addObject("IMAGE", image);
 		mv.setViewName("main");
 		return mv;
 	}
@@ -117,5 +126,13 @@ public class MainController {
 		
 		map.put("result", "OK");
 		return map;
+	}
+	
+	@RequestMapping("/bestReview.json")
+	@ResponseBody
+	public List<BoardVO> bestReview(BoardVO bVO){
+		List<BoardVO> list = rDao.bestReviewList(bVO);
+		
+		return list;
 	}
 }

@@ -123,7 +123,7 @@ img{
 				<div class="w3-col s8 mgl10">
 						<div class="mail_check_button w3-button w3-lime w3-right pd9-16 w3-margin-left w3-text-grey">메일 인증</div>
 				<div class="mail_input_box w3-rest pdr10">
-					<input class="mail_input w3-input w3-border mgb10 w3-margin-bottom" name="memberMail" placeholder="내용을 입력해주세요"> <!-- 이메일 입력 칸 -->
+					<input class="mail_input w3-input w3-border mgb10 w3-margin-bottom" id="mail" name="mail" placeholder="내용을 입력해주세요"> <!-- 이메일 입력 칸 -->
 				</div>
 					<div class="mail_check_wrap">
 						<div class="mail_check_input_box" id="mail_check_input_box_false">

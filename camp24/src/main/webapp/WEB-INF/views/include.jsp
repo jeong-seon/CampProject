@@ -45,7 +45,7 @@
 	  <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;" onclick="openNav()"><i class="fa fa-bars"></i></span>
 
   <!-- Header -->
-  <header class="w3-container w3-center" style="padding:60px 16px" id="home">
+  <header class="w3-container w3-center" style="padding:60px 16px; padding-bottom: 0px;" id="home">
     <h1 class="w3-jumbo" id="mainlogo"><a href="/camp24/main.cmp"><b style="color: black !important; text-decoration-color: black !important;">Camp 24</b></a></h1>
     <!-- <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
     <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333"> -->

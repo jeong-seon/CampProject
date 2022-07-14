@@ -151,6 +151,7 @@
 			<if test="score neq null">
 				score = #{score},
 			</if>
+			redate = sysdate
 		</set>
 		WHERE
 			rno = #{rno}
@@ -238,6 +239,39 @@
 		WHERE
 			like_rno = #{rno}
 			AND like_id = #{id}
+	</select>
+	
+	<!-- Main페이지 Best캠핑장 목록 -->
+	<select id="bestReview" resultType="bVO">
+		SELECT
+		    cnt, rno, rmno, id, avt, avatar, rbody, rtitle, fdate, fedate, click, score, cname, likecount
+		FROM
+		(
+		    SELECT
+		        ROWNUM cnt, rno, rmno, id, avt, avatar, rbody, rtitle, fdate, fedate, click, score, cname, likecount
+		    FROM
+		    (
+		        SELECT
+		            rno, rmno, id, avt, a.savename avatar, rbody, rtitle, rdate fdate, redate fedate, click, score, cname, likecount
+		        FROM
+		            review r, member m, avatar a,
+		            (
+		                SELECT
+		                    MAX(likecount) maxlc
+		                FROM
+		                    review
+		            )
+		        WHERE
+		            likecount = maxlc
+		            AND rmno = mno
+		            AND avt = ano
+		            AND r.isshow = 'Y'
+		            AND m.isshow = 'Y'
+		            AND ROWNUM BETWEEN 1 AND 3
+		        ORDER BY
+		            likecount DESC
+		    )
+		)
 	</select>
 	
 	<!-- 

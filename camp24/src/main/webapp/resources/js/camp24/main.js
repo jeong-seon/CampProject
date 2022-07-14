@@ -90,4 +90,16 @@ $(document).ready(function(){
 	
 	$('#back-to-top').tooltip('show');
 	
+	
+	$.ajax({
+		url: '/camp24/bestReview.json',
+		type: 'post',
+		dataType: 'json',
+		success: function(arr){
+			
+		},
+		error: function(){
+			alert('### 통신에러 ###');
+		}
+	});
 });

@@ -354,10 +354,11 @@ public class BoardVO {
 				+ ", qno=" + qno + ", upno=" + upno + ", qupno=" + qupno + ", fupno=" + fupno + ", rno=" + rno
 				+ ", rcno=" + rcno + ", cno=" + cno + ", ano=" + ano + ", pno=" + pno + ", pcno=" + pcno + ", click="
 				+ click + ", cnt=" + cnt + ", step=" + step + ", lat=" + lat + ", plong=" + plong + ", imageno="
-				+ imageno + ", id=" + id + ", title=" + title + ", ftitle=" + ftitle + ", qtitle=" + qtitle
-				+ ", rtitle=" + rtitle + ", body=" + body + ", qbody=" + qbody + ", fbody=" + fbody + ", rbody=" + rbody
-				+ ", sdate=" + sdate + ", sedate=" + sedate + ", avatar=" + avatar + ", score=" + score + ", cname="
-				+ cname + ", gname=" + gname + ", jname=" + jname + ", isavename=" + isavename + ", result=" + result
+				+ imageno + ", ino=" + ino + ", likecount=" + likecount + ", like_id=" + like_id + ", id=" + id
+				+ ", title=" + title + ", ftitle=" + ftitle + ", qtitle=" + qtitle + ", rtitle=" + rtitle + ", body="
+				+ body + ", qbody=" + qbody + ", fbody=" + fbody + ", rbody=" + rbody + ", sdate=" + sdate + ", sedate="
+				+ sedate + ", avatar=" + avatar + ", score=" + score + ", cname=" + cname + ", gname=" + gname
+				+ ", jname=" + jname + ", isavename=" + isavename + ", result=" + result + ", like_rno=" + like_rno
 				+ ", wdate=" + wdate + ", qdate=" + qdate + ", qedate=" + qedate + ", fdate=" + fdate + ", fedate="
 				+ fedate + ", rdate=" + rdate + ", redate=" + redate + ", list=" + list + ", file="
 				+ Arrays.toString(file) + "]";

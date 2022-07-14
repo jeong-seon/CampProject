@@ -40,6 +40,7 @@
 			<mapping path="/qnaBoard/qnaComment.cmp"/>
 			<mapping path="/reviewBoard/reviewBoardWrite.cmp"/>
 			<mapping path="/reviewBoard/reviewBoardComment.cmp"/>
+			<mapping path="/reviewBoard/likeCnt.json"/>
 			<beans:ref bean="loginRedirect"/>
 		</interceptor>
 	</interceptors>

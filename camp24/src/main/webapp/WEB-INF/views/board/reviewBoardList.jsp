@@ -88,7 +88,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 					<div class="row">
 						<div class="col-sm-3">
 							<img src="/camp24/resources/img/avatar/${data.avatar}" class="img-rounded">
-							<div class="review-block-name" style="padding-left: 35px;"><a href="#">${data.id}</a></div>
+							<div class="review-block-name" style="padding-left: 35px;"><span>${data.id}</span></div>
 						</div>
 						<div class="col-sm-9">
 						
