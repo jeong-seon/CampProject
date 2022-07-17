@@ -188,7 +188,7 @@ $(document).ready(function(){
 		if(!(gen && ano)){
 			alert('# 성별과 아바타 입력사항을 확인해주세요!');
 			return;
-		}	
+		}
 		$('#frm').attr('action', '/camp24/member/joinProc.cmp').submit();		
 	});
 	

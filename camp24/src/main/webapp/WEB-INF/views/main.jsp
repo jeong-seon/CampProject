@@ -73,7 +73,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			<div class="w3-margin w3-white w3-center">
 				<div class="w3-container">
 					<div class="w3-border-bottom">
-						<img id="rank" style="width: 40px; height: auto;" src="/camp24/resources/img/pic/rank.png"><h2 class="inblock">Best Review</h2><img id="rank" style="width: 40px; height: auto;" src="/camp24/resources/img/pic/rank.png">
+						<!-- <img id="rank" style="width: 40px; height: auto;" src="/camp24/resources/img/pic/rank.png"> -->
+						<h2 class="inblock">Best Review</h2>
+						<!-- <img id="rank" style="width: 40px; height: auto;" src="/camp24/resources/img/pic/rank.png"> -->
 					</div>
 					
 						<div class="carousel-reviews broun-block">

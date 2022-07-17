@@ -39,6 +39,10 @@ public class ReviewDao {
 	public List<BoardVO> getList(PageUtil page){
 		return sqlSession.selectList("rSQL.getList", page);
 	}
+	// 캠핑장이름 검색 리스트 조회 전담 처리함수
+	public List<BoardVO> searchCname(BoardVO bVO){
+		return sqlSession.selectList("rSQL.searchCname", bVO);
+	}
 	// 이미지 리스트 조회 전담 처리함수
 	public List<BoardVO> imgList(){
 		return sqlSession.selectList("rSQL.imgList");
@@ -89,63 +93,38 @@ public class ReviewDao {
 	public int getLikeCnt(BoardVO bVO) {
 		return sqlSession.selectOne("rSQL.likeCnt", bVO);
 	}
-	// like insert
-	public int insertLike(BoardVO bVO) {
-		return sqlSession.insert("rSQL.insertLike", bVO);
-	}
-	public int likeUp(BoardVO bVO) {
-		return sqlSession.update("rSQL.likeUp", bVO);
-	}
-	public int likeDown(BoardVO bVO) {
-		return sqlSession.update("rSQL.likeDown", bVO);
+	
+	
+	
+	
+	
+	public void updateLike(BoardVO bVO) {
+		sqlSession.update("rSQL.updateLike", bVO);
 	}
 	
-	
-	
-	
-	
-	public void updateLike(int rno) {
-		sqlSession.update("rSQL.updateLike", rno);
-	}
-	
-	public void updateLikeCancel(int rno) {
-		 sqlSession.update("rSQL.updateLikeCancel", rno);
+	public void updateLikeCancel(BoardVO bVO) {
+		 sqlSession.update("rSQL.updateLikeCancel", bVO);
 
 	}
 	
-	public void insertLike(int rno,String id) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("rno", rno);
-		sqlSession.insert("rSQL.insertLike", map);
+	public void insertLike(BoardVO bVO) {
+		sqlSession.insert("rSQL.insertLike", bVO);
 	}
 	
-	public void deleteLike(int rno,String id) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("rno", rno);
-		sqlSession.delete("rSQL.deleteLike", map);
+	public void deleteLike(BoardVO bVO) {
+		sqlSession.delete("rSQL.deleteLike", bVO);
 	}
 	
-	public int likeCheck(int rno,String id) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("rno", rno);
-		return sqlSession.selectOne("rSQL.likeCheck", map);
+	public int likeCheck(BoardVO bVO) {
+		return sqlSession.selectOne("rSQL.likeCheck", bVO);
 	}
 	
-	public void updateLikeCheck(int rno,String id) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("rno", rno);
-		sqlSession.update("rSQL.updateLikeCheck", map);
+	public void updateLikeCheck(BoardVO bVO) {
+		sqlSession.update("rSQL.updateLikeCheck", bVO);
 		
 	}
 			
-	public void updateLikeCheckCancel(int rno,String id) {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("rno", rno);
-		sqlSession.update("rSQL.updateLikeCheckCancel", map);
+	public void updateLikeCheckCancel(BoardVO bVO) {
+		sqlSession.update("rSQL.updateLikeCheckCancel", bVO);
 	}
 }

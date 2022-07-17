@@ -1,46 +1,72 @@
 $(document).ready(function(){
-	var map = new naver.maps.Map('map', {
-	    center: new naver.maps.LatLng(37.3595704, 127.105399),
-	    zoom: 17
-	});
 
-	var marker = new naver.maps.Marker({
-	    position: new naver.maps.LatLng(37.3595704, 127.105399),
-	    map: map
-	});
-
-	naver.maps.Event.addListener(map, 'click', function(e) {
-	    marker.setPosition(e.latlng);
-	});
 	
 	$('#sbtn').click(function(){
-		var mapX = $('#mapX').text();
-		var mapY = $('#mapY').text();
+		var input = $('#name').val();
 		
-		$('#X').val(mapX);
-		$('#Y').val(mapY);
+		$('#editWin').css('display', 'block');
 		
 		$.ajax({
-			url: '/camp24/map/mapXY.json',
-			type: 'post',
-			dataType: 'json',
-			success: function(arr){
-				var map = new naver.maps.Map('map', {
-					center: new naver.maps.LatLng(items[0].x , items[0].y),
-					zoom: 17
-				});
+			post: 'get',
+			url: 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?',
+			data: {
+				ServiceKey: '6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8/qN3dGhpsRYTTGJ63LFtj/0kBFwzjL/y5pFa6xA==',
+				numOfRows: '3015',
+				pageNo: '1',
+				MobileOS: 'ETC',
+				MobileApp: 'appName',
+				_type: 'json'
+			},
+			success: function(data){
+				var markers = [];
+				var infowindows = [];
 				
-				var marker = new naver.maps.Marker({
-					position: new naver.maps.LatLng(mapY, mapX),
-					map: map
-				});
-				
-				$('#frm').submit();
+				for(var i = 0; i < data.response.body.items.item.length; i++) {
+					
+					if(data.response.body.items.item[i].facltNm.includes(input) == true) {
+						
+						var map = new naver.maps.Map('map', {
+							center: new naver.maps.LatLng(data.response.body.items.item[i].mapY , data.response.body.items.item[i].mapX),
+							zoom: 17
+						});
+						
+						var contentString = [
+						    '<div class="iw_inner w3-center" style="margin-left: 10px; margin-right: 10px;">',
+						    '   <h3>' + data.response.body.items.item[i].facltNm + '</h3>',
+						    '   <p>' + data.response.body.items.item[i].addr1 + '<br>',
+						    '       <img style="margin-top: 10px; margin-bottom: 10px;" src="' + data.response.body.items.item[i].firstImageUrl + '" width="100" height="100" alt="' + data.response.body.items.item[i].facltNm + '" class="thumb" /><br>',
+						    '       <a href="' + data.response.body.items.item[i].homepage + '" target="_blank">' + data.response.body.items.item[i].homepage + '</a>',
+						    '   </p>',
+						    '</div>'
+						].join('');
+						
+						var marker = new naver.maps.Marker({
+							position: new naver.maps.LatLng(data.response.body.items.item[i].mapY, data.response.body.items.item[i].mapX),
+							map: map
+						});
+						
+						var infowindow = new naver.maps.InfoWindow({
+						    content: contentString
+						});
+						
+						naver.maps.Event.addListener(marker, "click", function(e) {
+						    if (infowindow.getMap()) {
+						        infowindow.close();
+						    } else {
+						        infowindow.open(map, marker);
+						    }
+						});
+					}
+				}
 			},
 			error: function(){
-				alert('### 통신에러 ###');
+				alert('### 통신 에러 ###');
 			}
 		});
-		
 	});
+	
+	$('#editClose').click(function(){
+		$('#editWin').css('display', 'none');
+	});
+	
 });

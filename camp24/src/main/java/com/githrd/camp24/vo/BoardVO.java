@@ -9,10 +9,30 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_id,cano,tno,tmno;
-	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_rno , caname , price,position;
+	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_rno,cano,tno,tmno, likeCheck, startCont, endCont;
+	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_id , caname , price,position;
 	private Date wdate, qdate, qedate, fdate, fedate, rdate, redate ;
 	private List<FileVO> list;
+	private MultipartFile[] file;
+	
+	public int getStartCont() {
+		return startCont;
+	}
+	public void setStartCont(int startCont) {
+		this.startCont = startCont;
+	}
+	public int getEndCont() {
+		return endCont;
+	}
+	public void setEndCont(int endCont) {
+		this.endCont = endCont;
+	}
+	public int getLikeCheck() {
+		return likeCheck;
+	}
+	public void setLikeCheck(int likeCheck) {
+		this.likeCheck = likeCheck;
+	}
 	public int getCano() {
 		return cano;
 	}
@@ -49,19 +69,18 @@ public class BoardVO {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	private MultipartFile[] file;
 	
-	public int getLike_id() {
-		return like_id;
-	}
-	public void setLike_id(int like_id) {
-		this.like_id = like_id;
-	}
-	public String getLike_rno() {
+	public int getLike_rno() {
 		return like_rno;
 	}
-	public void setLike_rno(String like_rno) {
+	public void setLike_rno(int like_rno) {
 		this.like_rno = like_rno;
+	}
+	public String getLike_id() {
+		return like_id;
+	}
+	public void setLike_id(String like_id) {
+		this.like_id = like_id;
 	}
 	public int getLikecount() {
 		return likecount;

@@ -122,43 +122,37 @@ public class ReviewBoardService {
 		return rDao.clickUp(rno);
 	}
 	
-	public int likecount(BoardVO bVO) {
-		return rDao.getLikeCnt(bVO);
-	}
-	public int likeinsert(BoardVO bVO) {
-		return rDao.insertLike(bVO);
-	}
 	
 
 	
 	
 	
-	public void updateLike(int rno)  {
-		rDao.updateLike(rno);
+	public void updateLike(BoardVO bVO)  {
+		rDao.updateLike(bVO);
 	}
 
-	public void updateLikeCancel(int rno) {
-		rDao.updateLikeCancel(rno);
+	public void updateLikeCancel(BoardVO bVO) {
+		rDao.updateLikeCancel(bVO);
 	}
 
-	public void insertLike(int rno, String id) {
-		rDao.insertLike(rno, id);
+	public void insertLike(BoardVO bVO) {
+		rDao.insertLike(bVO);
 	}
 
-	public void deleteLike(int rno, String id) {
-		rDao.deleteLike(rno, id);
+	public void deleteLike(BoardVO bVO) {
+		rDao.deleteLike(bVO);
 	}
 
-	public int likeCheck(int rno, String id) {
-		return rDao.likeCheck(rno, id);
+	public int likeCheck(BoardVO bVO) {
+		return rDao.likeCheck(bVO);
 	}
 
-	public void updateLikeCheck(int rno, String id) {
-		rDao.updateLikeCheck(rno, id);
+	public void updateLikeCheck(BoardVO bVO) {
+		rDao.updateLikeCheck(bVO);
 	}
 
-	public void updateLikeCheckCancel(int rno, String id) {
-		rDao.updateLikeCheckCancel(rno, id);
+	public void updateLikeCheckCancel(BoardVO bVO) {
+		rDao.updateLikeCheckCancel(bVO);
 	}
 
 }

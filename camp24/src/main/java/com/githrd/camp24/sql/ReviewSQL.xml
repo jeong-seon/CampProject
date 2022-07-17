@@ -38,7 +38,7 @@
 			AND id = #{id}
 	</select>
 	<!-- 게시글 리스트 조회 질의명령 -->
-	<select id="getList" resultType="bVO" parameterType="page">
+	<select id="getList" resultType="bVO">
 		SELECT
 			rowno, rno, id, cname, body, title, fdate, fedate, click, likecount, score, avatar
 		FROM
@@ -61,6 +61,32 @@
 			 )
 		WHERE
 			rowno BETWEEN #{startCont} AND #{endCont}
+	</select>
+	
+	<!-- 리뷰 캠핑장이름으로 검색 -->
+	<select id="searchCname" resultType="bVO" parameterType="bVO">
+		SELECT
+		    rno, id, cname, body, title, fdate, fedate, click, likecount, score, avatar
+		FROM
+		    (
+		     SELECT
+		        rno, id, cname, body, title, fdate, fedate, click, likecount, score, avatar
+		     FROM
+		         (
+		             SELECT
+		                 rno, id, cname, rbody body, rtitle title, rdate fdate, redate fedate, click, likecount, score, savename avatar
+		             FROM
+		                 member m, review r, avatar a
+		             WHERE
+		                 r.isshow = 'Y'
+		                 AND mno = rmno
+		                 AND avt = ano
+		             ORDER BY
+		                 rdate DESC
+		         )
+		     )
+		WHERE
+		    cname LIKE '%' || #{cname} || '%'
 	</select>
 	<!-- 글번호로 리뷰 상세보기 질의명령 -->
 	<select id="reviewDetail" resultType="bVO" parameterType="int">
@@ -176,8 +202,12 @@
 		    rno = #{rno}
 	</update>
 	
+	
+	
+	
+	
 	<!-- 게시글 추천수 -->
-	<update id="updateLike" parameterType="int">
+	<update id="updateLike" parameterType="bVO">
 		UPDATE
 			review
 		SET
@@ -186,7 +216,7 @@
 			rno = #{rno}
 	</update>
 	<!-- 게시글 추천수 취소 -->
-	<update id="updateLikeCancel" parameterType="int">
+	<update id="updateLikeCancel" parameterType="bVO">
 		UPDATE
 			review
 		SET
@@ -195,7 +225,7 @@
 			rno = #{rno}
 	</update>
 	<!-- 게시글 추천시 Like 테이블에 insert -->
-	<insert id="insertLike">
+	<insert id="insertLike" parameterType="bVO">
 		INSERT INTO
 			clicklike(like_id, like_rno)
 		VALUES(
@@ -203,7 +233,7 @@
 		)
 	</insert>
 	<!-- 게시글 추천 취소시 delete -->
-	<delete id="deleteLike">
+	<delete id="deleteLike" parameterType="bVO">
 		DELETE FROM
 			clicklike
 		WHERE
@@ -211,7 +241,7 @@
 			AND like_id = #{id}
 	</delete>
 	<!-- 중복체크 -->
-	<update id="updateLikeCheck">
+	<update id="updateLikeCheck" parameterType="bVO">
 		UPDATE
 			clicklike
 		SET
@@ -221,7 +251,7 @@
 			AND like_id = #{id}
 	</update>
 	<!-- 게시글 추천취소 시 다시 0 -->
-	<update id="updateLikeCheckCancel">
+	<update id="updateLikeCheckCancel" parameterType="bVO">
 		UPDATE
 			clicklike
 		SET
@@ -231,9 +261,9 @@
 			AND like_id = #{id}
 	</update>
 	<!-- 게시글 추천 중복방지 select -->
-	<select id="likeCheck" resultType="int">
+	<select id="likeCheck" resultType="int" parameterType="bVO">
 		SELECT
-			COUNT(*) cnt
+			COUNT(*) likeCheck
 		FROM
 			clicklike
 		WHERE

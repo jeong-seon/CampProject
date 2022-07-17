@@ -47,30 +47,21 @@ div{
 <body>
 <%@ include file="../include.jsp" %>
   <!-- Portfolio Section -->
-<div class="w3-col">
+<div class="w3-col" style="margin-top: 30px;">
 	<div class="w3-col m4">
 		<div>
-			<form method="post" action="/camp24/map/mapApi.cmp" id="frm" name="frm"
-					class="w3-content w3-center w3-margin-bottom" style="margin-top: 100px;">
+			<div class="w3-content w3-center w3-margin-bottom" style="margin-top: 100px;">
 				<label class="w3-col w3-center w3-padding"><strong style="font-size: 18pt;">캠핑장 검색</strong>&nbsp;</label>
 				<div class="w3-col w3-center w3-padding">
 					<input type="text" style="margin-left: 30px; margin-bottom: 30px;" class="w3-col w3-center m9 w3-input" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
 					<div class="w3-rest w3-button w3-green" id="sbtn">검색</div>
 				</div>
 				
-				<input type="hidden" id="X">
-				<input type="hidden" id="Y">
-			</form>
-			<div class="w3-center">
-				<c:forEach var="data" items="${LIST}">
-					<c:if test="${data.facltNm ne '검색결과없음'}">
+				<input type="hidden" name="X" id="X" >
+				<input type="hidden" name="Y" id="Y" >
+			<div class="w3-center" id="info">
 					
-						<h5>캠핑장명 : ${data.facltNm}</h5>
-						<h5>경도 : <span id="mapX">${data.mapX}</span></h5>
-						<h5>위도 : <span id="mapY">${data.mapY}</span></h5>
-						
-					</c:if>
-				</c:forEach>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -79,8 +70,18 @@ div{
 
 
     <!-- Grid for photos -->
-    
-   		
+    <div id="editWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-green"> 
+		        <span class="w3-button w3-display-topright" 
+		        							id="editClose">&times;</span>
+		        <h2 class="w3-center">알림</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="editmsg">검색중입니다. 잠시만 기다려주세요.</h3>
+	    	</div>
+	    </div>
+ 	</div>
    	
   <!-- End Portfolio Section -->
   
@@ -97,7 +98,43 @@ function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
 
+initMap();
 
+function initMap(){
+	
+	var map = new naver.maps.Map('map', {
+		center: new naver.maps.LatLng(37.3595704, 127.105399),
+		zoom: 17
+	});
+	
+	
+	var contentString = [
+	    '<div class="iw_inner w3-center" style="margin-left: 10px; margin-right: 10px;">',
+	    '   <h3>NAVER 그린팩토리</h3>',
+	    '   <p>경기 성남시 분당구 불정로 6 그린팩토리 <br>',
+	    '       <img style="margin-top: 10px; margin-bottom: 10px;" src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180420_84%2F1524190400282Ddz2p_JPEG%2FQNqMb_152FdXVYmznU-ia5cJ.jpg" width="100" height="100" alt="NAVER" class="thumb" /><br>',
+	    '       <a href="https://www.navercorp.com" target="_blank">https://www.navercorp.com/</a>',
+	    '   </p>',
+	    '</div>'
+	].join('');
+	
+	var marker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.3595704, 127.105399),
+		map: map
+	});
+	
+	var infowindow = new naver.maps.InfoWindow({
+	    content: contentString
+	});
+	
+	naver.maps.Event.addListener(marker, "click", function(e) {
+	    if (infowindow.getMap()) {
+	        infowindow.close();
+	    } else {
+	        infowindow.open(map, marker);
+	    }
+	});
+}
 </script>
 
 </body>

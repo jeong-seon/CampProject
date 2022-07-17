@@ -54,6 +54,19 @@ public class ReviewBoard {
 		mv.setViewName("board/reviewBoardList");
 		return mv;
 	}
+	@RequestMapping(path="/reviewBoardList.cmp", params="cname")
+	public ModelAndView reviewBoardList(ModelAndView mv, PageUtil page, HttpSession session, BoardVO bVO, String cname) {
+		int total = rDao.getTotal();
+		page.setPage(total);
+		List<BoardVO> list = rDao.searchCname(bVO);
+		List<BoardVO> image = rDao.imgList();
+		
+		mv.addObject("LIST", list);
+		mv.addObject("IMAGE", image);
+		mv.addObject("PAGE", page);
+		mv.setViewName("board/reviewBoardList");
+		return mv;
+	}
 	
 	@RequestMapping("/reviewBoardWrite.cmp")
 	public ModelAndView reviewBoardWrite(ModelAndView mv, HttpSession session) {
@@ -155,42 +168,31 @@ public class ReviewBoard {
 		return mv;
 	}
 	
-//	// 좋아요 추천
-//	@RequestMapping("/likeCnt.json")
-//	@ResponseBody
-//	public Map<String, String> likeCnt(BoardVO bVO){
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		String result = "NO";
-//		
-//		int cnt = rSrvc.likecount(bVO);
-//		int incnt = rSrvc.likeinsert(bVO);
-//		
-//		if(cnt == 0) {
-//			result = "OK";
-//		}
-//		if(incnt == 1) {
-//			rDao.likeUp(bVO);
-//		}
-//		map.put("result", result);
-//		return map;
-//	}
-	
 	@Transactional
 	@RequestMapping("/likeCnt.json")
 	@ResponseBody
-	public int updateLike(int rno, String id){
+	public int updateLike(BoardVO bVO){
 	
-		int likeCheck = rSrvc.likeCheck(rno, id);
+		int likeCheck = rSrvc.likeCheck(bVO);
 		if(likeCheck == 0) {
 			//좋아요 처음누름
-			rSrvc.insertLike(rno, id); //like테이블 삽입
-			rSrvc.updateLike(rno);	//게시판테이블 +1
-			rSrvc.updateLikeCheck(rno, id);//like테이블 구분자 1
+			rSrvc.insertLike(bVO); //like테이블 삽입
+			rSrvc.updateLike(bVO);	//게시판테이블 +1
+			rSrvc.updateLikeCheck(bVO);//like테이블 구분자 1
 		}else if(likeCheck == 1) {
-			rSrvc.updateLikeCheckCancel(rno, id); //like테이블 구분자0
-            rSrvc.updateLikeCancel(rno); //게시판테이블 - 1
-			rSrvc.deleteLike(rno, id); //like테이블 삭제
+			rSrvc.updateLikeCheckCancel(bVO); //like테이블 구분자0
+            rSrvc.updateLikeCancel(bVO); //게시판테이블 - 1
+			rSrvc.deleteLike(bVO); //like테이블 삭제
 		}
 		return likeCheck;
+	}
+	
+	
+	
+	@RequestMapping("/searchList.json")
+	@ResponseBody
+	public List<BoardVO> searchCname(BoardVO bVO) {
+		List<BoardVO> list = rDao.searchCname(bVO);
+		return list;
 	}
 }

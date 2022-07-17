@@ -78,8 +78,19 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
     			<h2 class="w3-padding-16 w3-center">방문후기 게시판</h2>
     <div class="container">
 		<div class="row">
+			<div class="container">
+				<form method="post" action="/camp24/reviewBoard/reviewBoardList.cmp" name="schfrm" id="schfrm">
+					<div class="col-sm-7">
+						<input type="text" class="w3-input w3-border" id="cname" name="cname">
+					</div>
+					<div class="col-sm-2">
+						<div class="w3-button w3-green" id="schbtn">검 색</div>
+					</div>
+				</form>
+			</div>
 			<div class="col-sm-8">
 				<hr/>
+				
 				
 				
 		<c:forEach var="data" items="${LIST}">
@@ -87,13 +98,17 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				
 					<div class="row">
 						<div class="col-sm-3">
-							<img src="/camp24/resources/img/avatar/${data.avatar}" class="img-rounded">
-							<div class="review-block-name" style="padding-left: 35px;"><span>${data.id}</span></div>
+							<div class="w3-col w3-center">
+							<img src="/camp24/resources/img/avatar/${data.avatar}" class="img-rounded" style="width: 100px; height: 100px;">
+							</div>
+							<div class="w3-col w3-center">
+								<div class="review-block-name"><span><strong>${data.id}</strong></span></div>
+							</div>
 						</div>
 						<div class="col-sm-9">
 						
 						<div class="review-block-title float-right" id="${data.rno}">
-							<a href="/camp24/reviewBoard/likeCnt.json" style="margin-top: 10px; height: 25px;" class="w3-right btn text-white btn-danger like"> <i class="fa fa-heart"></i> ${data.likecount}</a>
+							<span style="margin-top: 10px; height: 25px;" class="w3-right btn text-white btn-danger like"> <i class="fa fa-heart"></i> ${data.likecount}</span>
 						</div>
 						
 						<c:if test="${data.score eq 1}">
@@ -160,8 +175,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 							</div>
 							
 							<c:choose>
-							        <c:when test="${fn:length(data.body) gt 3}">
-							        <c:out value="${fn:substring(data.body, 0, 3)}" />...
+							        <c:when test="${fn:length(data.body) gt 5}">
+							        <c:out value="${fn:substring(data.body, 0, 5)}" />...
 							        </c:when>
 							        <c:otherwise>
 							        <c:out value="${data.body}">
