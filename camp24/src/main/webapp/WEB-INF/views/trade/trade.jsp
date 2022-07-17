@@ -76,7 +76,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
     <!-- Grid for photos -->
 <div class="container">
 	<h2 class="text-center">중고거래게시판</h2>
-	<div class="w3-col w3-margin-bottom">
+</div>
+<div class="w3-col w3-margin-bottom">
 			<div class="w3-quarter">
 				<select id="xlcate" class="w3-select w3-border w3-center w3-margin-bottom">
 					<option disabled selected>분류 선택</option>
@@ -86,35 +87,41 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				</select>
 			</div>
 </div>
-</div>
 
 	<form method="POST" action="/camp24/trade/tradeDetail.cmp" id="frm" name="frm">
 		<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
 		<input type="hidden" name="tno" id="tno">
 		<input type="hidden" name="vw" id="vw">
-	</form>
-<div class="" id="tPanel">			         
+
+<div class="w3-col w3-left" id="tPanel">	     
 <c:forEach var="data" items="${LIST}">
-			<div class="col-md-3 w3-margin-bottom w3-hover-blue w3-margin-right w3-card-2 brdList" id="${data.tno}">
+			<div class="col-md-3 w3-margin-bottom brdList" style ="margin-right: 30px; cursor:pointer;"  id="${data.tno}">
 				<c:forEach var="image" items="${IMAGE}">
 				<c:if test="${data.tno eq image.imageno}">
-							<img style="display: inline-block; width: 150px; height: 100px;" src="${image.idir}${image.isavename}">
+				<div class = "w3-margin-right">
+							<img style= "display: inline-block; width: 202px; height: 202px; cursor:pointer;"  src="${image.idir}${image.isavename}">
+				</div>
 				</c:if>
 				</c:forEach>
                 	<h4>${data.title}</h4>
                		<label>$ ${data.price}원</label>
                		<p>위치 :${data.position}</p>
-               		<p>조회수 : ${data.click}</p>
+               		<p>조회수 : ${data.click} 작성자 : ${data.id}</p>
+
                		
 		</div>
+	
 </c:forEach>
+</div>
+	</form>
 	<c:if test="${not empty SID}">
 			<div class="w3-col w3-margin-top" style="margin-bottom: 100px;">
 			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left"id="wbtn">물품 등록</button>
 		</div>
-	</c:if>	
+	</c:if>
+	
 <!-- END PAGE CONTENT -->
-</div>
+
 
 <script>
 // Open and close sidebar
@@ -122,7 +129,6 @@ function openNav() {
   document.getElementById("mySidebar").style.width = "60%";
   document.getElementById("mySidebar").style.display = "block";
 }
-
 function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
@@ -147,7 +153,6 @@ function closeNav() {
         });
         
         $('#back-to-top').tooltip('show');
-
 	});	
 </script>	
 </body>

@@ -77,8 +77,8 @@ public class TradeDao {
 		return sqlSession.selectList("tSQL.cateList", bVO);
 	}
 	
-	public List<FileVO> imagenoList(int rno){
-		return sqlSession.selectList("tSQL.imgList2", rno);
+	public List<FileVO> imagenoList(int tno){
+		return sqlSession.selectList("tSQL.imgList2", tno);
 	}
 	// 상품 리스트 조회 전담 처리함수
 		public List<BoardVO> gettradeList(BoardVO bVO){

@@ -37,6 +37,7 @@
 <link rel="stylesheet" type="text/css" href="/camp24/css/main.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/base.css">
 <link rel="stylesheet" type="text/css" href="/camp24/css/user.css">
+<link rel="stylesheet" type="text/css" href="/camp24/css/detail.css">
 <script type="text/javascript" src="/camp24/resources/js//jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/tradeboard.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/trade2.js"></script>
@@ -98,6 +99,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			</div>
 </c:if>
 		<div class="w3-col frmpadding w3-center">
+		
 			<div class="w3-col  w3-margin-bottom">
 				<label class="w3-left">물품 이름 : ${DATA.title}</label>
 			</div>
@@ -115,20 +117,39 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			</div>
 		</div>
 		
-		<div class="w3-col w3-margin-top w3-card-4">
+		<div class="w3-col w3-margin-top">
 	<c:if test="${SID eq DATA.id}">
-			<div class="w3-quarter w3-button w3-blue" id="hbtn">home</div>
-			<div class="w3-quarter w3-button w3-green" id="listbtn">리스트</div>
-			<div class="w3-quarter w3-button w3-deep-orange" id="edit">글수정</div>
-			<div class="w3-quarter w3-button w3-red" id="dbtn">글삭제</div>
+			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="listbtn">리스트</button>
+			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="edit">글수정</button>
+			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left dbtn" id="${data.tno}">글삭제</button>
 	</c:if>
 	<c:if test="${SID ne DATA.id}">
-			<div class="w3-half w3-button w3-blue" id="hbtn">home</div>
-			<div class="w3-half w3-button w3-green" id="listbtn">리스트</div>
+			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="listbtn">리스트</button>
 	</c:if>
 		</div>
+		
+		
 	<!-- END PAGE CONTENT -->
 </div>
+		<div id="modal2" class="w3-modal">
+      <div class="w3-modal-content w3-animate-opacity w3-card-4 mxw500">
+         <header class="w3-container w3-gray"> 
+            <span onclick="document.getElementById('modal2').style.display='none'" 
+                  class="w3-button w3-display-topright">&times;</span>
+            <h2 class="w3-center">알림</h2>
+         </header>
+         <div class="w3-container">
+            <h5 class="w3-center w3-padding w3-margin" id="modalmsg">글을 삭제하시겠습니까?</h5>
+         </div>
+          <div class="w3-container w3-gray">
+            <div class="w3-col m2 w3-right w3-button" id="nbtn">아니오</div>
+            <div class="w3-col m2 w3-right w3-button" id="ybtn">예</div>
+         </div>
+      </div>
+   </div>
+
+
+
 
 <script>
 // Open and close sidebar

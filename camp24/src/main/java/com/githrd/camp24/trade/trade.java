@@ -1,8 +1,6 @@
 package com.githrd.camp24.trade;
 /**
-
  * @author	김희승
-
  * @since	2022.06.19
  * @version	v.1.0
  * 
@@ -91,6 +89,7 @@ public class trade {
 
 				bVO.setResult("NO");
 				view = "/camp24/trade/tradeWrite.cmp";
+				System.out.println(bVO);
 				e.printStackTrace();
 			}
 			mv.addObject("NOWPAGE", nowPage);
@@ -191,7 +190,7 @@ public class trade {
 				return mv;
 		}
 		
-		@RequestMapping("/cateList.cmp")
+		@RequestMapping("/cateList.json")
 		@ResponseBody
 		public List<BoardVO> cateList(BoardVO bVO){
 			List<BoardVO> list = tDao.getCateList(bVO);

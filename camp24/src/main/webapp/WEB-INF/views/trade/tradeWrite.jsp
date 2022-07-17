@@ -57,7 +57,6 @@
     var parts = num.toString().split(".");
     return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
   }
-
   // 숫자 체크(숫자 이외 값 모두 제거)
   function chkNumber(obj){
     var tmpValue = $(obj).val().replace(/[^0-9,]/g,'');
@@ -92,16 +91,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	<div class="w3-content">
 		<h3 class="w3-center">중고물품 등록</h3>
 		
-		<div class="w3-col w3-margin-bottom">
-			<div class="w3-quarter">
-				<select id="cano" class="w3-select w3-border w3-center">
-					<option selected>분류 선택</option>
-		<c:forEach var="data" items="${LIST2}">
-					<option value="${data.cano}">${data.caname}</option>
-		</c:forEach>
-				</select>
-			</div>
-</div>
+		
 		
 		
 		
@@ -109,8 +99,15 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				id="frm" name="frm" class="w3-col frmpadding">
 			<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
 			<input type="hidden" name="id" value="${SID}">
+
 			
- 				
+				<div class="w3-col w3-margin-bottom">
+				<div class="w3-quarter">
+				<select  class="w3-select w3-border w3-center" id = "cano" name = "cano">
+						<option  value="0" selected >분류 선택 (필수입력)</option>
+						</select>
+					</div>
+					</div>
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="title" class="w3-col s2">물품 제목</label>
 				<input type="text" id="title" name="title" class="w3-col m10 w3-input w3-border">
@@ -156,7 +153,6 @@ function openNav() {
   document.getElementById("mySidebar").style.width = "60%";
   document.getElementById("mySidebar").style.display = "block";
 }
-
 function closeNav() {
   document.getElementById("mySidebar").style.display = "none";
 }
@@ -181,7 +177,6 @@ function closeNav() {
         });
         
         $('#back-to-top').tooltip('show');
-
 	});	
 </script>	
 </body>

@@ -122,4 +122,3 @@ public class TradeService {
 			return tDao.clickUp(tno);
 		}
 	}
-

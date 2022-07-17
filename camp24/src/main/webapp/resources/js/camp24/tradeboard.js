@@ -142,9 +142,18 @@ $(document).ready(function(){
 	});
 	
 	// 글삭제 버튼 이벤트 처리
-	$('#dbtn').click(function(){
-		$('#frm').attr('action', '/camp24/trade/tradeDel.cmp');
-		$('#frm').submit();
+	$('.dbtn').click(function(){
+		var sno = $(this).attr('id');
+		
+		$('#ybtn').click(function(){
+			$('#rno').val(sno);
+			$('#frm').attr('action', '/camp24/trade/tradeDel.cmp');
+			$('#frm').submit();
+		
+		});
+		$('#nbtn').click(function(){
+			$('#modal2').css('display', 'none');
+		});
 	});
 	
 });

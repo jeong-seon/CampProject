@@ -38,9 +38,41 @@ $(document).ready(function(){
 			}
 		});
 	});
-	$('#tPanel').on('click', '.trade',function(){
-		var sno = $(this).attr('id');
-		$(document.frm.tno).val(sno);
-		$('#frm').submit();
-	});		
+	
+$('#cano').ready(function(){
+
+	var sno = $(this).val();
+
+		$.ajax({
+			url: '/camp24/trade/cateList.json',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				caname: sno
+			},
+			success: function(arr){
+				if(arr.length > 0){
+					for(var i = 0 ; i < arr.length ; i++ ){			
+						var stag = '<option value="'+ arr[i].cano +'">'+ arr[i].caname +'</option>'
+						
+						$('#cano').append(stag);
+					}
+				}
+			},
+			error: function(){
+				alert('### 통신 오류 ###');
+		}
+			});
+		});
+
+
+$('#tPanel').on('click','.brdList',function(){
+	
+	var sno = $(this).attr('id');
+	
+	
+	$(document.frm.tno).val(sno);	
+	$('#frm').submit();
+});	
+
 });
