@@ -66,7 +66,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			
 			        </div>
 			        <div class="forgot">
-			       		<a href="">Forgot password?</a>
+			       		<a href="/camp24/user/find_id_form.cmp">Forgot ID?</a>
+			       	</div>
+			       	<div class="forgot">
+			       		<a href="/camp24/user/find_pw_form.cmp">Forgot password?</a>
 					</div>
 			        <button type="submit" class="btn btn-primary w3-green" id="lbtn">Login</button>
 

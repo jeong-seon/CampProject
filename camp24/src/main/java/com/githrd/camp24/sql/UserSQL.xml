@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<!--
+/**
+
+ * 이 클래스는 아이디와 비밀번호 찾기 관련 요청을 처리할 클래스
+ * @author	백서진
+ * @since	2022.07.13
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ 
+ * 				2022.07.13	-	담당자 : 백서진
+ * 									클래스 제작, 
+ * 									아이디 찾기 기능 처리
+ *
+ */
+-->
+
+<mapper namespace="uSQL">
+
+	<!-- 이름, 전화번호로 아이디 조회 질의명령 -->
+	<select id="findId" resultType="int" parameterType="mVO">
+		SELECT
+			COUNT(*) cnt
+		FROM
+			member
+		WHERE
+			name = #{name}
+			AND tel = #{tel}
+	</select>
+	
+	<select id="idResult" resultType="mVO" parameterType="mVO">
+		SELECT
+		    id
+		FROM
+		    member
+		WHERE
+		    name = #{name}
+		    AND tel = #{tel}
+	</select>
+	
+	<select id="selectMember" resultType="mVO" parameterType="mVO">
+		SELECT
+			mail
+		FROM
+			member
+		WHERE
+			mail = #{mail}
+	</select>
+	
+	<update id="pwUpdate" parameterType="mVO">
+		UPDATE
+			member
+		SET
+			pw = #{pw}
+		WHERE
+			mail = #{mail}
+	</update>
+</mapper>

@@ -173,7 +173,7 @@ public class Member2 {
 		// 이메일 보내기
 		String setFrom = "camp24page@gmail.com";
 		String toMail = email;
-		String title = "CAMP24 회원가입 인증 이메일입니다.";
+		String title = "[ CAMP24 회원가입 인증 이메일입니다 ]";
 		String content = "CAMP24 홈페이지를 방문해주셔서 감사합니다." +
 						"<br><br>" +
 						"인증 번호는 " + checkNum + " 입니다." +
