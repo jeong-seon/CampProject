@@ -127,3 +127,45 @@
 처리함수	: 	delQBoard()
 뷰			: 	/WEB-INF/views/qnaBoard/redirect.jsp
 -------------------------------------------------------------
+
+=====================================================================
+############## 김은선
+=====================================================================
+---------------------------------------------------------------------
+# 회원가입 페이지 보기 요청
+요청내용	:	/camp24/member/join.cmp
+파라미터	:	무
+컨트롤러	:	com.githrd.camp24.controller.member2.Member2
+처리함수	:	joinForm()
+뷰			:	/WEB-INF/views/member.join.jsp
+---------------------------------------------------------------------
+# 아이디 체크 요청
+요청내용	:	/camp24/member/idCheck.cmp
+파라미터	:	id
+컨트롤러	:	com.githrd.camp24.controller.member2.Member2
+처리함수	:	idCheck()
+뷰			:	json
+---------------------------------------------------------------------
+# 회원가입 처리 요청
+요청내용	:	/camp24/member/joinProc.cmp
+파라미터	:	name, id, pw, mail, tel, ano, gen
+컨트롤러	:	com.githrd.camp24.controller.member2.Member2
+처리함수	:	joinProc()
+뷰			:	redirect ]
+					성공 : /camp24/
+					실패 : /camp24/member/join.cmp
+---------------------------------------------------------------------
+# 내 정보 수정 폼보기 요청
+요청내용	:	/camp24/member/myInfoEdit.cmp
+파라미터	:	id
+컨트롤러	:	com.githrd.camp24.controller.member2.Member2
+처리함수	:	myInfoEdit()
+뷰			:	/WEB-INF/views/member/editInfo.jsp
+---------------------------------------------------------------------
+# 내 정보 수정 처리 요청
+요청내용	:	/camp24/member/infoEditProc.cmp
+파라미터	:	mno, pw, mail, tel, ano
+컨트롤러	:	com.githrd.camp24.controller.member2.Member2
+처리함수	:	infoEditProc()
+뷰			:	/WEB-INF/views/member/editInfo.jsp
+---------------------------------------------------------------------

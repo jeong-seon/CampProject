@@ -40,15 +40,15 @@
 	
 	<select id="getList" resultType="bVO" parameterType="page">
 		SELECT
-		    tno, title, price, position, click, cnt , cano
+		    tno, title, price, position, click, cnt , cano, id
 		FROM
 		    (
 		        SELECT
-		            ROWNUM rno, tno, title, price, position, click , cnt , cano
+		            ROWNUM rno, tno, title, price, position, click , cnt , cano, id
 		        FROM
 		            (
 		                SELECT
-		                    tno, title, price, position, click , cnt , cano
+		                    tno, title, price, position, click , cnt , cano ,id
 		                FROM
 		                    trade, member,
 		                    (
@@ -152,7 +152,7 @@
 				trade
 		</selectKey>
 			INSERT INTO
-		    trade(cano,tno, body, tmno, title, price, position)
+		    trade(cano, tno, body, tmno, title, price, position)
 		VALUES(
 			#{cano},
 		    #{tno}, #{body},

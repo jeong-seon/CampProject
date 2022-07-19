@@ -42,6 +42,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 }
 #jbtn{
 	border-color: white;
+	width: 100px;
+	height: 50px;
+	position: center;
 }
 .avtimg {
 		width: 100px;
@@ -78,11 +81,11 @@ img{
 <%@ include file="../include.jsp" %>
 
   <!-- Portfolio Section -->
-<div id="LoginForm">
+<div id="JoinForm">
 	<div class="w3-container">
-		<div class="login-form">
+		<div class="join-form w3- center">
 			<div class="main-div">
-			    <div class="panel">
+			    <div class="panel w3-center">
 				   <h2>Camp24 Join</h2>
 				   <p>Please enter your Information</p>
 			   	</div>
@@ -173,7 +176,9 @@ img{
 			 		</div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary w3-green" id="jbtn">Join</button>
+			<div class="w3-col w3-center">
+				<button type="submit" class="btn btn-primary w3-green" id="jbtn">Join</button>
+			</div>
 		</form>
     		</div>
 		</div>

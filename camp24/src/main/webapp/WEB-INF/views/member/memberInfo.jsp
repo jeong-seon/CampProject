@@ -136,6 +136,9 @@ a:hover{
               <dd style="text-align: left" id="mail">${DATA.mail}</dd>
               <dt>성별 :</dt>
               <dd style="text-align: left" id="gen">${DATA.gen == 'M' ? "남자":"여자"}</dd>
+<c:if test="${not empty SID}">              
+              <div class="w3-center w3-button w3-blue" id="pbtn">선호도</div>
+</c:if>
             </dl>
             </div>
           </article>

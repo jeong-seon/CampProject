@@ -13,5 +13,9 @@ $(document).ready(function(){
 		$('#frm').attr('action', '/camp24/member/myInfoEdit.cmp');
 		$('#frm').submit();
 	});
-
+	
+	$('#pbtn').click(function(){
+		$('#frm').attr('action', '/camp24/preference/preferenceInfo.cmp');
+		$('#frm').submit();
+	});
 });

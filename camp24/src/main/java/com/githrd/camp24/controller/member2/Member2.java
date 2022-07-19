@@ -91,7 +91,7 @@ public class Member2 {
 			// 성공한 경우
 			session.setAttribute("SID", mVO.getId());
 			session.setAttribute("MSG_CHECK", "OK");
-			rv.setUrl("/camp24/main.cmp");
+			rv.setUrl("/camp24/preference/preference.cmp");
 		} else {
 			rv.setUrl("/camp24/member/join.cmp");
 		}
