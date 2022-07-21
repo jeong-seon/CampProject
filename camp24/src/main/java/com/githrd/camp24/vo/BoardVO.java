@@ -9,8 +9,8 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_rno,cano,tno,tmno, likeCheck, startCont, endCont;
-	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_id , caname , price,position;
+	private int mno, qmno, rmno, bno, fbno, qno,  upno, qupno, fupno, rno, rcno, cno, ano, pno, pcno, click, cnt, step, lat, plong, imageno, ino, likecount, like_rno,cano,tno,tmno,  price, likeCheck, startCont, endCont;
+	private String id, title, ftitle, qtitle, rtitle, body, qbody, fbody, rbody, sdate, sedate, avatar, score, cname, gname, jname, isavename, result, like_id , caname ,position;
 	private Date wdate, qdate, qedate, fdate, fedate, rdate, redate ;
 	private List<FileVO> list;
 	private MultipartFile[] file;
@@ -57,10 +57,10 @@ public class BoardVO {
 	public void setCaname(String caname) {
 		this.caname = caname;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getPosition() {

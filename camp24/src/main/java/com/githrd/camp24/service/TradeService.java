@@ -2,6 +2,7 @@ package com.githrd.camp24.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -121,4 +122,5 @@ public class TradeService {
 		public int click(int tno) {
 			return tDao.clickUp(tno);
 		}
+		
 	}

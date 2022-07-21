@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +93,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
 		<input type="hidden" name="tno" id="tno">
 		<input type="hidden" name="vw" id="vw">
-
+	</form>
 <div class="w3-col w3-left" id="tPanel">	     
 <c:forEach var="data" items="${LIST}">
 			<div class="col-md-3 w3-margin-bottom brdList" style ="margin-right: 30px; cursor:pointer;"  id="${data.tno}">
@@ -104,16 +105,15 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				</c:if>
 				</c:forEach>
                 	<h4>${data.title}</h4>
-               		<label>$ ${data.price}원</label>
+               		<label><fmt:formatNumber value="${data.price}" pattern="#,###" />원</label>
                		<p>위치 :${data.position}</p>
-               		<p>조회수 : ${data.click} 작성자 : ${data.id}</p>
-
-               		
+               		<p>조회수 : ${data.click}</p>
+               		<p>작성자 : ${data.id}</p>	
 		</div>
 	
 </c:forEach>
 </div>
-	</form>
+	
 	<c:if test="${not empty SID}">
 			<div class="w3-col w3-margin-top" style="margin-bottom: 100px;">
 			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left"id="wbtn">물품 등록</button>

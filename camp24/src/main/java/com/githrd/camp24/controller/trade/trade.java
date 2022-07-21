@@ -1,4 +1,4 @@
-package com.githrd.camp24.trade;
+package com.githrd.camp24.controller.trade;
 /**
  * @author	김희승
  * @since	2022.06.19
@@ -15,12 +15,17 @@ package com.githrd.camp24.trade;
 
 
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
-
-
-
-
-
+import java.util.logging.Logger;
 
 import javax.servlet.http.*;
 
@@ -63,6 +68,7 @@ public class trade {
 		mv.addObject("LIST2", list2);
 		mv.addObject("IMAGE", image);
 		mv.addObject("PAGE", page);
+
 		// 5. 뷰 부르고
 		mv.setViewName("trade/trade");
 		// 6. mv 반환하고
@@ -203,4 +209,60 @@ public class trade {
 //			List<ProductVO> list = pDao.getProductList(pVO);
 			return tDao.gettradeList(bVO);
 		}
+		
+		
+		
+		@RequestMapping("/kakaopay.json")
+		@ResponseBody
+		public String kakaopay(BoardVO bVO) {
+				try {
+				URL addres = new URL("https://kapi.kakao.com/v1/payment/ready");
+				HttpURLConnection server = (HttpURLConnection) addres.openConnection();
+				server.setRequestMethod("POST");
+				server.setRequestProperty("Authorization", "KakaoAK bead5052956d4efb28c1a4ab4a233212");
+				server.setRequestProperty("Countent-type", "application/x-www-form-urlencoded;charset=utf-8");
+				server.setDoOutput(true);
+				String param = "cid=TC0ONETIME" // 가맹점 코드
+						+ "&partner_order_id=partner_order_id" // 가맹점 주문번호
+						+ "&partner_user_id=partner_user_id" // 가맹점 회원 id
+						+ "&item_name=초코파이" // 상품명
+						+ "&quantity=1" // 상품 수량
+						+ "&total_amount=5000" // 총 금액
+						+ "&vat_amount=200" // 부가세
+						+ "&tax_free_amount=0" // 상품 비과세 금액
+						+ "&approval_url=http://localhost/camp24/main.cmp" // 결제 성공 시
+						+ "&fail_url=http://localhost/camp24/trade.cmp" // 결제 실패 시
+						+ "&cancel_url=http://localhost/camp24/trade/trade.cmp"; // 결제 취소 시
+
+
+
+				System.out.println(param);
+				OutputStream out = server.getOutputStream();
+				DataOutputStream dataout = new DataOutputStream(out);
+				dataout.writeBytes(param);
+				dataout.close();
+				
+				int 결과 = server.getResponseCode();
+				
+				InputStream input;
+				
+				if(결과 == 200) {
+					input = server.getInputStream();
+				}else {
+					input = server.getErrorStream();
+				}
+				InputStreamReader read = new InputStreamReader(input);
+				BufferedReader buff = new BufferedReader(read);
+				return buff.readLine();
+				
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			return "{\"result\":\"NO\"}";
+		}
 }
+
+//"cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=data.id&item_name=초코파이&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0&approval_url=http://localhost/camp24/main.cmp&fail_url=http://localhost/camp24/trade.cmp&cancel_url=http://localhost/camp24/trade/trade.cmp";

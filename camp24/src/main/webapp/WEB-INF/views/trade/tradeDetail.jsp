@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +26,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <!-- google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +44,7 @@
 <script type="text/javascript" src="/camp24/resources/js//jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/tradeboard.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/trade2.js"></script>
+<script type="text/javascript" src="/camp24/resources/js/camp24/kakaopay.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
 <style type="text/css">
     .back-to-top {
@@ -77,7 +81,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	<form method="POST" action="/camp24/trade/trade.cmp" id="frm" name="frm">
 		<input type="hidden" name="nowPage" value="${param.nowPage}">
 		<input type="hidden" name="tno" value="${DATA.tno}">
-	</form>
+	
 	<div class="w3-content">
 	<c:if test="${not empty LIST}">			
 			<div class="w3-margin-bottom" id="previewbox">
@@ -107,7 +111,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				<label class="w3-left">판매자 아이디 : ${DATA.id} </label>
 			</div>
 			<div class="w3-col  w3-margin-bottom" >
-				<label class="w3-left">금액 : ${DATA.price} 원</label>
+				<label class="w3-left">금액 :<fmt:formatNumber value="${DATA.price}" pattern="#,###" />원</label>
 			</div>
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-left">지역위치 : ${DATA.position}</label>
@@ -123,14 +127,18 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="edit">글수정</button>
 			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left dbtn" id="${data.tno}">글삭제</button>
 	</c:if>
+	
 	<c:if test="${SID ne DATA.id}">
 			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="listbtn">리스트</button>
+			
 	</c:if>
-		</div>
-		
-		
-	<!-- END PAGE CONTENT -->
+		<c:if test="${not empty SID}">
+		    <button type="button" class="btn btn-primary pull-right w3-yellow w3-margin-left" id="kakaopay">카카오페이로 결제하기</button>
+		</c:if>	
+		</div>	
+	
 </div>
+		</form>
 		<div id="modal2" class="w3-modal">
       <div class="w3-modal-content w3-animate-opacity w3-card-4 mxw500">
          <header class="w3-container w3-gray"> 
@@ -148,7 +156,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
       </div>
    </div>
 
-
+<!-- END PAGE CONTENT -->
 
 
 <script>

@@ -38,7 +38,7 @@ public class TradeDao {
 	public List<BoardVO> imgList(){
 		return sqlSession.selectList("tSQL.imgList");
 	}
-	
+
 	// 회원번호조회 전담 처리함수
 	public int getMno(String id) {
 		return sqlSession.selectOne("tSQL.selMno", id);
@@ -88,4 +88,7 @@ public class TradeDao {
 		public int clickUp(int tno) {
 			return sqlSession.update("tSQL.clickUp", tno);
 		}
+	public BoardVO Kakaopay(int tno) {
+		return sqlSession.selectOne("tSQL.kakaopay",tno); 
+	}
 }

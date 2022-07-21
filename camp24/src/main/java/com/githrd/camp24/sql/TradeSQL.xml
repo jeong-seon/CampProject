@@ -107,6 +107,7 @@
 		    t.isshow = 'Y'
 		    AND i.isshow = 'Y'
 		    AND imageno = tno
+		    AND icode = 'T'
 	</select>
 	
 	<select id="imgList2" resultType="fVO" parameterType="int">
@@ -119,6 +120,7 @@
 		    AND i.isshow = 'Y'
 		    AND tno = #{tno}
 		    AND imageno = tno
+		    AND icode = 'T'
 	</select>
 	
 	<!-- 회원아이디로 회원번호 조회 질의명령 -->
@@ -142,8 +144,17 @@
 		    AND idir = '/camp24/upload/'
 		    AND cano = #{cano}
 	</select>
+	<!--  카카오 결제 -->
+	<select id = "kakaopay" resultType="bVO"  parameterType="bVO">
 	
+	SELECT
+		tno,title,price,tmno,id
+	FROM
+		t.trade, m.member
+	WHERE
+		tno = #{tno}
 	
+	</select>
 	<insert id="insertBoard" parameterType="bVO">
 		<selectKey keyProperty="tno" resultType="int" order="BEFORE">
 		SELECT

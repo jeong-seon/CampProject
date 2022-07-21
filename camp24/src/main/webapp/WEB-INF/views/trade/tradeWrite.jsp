@@ -118,7 +118,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			</div>
 			<div class="w3-col w3-margin-top w3-margin-bottom">
 				<label for="price" class="w3-col s2">가격</label>
-				<input type="text" onkeyup="chkNumber(this)" id="price" name="price" class="w3-col m10 w3-input w3-border" >
+				<input type="text" id="price" name="price" class="w3-col m10 w3-input w3-border" >
 			</div>
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-col s2">이미지 파일</label>
