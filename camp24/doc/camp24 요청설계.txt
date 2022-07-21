@@ -169,3 +169,132 @@
 처리함수	:	infoEditProc()
 뷰			:	/WEB-INF/views/member/editInfo.jsp
 ---------------------------------------------------------------------
+=====================================================================
+############## 김희승
+=====================================================================
+# 로그인 폼 보기 요청
+요청내용	:	/camp24/member/login.cmp
+파라미터	:	vw,nowpage,
+컨트롤러	:	com.githrd.camp24.controller.login.login
+처리함수	:	loginForm()
+뷰			:	/WEB-INF/views/member/login.jsp
+---------------------------------------------------------------------
+# 로그인 처리 요청
+요청내용	:	/camp24/member/loginProc.cmp
+파라미터	:	id,pw
+컨트롤러	:	com.githrd.camp24.controller.login.login
+처리함수	:	loginProc()
+뷰			:	/WEB-INF/views/member/login.jsp
+---------------------------------------------------------------------
+# 로그아웃 처리 요청
+요청내용	:	/camp24/member/logout.cmp
+파라미터	:	vw, nowpage
+컨트롤러	:	com.githrd.camp24.controller.login.login
+처리함수	:	logout()
+뷰			:	무
+---------------------------------------------------------------------
+# 마이페이지 폼 보기 요청
+요청내용	:	/camp24/member/myInfo.cmp
+파라미터	:	vw, nowpage
+컨트롤러	:	com.githrd.camp24.controller.login.login
+처리함수	:	myInfo()
+뷰			:	/WEB-INF/views/member/memberinfo.jsp
+---------------------------------------------------------------------
+# 회원탈퇴 요청 
+요청내용	:	/camp24/member/delMember.cmp
+파라미터	:	id,rv
+컨트롤러	:	com.githrd.camp24.controller.login.login
+처리함수	:	myInfo()
+뷰			:	무
+---------------------------------------------------------------------
+# 마이페이지 폼 보기 요청
+요청내용	:	/camp24/member/myInfo.cmp
+파라미터	:	vw, nowpage
+컨트롤러	:	com.githrd.camp24.controller.login.login
+처리함수	:	myInfo()
+뷰			:	/WEB-INF/views/member/memberinfo.jsp
+---------------------------------------------------------------------
+# FAQ 폼 보기 요청
+요청내용	:	/camp24/board/faq.cmp
+파라미터	:	무
+컨트롤러	:	com.githrd.camp24.controller.faq.Faq
+처리함수	:	faqList()
+뷰			:	/WEB-INF/views/board/faqlist.jsp
+---------------------------------------------------------------------
+# 중고물품 리스트 폼 보기 요청
+요청내용	:	/camp24/trade/trade.cmp
+파라미터	:	page
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	boardList()
+뷰			:	/WEB-INF/views/trade/trade.jsp
+---------------------------------------------------------------------
+# 중고물품 물품 작성 폼 보기 요청
+요청내용	:	/camp24/trade/tradeWrite.cmp
+파라미터	:	무
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	boardWrite()
+뷰			:	/WEB-INF/views/trade/tradewrite.jsp
+---------------------------------------------------------------------
+# 중고물품 물품 작성 처리  요청
+요청내용	:	/camp24/trade/tradeWriteProc.cmp
+파라미터	:	nowpage
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	boardWriteProc()
+뷰			:	/WEB-INF/views/trade/tradewrite.jsp
+---------------------------------------------------------------------
+# 게시글 상세보기 요청
+요청내용	:	/camp24/trade/tradeDetail.cmp
+파라미터	:	nowpage,tno
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	delBoard()
+뷰			:	/WEB-INF/views/trade/tradeDetail.jsp
+---------------------------------------------------------------------
+# 중고물품 물품 수정 폼 보기 요청
+요청내용	:	/camp24/trade/tradeEdit.cmp
+파라미터	:	nowpage,tno
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	boardEdit()
+뷰			:	/WEB-INF/views/trade/tradEdit.jsp
+---------------------------------------------------------------------
+# 중고물품 물품 수정 처리 요청
+요청내용	:	/camp24/trade/tradeEditProc
+파라미터	:	nowpage
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	boardEditProc()
+뷰			:	/WEB-INF/views/trade/tradEdit.jsp
+---------------------------------------------------------------------
+# 중고물품 물품 이미지파일 삭제 요청
+요청내용	:	/camp24/trade/fileDel.json
+파라미터	:	ino
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	fileDel()
+뷰			:	무
+---------------------------------------------------------------------
+# 중고물품 물품 게시글 삭제 처리 요청
+요청내용	:	/camp24/trade/tradeDel.cmp
+파라미터	:	nowpage
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	delBoard()
+뷰			:	무
+---------------------------------------------------------------------
+# 중고물품 물품 카테고리 리스트 요청
+요청내용	:	/camp24/trade/cateList.json
+파라미터	:	무
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	delBoard()
+뷰			:	/WEB-INF/views/trade/trade.jsp
+---------------------------------------------------------------------
+# 중고물품 물품 카테고리 정렬 리스트 보기 요청
+요청내용	:	/camp24/trade/tradelist.json
+파라미터	:	무
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	delBoard()
+뷰			:	/WEB-INF/views/trade/trade.jsp
+---------------------------------------------------------------------
+# 카카오페이 api 결제 요청
+요청내용	:	/camp24/trade/kakaopay.json
+파라미터	:	cid,tno,id,price,title
+컨트롤러	:	com.githrd.camp24.controller.trade.trade
+처리함수	:	delBoard()
+뷰			:	/WEB-INF/views/trade/tradeDetail.jsp
+---------------------------------------------------------------------
