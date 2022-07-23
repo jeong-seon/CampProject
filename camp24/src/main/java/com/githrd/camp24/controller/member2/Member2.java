@@ -1,29 +1,24 @@
 package com.githrd.camp24.controller.member2;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.*;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.githrd.camp24.dao.MemberDao2;
-import com.githrd.camp24.vo.MemberVO;
-import com.githrd.camp24.vo.MemberVO2;
+import com.githrd.camp24.dao.*;
+import com.githrd.camp24.vo.*;
 
 /**
  * 이 클래스는 회원 관련 요청을 처리할 클래스
@@ -47,6 +42,9 @@ public class Member2 {
 	
 	@Autowired
 	MemberDao2 mDao2;
+	
+	@Autowired
+	PreferenceDao pDao;
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -118,10 +116,15 @@ public class Member2 {
 		}
 		
 		// 데이터베이스 조회
-		MemberVO mVO = mDao2.getIdInfo(id);
+		MemberVO mVO = mDao2.getIdInfo(id);	
+		PreferenceVO pVO = pDao.getPreferenceList(id);
 		List<MemberVO2> list = mDao2.getAvtList(id);
+		List<PreferenceVO> plist = pDao.getMenuList(id);
+		
 		mv.addObject("DATA", mVO);
+		mv.addObject("PDATA", pVO);
 		mv.addObject("LIST", list);
+		mv.addObject("PLIST", plist);
 		// 뷰 정하고
 		mv.setViewName("member/editInfo");
 		return mv;
@@ -129,10 +132,21 @@ public class Member2 {
 	
 	// 내정보 수정 처리요청 처리 함수
 	@RequestMapping("/infoEditProc.cmp")
-	public ModelAndView infoEditProc(ModelAndView mv, MemberVO2 mVO, RedirectView rv) {
-		int cnt = mDao2.editMyInfo(mVO);
+	public ModelAndView infoEditProc(ModelAndView mv, MemberVO2 mVO, PreferenceVO pVO, RedirectView rv) {
+		int cnt = 0;
+		int cnt2 = 0;
+		
+		if(!(mVO.getName()== null && mVO.getPw()== null && mVO.getMail()== null && mVO.getTel()== null && mVO.getAno() == 0)) {
+			cnt = mDao2.editMyInfo(mVO);
+		}
+		
+		if(!(pVO.getMtype()== null && pVO.getMprice()== null && pVO.getMview()== null && pVO.getMpet()== null)) {
+			cnt2 = pDao.editPreferenceInfo(pVO);
+		}
+		
 		String view = "member/redirect";
-		if(cnt == 0) {
+		
+		if(cnt == 0 && cnt2 == 0) {
 			mv.addObject("VIEW", "/camp24/member/myInfoEdit.cmp");
 		} else {
 			mv.addObject("VIEW", "/camp24/member/myInfo.cmp");

@@ -38,23 +38,9 @@ public class Preference {
 	private static final Logger pLog = LoggerFactory.getLogger("preferenceLog");
 	@Autowired
 	PreferenceDao pDao;
-/*	
-	@RequestMapping("/surveyInfo.cmp")
-	public ModelAndView surveyInfo(ModelAndView mv, SurveyVO sVO) {
-		List<SurveyVO> list = sDao.getIngList(sVO.getId());
-		List<SurveyVO> old = sDao.getOldList();
-		
-		// 데이터심고
-		mv.addObject("ING", list);
-		mv.addObject("OLD", old);
-		
-		// 뷰 정하고
-		mv.setViewName("survey/surveyInfo");
-		return mv;
-	}
-*/	
+
 	/**
-	 * 설문조사 폼보기 요청 처리함수
+	 * 선호도조사 폼보기 요청 처리함수
 	 */
 	@RequestMapping("/preference.cmp")
 	public ModelAndView preferenceform(ModelAndView mv, RedirectView rv) {
@@ -62,7 +48,7 @@ public class Preference {
 		
 		// 데이터 심고
 		mv.addObject("LIST", list);
-		System.out.println("list : " + list);
+		
 		// 뷰 설정
 		mv.setViewName("preference/preference");
 		return mv;
@@ -72,8 +58,11 @@ public class Preference {
 	@RequestMapping(path="/preferenceProc.cmp", method=RequestMethod.POST)
 	public ModelAndView joinProc(PreferenceVO pVO, ModelAndView mv, 
 								RedirectView rv, HttpSession session) {
-		int cnt = pDao.addPreference(pVO);
+		List<PreferenceVO> list = pDao.getMenuList();
 		
+		// 데이터 심고
+		mv.addObject("LIST", list);
+		int cnt = pDao.addPreference(pVO);
 		if(cnt == 1) {
 			// 성공한 경우
 			session.setAttribute("SID", pVO.getId());
@@ -87,66 +76,5 @@ public class Preference {
 		
 		return mv;
 	}
-/*	
-	@RequestMapping("/survey.cmp")
-	public ModelAndView survey(ModelAndView mv, SurveyVO sVO) {
-		
-//		sSrvc.setBogi(sVO);
-		sSrvc.settingList(sVO);
-		
-		// 데이터 심고
-		mv.addObject("DATA", sVO);
-		
-		// 뷰 설정
-		mv.setViewName("survey/prefersurvey");
-		return mv;
-	}
-*/	
-	/**
-	 * 설문조사 응답 처리 요청 처리함수
-	 */
-/*
-	@RequestMapping("/surveyProc.cmp")
-	public ModelAndView surveyProc(ModelAndView mv, SurveyVO sVO) {
-*/
-		/*
-		for(int no : sVO.getDap()) {
-			System.out.println("qno : " + no);
-		}
-		*/
-/*
-		boolean bool = sSrvc.applyTx(sVO);
-		
-		String view = "/camp24/survey/surveyResult.cmp";
-		
-		if(!bool) {
-			// 실패한 작업이 있는 경우
-			view = "/camp24/survey/survey.cmp";
-		} else {
-			sLog.info(sVO.getId() + " 님이 [ " + sVO.getSino() + " ] 번 설문에 참여 완료했습니다.");
-		}
-		
-		// 데이터심고
-		mv.addObject("VIEW", view);
-		
-		// 뷰 정하고
-		mv.setViewName("survey/redirect");
-		return mv;
-	}
-	
-	// 설문 결과페이지 폼보기 요청
-	@RequestMapping("/surveyResult.cmp")
-	public ModelAndView surveyResult(ModelAndView mv, SurveyVO sVO) {
-//		sSrvc.resultService(sVO);
-//		sSrvc.getResult(sVO);
-		sSrvc.setMunhangList(sVO);
-		
-		// 위의 함수 호출로 인해서  sVO의 변수에 변화가 생겼으므로 그냥 심어주면 된다.
-		// 데이터 심고
-		mv.addObject("DATA", sVO);
-		
-		mv.setViewName("survey/surveyResult");
-		return mv;
-	}
-*/
+
 }

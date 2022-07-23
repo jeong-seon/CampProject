@@ -43,35 +43,26 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 #jbtn{
 	border-color: white;
 }
-.typeimg, .priceimg, .viewimg, .petimg {
-		width: 100px;
-		height: 100px;
-	}
-	.typebox, .pricebox, .viewbox, .petbox {
-		display: inline-block;
-		width: 100px;
-		height: 100px;
-	}
-	#pwmsg, #repwmsg, #typefr, #pricefr, #viewfr, #petfr, #idmsg {
-		display: none;
-	}
-	label.s3 {
-		position: relative;
-		top: 5px;
-		font-size: 14pt;
-		font-weight: normal;
-		opacity: 0.7;
-	}
-	
-	#type label, #price label, #view label, #pet label {
-		position: relative;
-		top: 2px;
-		left: 7px;
-	}
+#pwmsg, #repwmsg, #idmsg {
+	display: none;
+}
+label.s3 {
+	position: relative;
+	top: 5px;
+	font-size: 14pt;
+	font-weight: normal;
+	opacity: 0.7;
+}
+
+#type label, #price label, #view label, #pet label {
+	position: relative;
+	top: 2px;
+	left: 7px;
+}
 img{
-	border-radius: 70%;
 	overflow: hidden;
 }
+
 </style>
 </head>
 <body>
@@ -89,170 +80,59 @@ img{
     			<form method="POST" action="" name="frm" id="frm"
 			class="w3-col w3-margin-top w3-margin-bottom w3-padding">
 			
-			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10">Type : </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center" id="type">
-					<div class="w3-half">
-						<input type="radio" name="type" id="ytype" class="w3-radio" value="TY"> <label for="ytype"> YES</label>
-					</div>
-					<div class="w3-half">
-						<input type="radio" name="type" id="ntype" class="w3-radio" value="TN"> <label for="ntype"> NO</label>
-					</div>
-				</div>
-			</div>
-			<div class="w3-col" id="typefr">
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10"> </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center">
-					<div class="typeboxfr w3-center w3-margin-top" id="sytype">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'TY'}">		
-					 	<div class="typebox">
-					 		<label for="sytype${data.mmno}">
-					 			<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col typeimg">
-					 		</label>
-					 		<input type="radio" name="mmno" id="sytype${data.mmno}" value="${data.mmno}">
-					 	</div>
-	</c:if>
-</c:forEach>
-					</div>
-					 <div class="typeboxfr w3-center w3-margin-top" id="sntype">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'TN'}">
-					 	<div class="typebox">
-							<label for="sntype${data.mmno}">
-								<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col typeimg">
-							</label>
-							<input type="radio" name="mmno" id="sntype${data.mmno}" value="${data.mmno}">
-					 	</div>
-	</c:if>
-</c:forEach>
-			 		</div>
-				</div>
-			</div>
-			
+			<c:if test="${not empty SID}">
+					<input type="hidden" name="id" value="${SID}">	
+			</c:if>
 			
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10">Price : </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center" id="price">
-					<div class="w3-half">
-						<input type="radio" name="price" id="yprice" class="w3-radio" value="PY"> <label for="yprice"> YES</label>
-					</div>
-					<div class="w3-half">
-						<input type="radio" name="price" id="nprice" class="w3-radio" value="PN"> <label for="nprice"> NO</label>
-					</div>
-				</div>
-			</div>
-			<div class="w3-col" id="pricefr">
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10"> </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center">
-					<div class="priceboxfr w3-center w3-margin-top" id="syprice">
+				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Type : </label>
+				<div class="w3-col s8 mgl10 mgb10 w3-left" id="type">
 <c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'PY'}">		
-					 	<div class="pricebox">
-					 		<label for="syprice${data.mmno}">
-					 			<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col priceimg">
-					 		</label>
-					 		<input type="radio" name="mmno" id="syprice${data.mmno}" value="${data.mmno}">
-					 	</div>
+	<c:if test="${data.mupno eq '1001'}">
+					<div class="w3-half">
+						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+					</div>
 	</c:if>
 </c:forEach>
-					</div>
-					 <div class="priceboxfr w3-center w3-margin-top" id="snprice">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'PN'}">
-					 	<div class="pricebox">
-							<label for="sntype${data.mmno}">
-								<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col priceimg">
-							</label>
-							<input type="radio" name="mmno" id="snprice${data.mmno}" value="${data.mmno}">
-					 	</div>
-	</c:if>
-</c:forEach>
-			 		</div>
 				</div>
 			</div>
-			
 			
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10">View : </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center" id="mview">
-					<div class="w3-half">
-						<input type="radio" name="mview" id="yview" class="w3-radio" value="VY"> <label for="yview"> YES</label>
-					</div>
-					<div class="w3-half">
-						<input type="radio" name="mview" id="nview" class="w3-radio" value="VN"> <label for="nview"> NO</label>
-					</div>
-				</div>
-			</div>
-			<div class="w3-col" id="viewfr">
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10"> </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center">
-					<div class="viewboxfr w3-center w3-margin-top" id="syview">
+				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Price : </label>
+				<div class="w3-col s8 mgl10 mgb10 w3-left" id="price">
 <c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'VY'}">		
-					 	<div class="viewbox">
-					 		<label for="syview${data.mmno}">
-					 			<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col viewimg">
-					 		</label>
-					 		<input type="radio" name="mmno" id="syview${data.mmno}" value="${data.mmno}">
-					 	</div>
+	<c:if test="${data.mupno eq '1011'}">
+					<div class="w3-half">
+						<input type="radio" name="mprice" id="price${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+					</div>
 	</c:if>
 </c:forEach>
-					</div>
-					 <div class="viewboxfr w3-center w3-margin-top" id="snview">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'VN'}">
-					 	<div class="viewbox">
-							<label for="snview${data.mmno}">
-								<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col viewimg">
-							</label>
-							<input type="radio" name="mmno" id="snview${data.mmno}" value="${data.mmno}">
-					 	</div>
-	</c:if>
-</c:forEach>
-			 		</div>
 				</div>
 			</div>
-			
 			
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10">Pet : </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center" id="pet">
+				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">View : </label>
+				<div class="w3-col s8 mgl10 mgb10 w3-left" id="mview">
+<c:forEach var="data" items="${LIST}">
+	<c:if test="${data.mupno eq '1021'}">
 					<div class="w3-half">
-						<input type="radio" name="pet" id="ypet" class="w3-radio" value="PY2"> <label for="ypet"> YES</label>
+						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="type${data.mmno}"> ${data.msname}</label>
 					</div>
-					<div class="w3-half">
-						<input type="radio" name="pet" id="npet" class="w3-radio" value="PN2"> <label for="npet"> NO</label>
-					</div>
+	</c:if>
+</c:forEach>
 				</div>
 			</div>
-			<div class="w3-col" id="petfr">
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10"> </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-center">
-					<div class="typeboxfr w3-center w3-margin-top" id="sypet">
+			
+			<div>
+				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Pet : </label>
+				<div class="w3-col s8 mgl10 mgb10 w3-left" id="pet">
 <c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'PY2'}">		
-					 	<div class="petbox">
-					 		<label for="sypet${data.mmno}">
-					 			<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col petimg">
-					 		</label>
-					 		<input type="radio" name="mmno" id="sypet${data.mmno}" value="${data.mmno}">
-					 	</div>
-	</c:if>
-</c:forEach>
+	<c:if test="${data.mupno eq '1031'}">
+					<div class="w3-half">
+						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="type${data.mmno}"> ${data.msname}</label>
 					</div>
-					 <div class="petboxfr w3-center w3-margin-top" id="snpet">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.smenu eq 'PN2'}">
-					 	<div class="petbox">
-							<label for="snpet${data.mmno}">
-								<img src="/camp24/resources/img/preference/${data.msavename}" class="w3-col petimg">
-							</label>
-							<input type="radio" name="mmno" id="snpet${data.mmno}" value="${data.mmno}">
-					 	</div>
 	</c:if>
-</c:forEach>
-			 		</div>
+</c:forEach>				
 				</div>
 			</div>
 			

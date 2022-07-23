@@ -42,6 +42,8 @@ public class Member {
 
 	@Autowired
 	MemberDao mDao;
+	@Autowired
+	PreferenceDao pDao;
 	
 	@RequestMapping("/login.cmp")
 	public ModelAndView loginForm(ModelAndView mv, HttpSession session) {
@@ -95,8 +97,11 @@ public class Member {
 	public ModelAndView myInfo(ModelAndView mv, String id) {
 		// 데이터 가져오고
 		MemberVO mVO = mDao.getIdInfo(id);
+		PreferenceVO pVO = pDao.getPreferenceList(id);
 		// 뷰에 데이터 심고
-		mv.addObject("DATA" , mVO);
+		mv.addObject("DATA" , mVO);		
+		mv.addObject("PDATA", pVO);
+		
 		// 뷰 정하고
 		mv.setViewName("member/memberInfo");
 		

@@ -122,7 +122,10 @@ a:hover{
 	</c:if>
 		</h4>
 </c:if>
-            
+            <c:if test="${not empty SID}">
+					<input type="hidden" name="id" value="${SID}">	
+					<input type="hidden" name="mno" value="${SMNO}">	
+			</c:if>
             <hr>
             <div class="w3-content w3-center">
             <dl class="dl-horizontal" style="font-size: 14pt;">
@@ -136,9 +139,19 @@ a:hover{
               <dd style="text-align: left" id="mail">${DATA.mail}</dd>
               <dt>성별 :</dt>
               <dd style="text-align: left" id="gen">${DATA.gen == 'M' ? "남자":"여자"}</dd>
-<c:if test="${not empty SID}">              
-              <div class="w3-center w3-button w3-blue" id="pbtn">선호도</div>
-</c:if>
+			</dl>
+			<div class="w3-center" style="width: 250px; font-size: 14pt;">
+			  <div>선호도</div>
+			</div>
+			<dl class="dl-horizontal" style="font-size: 14pt;">
+		      <dt>타입 :</dt>
+		      <dd style="text-align: left" id="pftype">${PDATA.pftype}</dd>
+		      <dt>가격 :</dt>
+		      <dd style="text-align: left" id="pfprice">${PDATA.pfprice}</dd>
+		      <dt>뷰 :</dt>
+		      <dd style="text-align: left" id="pfview">${PDATA.pfview}</dd>
+		      <dt>반려동물 :</dt>
+		      <dd style="text-align: left" id="pfpet">${PDATA.pfpet}</dd>
             </dl>
             </div>
           </article>

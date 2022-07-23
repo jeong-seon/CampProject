@@ -4,10 +4,27 @@ import java.util.*;
 import java.text.*;
 
 public class PreferenceVO {
-	private int mno, ano, pno, mmno;
-	private String id, sdate, pname, smenu, msavename;
+	private int mno, ano, cnt, pno, mmno, mupno, pf_mno, pfno;
+	private String id, sdate, pname, mname, msname, mtype, mprice, mview, mpet, pftype, pfprice, pfview, pfpet;
 	private Date mdate;
-	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
+	public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getPno() {
 		return pno;
 	}
@@ -20,35 +37,23 @@ public class PreferenceVO {
 	public void setMmno(int mmno) {
 		this.mmno = mmno;
 	}
-	public String getPname() {
-		return pname;
+	public int getMupno() {
+		return mupno;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setMupno(int mupno) {
+		this.mupno = mupno;
 	}
-	public String getSmenu() {
-		return smenu;
+	public int getPf_mno() {
+		return pf_mno;
 	}
-	public void setSmenu(String smenu) {
-		this.smenu = smenu;
+	public void setPf_mno(int pf_mno) {
+		this.pf_mno = pf_mno;
 	}
-	public String getMsavename() {
-		return msavename;
+	public int getPfno() {
+		return pfno;
 	}
-	public void setMsavename(String msavename) {
-		this.msavename = msavename;
-	}
-	public int getMno() {
-		return mno;
-	}
-	public void setMno(int mno) {
-		this.mno = mno;
-	}
-	public int getAno() {
-		return ano;
-	}
-	public void setAno(int ano) {
-		this.ano = ano;
+	public void setPfno(int pfno) {
+		this.pfno = pfno;
 	}
 	public String getId() {
 		return id;
@@ -66,6 +71,72 @@ public class PreferenceVO {
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getMsname() {
+		return msname;
+	}
+	public void setMsname(String msname) {
+		this.msname = msname;
+	}
+	public String getMtype() {
+		return mtype;
+	}
+	public void setMtype(String mtype) {
+		this.mtype = mtype;
+	}
+	public String getMprice() {
+		return mprice;
+	}
+	public void setMprice(String mprice) {
+		this.mprice = mprice;
+	}
+	public String getMview() {
+		return mview;
+	}
+	public void setMview(String mview) {
+		this.mview = mview;
+	}
+	public String getMpet() {
+		return mpet;
+	}
+	public void setMpet(String mpet) {
+		this.mpet = mpet;
+	}
+	public String getPftype() {
+		return pftype;
+	}
+	public void setPftype(String pftype) {
+		this.pftype = pftype;
+	}
+	public String getPfprice() {
+		return pfprice;
+	}
+	public void setPfprice(String pfprice) {
+		this.pfprice = pfprice;
+	}
+	public String getPfview() {
+		return pfview;
+	}
+	public void setPfview(String pfview) {
+		this.pfview = pfview;
+	}
+	public String getPfpet() {
+		return pfpet;
+	}
+	public void setPfpet(String pfpet) {
+		this.pfpet = pfpet;
+	}
 	public Date getMdate() {
 		return mdate;
 	}
@@ -75,8 +146,10 @@ public class PreferenceVO {
 	}
 	@Override
 	public String toString() {
-		return "PreferenceVO [mno=" + mno + ", ano=" + ano + ", pno=" + pno + ", mmno=" + mmno + ", id=" + id
-				+ ", sdate=" + sdate + ", pname=" + pname + ", smenu=" + smenu + ", msavename=" + msavename
-				+ ", mdate=" + mdate + "]";
+		return "PreferenceVO [mno=" + mno + ", ano=" + ano + ", cnt=" + cnt + ", pno=" + pno + ", mmno=" + mmno
+				+ ", mupno=" + mupno + ", pf_mno=" + pf_mno + ", pfno=" + pfno + ", id=" + id + ", sdate=" + sdate
+				+ ", pname=" + pname + ", mname=" + mname + ", msname=" + msname + ", mtype=" + mtype + ", mprice="
+				+ mprice + ", mview=" + mview + ", mpet=" + mpet + ", pftype=" + pftype + ", pfprice=" + pfprice
+				+ ", pfview=" + pfview + ", pfpet=" + pfpet + ", mdate=" + mdate + "]";
 	}
 }

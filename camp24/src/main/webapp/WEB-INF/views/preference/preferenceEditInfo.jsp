@@ -155,11 +155,6 @@ a:hover{
 			<input type="hidden" id="ttel" value="${DATA.tel}">
 			<input type="hidden" id="tano" value="${DATA.ano}">
 			<input type="hidden" name="mno" value="${DATA.mno}">
-			<input type="hidden" id="tmtype" value="${PDATA.pftype}">
-			<input type="hidden" id="tmprice" value="${PDATA.pfprice}">
-			<input type="hidden" id="tmview" value="${PDATA.pfview}">
-			<input type="hidden" id="tmpet" value="${PDATA.pfpet}">
-			<input type="hidden" name="pf_mno" value="${PDATA.pf_mno}">
 			<div class="w3-col">
 				<label for="name" class="w3-col s3 w3-right-align ft14 mgb10">이름 : </label>
 				<input type="text" name="name" id="name" class="w3-col s8 mgl10 w3-input w3-border mgb10" value="${DATA.name}">
@@ -205,18 +200,22 @@ a:hover{
 					</div>
 				</div>
 			</div>
- 			
+			
+			<div class="w3-col w3-margin-top" style="margin-bottom: 30px;">
+				<div class="w3-col w3-button w3-green" id="pebtn">선호도</div>
+			</div>
+
 			<div>
 				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Type : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="type">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1001'}">
-		<c:if test="${data.msname eq PDATA.pftype}">
+		<c:if test="${data.mname eq PDATA.pftype}">
 					<div class="w3-half">
 						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.msname}" checked> <label for="type${data.mmno}"> ${data.msname}</label>
 					</div>
 		</c:if>
-		<c:if test="${data.msname ne PDATA.pftype}">
+		<c:if test="${data.mname ne PDATA.pftype}">
 					<div class="w3-half">
 						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="type${data.mmno}"> ${data.msname}</label>
 					</div>
@@ -224,19 +223,20 @@ a:hover{
 	</c:if>
 </c:forEach>
 				</div>
-			</div>			
+			</div>
+			
 			
 			<div>
 				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Price : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="price">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1011'}">
-		<c:if test="${data.msname eq PDATA.pfprice}">
+		<c:if test="${data.mname eq PDATA.pfprice}">
 					<div class="w3-half">
 						<input type="radio" name="mprice" id="price${data.mmno}" class="w3-radio" value="${data.msname}" checked> <label for="price${data.mmno}"> ${data.msname}</label>
 					</div>
 		</c:if>
-		<c:if test="${data.msname ne PDATA.pfprice}">
+		<c:if test="${data.mname ne PDATA.pfprice}">
 					<div class="w3-half">
 						<input type="radio" name="mprice" id="price${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="price${data.mmno}"> ${data.msname}</label>
 					</div>
@@ -251,12 +251,12 @@ a:hover{
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="mview">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1021'}">
-		<c:if test="${data.msname eq PDATA.pfview}">
+		<c:if test="${data.mname eq PDATA.pfview}">
 					<div class="w3-half">
 						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.msname}" checked> <label for="view${data.mmno}"> ${data.msname}</label>
 					</div>
 		</c:if>
-		<c:if test="${data.msname ne PDATA.pfview}">
+		<c:if test="${data.mname ne PDATA.pfview}">
 					<div class="w3-half">
 						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="view${data.mmno}"> ${data.msname}</label>
 					</div>
@@ -265,18 +265,18 @@ a:hover{
 </c:forEach>
 				</div>
 			</div>
-						
+			
 			<div>
 				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Pet : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="pet">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1031'}">
-		<c:if test="${data.msname eq PDATA.pfpet}">
+		<c:if test="${data.mname eq PDATA.pfpet}">
 					<div class="w3-half">
 						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.msname}" checked> <label for="pet${data.mmno}"> ${data.msname}</label>
 					</div>
 		</c:if>
-		<c:if test="${data.msname ne PDATA.pfpet}">
+		<c:if test="${data.mname ne PDATA.pfpet}">
 					<div class="w3-half">
 						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.msname}"> <label for="pet${data.mmno}"> ${data.msname}</label>
 					</div>
@@ -285,7 +285,7 @@ a:hover{
 </c:forEach>				
 				</div>
 			</div>
- 			
+			
 		</form>
 		
             </div>

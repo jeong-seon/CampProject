@@ -50,6 +50,10 @@ $(document).ready(function(){
 		var mailBool = false;
 		var telBool = false;
 		var anoBool = false;
+		var typeBool = false;
+		var priceBool = false;
+		var viewBool = false;
+		var petBool = false;
 		
 		var el = $('#name');
 		
@@ -138,7 +142,35 @@ $(document).ready(function(){
 			anoBool = true;
 		}
 		
-		if(!(nameBool || pwBool || mailBool || telBool || anoBool)){
+		var stype = $('[name="mtype"]:checked').val();
+		if(stype == $('#tmtype').val()){
+			$('[name="mtype"]').prop('disabled', true);
+		} else {
+			typeBool = true;
+		}
+		
+		var sprice = $('[name="mprice"]:checked').val();
+		if(sprice == $('#tmprice').val()){
+			$('[name="mprice"]').prop('disabled', true);
+		} else {
+			priceBool = true;
+		}
+		
+		var sview = $('[name="mview"]:checked').val();
+		if(sview == $('#tmview').val()){
+			$('[name="mview"]').prop('disabled', true);
+		} else {
+			viewBool = true;
+		}
+		
+		var spet = $('[name="mpet"]:checked').val();
+		if(spet == $('#tmpet').val()){
+			$('[name="mpet"]').prop('disabled', true);
+		} else {
+			petBool = true;
+		}
+		
+		if(!(nameBool || pwBool || mailBool || telBool || anoBool || typeBool || priceBool || viewBool || petBool)){
 			// 수정 데이터가 없는 경우이므로 뷰로 돌려보낸다.
 			$('#editWin').css('display', 'block');
 			$('input').prop('disabled', false);
