@@ -10,9 +10,7 @@ $(document).ready(function(){
 	
 	
 	$('.review').click(function(){
-		var cid = $(this).parent().text();
-		var name = cid.split('.');
-		var cname = name[1];
+		var cname = $(this).parent().find($('.facltNm')).html();
 		
 		$('#cname').val(cname);
 		$('#rfrm').submit();

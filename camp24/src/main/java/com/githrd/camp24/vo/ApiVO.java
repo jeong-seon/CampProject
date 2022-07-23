@@ -17,7 +17,16 @@ package com.githrd.camp24.vo;
  *			facltNm			야영장명
  */
 public class ApiVO {
+	private int api_no;
 	private String addr1, lctCl, eqpmnLendCl, firstImageUrl, tel, mapX, mapY, animalCmgCl, homepage, induty, facltNm;
+
+	public int getApi_no() {
+		return api_no;
+	}
+
+	public void setApi_no(int api_no) {
+		this.api_no = api_no;
+	}
 
 	public String getAddr1() {
 		return addr1;

@@ -165,7 +165,7 @@ $(document).ready(function(){
 			return;
 		}
 		
-		var mailRegExp =/^[a-zA-Z0-9]{4,10}@[a-zA-Z]{5,50}.[a-zA-Z]{2,5}[.]{0,1}[a-zA-Z]{0,5}$/;
+		var mailRegExp = /^[a-zA-Z0-9]{4,10}[@].*$/;
 		if(mailRegExp.test($('#mail').val())){
 			$('.mail.pwdRegExp').html('');
 		} else {

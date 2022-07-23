@@ -35,7 +35,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   background-image: url('/camp24/resources/img/pic/14.png');
   min-height: 100%;
 }
-#lbtn{
+#check{
 	border-color: white;
 }
 </style>
@@ -80,7 +80,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		<c:if test="${check == 0}">
 		<label class="w3-padding-32">찾으시는 아이디는' ${id}' 입니다</label>
 			<div class="form-label-group">
-				<a href="/camp24/member/login.cmp" class="btn btn-primary w3-lime">Login</a>
+				<a href="/camp24/member/login.cmp" class="btn btn-primary w3-lime" style="border-color: white;">Login</a>
 			</div>
 		</c:if>
 

@@ -42,9 +42,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 }
 #jbtn{
 	border-color: white;
-	width: 100px;
-	height: 50px;
-	position: center;
 }
 .avtimg {
 		width: 100px;
@@ -83,7 +80,7 @@ img{
   <!-- Portfolio Section -->
 <div id="JoinForm">
 	<div class="w3-container">
-		<div class="join-form w3- center">
+		<div class="login-form w3-center">
 			<div class="main-div">
 			    <div class="panel w3-center">
 				   <h2>Camp24 Join</h2>
@@ -176,7 +173,7 @@ img{
 			 		</div>
 				</div>
 			</div>
-			<div class="w3-col w3-center">
+			<div class="w3-center">
 				<button type="submit" class="btn btn-primary w3-green" id="jbtn">Join</button>
 			</div>
 		</form>
@@ -186,7 +183,6 @@ img{
 </div>
 
 
-</div>
     <!-- Grid for photos -->
     
    		

@@ -106,6 +106,7 @@ $(document).ready(function(){
 		$('#previewbox').css('display', 'block');
 	});
 	
+	// 상세보기 버튼 클릭
 	$('.revList').click(function(){
 		var sno = $(this).attr('id');
 		
@@ -164,6 +165,7 @@ $(document).ready(function(){
 		$('#editWin').css('display', 'none');
 	});
 	
+	// 좋아요 버튼 클릭
 	$('.like').click(function(){
 		var srno = $(this).parent().attr('id');
 		
@@ -180,141 +182,19 @@ $(document).ready(function(){
 			success: function(likeCheck){
 				if(likeCheck == 0){
 					location.reload();
-                } else if (likeCheck == 1){
-                	location.reload();
-                }
-			},
-			error: function(){}
-		});
-	});
-	
-	$('#schbtn').click(function(){
-		$('#schfrm').submit();
-	});
-	
-	/*
-	$('#schbtn').click(function(){
-		$('.col-sm-8').html('');
-		
-		var sname = $('#cname').val();
-		
-		$.ajax({
-			url: '/camp24/reviewBoard/searchList.json',
-			type: 'post',
-			dataType: 'json',
-			data: {
-				cname: sname
-			},
-			success: function(arr){
-				if(arr.length > 0) {
-					for(var i = 0; i < arr.length; i++){
-						var stag = 
-							'<div class="review-block">' +
-								'<div class="row">' +
-									'<div class="col-sm-3">' +
-										'<div class="w3-col w3-center">' +
-											'<img src="/camp24/resources/img/avatar/' + arr[i].avatar + '" class="img-rounded" style="width: 100px; height: 100px;">' +
-										'</div>' +
-										'<div class="w3-col w3-center">' +
-											'<div class="review-block-name"><span><strong>' + arr[i].id + '</strong></span></div>' +
-										'</div>' +
-									'</div>' +
-									'<div class="col-sm-9">' +
-										'<div class="review-block-title float-right" id="' + arr[i].rno + '">' +
-											'<span style="margin-top: 10px; height: 25px;" class="w3-right btn text-white btn-danger like"> <i class="fa fa-heart"></i> ' + arr[i].likecount + '</span>' +
-										'</div>' +
-							'<c:if test="${' + arr[i].score + ' eq 1} + ">' +
-								'<div class="review-block-rate">' +
-									'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-									'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-									'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								'</div>' +
-							'</c:if>' +
-							'<c:if test="${' + arr[i].score + ' eq 2} + ">' +
-								'<div class="review-block-rate">' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								'</div>' +
-							'</c:if>' +
-							'<c:if test="${' + arr[i].score + ' eq 3} + ">' +
-								'<div class="review-block-rate">' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								'</div>' +
-							'</c:if>' +
-							'<c:if test="${' + arr[i].score + ' eq 4} + ">' +
-								'<div class="review-block-rate">' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-default star-grey star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								'</div>' +
-							'</c:if>' +
-							'<c:if test="${' + arr[i].score + ' eq 5} + ">' +
-								'<div class="review-block-rate">' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								  	'<span class="star star-warning star-xs glyphicon glyphicon-star" aria-hidden="true"></span>' +
-								'</div>' +
-							'</c:if>' +
-							'<div class="review-block-title">제목 : ' + arr[i].title + '</div>' +
-							'<div class="review-block-title w3-right">조회수 : ' + arr[i].click + '</div>' +
-							'<div class="review-block-title" style="margin-bottom: 0px;">캠핑장명 : ' + arr[i].cname + '</div>' +
-							'<div class="w3-col">' +
-								'<div class="review-block-title w3-right" style="margin-bottom: 0px;"><small><i class="fa fa-clock-o"></i> 작성일 : ' + arr[i].fdate + '</small></div>' +
-							'</div>' +
-							'<div class="w3-col">' +
-							'<c:if test="${not empty data.sedate}">' +
-								'<div class="review-block-title w3-right" style="margin-bottom: 0px;"><small><i class="fa fa-clock-o"></i> 수정일 : ' + arr[i].fedate + '</small></div>' +
-							'</c:if>' +
-							'</div>' +
-							
-							'<c:choose>' +
-							        '<c:when test="${fn:length(' + arr[i].bpdy + ') gt 3}">' +
-							        '<c:out value="${fn:substring(' + arr[i].body + ', 0, 3)}" />...' +
-							        '</c:when>' +
-							        '<c:otherwise>' +
-							        '<c:out value="' + arr[i].body + '">' +
-							        '</c:out></c:otherwise>' +
-							'</c:choose>' +
-						'<div class="w3-col w3-right w3-margin-top">' +
-			'<c:if test="${SID ne ' + arr[i].id + '}">' +
-				'<div class="w3-button w3-small w70 w3-khaki w3-right revList" id="' + arr[i].rno + '">상세보기</div>' +
-			'</c:if>' +
-			'<c:if test="${SID eq ' + arr[i].id + '}">' +
-				'<div class="w3-button w3-small w70 w3-red w3-right dbtn" id="' + arr[i].rno + '">삭제</div>' +
-				'<div class="w3-button w3-small w70 w3-lime w3-right ebtn" id="' + arr[i].rno + '">수정</div>' +
-				'<div class="w3-button w3-small w70 w3-khaki w3-right revList" id="' + arr[i].rno + '">상세보기</div>' +
-			'</c:if>' +
-						'</div>' +
-					'</div>' +
-				'</div>' +
-			'</div>';
-						$('.col-sm-8').append(stag);
-						
-						$('#schfrm').submit();
-					}
+				} else if (likeCheck == 1){
+					location.reload();
 				}
 			},
 			error: function(){
-				alert('### 통신 에러 ###');
+				$(location).attr('href', '/camp24/member/login.cmp');
 			}
 		});
-		
 	});
-	*/
 	
-	
+	// 캠핑장 명으로 검색
+	$('#searchbtn').click(function(){
+		document.schfrm.submit();
+	});
 	
 });

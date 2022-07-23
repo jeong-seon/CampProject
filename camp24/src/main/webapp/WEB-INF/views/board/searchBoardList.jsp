@@ -39,7 +39,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	position: relative;
 	top: -15px;
 }
-#name, #sbtn{
+#facltNm, #sbtn{
 	position: relative;
 	top: 15px;
 }
@@ -57,22 +57,23 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	<form method="post" action="/camp24/board/searchBoardList.cmp" id="frm" name="frm"
 			class="w3-col w3-center w3-margin-bottom w3-border-bottom">
 		<label class="w3-col m3"><strong style="font-size: 18pt;"><img id="star" style="width: 70px;"src="/camp24/resources/img/pic/star.png"> 캠핑장 검색 </strong>&nbsp;</label>
-		<input type="text" class="w3-col m7 w3-input w3-border" placeholder="캠핑장 이름을 입력하세요." id="name" name="input">
+		<input type="text" class="w3-col m7 w3-input w3-border" placeholder="캠핑장 이름을 입력하세요." id="facltNm" name="facltNm">
 		<div class="w3-rest w3-button w3-green w3-margin-bottom" id="sbtn">검색</div>
 	</form>
-<c:if test="${empty LIST}">
+<c:if test="${empty param.facltNm}">
 	<div class="w3-center w3-content w3-padding-32">
 		<h4>검색결과가 없습니다.</h4>
 		<h4>정확한 캠핑장이름을 검색해주세요.</h4>
 	</div>
 </c:if>
 <c:forEach var="data" items="${LIST}" varStatus="st">
-<c:if test="${data.facltNm ne '검색결과없음'}">
-			<span id="reviewBtn" class="w3-right w3-button w3-green review">리뷰 작성</span>
+<c:if test="${not empty data.facltNm}">
 	<div class="w3-row w3-center w3-padding-32 w3-border-bottom">
+			<span id="reviewBtn" class="w3-right w3-button w3-green review">리뷰 작성</span>
+		<br>
 		<div class="w3-margin w3-center">
 			<h5>주소 : ${data.addr1}</h5>
-			<h5 id="${st.count}">캠핑장명 : .${data.facltNm}.</h5>
+			<h5>캠핑장명 : <span class="facltNm">${data.facltNm}</span></h5>
 	<c:if test="${not empty data.firstImageUrl && not empty data.homepage}">
 			<a href="${data.homepage}"><img style="width: 50%; height: auto;" id="image" src="${data.firstImageUrl}"></a>
 	</c:if>

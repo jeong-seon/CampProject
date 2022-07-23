@@ -30,6 +30,11 @@ import com.githrd.camp24.vo.FileVO;
  * 				2022.06.22	-	담당자 : 정선우
  * 									클래스 제작
  *
+ *				2022.07.10	-	담당자 : 정선우
+ *									뷰 변경 및 좋아요 추가
+ *
+ *				2022.07.18	-	담당자 : 정선우
+ *									캠핑장 이름 검색 추가
  */
 
 @Controller
@@ -41,6 +46,7 @@ public class ReviewBoard {
 	@Autowired
 	ReviewBoardService rSrvc;
 	
+	// 방문후기 리스트 폼보기
 	@RequestMapping("/reviewBoardList.cmp")
 	public ModelAndView reviewBoardList(ModelAndView mv, PageUtil page, HttpSession session) {
 		int total = rDao.getTotal();
@@ -54,6 +60,8 @@ public class ReviewBoard {
 		mv.setViewName("board/reviewBoardList");
 		return mv;
 	}
+	
+	// 캠핑장 이름으로 검색 시 해당 캠핑장 이름에 대한 게시글만 보기
 	@RequestMapping(path="/reviewBoardList.cmp", params="cname")
 	public ModelAndView reviewBoardList(ModelAndView mv, PageUtil page, HttpSession session, BoardVO bVO, String cname) {
 		int total = rDao.getTotal();
@@ -68,6 +76,7 @@ public class ReviewBoard {
 		return mv;
 	}
 	
+	// 게시글 작성 폼보기
 	@RequestMapping("/reviewBoardWrite.cmp")
 	public ModelAndView reviewBoardWrite(ModelAndView mv, HttpSession session) {
 		List<BoardVO> image = rDao.imgList();
@@ -80,6 +89,7 @@ public class ReviewBoard {
 		return mv;
 	}
 	
+	// 게시글 수정 폼보기
 	@RequestMapping(path="/reviewBoardEdit.cmp", method=RequestMethod.POST, params= {"nowPage", "rno"})
 	public ModelAndView reviewBoardEdit(ModelAndView mv, BoardVO bVO, FileVO fVO, HttpSession session) {
 		bVO = rDao.getDetail(bVO.getRno());
@@ -120,6 +130,7 @@ public class ReviewBoard {
 		return mv;
 	}
 	
+	// 글작성 처리
 	@RequestMapping("/reviewBoardWriteProc.cmp")
 	public ModelAndView reviewBoardWriteProc(ModelAndView mv, BoardVO bVO, String nowPage) {
 		String view = "/camp24/reviewBoard/reviewBoardList.cmp";
@@ -139,6 +150,7 @@ public class ReviewBoard {
 		return mv;
 	}
 	
+	// 게시물 상세보기
 	@RequestMapping("/reviewBoardDetail.cmp")
 	public ModelAndView reviewBoardDetail(ModelAndView mv, BoardVO bVO) {
 		List<BoardVO> image = rDao.imgList();
@@ -168,6 +180,7 @@ public class ReviewBoard {
 		return mv;
 	}
 	
+	// 좋아요
 	@Transactional
 	@RequestMapping("/likeCnt.json")
 	@ResponseBody
@@ -187,8 +200,7 @@ public class ReviewBoard {
 		return likeCheck;
 	}
 	
-	
-	
+	// 캠핑장 이름으로 검색
 	@RequestMapping("/searchList.json")
 	@ResponseBody
 	public List<BoardVO> searchCname(BoardVO bVO) {

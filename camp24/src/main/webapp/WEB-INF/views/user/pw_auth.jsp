@@ -35,7 +35,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   background-image: url('/camp24/resources/img/pic/14.png');
   min-height: 100%;
 }
-#lbtn{
+#auth{
 	border-color: white;
 }
 </style>

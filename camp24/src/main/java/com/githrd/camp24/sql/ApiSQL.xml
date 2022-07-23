@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="aSQL">
+	<insert id="insertApiData" parameterType="apiVO">
+		<selectKey keyProperty="api_no" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(api_no) + 1, 1001)
+			FROM
+				campapi
+		</selectKey>
+		INSERT INTO campapi
+		    (api_no, addr1, facltNm, firstImageUrl, homepage, lctCl, induty, eqpmnLendCl, tel, mapX, mapY, animalCmgCl, in_date)
+		VALUES(
+		    #{api_no},
+		    #{addr1},
+		    #{facltNm},
+		    #{firstImageUrl},
+		    #{homepage},
+		    #{lctCl},
+		    #{induty},
+		    #{eqpmnLendCl},
+		    #{tel},
+		    #{mapX},
+		    #{mapY},
+		    #{animalCmgCl},
+		    sysdate
+		)
+	</insert>
+	
+	<update id="updateApiData" parameterType="apiVO">
+		UPDATE
+			campapi
+		SET
+			addr1 = #{addr1},
+			facltNm = #{facltNm},
+			firstImageUrl = #{firstImageUrl},
+			homepage = #{homepage},
+			lctCl = #{lctCl},
+			induty = #{induty},
+			eqpmnLendCl = #{eqpmnLendCl},
+			tel = #{tel},
+			mapX = #{mapX},
+			mapY = #{mapY},
+			animalCmgCl = #{animalCmgCl},
+			up_date = sysdate
+		WHERE
+			mapX = #{mapX}
+			AND mapY = #{mapY}
+	</update>
+	
+	<select id="searchCamp" resultType="apiVO" parameterType="string">
+		SELECT
+		    addr1, facltNm, firstImageUrl, homepage, lctCl, induty, eqpmnLendCl, tel, mapX, mapY, animalCmgCl
+		FROM
+		    campapi
+		WHERE
+		    facltNm Like '%' || #{facltNm} || '%'
+	</select>
+	
+	<select id="searchMap" resultType="apiVO" parameterType="string">
+		SELECT
+		    facltNm, mapX, mapY, addr1, homepage, firstImageUrl
+		FROM
+		    campapi
+		WHERE
+		    facltNm Like '%' || #{facltNm} || '%'
+	</select>
+	
+	<delete id="deleteData">
+		DELETE FROM campapi
+	</delete>
+</mapper>

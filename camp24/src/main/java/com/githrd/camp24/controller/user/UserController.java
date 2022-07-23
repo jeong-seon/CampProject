@@ -5,8 +5,6 @@ import java.util.Random;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,7 +19,6 @@ import com.githrd.camp24.vo.MemberVO;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	private static final Logger mailLog = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	private UserService uSrvc;
@@ -117,10 +114,8 @@ public class UserController {
 	// 비밀번호 업데이트
 	@RequestMapping(path="/pw_new.cmp", method=RequestMethod.POST)
 	public ModelAndView pw_new(ModelAndView mv, MemberVO mVO, String pw, String mail, HttpSession session) {
-		System.out.println(mVO);
 		
 		int cnt = uSrvc.pwUpdate(mVO);
-		System.out.println(mVO);
 		
 		if(cnt == 1) {
 			mv.setViewName("member/login");

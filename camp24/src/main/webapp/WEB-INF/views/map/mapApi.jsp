@@ -59,9 +59,6 @@ div{
 				
 				<input type="hidden" name="X" id="X" >
 				<input type="hidden" name="Y" id="Y" >
-			<div class="w3-center" id="info">
-					
-			</div>
 			</div>
 		</div>
 	</div>

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,12 +16,22 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.githrd.camp24.dao.ApiDao;
 import com.githrd.camp24.util.PageUtil;
 import com.githrd.camp24.vo.ApiVO;
 
 /**
- * 캠핑장정보 api 페이지를 보기위한 클래스
+ * 캠핑장정보 api 를 가져와서 캠핑장 정보를 보기위한 클래스
  * @author	정선우
+ * @since	2022.07.14
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				
+ * 				2022.07.14	-	담당자 : 정선우
+ * 									클래스 제작
+ * 									api 정보 가져오기
+ * 									XML 문서 파싱
  *
  */
 
@@ -28,10 +39,13 @@ import com.githrd.camp24.vo.ApiVO;
 @RequestMapping("/campapi")
 public class CampApi {
 	
+	@Autowired
+	ApiDao aDao;
+	
 	@RequestMapping("/campApi.cmp")
 	public ModelAndView campApi(ModelAndView mv, PageUtil page, String pageno) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		int total = 3103;
+		int total = 3015;
 		String ServiceKey = "6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8%2FqN3dGhpsRYTTGJ63LFtj%2F0kBFwzjL%2Fy5pFa6xA%3D%3D";
         String numOfRows = "5";
         String pageNo = pageno;
@@ -119,6 +133,7 @@ public class CampApi {
         		}
         		
         		jlist.add(apiVO);
+        		
         		
         		mv.addObject("LIST", jlist);
         		

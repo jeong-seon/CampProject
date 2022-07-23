@@ -140,7 +140,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			</div>
 		</form>
 		
-		<div class="w3-col w3-margin-top">
+		<div class="w3-col w3-margin-top w3-margin-bottom">
 			<div class="w3-button w3-green" id="list2btn">물품 리스트</div>
 			<div class="w3-button w3-gray w3-right" id="wpbtn">물품 등록</div>
 		</div>

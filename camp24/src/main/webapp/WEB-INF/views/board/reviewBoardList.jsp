@@ -81,10 +81,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			<div class="container">
 				<form method="post" action="/camp24/reviewBoard/reviewBoardList.cmp" name="schfrm" id="schfrm">
 					<div class="col-sm-7">
-						<input type="text" class="w3-input w3-border" id="cname" name="cname">
+						<input type="text" class="w3-input w3-border" id="cname" name="cname" placeholder="캠핑장 이름 입력">
 					</div>
 					<div class="col-sm-2">
-						<div class="w3-button w3-green" id="schbtn">검 색</div>
+						<div class="w3-button w3-green" id="searchbtn">검 색</div>
 					</div>
 				</form>
 			</div>

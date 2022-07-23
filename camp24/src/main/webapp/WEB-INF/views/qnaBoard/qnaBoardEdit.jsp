@@ -91,11 +91,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
         
     </div>
 </div>
-</div>
 
 
 
-</div>
     <!-- Grid for photos -->
     
   <!-- End Portfolio Section -->

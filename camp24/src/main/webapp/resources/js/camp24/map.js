@@ -11,7 +11,7 @@ $(document).ready(function(){
 			url: 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?',
 			data: {
 				ServiceKey: '6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8/qN3dGhpsRYTTGJ63LFtj/0kBFwzjL/y5pFa6xA==',
-				numOfRows: '3015',
+				numOfRows: '2000',
 				pageNo: '1',
 				MobileOS: 'ETC',
 				MobileApp: 'appName',
@@ -58,6 +58,8 @@ $(document).ready(function(){
 						});
 					}
 				}
+				
+				$('#editWin').css('display', 'none');
 			},
 			error: function(){
 				alert('### 통신 에러 ###');

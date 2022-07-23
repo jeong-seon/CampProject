@@ -31,5 +31,6 @@
 		<mapper resource="com/githrd/camp24/sql/TradeSQL.xml"/>
 		<mapper resource="com/githrd/camp24/sql/UserSQL.xml"/>
 		<mapper resource="com/githrd/camp24/sql/PreferenceSQL.xml"/>
+		<mapper resource="com/githrd/camp24/sql/ApiSQL.xml"/>
 	</mappers>
 </configuration>
