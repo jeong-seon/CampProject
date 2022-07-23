@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +20,8 @@
 <!------ Include the above in your HEAD tag ---------->
 <!--To Work with icons-->
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" type="text/javascript"></script>
+<script src ="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -105,13 +105,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		<div class="w3-col frmpadding w3-center">
 		
 			<div class="w3-col  w3-margin-bottom">
-				<label class="w3-left">물품 이름 : ${DATA.title}</label>
+				<label class="w3-left"  id ="title" >물품 이름 : ${DATA.title} </label>
 			</div>
 				<div class="w3-col  w3-margin-bottom"  >
-				<label class="w3-left">판매자 아이디 : ${DATA.id} </label>
+				<label class="w3-left" id = "id">판매자 아이디 : ${DATA.id} </label>
 			</div>
 			<div class="w3-col  w3-margin-bottom" >
-				<label class="w3-left">금액 :<fmt:formatNumber value="${DATA.price}" pattern="#,###" />원</label>
+				<label class="w3-left" id="price">금액 :<fmt:formatNumber value="${DATA.price}" pattern="#,###" />원</label>
 			</div>
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-left">지역위치 : ${DATA.position}</label>
@@ -138,7 +138,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		</div>	
 	
 </div>
-		</form>
+</form>
 		<div id="modal2" class="w3-modal">
       <div class="w3-modal-content w3-animate-opacity w3-card-4 mxw500">
          <header class="w3-container w3-gray"> 

@@ -145,15 +145,14 @@
 		    AND cano = #{cano}
 	</select>
 	<!--  카카오 결제 -->
-	<select id = "kakaopay" resultType="bVO"  parameterType="bVO">
+	<select id = "tradeList" resultType="bVO"  parameterType="bVO">
 	
 	SELECT
-		tno,title,price,tmno,id
+		tno,title,price
 	FROM
-		t.trade, m.member
+		trade
 	WHERE
 		tno = #{tno}
-	
 	</select>
 	<insert id="insertBoard" parameterType="bVO">
 		<selectKey keyProperty="tno" resultType="int" order="BEFORE">

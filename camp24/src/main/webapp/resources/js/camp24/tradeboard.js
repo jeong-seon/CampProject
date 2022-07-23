@@ -35,6 +35,7 @@ $(document).ready(function(){
 	});
 	
 	$('#list2btn').click(function(){
+		$('#price').prop('disabled',true);
 		$('#frm').attr('action', '/camp24/trade/trade.cmp');
 		$('#frm').submit();
 	});

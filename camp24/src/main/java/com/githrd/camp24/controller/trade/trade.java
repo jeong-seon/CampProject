@@ -64,6 +64,8 @@ public class trade {
 		List<BoardVO> list2 = tDao.getCateList(bVO);
 		List<BoardVO> image = tDao.imgList();
 		// 4. 데이터 심고
+
+	
 		mv.addObject("LIST", list);
 		mv.addObject("LIST2", list2);
 		mv.addObject("IMAGE", image);
@@ -182,6 +184,9 @@ public class trade {
 		public ModelAndView tradeDetail(ModelAndView mv, BoardVO bVO) {
 				List<FileVO> list = tDao.getFileList(bVO.getTno());
 				
+				List<BoardVO> list2 = tDao.gettradeList2(bVO);
+				
+				
 				int cnt = tSrvc.click(bVO.getTno());
 				
 				if(cnt == 1) {
@@ -191,6 +196,7 @@ public class trade {
 				// 데이터 심고
 				mv.addObject("DATA", bVO);
 				mv.addObject("LIST", list);
+				mv.addObject("LIST2", list2);
 				// 뷰 정하고
 				mv.setViewName("trade/tradeDetail");
 				return mv;
@@ -214,7 +220,8 @@ public class trade {
 		
 		@RequestMapping("/kakaopay.json")
 		@ResponseBody
-		public String kakaopay(BoardVO bVO) {
+		public String kakaopay(ModelAndView mv,BoardVO bVO) {
+			System.out.println(bVO.getTno());
 				try {
 				URL addres = new URL("https://kapi.kakao.com/v1/payment/ready");
 				HttpURLConnection server = (HttpURLConnection) addres.openConnection();
@@ -222,21 +229,10 @@ public class trade {
 				server.setRequestProperty("Authorization", "KakaoAK bead5052956d4efb28c1a4ab4a233212");
 				server.setRequestProperty("Countent-type", "application/x-www-form-urlencoded;charset=utf-8");
 				server.setDoOutput(true);
-				String param = "cid=TC0ONETIME" // 가맹점 코드
-						+ "&partner_order_id=partner_order_id" // 가맹점 주문번호
-						+ "&partner_user_id=partner_user_id" // 가맹점 회원 id
-						+ "&item_name=초코파이" // 상품명
-						+ "&quantity=1" // 상품 수량
-						+ "&total_amount=5000" // 총 금액
-						+ "&vat_amount=200" // 부가세
-						+ "&tax_free_amount=0" // 상품 비과세 금액
-						+ "&approval_url=http://localhost/camp24/main.cmp" // 결제 성공 시
-						+ "&fail_url=http://localhost/camp24/trade.cmp" // 결제 실패 시
-						+ "&cancel_url=http://localhost/camp24/trade/trade.cmp"; // 결제 취소 시
-
-
-
+				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=data.id&item_name=초코파이&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0&approval_url=http://localhost/camp24/main.cmp&fail_url=http://localhost/camp24/trade.cmp&cancel_url=http://localhost/camp24/trade/trade.cmp";
 				System.out.println(param);
+				System.out.println(bVO.getTno());
+				
 				OutputStream out = server.getOutputStream();
 				DataOutputStream dataout = new DataOutputStream(out);
 				dataout.writeBytes(param);
@@ -261,7 +257,7 @@ public class trade {
 					e.printStackTrace();
 				}
 				
-			return "{\"result\":\"NO\"}";
+			return  "{\"result\":\"NO\"}";
 		}
 }
 

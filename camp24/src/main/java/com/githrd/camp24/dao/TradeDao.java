@@ -91,4 +91,8 @@ public class TradeDao {
 	public BoardVO Kakaopay(int tno) {
 		return sqlSession.selectOne("tSQL.kakaopay",tno); 
 	}
+	
+	public List<BoardVO> gettradeList2(BoardVO bVO){
+		return sqlSession.selectList("tSQL.tradeList", bVO);
+	}
 }
