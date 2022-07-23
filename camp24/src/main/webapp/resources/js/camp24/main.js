@@ -45,7 +45,95 @@ $(document).ready(function(){
 		$('#hfrm').submit();
 	});
 	
+	function getToday(){
+	    var date = new Date();
+	    var year = date.getFullYear();
+	    var month = ("0" + (1 + date.getMonth())).slice(-2);
+	    var day = ("0" + date.getDate()).slice(-2);
+
+	    return year + month + day;
+	}
+	function getDate(){
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = ("0" + (1 + date.getMonth())).slice(-2);
+		var day = ("0" + date.getDate()).slice(-2);
+		
+		return year + '-' + month + '-' + day;
+	}
+	function getTime(date){
+		var hh = date.getHours();
+		hh = hh >= 10 ? hh : '0' + hh;
+		
+	    return hh;
+	}
+	$('#weather').click(function(){
+		
+		var todayDate = getToday();
+		var todayTime = getTime(new Date());
+		var date = getDate();
+		
+		$.ajax({
+			url: 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?',
+			data: {
+				serviceKey: '6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8/qN3dGhpsRYTTGJ63LFtj/0kBFwzjL/y5pFa6xA==',
+				pageNo: '1',
+				numOfRows: '255',
+				dataType: 'JSON',
+				base_date: todayDate,
+				base_time: todayTime - 1 + '00',
+				nx: '60',
+				ny: '127'
+			},
+			success: function(data) {
+				for(var i = 0; i < data.response.body.items.item.length; i++) {
+					$('#weatherWin').css('display', 'block');
+					$('#weathermsg1').text('현재 날짜 및 시간 : ' + date + ' / ' + todayTime + '시');
+					if(data.response.body.items.item[i].category == 'TMP'){
+						$('#weathermsg2').text('서울 기온 : ' + data.response.body.items.item[i].fcstValue + ' °C');
+					}
+					if(data.response.body.items.item[i].category == 'POP'){
+						$('#weathermsg3').text('강수 확률 : ' + data.response.body.items.item[i].fcstValue + ' %');
+					}
+					if(data.response.body.items.item[i].category == 'PTY'){
+						if(data.response.body.items.item[i].fcstValue == 0){
+							$('#weathermsg4').text('강수 형태 : 없음');
+							$('#weathermsg4').append('<i class="fa-solid fa-sun" style="width: 50px; height:auto;"></i>');
+						}
+						if(data.response.body.items.item[i].fcstValue == 1){
+							$('#weathermsg4').text('강수 형태 : 비');
+							$('#weathermsg4').append('<i class="fa-solid fa-cloud-rain" style="width: 50px; height:auto;"></i>');
+						}
+						if(data.response.body.items.item[i].fcstValue == 2){
+							$('#weathermsg4').text('강수 형태 : 비/눈');
+							$('#weathermsg4').append('<i class="fa-solid fa-cloud-sleet" style="width: 50px; height:auto;"></i>');
+						}
+						if(data.response.body.items.item[i].fcstValue == 3){
+							$('#weathermsg4').text('강수 형태 : 눈');
+							$('#weathermsg4').append('<i class="fa-solid fa-cloud-snow" style="width: 50px; height:auto;"></i>');
+						}
+						if(data.response.body.items.item[i].fcstValue == 4){
+							$('#weathermsg4').text('강수 형태 : 소나기');
+							$('#weathermsg4').append('<i class="fa-solid fa-cloud-showers" style="width: 50px; height:auto;"></i>');
+						}
+					}
+					if(data.response.body.items.item[i].category == 'REH'){
+						$('#weathermsg5').text('습도 : ' + data.response.body.items.item[i].fcstValue + ' %');
+					}
+					if(data.response.body.items.item[i].category == 'WSD'){
+						$('#weathermsg6').text('풍속 : ' + data.response.body.items.item[i].fcstValue + ' m/s');
+					}
+				}
+			},
+			error: function(){
+				alert('### 통신 에러 ###');
+			}
+		});
+	});
 	
+	$('#weatherClose').click(function(){
+		$('#weatherWin').css('display', 'none');
+	});
 	
 	$('#msgClose').click(function(){
 		$('#msgWin').css('display', 'none');
@@ -91,15 +179,4 @@ $(document).ready(function(){
 	$('#back-to-top').tooltip('show');
 	
 	
-	$.ajax({
-		url: '/camp24/bestReview.json',
-		type: 'post',
-		dataType: 'json',
-		success: function(arr){
-			
-		},
-		error: function(){
-			alert('### 통신에러 ###');
-		}
-	});
 });

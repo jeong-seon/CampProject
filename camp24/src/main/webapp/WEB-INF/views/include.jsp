@@ -28,17 +28,23 @@
 <!-- Page Content -->
 <div class="w3-main w3-padding-large" style="margin-left:40%">
 <c:if test="${empty SID}">
-	<div class="w3-col">
+	<div class="w3-col m6">
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="joinbtn"><small><strong>Join</strong></small></span>
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loginbtn"><small><strong>Login</strong></small></span>
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
 	</div>
+	<div class="w3-col m5 w3-right">
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="weather">실시간날씨정보</span>
+	</div>
 </c:if>
 <c:if test="${not empty SID}">
-	<div class="w3-col">
+	<div class="w3-col m6">
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mypagebtn"><small><strong>MyPage</strong></small></span>
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="loutbtn"><small><strong>Logout</strong></small></span>
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
+	</div>
+	<div class="w3-col m5 w3-right">
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="weather">실시간날씨정보</span>
 	</div>
 </c:if>
 	  <!-- Menu icon to open sidebar -->
