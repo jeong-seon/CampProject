@@ -72,9 +72,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			<div class="w3-margin w3-white w3-center">
 				<div class="w3-container">
 					<div class="w3-border-bottom">
-						<!-- <img id="rank" style="width: 40px; height: auto;" src="/camp24/resources/img/pic/rank.png"> -->
 						<h2 class="inblock">Best Review</h2>
-						<!-- <img id="rank" style="width: 40px; height: auto;" src="/camp24/resources/img/pic/rank.png"> -->
 					</div>
 					
 						<div class="carousel-reviews broun-block">
@@ -434,10 +432,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 						    </div>
 						</div>
 					
-				
-					
-					
-					
 				</div>
    			</div>
    		</div>
@@ -469,13 +463,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 					<h5 style="font-size: 10pt;"># 이미지 클릭 시 해당 홈페이지로 이동합니다 #</h5>
 					<h5 style="font-size: 10pt;"># 홈페이지가 없는 경우는 클릭되지 않습니다 #</h5>
 		</c:forEach>
-					<!--
-					<p style="margin-bottom: 20px;"></p>
-					<a href="" id="prev"><img src="/camp24/resources/img/pic/prev.png" width="50px" height="auto"></a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="" id="next"><img src="/camp24/resources/img/pic/next.png" width="50px" height="auto"></a>
-					<p style="margin-bottom: 20px;"></p>
-					-->
 					<a href="" class="w3-green w3-button">변경</a>
 				</div>
    			</div>
@@ -499,23 +486,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 	</div>
 </c:if>
   
-  <div id="weatherWin" class="w3-modal">
-	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
-			<header class="w3-container w3-green"> 
-		        <span class="w3-button w3-display-topright" 
-		        							id="weatherClose">&times;</span>
-		        <h2 class="w3-center">날씨 정보</h2>
-			</header>
-	    	<div class="w3-container">
-	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg1"></h3>
-	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg2"></h3>
-	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg3"></h3>
-	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg4"></h3>
-	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg5"></h3>
-	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg6"></h3>
-	    	</div>
-	    </div>
- 	</div>
+  
   
   <!-- Page top button -->
   <a style="width: 50px; height: 40px;" id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top w3-green" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>

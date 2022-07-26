@@ -18,6 +18,14 @@ $(document).ready(function(){
 	
 	/* 댓글등록 버튼 클릭 이벤트 */
 	$('#cmtbtn').click(function(){
+		var ttxt = $('#title').val();
+		ttxt = ttxt.trim();
+		
+		if(!ttxt){
+			$('#title').focus();
+			return;
+		}
+		
 		var btxt = $('#body').val();
 		btxt = btxt.trim();
 		

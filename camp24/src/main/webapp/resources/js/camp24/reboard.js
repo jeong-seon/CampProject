@@ -52,6 +52,7 @@ $(document).ready(function(){
 		$('#nowPage').prop('disabled', true);
 		$('#title').prop('disabled', true);
 		$('#body').prop('disabled', true);
+		$('#cname').prop('disabled', true);
 		$('#frm').submit();
 	});
 	

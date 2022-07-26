@@ -16,6 +16,19 @@ import org.w3c.dom.NodeList;
 import com.githrd.camp24.dao.ApiDao;
 import com.githrd.camp24.vo.ApiVO;
 
+/**
+ * 캠핑장정보 api 데이터를 정해진 시간마다 업데이트하는 스케줄러
+ * @author	정선우
+ * @since	2022.07.25
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 			
+ * 				2022.07.25	-	담당자 : 정선우
+ * 									캠핑장정보 api 데이터
+ * 									DB 에 저장하는 스케줄러 제작
+ *
+ */
 public class UpdateApi {
 	@Autowired
 	ApiDao aDao;

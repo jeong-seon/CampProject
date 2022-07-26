@@ -182,10 +182,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 							        <c:out value="${data.body}">
 							        </c:out></c:otherwise>
 							</c:choose>
-							<%-- <div class="w3-col review-block-description" id="rbody">${data.body}</div> --%>
 						
-			<!-- <div class="w3-container inblock">
-				<div class="w3-content" style="width: 100px; height: 100px; overflow: hidden"> -->
 			<c:forEach var="image" items="${IMAGE}">
 				<c:if test="${data.rno eq image.imageno}">
 					<div class="w3-display-center">

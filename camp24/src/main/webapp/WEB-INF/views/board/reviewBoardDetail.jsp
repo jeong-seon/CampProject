@@ -78,13 +78,6 @@ body, h1,h2,h3,h4,h5,h6,section {font-family: 'IBM Plex Sans KR', serif;}
 </form>
 <h2 class="w3-padding-16 w3-center">방문후기 상세보기</h2>
     <!-- /container -->
-
-
-
-	
-	    <!-- ==============================================
-	    Hero
-	    =============================================== -->
         <section class="hero">
          <div class="">
           <div class="row">	
@@ -181,24 +174,13 @@ body, h1,h2,h3,h4,h5,h6,section {font-family: 'IBM Plex Sans KR', serif;}
 			<c:if test="${DATA.rno eq image.imageno}">
 			  <div class="w3-margin-bottom">
 				  <img class="img-fluid" src="${image.idir}${image.isavename}" alt="Image">
-			  	<!-- <a href="" class="img-modal-btn left"><i class="glyphicon glyphicon-chevron-left"></i></a>
-           		<a href="" class="img-modal-btn right"><i class="glyphicon glyphicon-chevron-right"></i></a> -->
 			  </div>
 		 	</c:if>
 		</c:forEach>
 			 </div><!--/ cardbox-item -->
 			 <div class="cardbox-base">
-			 
-			 	
-			  
-			  
-			  
-			 	
-			  
 			  
 			 </div><!--/ cardbox-base -->
-			 
-			 
 			 
 			 <div class="cardbox-base">
 			 	<div class="w3-center w3-padding-32">

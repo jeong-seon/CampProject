@@ -134,13 +134,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		<form method="POST" action="/camp24/campapi/campApi.cmp" id="frm" name="frm">
 			<input type="hidden" id="nowPage" name="pageno" value="${PAGE.nowPage}">
 		</form>
-	<!-- <form method="post" action="/camp24/campapi/campApi.cmp" id="frm" name="frm">
-		<div class="w3-row w3-center">
-			<div class="w3-button w3-center w3-dark-gray" id="before">이전페이지</div>
-			<div class="w3-button w3-center w3-dark-gray" id="next">다음페이지</div>
-			<input type="hidden" id="pageno" name="pageno" value="1">
-		</div>
-	</form> -->
 </div>
     <!-- Grid for photos -->
   

@@ -34,7 +34,7 @@
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
 	</div>
 	<div class="w3-col m5 w3-right">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="weather">실시간날씨정보</span>
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="weather"><small><strong>실시간 날씨</strong></small></span>
 	</div>
 </c:if>
 <c:if test="${not empty SID}">
@@ -44,7 +44,7 @@
 		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="mapbtn"><small><strong>Map</strong></small></span>
 	</div>
 	<div class="w3-col m5 w3-right">
-		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="weather">실시간날씨정보</span>
+		<span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto; position: relative; right:0; top: -12px;" id="weather"><small><strong>실시간 날씨</strong></small></span>
 	</div>
 </c:if>
 	  <!-- Menu icon to open sidebar -->
@@ -53,6 +53,22 @@
   <!-- Header -->
   <header class="w3-container w3-center" style="padding:60px 16px; padding-bottom: 0px;" id="home">
     <h1 class="w3-jumbo" id="mainlogo"><a href="/camp24/main.cmp"><b style="color: black !important; text-decoration-color: black !important;">Camp 24</b></a></h1>
-    <!-- <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-small w3-round" style="display:block;width:60%;margin:auto;">
-    <img src="/w3images/profile_girl.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333"> -->
   </header>
+
+  <div id="weatherWin" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4 mxw500">
+			<header class="w3-container w3-green"> 
+		        <span class="w3-button w3-display-topright" 
+		        							id="weatherClose">&times;</span>
+		        <h2 class="w3-center">날씨 정보</h2>
+			</header>
+	    	<div class="w3-container">
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg1"></h3>
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg2"></h3>
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg3"></h3>
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg4"></h3>
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg5"></h3>
+	        	<h3 class="w3-center w3-padding w3-margin-top w3-margin-bottom" id="weathermsg6"></h3>
+	    	</div>
+	    </div>
+ 	</div>

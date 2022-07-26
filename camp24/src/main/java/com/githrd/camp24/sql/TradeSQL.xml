@@ -95,6 +95,7 @@
 		    image
 		WHERE
 		    isshow = 'Y'
+		    AND icode = 'T'
 		    AND imageno = #{tno}
 	</select>
 	

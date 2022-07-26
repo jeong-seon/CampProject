@@ -109,6 +109,7 @@
 		WHERE
 		    r.isshow = 'Y'
 		    AND i.isshow = 'Y'
+		    AND i.icode = 'R'
 		    AND imageno = rno
 	</select>
 	<select id="imgList2" resultType="fVO" parameterType="int">
@@ -119,6 +120,7 @@
 		WHERE
 		    r.isshow = 'Y'
 		    AND i.isshow = 'Y'
+		    AND i.icode = 'R'
 		    AND rno = #{rno}
 		    AND imageno = rno
 	</select>
@@ -304,42 +306,4 @@
 		)
 	</select>
 	
-	<!-- 
-	<select id="likeCnt" resultType="bVO" parameterType="bVO">
-		SELECT
-			COUNT(*) cnt
-		FROM
-			clicklike c, member m, review r
-		WHERE
-		    like_id = m.id
-   			AND like_rno = r.rno
-			AND like_id = #{id}
-			AND like_rno = #{rno}
-	</select>
-	
-	<insert id="insertLike" parameterType="bVO">
-		INSERT INTO
-		    clicklike
-		VALUES(
-		    #{id}, #{rno}
-		)
-	</insert>
-	
-	<update id="likeUp" parameterType="bVO">
-		UPDATE
-		    review
-		SET
-		    likecount = likecount + 1
-		WHERE
-		    rno = #{rno}
-	</update>
-	<update id="likeDown" parameterType="bVO">
-		UPDATE
-		    review
-		SET
-		    likecount = likecount - 1
-		WHERE
-		    rno = #{rno}
-	</update> 
-	-->
 </mapper>

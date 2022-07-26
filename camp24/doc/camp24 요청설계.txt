@@ -104,7 +104,7 @@
 처리함수	:	fileDel()
 뷰			:	json
 ---------------------------------------------------------------------
-# 게시글 좋아요 처리 요청
+# 방문후기 게시글 좋아요 처리 요청
 요청내용	:	/camp24/reviewBoard/likeCnt.json
 파라미터	:	rno, id
 컨트롤러	:	com.githrd.camp24.controller.review.ReviewBoard

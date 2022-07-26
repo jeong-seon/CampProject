@@ -28,11 +28,7 @@
 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
 		p:jobDetail-ref="updateData"
 		p:startDelay="1000"
- 		p:cronExpression="0 0 17 1/1 * ? *"><!-- 매일 17시 정각마다 -->
- 		<!-- p:cronExpression="0 0 3 1/1 * ? *"> --><!-- 매일 새벽 3시 정각마다 -->
-		<!-- p:cronExpression="0 0/1 * 1/1 * ? *"> --><!-- 매 1분마다 -->
-<!--	p:cronExpression="0 * 14 12 7 ?">--><!-- 매년 7월 12일 오후 2시 ~ 3시 사이에 1분마다.. -->
-<!-- 		p:cronExpression="0 0/1 * * * ?"> --><!-- 1분마다 -->
+ 		p:cronExpression="0 0 3 1/1 * ? *"><!-- 매일 새벽 3시 마다 -->
 	</bean>
 	
 	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
