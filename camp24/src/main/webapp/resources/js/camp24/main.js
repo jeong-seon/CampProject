@@ -62,7 +62,7 @@ $(document).ready(function(){
 		return year + '-' + month + '-' + day;
 	}
 	function getTime(date){
-		var hh = date.getHours();
+		var hh = date.getHours() -1;
 		hh = hh >= 10 ? hh : '0' + hh;
 		
 	    return hh;
@@ -74,54 +74,77 @@ $(document).ready(function(){
 		var date = getDate();
 		
 		$.ajax({
-			url: 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?',
+			url: 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?',
 			data: {
 				serviceKey: '6pAoN9O3ycxlmS7o5f7MvnwrkdKT8wZaKFSsUoVgnrgvUk8/qN3dGhpsRYTTGJ63LFtj/0kBFwzjL/y5pFa6xA==',
 				pageNo: '1',
-				numOfRows: '255',
+				numOfRows: '8',
 				dataType: 'JSON',
 				base_date: todayDate,
-				base_time: todayTime - 1 + '00',
+				base_time: todayTime + '00',
 				nx: '60',
 				ny: '127'
 			},
 			success: function(data) {
 				for(var i = 0; i < data.response.body.items.item.length; i++) {
 					$('#weatherWin').css('display', 'block');
-					$('#weathermsg1').text('현재 날짜 및 시간 : ' + date + ' / ' + todayTime + '시');
-					if(data.response.body.items.item[i].category == 'TMP'){
-						$('#weathermsg2').text('서울 기온 : ' + data.response.body.items.item[i].fcstValue + ' °C');
-					}
-					if(data.response.body.items.item[i].category == 'POP'){
-						$('#weathermsg3').text('강수 확률 : ' + data.response.body.items.item[i].fcstValue + ' %');
+					$('#weathermsg1').text('현재 날짜 및 시간 : ' + date + ' / ' + (parseInt(todayTime) + 1) + '시');
+					if(data.response.body.items.item[i].category == 'T1H'){
+						$('#weathermsg2').text('서울 기온 : ' + data.response.body.items.item[i].obsrValue + ' °C');
 					}
 					if(data.response.body.items.item[i].category == 'PTY'){
-						if(data.response.body.items.item[i].fcstValue == 0){
-							$('#weathermsg4').text('강수 형태 : 없음');
-							$('#weathermsg4').append('<i class="fa-solid fa-sun" style="width: 50px; height:auto;"></i>');
+						if(data.response.body.items.item[i].obsrValue == '0'){
+							$('#weathermsg3').text('강수 형태 : 없음');
+							$('#weathermsg3').append('<i class="fa-solid fa-sun" style="width: 50px; height:auto;"></i>');
 						}
-						if(data.response.body.items.item[i].fcstValue == 1){
-							$('#weathermsg4').text('강수 형태 : 비');
-							$('#weathermsg4').append('<i class="fa-solid fa-cloud-rain" style="width: 50px; height:auto;"></i>');
+						if(data.response.body.items.item[i].obsrValue == '1'){
+							$('#weathermsg3').text('강수 형태 : 비');
+							$('#weathermsg3').append('<i class="fa-solid fa-cloud-rain" style="width: 50px; height:auto;"></i>');
 						}
-						if(data.response.body.items.item[i].fcstValue == 2){
-							$('#weathermsg4').text('강수 형태 : 비/눈');
-							$('#weathermsg4').append('<i class="fa-solid fa-cloud-sleet" style="width: 50px; height:auto;"></i>');
+						if(data.response.body.items.item[i].obsrValue == '2'){
+							$('#weathermsg3').text('강수 형태 : 비/눈');
+							$('#weathermsg3').append('<i class="fa-solid fa-cloud-sleet" style="width: 50px; height:auto;"></i>');
 						}
-						if(data.response.body.items.item[i].fcstValue == 3){
-							$('#weathermsg4').text('강수 형태 : 눈');
-							$('#weathermsg4').append('<i class="fa-solid fa-cloud-snow" style="width: 50px; height:auto;"></i>');
+						if(data.response.body.items.item[i].obsrValue == '3'){
+							$('#weathermsg3').text('강수 형태 : 눈');
+							$('#weathermsg3').append('<i class="fa-solid fa-cloud-snow" style="width: 50px; height:auto;"></i>');
 						}
-						if(data.response.body.items.item[i].fcstValue == 4){
-							$('#weathermsg4').text('강수 형태 : 소나기');
-							$('#weathermsg4').append('<i class="fa-solid fa-cloud-showers" style="width: 50px; height:auto;"></i>');
+						if(data.response.body.items.item[i].obsrValue == '5'){
+							$('#weathermsg3').text('강수 형태 : 빗방울');
+							$('#weathermsg3').append('<i class="fa-solid fa-raindrops" style="width: 50px; height:auto;"></i>');
+						}
+						if(data.response.body.items.item[i].obsrValue == '6'){
+							$('#weathermsg3').text('강수 형태 : 빗방울/눈날림');
+							$('#weathermsg3').append('<i class="fa-solid fa-cloud-hail-mixed" style="width: 50px; height:auto;"></i>');
+						}
+						if(data.response.body.items.item[i].obsrValue == '7'){
+							$('#weathermsg3').text('강수 형태 : 눈날림');
+							$('#weathermsg3').append('<i class="fa-solid fa-snow-blowing" style="width: 50px; height:auto;"></i>');
+						}
+					}
+					if(data.response.body.items.item[i].category == 'RN1'){
+						var rainmm = parseFloat(data.response.body.items.item[i].obsrValue);
+						if(rainmm >= 50.0){
+							$('#weathermsg4').text('1시간 강수량 : ' + '50.0mm 이상');
+						}
+						if(rainmm >= 30.0 && rainmm < 50.0){
+							$('#weathermsg4').text('1시간 강수량 : ' + '30.0 ~ 50.0mm');
+						}
+						if(rainmm >= 1.0 && rainmm < 30.0){
+							$('#weathermsg4').text('1시간 강수량 : ' + '1.0 ~ 29.0mm');
+						}
+						if(rainmm < 1.0){
+							$('#weathermsg4').text('1시간 강수량 : ' + '1.0mm 미만');
+						}
+						if(rainmm == 0){
+							$('#weathermsg4').text('1시간 강수량 : ' + '강수없음');
 						}
 					}
 					if(data.response.body.items.item[i].category == 'REH'){
-						$('#weathermsg5').text('습도 : ' + data.response.body.items.item[i].fcstValue + ' %');
+						$('#weathermsg5').text('습도 : ' + data.response.body.items.item[i].obsrValue + ' %');
 					}
 					if(data.response.body.items.item[i].category == 'WSD'){
-						$('#weathermsg6').text('풍속 : ' + data.response.body.items.item[i].fcstValue + ' m/s');
+						$('#weathermsg6').text('풍속 : ' + data.response.body.items.item[i].obsrValue + ' m/s');
 					}
 				}
 			},

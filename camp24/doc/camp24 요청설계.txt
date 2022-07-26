@@ -213,7 +213,19 @@
 처리함수	: 	delQBoard()
 뷰			: 	/WEB-INF/views/qnaBoard/redirect.jsp
 -------------------------------------------------------------
-
+# 아이디 찾기 처리 요청
+요청내용	:	/camp24/user/find_id.cmp
+파라미터	:	name, tel
+컨트롤러	:	com.githrd.camp24.controller.user.UserController
+처리함수	:	findIdAction
+뷰			:	/WEB-INF/views/user/findId.jsp
+-------------------------------------------------------------
+# 비밀번호 찾기 처리 요청
+요청내용	:	/camp24/user/pw_auth.cmp
+파라미터	:	num, id, mail
+컨트롤러	:	com.githrd.camp24.controller.user.UserController
+처리함수	:	pw_auth
+뷰			:	/WEB-INF/views/user/findPw.jsp
 =====================================================================
 ############## 김은선
 =====================================================================

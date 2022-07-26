@@ -33,6 +33,7 @@
 			AND tel = #{tel}
 	</select>
 	
+	<!-- 아이디 찾기 질의명령 -->
 	<select id="idResult" resultType="mVO" parameterType="mVO">
 		SELECT
 		    id
@@ -43,6 +44,7 @@
 		    AND tel = #{tel}
 	</select>
 	
+	<!-- 비밀번호 찾기 질의명령 -->
 	<select id="selectMember" resultType="mVO" parameterType="mVO">
 		SELECT
 			mail
@@ -52,6 +54,7 @@
 			mail = #{mail}
 	</select>
 	
+	<!-- 비밀번호 수정 질의명령 -->
 	<update id="pwUpdate" parameterType="mVO">
 		UPDATE
 			member

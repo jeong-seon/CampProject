@@ -23,18 +23,22 @@ public class UserDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	// 아이디 찾기 전담 처리함수
+	// 아이디 조회 전담 처리함수
 	public int findId(MemberVO mVO) {
 		return sqlSession.selectOne("uSQL.findId", mVO);
 	}
 	
+	// 아이디 찾기 전담 처리함수
 	public MemberVO idResult(MemberVO mVO) {
 		return sqlSession.selectOne("uSQL.idResult", mVO);
 	}
+	
+	// 비밀번호 찾기 전담 처리함수
 	public MemberVO findPw(MemberVO mVO) {
 		return sqlSession.selectOne("uSQL.selectMember", mVO);
 	}
 	
+	// 비밀번호 수정 전담 처리함수
 	public int pwUpdate(MemberVO mVO) {
 		return sqlSession.update("uSQL.pwUpdate", mVO);
 	}
