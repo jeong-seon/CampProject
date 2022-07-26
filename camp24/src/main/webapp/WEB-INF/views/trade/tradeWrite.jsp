@@ -126,6 +126,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 					<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile" accept="image/gif,image/jpeg,image/png/">
 				</div>
 			</div>
+			
 			<div class="w3-col w3-margin-bottom" id="previewbox" style="display: none;">
 				<label class="w3-col s2">Preview</label>
 				<div class="w3-col m10 w3-center" id="preview">

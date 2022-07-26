@@ -20,7 +20,7 @@ $(document).ready(function(){
 						var stag = 
 									'<div class="col-md-3 w3-margin-bottom w3-hover-blue brdList" style ="margin-right: 30px; cursor:pointer; height: auto; width: 100%; border:1px solid black;" id="' + arr[i].tno + '">' +
 									
-									'<img style= "display: inline-block; margin-top: 10px; margin-bottom: 20px; width: 80px; height: 80px; cursor:pointer; " src="/camp24/upload/'+ (arr[i].isavename) +'">'+
+									'<img style= "display: inline-block; margin-top: 10px; margin-bottom: 20px; width: 120px; height: 120px; cursor:pointer; " src="/camp24/upload/'+ (arr[i].isavename) +'">'+
 									
 									'<div class="w3-col w3-margin-bottom" style="height: 40px; border-top: 1px solid black; border-bottom:1px solid black;"><h4>' + arr[i].title + '</h4></div>' + 
 									'<p>가격 : <fmt:formatNumber value="${data.price}" pattern="#,###" />' + arr[i].price + '원</p>' +
