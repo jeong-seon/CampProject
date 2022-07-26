@@ -82,7 +82,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
         	    	<div class="overhidden w3-circle w3-margin-bottom">
 	        	        <img src="/camp24/resources/img/avatar/${data.avatar}" class="img img-rounded img-fluid"/>
         	    	</div>
-        	        <%-- <span class="w3-col w3-center mgb10 ft10">${data.id}</span> --%>
         	        <p class="text-secondary text-center"><strong>${data.id}</strong></p>
         	    </div>
         	    
@@ -241,19 +240,4 @@ function closeNav() {
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
 <!-- END MAIN -->
-
-
-
-
-
-	

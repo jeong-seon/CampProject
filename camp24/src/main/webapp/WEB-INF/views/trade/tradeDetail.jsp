@@ -117,7 +117,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			</div>
 			<div class="w3-col  w3-margin-bottom" >
 				<input type="hidden" value="${DATA.price}" id = "price" name ="price">
-				<label class="w3-left" id="price">금액 :<fmt:formatNumber value="${DATA.price}" pattern="#,###" />원</label>
+				<label class="w3-left" id="price">금액 : <fmt:formatNumber value="${DATA.price}" pattern="#,###" />원</label>
 			</div>
 			<div class="w3-col w3-margin-bottom">
 				<label class="w3-left" id = "position">지역위치 : ${DATA.position}</label>

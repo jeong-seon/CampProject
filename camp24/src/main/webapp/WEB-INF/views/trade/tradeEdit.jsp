@@ -77,6 +77,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		<h2 class="w3-center">중고 물품 수정</h2>
 		<input type="hidden" id="otitle" value="${DATA.title}">
 		<input type="hidden" id="obody" value="${DATA.body}">
+		<input type="hidden" id="oprice" value="${DATA.price}">
+		<input type="hidden" id="oposition" value="${DATA.position}">
 		<form method="POST" action="/camp24/trade/tradeEditProc.cmp" encType="multipart/form-data"
 				id="frm" name="frm" class="w3-col frmpadding">
 			<input type="hidden" name="nowPage" value="${param.nowPage}">

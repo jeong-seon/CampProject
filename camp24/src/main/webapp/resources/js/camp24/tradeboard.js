@@ -127,11 +127,15 @@ $(document).ready(function(){
 		// 수정 여부검사
 		var otitle = $('#otitle').val();
 		var obody = $('#obody').val();
+		var oprice = $('#oprice').val();
+		var oposition = $('#oposition').val();
 		
 		var title = $('#title').val();
 		var body = $('#body').val();
+		var price = $('#price').val();
+		var position = $('#position').val();
 		
-		if(otitle == title && obody == body && $('#filebox > input').length == 1){
+		if(otitle == title && obody == body && oprice == price && oposition == position && $('#filebox > input').length == 1){
 			$('#editWin').css('display', 'block');
 			return;
 		}

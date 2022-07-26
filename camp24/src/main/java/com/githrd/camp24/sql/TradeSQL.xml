@@ -234,6 +234,12 @@
 			<if test="body neq null">
 				body = #{body},
 			</if>
+			<if test="price neq null">
+				price = #{price},
+			</if>
+			<if test="position neq null">
+				position = #{position},
+			</if>
 		</set>
 		WHERE
 			tno = #{tno}
