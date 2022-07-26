@@ -80,7 +80,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   
 	<form method="POST" action="/camp24/trade/trade.cmp" id="frm" name="frm">
 		<input type="hidden" name="nowPage" value="${param.nowPage}">
-		<input type="hidden" name="tno" value="${DATA.tno}">
+		<input type="hidden" name="tno" value="${DATA.tno}" id = "tno">
 	
 	<div class="w3-content">
 	<c:if test="${not empty LIST}">			
@@ -90,11 +90,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			<c:if test="${not empty data.isavename}">
 					<div class="inblock picbox">
 				<c:if test="${data.idir eq '/camp24/upload/'}">
-						<img class="pic" style="WIDTH: 100px" onclick="window.open(this.src)"  alt="클릭하시면 조금더 커집니다.."  src="${data.idir}${data.isavename}"> 
+						<img class="pic" style="WIDTH: 200px" onclick="window.open(this.src)"  alt="클릭하시면 조금더 커집니다.."  src="${data.idir}${data.isavename}"> 
 						
 				</c:if>
 				<c:if test="${data.idir ne '/camp24/upload/'}">
-						<img class="pic" style="WIDTH: 100px" onclick="window.open(this.src)"  alt="클릭하시면 조금더 커집니다.."  src="/camp24${data.idir}/${data.isavename}"> 
+						<img class="pic" style="width: 200px" onclick="window.open(this.src)"  alt="클릭하시면 조금더 커집니다.."  src="/camp24${data.idir}/${data.isavename}"> 
 				</c:if>
 					</div>
 			</c:if>
@@ -102,22 +102,28 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				</div>
 			</div>
 </c:if>
+
+
 		<div class="w3-col frmpadding w3-center">
 		
 			<div class="w3-col  w3-margin-bottom">
+				<input type="hidden" value="${DATA.title}" id = "title" name ="title">
 				<label class="w3-left"  id ="title" >물품 이름 : ${DATA.title} </label>
 			</div>
+			
 				<div class="w3-col  w3-margin-bottom"  >
+				<input type="hidden" value="${DATA.id}" id = "id" name ="id">
 				<label class="w3-left" id = "id">판매자 아이디 : ${DATA.id} </label>
 			</div>
 			<div class="w3-col  w3-margin-bottom" >
+				<input type="hidden" value="${DATA.price}" id = "price" name ="price">
 				<label class="w3-left" id="price">금액 :<fmt:formatNumber value="${DATA.price}" pattern="#,###" />원</label>
 			</div>
 			<div class="w3-col w3-margin-bottom">
-				<label class="w3-left">지역위치 : ${DATA.position}</label>
+				<label class="w3-left" id = "position">지역위치 : ${DATA.position}</label>
 			</div>	
 			<div class="w3-col w3-margin-bottom w3-margin-top">
-				<label class="w3-left">캠핑장비 상세 설명 :  ${DATA.body}</label>
+				<label class="w3-left" id = "body">캠핑장비 상세 설명 :  ${DATA.body}</label>
 			</div>
 		</div>
 		

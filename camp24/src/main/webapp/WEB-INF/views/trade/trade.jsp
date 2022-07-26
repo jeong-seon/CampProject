@@ -95,26 +95,26 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 		<input type="hidden" name="tno" id="tno">
 		<input type="hidden" name="vw" id="vw">
 	</form>
-<div class="w3-col w3-left" id="tPanel">	     
+	
+	
+<div class="w3-col w3-center" id="tPanel">     
 <c:forEach var="data" items="${LIST}">
-			<div class="col-md-3 w3-margin-bottom brdList" style ="margin-right: 30px; cursor:pointer;"  id="${data.tno}">
+			<div class="col-md-3 w3-margin-bottom brdList" style ="margin-right: 30px; cursor:pointer; height: auto; width: 100%; border:1px solid black;"  id="${data.tno}">
 				<c:forEach var="image" items="${IMAGE}">
 				<c:if test="${data.tno eq image.imageno}">
-				<div class = "w3-margin-right">
-							<img style= "display: inline-block; width: 202px; height: 202px; cursor:pointer;"  src="${image.idir}${image.isavename}">
-				</div>
+							<img style= "display: inline-block; margin-top: 10px; margin-bottom: 20px; width: 80px; height: 80px; cursor:pointer; "  src="${image.idir}${image.isavename}">
 				</c:if>
 				</c:forEach>
-                	<h4>${data.title}</h4>
-               		<p><fmt:formatNumber value="${data.price}" pattern="#,###" />원</p>
-               		<p>위치 :${data.position}</p>
+                	<div class="w3-col w3-margin-bottom " style="height: 40px; border-top: 1px solid black;  border-bottom:1px solid black;"><h4>${data.title}</h4></div>
+               		<p>가격 : <fmt:formatNumber value="${data.price}" pattern="#,###" />원</p>
+               		<p>지역 : ${data.position}</p>
                		<p>조회수 : ${data.click}</p>
                		<p>작성자 : ${data.id}</p>	
 		</div>
 	
 </c:forEach>
 </div>
-	
+
 	<c:if test="${not empty SID}">
 			<div class="w3-col w3-margin-top" style="margin-bottom: 100px;">
 			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left"id="wbtn">물품 등록</button>

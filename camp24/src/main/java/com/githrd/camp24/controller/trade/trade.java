@@ -212,52 +212,22 @@ public class trade {
 		@RequestMapping("/tradelist.json")
 		@ResponseBody
 		public List<BoardVO> tradeList(BoardVO bVO){
-//			List<ProductVO> list = pDao.getProductList(pVO);
-			return tDao.gettradeList(bVO);
+			
+		List<BoardVO> list = tDao.gettradeList(bVO);
+			
+				
+				return list;
 		}
 		
 		
 		
 		@RequestMapping("/kakaopay.json")
 		@ResponseBody
-		public String kakaopay(ModelAndView mv,BoardVO bVO) {
-			System.out.println(bVO.getTno());
-				try {
-				URL addres = new URL("https://kapi.kakao.com/v1/payment/ready");
-				HttpURLConnection server = (HttpURLConnection) addres.openConnection();
-				server.setRequestMethod("POST");
-				server.setRequestProperty("Authorization", "KakaoAK bead5052956d4efb28c1a4ab4a233212");
-				server.setRequestProperty("Countent-type", "application/x-www-form-urlencoded;charset=utf-8");
-				server.setDoOutput(true);
-				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=data.id&item_name=초코파이&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0&approval_url=http://localhost/camp24/main.cmp&fail_url=http://localhost/camp24/trade.cmp&cancel_url=http://localhost/camp24/trade/trade.cmp";
-				System.out.println(param);
-				System.out.println(bVO.getTno());
-				
-				OutputStream out = server.getOutputStream();
-				DataOutputStream dataout = new DataOutputStream(out);
-				dataout.writeBytes(param);
-				dataout.close();
-				
-				int 결과 = server.getResponseCode();
-				
-				InputStream input;
-				
-				if(결과 == 200) {
-					input = server.getInputStream();
-				}else {
-					input = server.getErrorStream();
-				}
-				InputStreamReader read = new InputStreamReader(input);
-				BufferedReader buff = new BufferedReader(read);
-				return buff.readLine();
-				
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-			return  "{\"result\":\"NO\"}";
+		public ModelAndView kakaopay(ModelAndView mv,BoardVO bVO) {
+			List<BoardVO> list2 = tDao.gettradeList2(bVO);
+			
+			mv.addObject("LIST2", list2);
+			return mv;
 		}
 }
 

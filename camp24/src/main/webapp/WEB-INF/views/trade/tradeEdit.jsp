@@ -74,20 +74,48 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   <!-- Portfolio Section -->
   
 	<div class="w3-content mxw700">
-		<h1 class="w3-blue w3-padding w3-center w3-card-4">물품 수정</h1>
+		<h2 class="w3-center">중고 물품 수정</h2>
 		<input type="hidden" id="otitle" value="${DATA.title}">
 		<input type="hidden" id="obody" value="${DATA.body}">
 		<form method="POST" action="/camp24/trade/tradeEditProc.cmp" encType="multipart/form-data"
-				id="frm" name="frm" class="w3-col w3-card-4 frmpadding">
+				id="frm" name="frm" class="w3-col frmpadding">
 			<input type="hidden" name="nowPage" value="${param.nowPage}">
 			<input type="hidden" name="tno" value="${DATA.tno}">
 			
+<c:if test="${not empty LIST}">			
+			<div class="w3-col w3-margin-bottom" id="previewbox">
+				<label class="w3-col s2 w3-center"></label>
+				<div class="w3-col m10 w3-center" id="preview">
+		<c:forEach var="data" items="${LIST}">
+			<c:if test="${not empty data.isavename}">
+					<div class="inblock picbox evtPic" id="${data.ino}">
+				<c:if test="${data.idir eq '/camp24/upload/'}">이미지를 클릭하면 삭제됩니다.
+					<img class="pic" src="${data.idir}${data.isavename}"> 
+				</c:if>
+				<c:if test="${data.idir ne '/camp24/upload/'}">
+						<img class="pic" src="${data.idir}/${data.isavename}"> 
+				</c:if>
+					</div>
+			</c:if>
+		</c:forEach>
+				</div>
+			</div>
+</c:if>			
+			
 			<div class="w3-col w3-margin-top w3-margin-bottom">
-				<label for="title" class="w3-col s2">Title</label>
+				<label for="title" class="w3-col s2">물품 제목</label>
 				<input type="text" id="title" name="title" class="w3-col m10 w3-input w3-border" value="${DATA.title}">
 			</div>
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="price" class="w3-col s2">가격</label>
+				<input type="text" id="price" name="price" class="w3-col m10 w3-input w3-border" value="${DATA.price}">
+			</div>
+			<div class="w3-col w3-margin-top w3-margin-bottom">
+				<label for="position" class="w3-col s2">지역 위치</label>
+				<input type="text" id="position" name="position" class="w3-col m10 w3-input w3-border" value="${DATA.position}">
+			</div>
 			<div class="w3-col w3-margin-bottom">
-				<label class="w3-col s2">Add File</label>
+				<label class="w3-col s2">이미지 선택</label>
 				<div class="w3-col m10" id="filebox">
 					<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">
 				</div>
@@ -98,39 +126,21 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 				</div>
 			</div>
 			<div class="w3-col">
-				<label for="body" class="w3-col s2">글본문</label>
+				<label for="body" class="w3-col s2">물품 설명</label>
 				<div class="w3-col m10">
 					<textarea class="w3-col w3-input w3-padding w3-border w3-margin-bottom" 
 							id="body" name="body" rows="10" style="resize: none;">${DATA.body}</textarea>
 				</div>
 			</div>
 			
-<c:if test="${not empty LIST}">			
-			<div class="w3-col w3-margin-bottom" id="previewbox">
-				<label class="w3-col s2">이미지</label>
-				<div class="w3-col m10 w3-center" id="preview">
-		<c:forEach var="data" items="${LIST}">
-			<c:if test="${not empty data.isavename}">
-					<div class="inblock picbox evtPic" id="${data.ino}">
-				<c:if test="${data.idir eq '/camp24/upload/'}">
-						<img class="pic" src="${data.idir}${data.isavename}"> 
-				</c:if>
-				<c:if test="${data.idir ne '/camp24/upload/'}">
-						<img class="pic" src="${data.idir}/${data.isavename}"> 
-				</c:if>
-					</div>
-			</c:if>
-		</c:forEach>
-				</div>
-			</div>
-</c:if>
+
 		</form>
 		
-		<div class="w3-col w3-margin-top w3-card-4">
+		<div class="w3-col w3-margin-top">
 	<c:if test="${SID eq DATA.id}">
 
-			<div class="w3-third w3-button w3-green" id="listbtn">리스트</div>
-			<div class="w3-third w3-button w3-deep-orange" id="editProc">수정등록</div>
+			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="listbtn">리스트</button>
+			<button type="button" class="btn btn-primary pull-right w3-green w3-margin-left" id="editProc">글 수정</button>
 	</c:if>
 	<c:if test="${SID ne DATA.id}">
 			<div class="w3-half w3-button w3-green" id="listbtn">리스트</div>

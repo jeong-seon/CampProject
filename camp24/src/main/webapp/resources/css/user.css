@@ -326,14 +326,14 @@ block {
 }
 
 .picbox {
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 	margin-left: 10px;
 	border: 1px solid gray;
 	overflow: hidden;
 }
 .pic {
-	width: 100px;
+	width: 300px;
 	height: auto;
 }
 
