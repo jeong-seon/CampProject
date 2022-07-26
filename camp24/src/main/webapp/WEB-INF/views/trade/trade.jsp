@@ -76,7 +76,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
   <!-- Portfolio Section -->
 
     <!-- Grid for photos -->
-<div class="container">
+<div class="w3-content">
 	<h2 class="text-center">중고거래게시판</h2>
 </div>
 <div class="w3-col w3-margin-bottom">

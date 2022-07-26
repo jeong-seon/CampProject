@@ -63,7 +63,7 @@ $(document).ready(function(){
 		}
 		
 		if(index == max - 1){
-			$('#filebox').append('<input type="file" name="file" class="w3-input w3-border w3-margin-bottom upfile">');
+			$('#filebox').append('<input type="hidden" name="file" class="w3-input w3-border w3-margin-bottom upfile">');
 			$('#preview').append('<div class="inblock pdAll10 picbox w3-card"><div class="w3-col" style="width: 200%; height: 200%; overflow: hidden;">' +
 					'<img src="' + path + '" class="pic">' +
 			'</div></div>');
