@@ -77,12 +77,13 @@
 	<!-- 글번호로 게시글 내용 조회 질의명령 -->
 	<select id="tradeDetail" resultType="bVO" parameterType="int">
 		SELECT
-		    tno,id,title,price,position,body
+		    tno,id,title,price,position,body,icode
 		FROM
-		    trade t, member m
+		    trade t, member m, image i
 		WHERE
 		    tmno = mno
 		    AND t.isshow = 'Y'
+		    AND icode = 'T'
 		    AND tno = #{tno}
 	</select>
 	
