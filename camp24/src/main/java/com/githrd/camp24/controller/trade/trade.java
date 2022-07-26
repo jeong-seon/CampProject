@@ -183,7 +183,7 @@ public class trade {
 				method=RequestMethod.POST, params={"tno", "nowPage"})
 		public ModelAndView tradeDetail(ModelAndView mv, BoardVO bVO) {
 				List<FileVO> list = tDao.getFileList(bVO.getTno());
-				
+
 				List<BoardVO> list2 = tDao.gettradeList2(bVO);
 				
 				
@@ -191,11 +191,13 @@ public class trade {
 				
 				if(cnt == 1) {
 					bVO = tDao.getDetail(bVO.getTno());
+					
 				}
 				
 				// 데이터 심고
 				mv.addObject("DATA", bVO);
 				mv.addObject("LIST", list);
+
 				mv.addObject("LIST2", list2);
 				// 뷰 정하고
 				mv.setViewName("trade/tradeDetail");
