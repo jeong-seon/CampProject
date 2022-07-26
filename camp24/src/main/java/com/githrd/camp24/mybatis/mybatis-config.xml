@@ -18,6 +18,7 @@
 		<typeAlias alias="aVO" type="com.githrd.camp24.vo.AvatarVO"/>
 		<typeAlias alias="apiVO" type="com.githrd.camp24.vo.ApiVO"/>
 		<typeAlias alias="pVO" type="com.githrd.camp24.vo.PreferenceVO"/>
+		<typeAlias alias="rcVO" type="com.githrd.camp24.vo.RecommendVO"/>
 		<typeAlias alias="file" type="com.githrd.camp24.util.FileUtil"/>
 		<typeAlias alias="page" type="com.githrd.camp24.util.PageUtil"/>
 	</typeAliases>
@@ -31,6 +32,7 @@
 		<mapper resource="com/githrd/camp24/sql/TradeSQL.xml"/>
 		<mapper resource="com/githrd/camp24/sql/UserSQL.xml"/>
 		<mapper resource="com/githrd/camp24/sql/PreferenceSQL.xml"/>
+ 		<mapper resource="com/githrd/camp24/sql/RecommendSQL.xml"/> 
 		<mapper resource="com/githrd/camp24/sql/ApiSQL.xml"/>
 	</mappers>
 </configuration>

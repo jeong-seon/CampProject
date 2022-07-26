@@ -146,8 +146,6 @@ a:hover{
 			<dl class="dl-horizontal" style="font-size: 14pt;">
 		      <dt>타입 :</dt>
 		      <dd style="text-align: left" id="pftype">${PDATA.pftype}</dd>
-		      <dt>가격 :</dt>
-		      <dd style="text-align: left" id="pfprice">${PDATA.pfprice}</dd>
 		      <dt>뷰 :</dt>
 		      <dd style="text-align: left" id="pfview">${PDATA.pfview}</dd>
 		      <dt>반려동물 :</dt>

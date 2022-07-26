@@ -5,7 +5,7 @@ import java.text.*;
 
 public class PreferenceVO {
 	private int mno, ano, cnt, pno, mmno, mupno, pf_mno, pfno;
-	private String id, sdate, pname, mname, msname, mtype, mprice, mview, mpet, pftype, pfprice, pfview, pfpet;
+	private String id, sdate, pname, mname, msname, mkname, mtype, mprice, mview, mpet, pftype, pfprice, pfview, pfpet;
 	private Date mdate;
 	public int getMno() {
 		return mno;
@@ -89,6 +89,12 @@ public class PreferenceVO {
 	public void setMsname(String msname) {
 		this.msname = msname;
 	}
+	public String getMkname() {
+		return mkname;
+	}
+	public void setMkname(String mkname) {
+		this.mkname = mkname;
+	}
 	public String getMtype() {
 		return mtype;
 	}
@@ -148,8 +154,8 @@ public class PreferenceVO {
 	public String toString() {
 		return "PreferenceVO [mno=" + mno + ", ano=" + ano + ", cnt=" + cnt + ", pno=" + pno + ", mmno=" + mmno
 				+ ", mupno=" + mupno + ", pf_mno=" + pf_mno + ", pfno=" + pfno + ", id=" + id + ", sdate=" + sdate
-				+ ", pname=" + pname + ", mname=" + mname + ", msname=" + msname + ", mtype=" + mtype + ", mprice="
-				+ mprice + ", mview=" + mview + ", mpet=" + mpet + ", pftype=" + pftype + ", pfprice=" + pfprice
-				+ ", pfview=" + pfview + ", pfpet=" + pfpet + ", mdate=" + mdate + "]";
+				+ ", pname=" + pname + ", mname=" + mname + ", msname=" + msname + ", mkname=" + mkname + ", mtype="
+				+ mtype + ", mprice=" + mprice + ", mview=" + mview + ", mpet=" + mpet + ", pftype=" + pftype
+				+ ", pfprice=" + pfprice + ", pfview=" + pfview + ", pfpet=" + pfpet + ", mdate=" + mdate + "]";
 	}
 }

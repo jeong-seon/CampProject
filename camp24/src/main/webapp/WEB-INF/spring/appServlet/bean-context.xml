@@ -19,6 +19,7 @@
 	<bean id="tDao" class="com.githrd.camp24.dao.TradeDao" />
 	<bean id="uDao" class="com.githrd.camp24.dao.UserDao" />
 	<bean id="pDao" class="com.githrd.camp24.dao.PreferenceDao" />
+ 	<bean id="rcDao" class="com.githrd.camp24.dao.RecommendDao" />
 	<bean id="aDao" class="com.githrd.camp24.dao.ApiDao" />
 	
 	<bean id="rSrvc" class="com.githrd.camp24.service.ReviewBoardService" />

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Camp24 Preference</title>
+<title>Camp24 Recommend</title>
 <meta charset="UTF-8">
 <link rel="icon" href="/camp24/resources/img/pic/favicon.png">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -25,27 +25,9 @@
 <!------ Include the above in your HEAD tag ---------->
 <script type="text/javascript" src="/camp24/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/camp24/resources/js/camp24/main.js"></script>
-<script type="text/javascript" src="/camp24/resources/js/camp24/preference.js"></script>
+<script type="text/javascript" src="/camp24/resources/js/camp24/recommend.js"></script>
 <style>
 body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
-.w3-row-padding img {margin-bottom: 12px}
-.bgimg {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('/camp24/resources/img/pic/14.png');
-  min-height: 100%;
-}
-#rank {
-	position: relative;
-	top: -10px;
-}
-#jbtn{
-	border-color: white;
-}
-#pwmsg, #repwmsg, #idmsg {
-	display: none;
-}
 label.s3 {
 	position: relative;
 	top: 5px;
@@ -53,16 +35,11 @@ label.s3 {
 	font-weight: normal;
 	opacity: 0.7;
 }
-
-#type label, #price label, #view label, #pet label {
-	position: relative;
-	top: 2px;
-	left: 7px;
+.rfrm{
+	width: 300px; 
+	height: 29px;
+	margin-top: 8px;
 }
-img{
-	overflow: hidden;
-}
-
 </style>
 </head>
 <body>
@@ -74,8 +51,8 @@ img{
 		<div class="preference-form">
 			<div class="main-div">
 			    <div class="panel w3-center">
-				   <h2>Camp24 Preference Survey</h2>
-				   <p>Please check your Preference Information</p>
+				   <h2>Camp24 Recommend</h2>
+				   <p>Recommended camping site list</p>
 			   	</div>
     			<form method="POST" action="" name="frm" id="frm"
 			class="w3-col w3-margin-top w3-margin-bottom w3-padding">
@@ -85,46 +62,66 @@ img{
 			</c:if>
 			
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Type : </label>
+				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right"></label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="type">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.mupno eq '1001'}">
-					<div class="w3-half">
-						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+<c:forEach var="data" items="${RCLIST}" begin="1" end="5">
+	
+					<div class="w3-col w3-margin-top w3-margin-bottom">
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">NAME : </label>
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="facname">
+							<div class="rfrm">
+								<label for="facltnm" name="facltnm" id="facltnm" value="${data.facltnm}">${data.facltnm}</label>
+							</div>
+						</div>
+						
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">ADDRESS : </label>
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="addrname">
+							<div class="rfrm">
+								<label for="addr1" name="addr1" id="addr1" value="${data.addr1}">${data.addr1}</label>
+							</div>
+						</div>
+						
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">HOMEPAGE : </label>		
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="homename">
+							<div class="rfrm">
+								<label for="homepage" name="homepage" id="homepage" value="${data.homepage}"><a href ="${data.homepage}">${data.homepage}</a></label>
+							</div>
+						</div>	
+						
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">TEL : </label>
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="telname">
+							<div class="rfrm">
+								<label for="tel" name="tel" id="tel" value="${data.tel}">${data.tel}</label>
+							</div>
+						</div>
+						
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">INDUTY : </label>
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="indname">
+							<div class="rfrm">
+								<label for="induty" name="induty" id="induty" value="${data.induty}">${data.induty}</label>
+							</div>
+						</div>
+						
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">LOCATION : </label>
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="locname">
+							<div class="rfrm">
+								<label for="lctcl" name="lctcl" id="lctcl" value="${data.lctcl}">${data.lctcl}</label>
+							</div>
+						</div>
+						
+						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">PET : </label>
+						<div class="w3-col s8 mgl10 mgb10 w3-left" id="petname">
+							<div class="rfrm">
+								<label for="animalcmgcl" name="animalcmgcl" id="animalcmgcl" value="${data.animalcmgcl}">${data.animalcmgcl}</label>
+							</div>
+						</div>
 					</div>
-	</c:if>
+
 </c:forEach>
 				</div>
 			</div>
 			
-			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">View : </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-left" id="mview">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.mupno eq '1021'}">
-					<div class="w3-half">
-						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
-					</div>
-	</c:if>
-</c:forEach>
-				</div>
-			</div>
-			
-			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Pet : </label>
-				<div class="w3-col s8 mgl10 mgb10 w3-left" id="pet">
-<c:forEach var="data" items="${LIST}">
-	<c:if test="${data.mupno eq '1031'}">
-					<div class="w3-half">
-						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
-					</div>
-	</c:if>
-</c:forEach>				
-				</div>
-			</div>
-			
-			<button type="submit" class="w3-half w3-button btn-primary w3-blue w3-hover-aqua" id="sbtn">Submit</button>
-			<div class="w3-half w3-button w3-red w3-hover-orange" id="hbtn">Home</div>
+			<div class="w3-col w3-button w3-lime w3-hover-green" id="hbtn">Home</div>
 		</form>
     		</div>
 		</div>

@@ -67,7 +67,7 @@ public class Preference {
 			// 성공한 경우
 			session.setAttribute("SID", pVO.getId());
 			session.setAttribute("MSG_CHECK", "OK");
-			rv.setUrl("/camp24/");
+			rv.setUrl("/camp24/recommendapi/recommendApi.cmp");
 		} else {
 			rv.setUrl("/camp24/preference/preference.cmp");
 		}

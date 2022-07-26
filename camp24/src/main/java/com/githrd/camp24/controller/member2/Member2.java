@@ -149,7 +149,7 @@ public class Member2 {
 		if(cnt == 0 && cnt2 == 0) {
 			mv.addObject("VIEW", "/camp24/member/myInfoEdit.cmp");
 		} else {
-			mv.addObject("VIEW", "/camp24/member/myInfo.cmp");
+			mv.addObject("VIEW", "/camp24/recommendapi/recommendApi.cmp");
 		}
 		
 		mv.setViewName(view);
