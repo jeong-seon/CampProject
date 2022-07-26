@@ -135,19 +135,20 @@
 	<!-- 제품 리스트 조회 질의명령 -->
 	<select id="tList" resultType="bVO" parameterType="page">
 		SELECT
-		    tno, title, isavename, idir, price , position , click, id
+		    tno, title, isavename, idir, price , position , click, id, icode
 		FROM
 		    (
 		     SELECT
-		        tno, title, isavename, idir, price , position , click, id
+		        tno, title, isavename, idir, price , position , click, id,icode
 		     FROM
 		         (
 		             SELECT
-		                 tno, title, isavename, idir, price , position , click, id
+		                 tno, title, isavename, idir, price , position , click, id,icode
 		             FROM
 		                 member m, trade t, image i
 		             WHERE
 		                 t.isshow = 'Y'
+		                 AND icode = 'T'
 		                 AND mno = tmno
 		                 AND tno = imageno
 		                 AND cano = #{cano}

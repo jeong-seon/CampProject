@@ -22,6 +22,7 @@ $(document).ready(function(){
 									
 									'<img style= "display: inline-block; margin-top: 10px; margin-bottom: 20px; width: 120px; height: 120px; cursor:pointer; " src="/camp24/upload/'+ (arr[i].isavename) +'">'+
 									
+									
 									'<div class="w3-col w3-margin-bottom" style="height: 40px; border-top: 1px solid black; border-bottom:1px solid black;"><h4>' + arr[i].title + '</h4></div>' + 
 									'<p>가격 : <fmt:formatNumber value="${data.price}" pattern="#,###" />' + arr[i].price + '원</p>' +
 									'<p>지 역 위 치  : ' + arr[i].position + '</p>' +
