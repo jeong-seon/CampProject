@@ -44,6 +44,9 @@ $(document).ready(function(){
 		$('#hfrm').attr('action', '/camp24/member/myInfo.cmp');
 		$('#hfrm').submit();
 	});
+	$('#recommend').click(function(){
+		$(location).attr('href', '/camp24/recommendapi/recommendApi.cmp');
+	});
 	
 	function getToday(){
 	    var date = new Date();

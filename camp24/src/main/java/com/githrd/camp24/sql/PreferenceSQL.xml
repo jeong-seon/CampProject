@@ -6,7 +6,7 @@
 	
 	<sql id="preferenceInfo">
 		SELECT
-		    mno, pf_mno, pftype, pfprice, pfview, pfpet
+		    mno, pf_mno, pftype, pfview, pfpet
 		FROM
 		    preference, member
 		WHERE
@@ -27,10 +27,10 @@
 				id = #{id}
 		</selectKey>
 		INSERT INTO
-		    preference(pfno, pf_mno, pftype, pfprice, pfview, pfpet)
+		    preference(pfno, pf_mno, pftype, pfview, pfpet)
 		VALUES(
 		    (SELECT NVL(MAX(pfno) + 1, 1001) FROM preference),
-		    #{mno}, #{mtype}, #{mprice}, #{mview}, #{mpet}
+		    #{mno}, #{mtype}, #{mview}, #{mpet}
 		)
 	</insert>
 	
@@ -44,15 +44,11 @@
 	</select>
 	
 	<update id="preferenceEditInfo" parameterType="pVO">
-		
 		UPDATE
 			preference
 		<set>
 			<if test="mtype neq null">
 				pftype = #{mtype},
-			</if>
-			<if test="mprice neq null">
-				pfprice = #{mprice},
 			</if>
 			<if test="mview neq null">
 				pfview = #{mview},

@@ -81,9 +81,7 @@ public class Member2 {
 	@RequestMapping(path="/joinProc.cmp", method=RequestMethod.POST)
 	public ModelAndView joinProc(MemberVO2 mVO, ModelAndView mv, 
 								RedirectView rv, HttpSession session) {
-		//System.out.println("########### before mno : " + mVO.getMno());
 		int cnt = mDao2.addMember(mVO);
-		//System.out.println("########### after mno : " + mVO.getMno());
 		
 		if(cnt == 1) {
 			// 성공한 경우
@@ -140,7 +138,7 @@ public class Member2 {
 			cnt = mDao2.editMyInfo(mVO);
 		}
 		
-		if(!(pVO.getMtype()== null && pVO.getMprice()== null && pVO.getMview()== null && pVO.getMpet()== null)) {
+		if(!(pVO.getMtype()== null && pVO.getMview()== null && pVO.getMpet()== null)) {
 			cnt2 = pDao.editPreferenceInfo(pVO);
 		}
 		

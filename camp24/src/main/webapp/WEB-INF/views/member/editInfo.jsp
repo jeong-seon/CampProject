@@ -165,7 +165,7 @@ label.s3 {
 			</div>
  			
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Type : </label>
+				<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">타입 : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="type">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1001'}">
@@ -185,7 +185,7 @@ label.s3 {
 			</div>			
 			
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">View : </label>
+				<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">뷰 : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="mview">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1011'}">
@@ -205,7 +205,7 @@ label.s3 {
 			</div>
 						
 			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Pet : </label>
+				<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">애완동물 : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="pet">
 <c:forEach var="data" items="${PLIST}">
 	<c:if test="${data.mupno eq '1021'}">

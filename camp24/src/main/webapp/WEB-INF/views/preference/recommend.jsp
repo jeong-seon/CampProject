@@ -51,8 +51,7 @@ label.s3 {
 		<div class="preference-form">
 			<div class="main-div">
 			    <div class="panel w3-center">
-				   <h2>Camp24 Recommend</h2>
-				   <p>Recommended camping site list</p>
+				   <h2><strong>선호도에 따른 추천 캠핑장 TOP 5</strong></h2>
 			   	</div>
     			<form method="POST" action="" name="frm" id="frm"
 			class="w3-col w3-margin-top w3-margin-bottom w3-padding">
@@ -121,7 +120,7 @@ label.s3 {
 				</div>
 			</div>
 			
-			<div class="w3-col w3-button w3-lime w3-hover-green" id="hbtn">Home</div>
+			<div class="w3-col w3-button w3-green w3-hover-grey" id="hbtn">Home</div>
 		</form>
     		</div>
 		</div>

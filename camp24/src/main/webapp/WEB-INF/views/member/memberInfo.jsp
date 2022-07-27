@@ -140,9 +140,18 @@ a:hover{
               <dt>성별 :</dt>
               <dd style="text-align: left" id="gen">${DATA.gen == 'M' ? "남자":"여자"}</dd>
 			</dl>
-			<div class="w3-center" style="width: 250px; font-size: 14pt;">
-			  <div>선호도</div>
-			</div>
+			
+			<c:if test="${DATA.gen ne 'F'}">
+				<h4 class="w3-green w3-center w3-padding">
+					선호도
+				</h4>
+			</c:if>
+			<c:if test="${DATA.gen eq 'F'}">
+				<h4 class="w3-orange w3-center w3-padding">
+					선호도
+				</h4>
+			</c:if>
+			
 			<dl class="dl-horizontal" style="font-size: 14pt;">
 		      <dt>타입 :</dt>
 		      <dd style="text-align: left" id="pftype">${PDATA.pftype}</dd>

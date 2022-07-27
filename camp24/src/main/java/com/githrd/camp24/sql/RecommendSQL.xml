@@ -19,7 +19,7 @@
 		<trim prefix="WHERE" prefixOverrides="AND">
 			<if test="pftype neq null">AND induty LIKE '%' || #{pftype} || '%'</if>
 			<if test="pfview neq null">AND lctcl LIKE '%' || #{pfview} || '%'</if>
-			<if test="pfpet neq null">AND animalcmgcl LIKE '%' || #{pfpet} || '%'</if>
+			<if test="pfpet neq null">AND animalcmgcl IN #{pfpet}</if>
 		</trim>
 	</select>
 	

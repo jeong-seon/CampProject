@@ -74,8 +74,7 @@ img{
 		<div class="preference-form">
 			<div class="main-div">
 			    <div class="panel w3-center">
-				   <h2>Camp24 Preference Survey</h2>
-				   <p>Please check your Preference Information</p>
+				   <h2><strong>캠핑장 선호도 조사</strong></h2>
 			   	</div>
     			<form method="POST" action="" name="frm" id="frm"
 			class="w3-col w3-margin-top w3-margin-bottom w3-padding">
@@ -101,7 +100,7 @@ img{
 				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">View : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="mview">
 <c:forEach var="data" items="${LIST}">
-	<c:if test="${data.mupno eq '1021'}">
+	<c:if test="${data.mupno eq '1011'}">
 					<div class="w3-half">
 						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
@@ -114,7 +113,7 @@ img{
 				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">Pet : </label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="pet">
 <c:forEach var="data" items="${LIST}">
-	<c:if test="${data.mupno eq '1031'}">
+	<c:if test="${data.mupno eq '1021'}">
 					<div class="w3-half">
 						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
@@ -123,8 +122,8 @@ img{
 				</div>
 			</div>
 			
-			<button type="submit" class="w3-half w3-button btn-primary w3-blue w3-hover-aqua" id="sbtn">Submit</button>
-			<div class="w3-half w3-button w3-red w3-hover-orange" id="hbtn">Home</div>
+			<button type="submit" class="w3-col w3-button w3-green w3-hover-grey" style="border-color: white;" id="sbtn">Submit</button>
+			<!-- <div class="w3-half w3-button w3-red w3-hover-orange" id="hbtn">Home</div> -->
 		</form>
     		</div>
 		</div>
