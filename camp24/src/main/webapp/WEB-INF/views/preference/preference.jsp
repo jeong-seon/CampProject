@@ -90,7 +90,7 @@ img{
 <c:forEach var="data" items="${LIST}">
 	<c:if test="${data.mupno eq '1001'}">
 					<div class="w3-half">
-						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
 	</c:if>
 </c:forEach>
@@ -103,7 +103,7 @@ img{
 <c:forEach var="data" items="${LIST}">
 	<c:if test="${data.mupno eq '1021'}">
 					<div class="w3-half">
-						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
 	</c:if>
 </c:forEach>
@@ -116,7 +116,7 @@ img{
 <c:forEach var="data" items="${LIST}">
 	<c:if test="${data.mupno eq '1031'}">
 					<div class="w3-half">
-						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
 	</c:if>
 </c:forEach>				

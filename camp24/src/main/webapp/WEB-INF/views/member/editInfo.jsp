@@ -171,12 +171,12 @@ label.s3 {
 	<c:if test="${data.mupno eq '1001'}">
 		<c:if test="${data.mkname eq PDATA.pftype}">
 					<div class="w3-half">
-						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}" checked> <label for="type${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}" checked> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
 		</c:if>
 		<c:if test="${data.mkname ne PDATA.pftype}">
 					<div class="w3-half">
-						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mtype" id="mtype${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="type${data.mmno}"> ${data.mkname}</label>
 					</div>
 		</c:if>
 	</c:if>
@@ -191,12 +191,12 @@ label.s3 {
 	<c:if test="${data.mupno eq '1011'}">
 		<c:if test="${data.mkname eq PDATA.pfview}">
 					<div class="w3-half">
-						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}" checked> <label for="view${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}" checked> <label for="view${data.mmno}"> ${data.mkname}</label>
 					</div>
 		</c:if>
 		<c:if test="${data.mkname ne PDATA.pfview}">
 					<div class="w3-half">
-						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="view${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mview" id="view${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="view${data.mmno}"> ${data.mkname}</label>
 					</div>
 		</c:if>
 	</c:if>
@@ -211,12 +211,12 @@ label.s3 {
 	<c:if test="${data.mupno eq '1021'}">
 		<c:if test="${data.mkname eq PDATA.pfpet}">
 					<div class="w3-half">
-						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}" checked> <label for="pet${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}" checked> <label for="pet${data.mmno}"> ${data.mkname}</label>
 					</div>
 		</c:if>
 		<c:if test="${data.mkname ne PDATA.pfpet}">
 					<div class="w3-half">
-						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="pet${data.mmno}"> ${data.msname}</label>
+						<input type="radio" name="mpet" id="pet${data.mmno}" class="w3-radio" value="${data.mkname}"> <label for="pet${data.mmno}"> ${data.mkname}</label>
 					</div>
 		</c:if>
 	</c:if>
