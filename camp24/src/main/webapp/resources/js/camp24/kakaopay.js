@@ -7,7 +7,7 @@ $(document).ready(function(){
 		var id = document.getElementById('id').value;
         
 		
-		IMP.init('imp81420847') //가맹점 식별 코드\
+		IMP.init('imp15538235') //가맹점 식별 코드\
 		IMP.request_pay({
 			pg : 'kakaopay.TC0ONETIME',
 			pay_method: "card",//지불방법
