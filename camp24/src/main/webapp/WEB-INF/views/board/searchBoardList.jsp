@@ -78,13 +78,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: 'IBM Plex Sans KR', serif;}
 			<a href="${data.homepage}"><img style="width: 50%; height: auto;" id="image" src="${data.firstImageUrl}"></a>
 	</c:if>
 	<c:if test="${not empty data.firstImageUrl && empty data.homepage}">
-			<img id="image" src="${data.firstImageUrl}">
+			<img style="width: 50%; height: auto;" id="image" src="${data.firstImageUrl}">
 	</c:if>
 	<c:if test="${empty data.firstImageUrl && empty data.homepage}">
-			<img id="image" src="/camp24/resources/img/pic/noimage.png">
+			<img style="width: 50%; height: auto;" id="image" src="/camp24/resources/img/pic/noimage.png">
 	</c:if>
 	<c:if test="${empty data.firstImageUrl && not empty data.homepage}">
-			<a href="${data.homepage}"><img id="image" src="/camp24/resources/img/pic/noimage.png"></a>
+			<a href="${data.homepage}"><img style="width: 50%; height: auto;" id="image" src="/camp24/resources/img/pic/noimage.png"></a>
 	</c:if>
 			<h5>입지구분 : ${data.lctCl}</h5>
 			<h5>업종 : ${data.induty}</h5>

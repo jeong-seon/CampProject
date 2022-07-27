@@ -47,7 +47,7 @@ label.s3 {
 
   <!-- Portfolio Section -->
 <div id="PreferenceForm">
-	<div class="w3-container">
+	<div class="w3-content">
 		<div class="preference-form">
 			<div class="main-div">
 			    <div class="panel w3-center">
@@ -60,55 +60,55 @@ label.s3 {
 					<input type="hidden" name="id" value="${SID}">	
 			</c:if>
 			
-			<div>
-				<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right"></label>
+			<div class="w3-border-bottom">
+				<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right"></label>
 				<div class="w3-col s8 mgl10 mgb10 w3-left" id="type">
 <c:forEach var="data" items="${RCLIST}" begin="1" end="5">
 	
-					<div class="w3-col w3-margin-top w3-margin-bottom">
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">NAME : </label>
+					<div class="w3-col w3-margin-top w3-margin-bottom w3-border-bottom">
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">캠핑장명 : </label>
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="facname">
 							<div class="rfrm">
 								<label for="facltnm" name="facltnm" id="facltnm" value="${data.facltnm}">${data.facltnm}</label>
 							</div>
 						</div>
 						
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">ADDRESS : </label>
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">주소 : </label>
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="addrname">
 							<div class="rfrm">
 								<label for="addr1" name="addr1" id="addr1" value="${data.addr1}">${data.addr1}</label>
 							</div>
 						</div>
 						
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">HOMEPAGE : </label>		
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">홈페이지 : </label>		
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="homename">
 							<div class="rfrm">
 								<label for="homepage" name="homepage" id="homepage" value="${data.homepage}"><a href ="${data.homepage}">${data.homepage}</a></label>
 							</div>
 						</div>	
 						
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">TEL : </label>
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">전화번호 : </label>
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="telname">
 							<div class="rfrm">
 								<label for="tel" name="tel" id="tel" value="${data.tel}">${data.tel}</label>
 							</div>
 						</div>
 						
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">INDUTY : </label>
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">업종 : </label>
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="indname">
 							<div class="rfrm">
 								<label for="induty" name="induty" id="induty" value="${data.induty}">${data.induty}</label>
 							</div>
 						</div>
 						
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">LOCATION : </label>
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">위치 : </label>
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="locname">
 							<div class="rfrm">
 								<label for="lctcl" name="lctcl" id="lctcl" value="${data.lctcl}">${data.lctcl}</label>
 							</div>
 						</div>
 						
-						<label class="w3-col s3 w3-right-align clrgrey ft14 mgb10 w3-margin-right">PET : </label>
+						<label class="w3-col s3 w3-right-align ft14 mgb10 w3-margin-right">애완동물 : </label>
 						<div class="w3-col s8 mgl10 mgb10 w3-left" id="petname">
 							<div class="rfrm">
 								<label for="animalcmgcl" name="animalcmgcl" id="animalcmgcl" value="${data.animalcmgcl}">${data.animalcmgcl}</label>
@@ -128,7 +128,6 @@ label.s3 {
 </div>
 
 
-</div>
     <!-- Grid for photos -->
     
    		
@@ -139,7 +138,7 @@ label.s3 {
 
 <script>
 // Open and close sidebar
-function openNav() {S
+function openNav() {
   document.getElementById("mySidebar").style.width = "60%";
   document.getElementById("mySidebar").style.display = "block";
 }

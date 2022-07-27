@@ -123,7 +123,6 @@ img{
 			</div>
 			
 			<button type="submit" class="w3-col w3-button w3-green w3-hover-grey" style="border-color: white;" id="sbtn">Submit</button>
-			<!-- <div class="w3-half w3-button w3-red w3-hover-orange" id="hbtn">Home</div> -->
 		</form>
     		</div>
 		</div>
@@ -131,7 +130,6 @@ img{
 </div>
 
 
-</div>
     <!-- Grid for photos -->
     
    		
